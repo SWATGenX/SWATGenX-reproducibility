@@ -1,0 +1,18 @@
+row_id,tier,model_id,variant_id,label,production,wall_s,sec_per_day,vs_ref_pct,status
+CP-01,S,03080102,gfortran_o2,gfortran -O2,no,5.54,0.01,-1.2,frozen_from_runtime_benchmark_catalog
+CP-02,S,03080102,gfortran_o3,gfortran -O3,no,6.5,0.01,15.9,frozen_from_runtime_benchmark_catalog
+CP-03,S,03080102,ifx_o2,ifx -O2,no,5.61,0.01,0.0,frozen_from_runtime_benchmark_catalog
+CP-04,S,03080102,ifx_o3,ifx -O3,no,5.49,0.01,-2.1,frozen_from_runtime_benchmark_catalog
+CP-05,S,03080102,ifx_o3_xhost,ifx -O3 -xHost,no,6.04,0.01,7.7,frozen_from_runtime_benchmark_catalog
+CP-06,S,03080102,ifx_o3_ipo,ifx -O3 -ipo,yes,5.05,0.01,-10.0,frozen_from_runtime_benchmark_catalog
+CP-07,M,09471300,gfortran_o2,gfortran -O2,no,111.56,0.28,15.3,frozen_from_runtime_benchmark_catalog
+CP-08,M,09471300,gfortran_o3,gfortran -O3,no,156.99,0.41,62.2,frozen_from_runtime_benchmark_catalog
+CP-09,M,09471300,ifx_o2,ifx -O2,no,96.79,0.25,0.0,frozen_from_runtime_benchmark_catalog
+CP-10,M,09471300,ifx_o3,ifx -O3,no,92.2,0.24,-4.7,frozen_from_runtime_benchmark_catalog
+CP-11,M,09471300,ifx_o3_xhost,ifx -O3 -xHost,no,104.72,0.27,8.2,frozen_from_runtime_benchmark_catalog
+CP-12,M,09471300,ifx_o3_ipo,ifx -O3 -ipo,yes,89.55,0.23,-7.5,frozen_from_runtime_benchmark_catalog
+CP-13,L,03100101,gfortran_o2,gfortran -O2,no,1269.09,2.93,-8.9,frozen_from_runtime_benchmark_catalog
+CP-14,L,03100101,ifx_o2,ifx -O2,no,1393.06,3.39,0.0,frozen_from_runtime_benchmark_catalog
+CP-15,L,03100101,ifx_o3,ifx -O3,no,1391.73,3.38,-0.1,frozen_from_runtime_benchmark_catalog
+CP-16,L,03100101,ifx_o3_xhost,ifx -O3 -xHost,no,1363.69,3.33,-2.1,frozen_from_runtime_benchmark_catalog
+CP-17,L,03100101,ifx_o3_ipo,ifx -O3 -ipo,yes,1352.57,3.29,-2.9,frozen_from_runtime_benchmark_catalog

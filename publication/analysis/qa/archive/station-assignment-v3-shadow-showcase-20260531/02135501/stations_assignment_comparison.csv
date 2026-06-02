@@ -1,0 +1,5 @@
+catalog_model_id,site_no,station_name,production_gis_channel,v3_gis_channel,same_gis_as_production,v1b_nhdplusid,mapping_method,assignment_class,calibration_eligible,swat_nhd_ratio,notes
+02135501,02135300,"SCAPE ORE SWAMP NEAR BISHOPVILLE, S. C.",366,371.0,False,15000200028996,exact_crosswalk,mainstem_clean,True,0.9993038830523926,
+02135501,02135500,"BLACK RIVER NEAR GABLE, SC",224,221.0,False,15000200098445,exact_crosswalk,mainstem_clean,True,0.9992650256856012,
+02135501,02135501,"BLACK RIVER AT I-95 NEAR MANNING, SC",29,,False,15000200000006,missing,exclude_from_auto_calibration,False,,No chandeg.con channel for reference reach or downstream walk.
+02135501,021355015,"TEARCOAT BRANCH AT I-95 NEAR MANNING, SC",399,399.0,True,15000200121296,exact_crosswalk,tributary_clean,True,0.9624347739515099,

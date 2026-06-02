@@ -1,0 +1,5 @@
+catalog_model_id,site_no,station_name,production_gis_channel,v3_gis_channel,same_gis_as_production,v1b_nhdplusid,mapping_method,assignment_class,calibration_eligible,swat_nhd_ratio,notes
+03565250,03565040,"CHESTUEE CREEK ABOVE ENGLEWOOD, TN",83,85,False,25000300020394,exact_crosswalk,tributary_clean,True,1.0006106566028736,
+03565250,03565120,"CHESTUEE CREEK AT ZION HILL, TN",59,59,True,25000300029392,exact_crosswalk,tributary_clean,True,1.0006272132043978,
+03565250,03565160,"MIDDLE CR BELOW HWY 39 NR ENGLEWOOD, TN",67,55,False,25000300021811,downstream_replacement,tributary_clean,True,2.344783022225098,Mapped at downstream step 1 to NHD 25000300033943 (ref 25000300021811).
+03565250,03565250,CHESTUEE CREEK AT DENTVILLE TENN (TVA),20,21,False,25000300020087,exact_crosswalk,tributary_clean,True,1.0315654604084945,

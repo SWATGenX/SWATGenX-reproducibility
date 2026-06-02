@@ -1,0 +1,3 @@
+catalog_model_id,site_no,station_name,production_gis_channel,v3_gis_channel,same_gis_as_production,v1b_nhdplusid,mapping_method,assignment_class,calibration_eligible,swat_nhd_ratio,notes
+040900010212,04159900,"MILL CREEK NEAR AVOCA, MI",13,10.0,False,60001500005863,exact_crosswalk,tributary_clean,True,1.0078730909752835,
+040900010212,04160000,"MILL CREEK NEAR ABBOTTSFORD, MI",2,,False,60001500031333,missing,exclude_from_auto_calibration,False,,No chandeg.con channel for reference reach or downstream walk.

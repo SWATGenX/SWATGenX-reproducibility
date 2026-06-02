@@ -1,0 +1,7 @@
+row_id,tier,model_id,label,hrus,channels,wall_s,sec_per_day,init_s,daily_loop_s,status
+HS-01,S,03080102,Oklawaha (FL),473,45,5.05,0.01,1.0,4.0,frozen_from_runtime_benchmark_catalog
+HS-02,M,09471300,Upper San Pedro (AZ),11284,350,89.55,0.23,5.0,83.0,frozen_from_runtime_benchmark_catalog
+HS-03,X20,03152000,Little Kanawha (WV),19530,1615,156.68,0.39,13.0,142.0,frozen_from_runtime_benchmark_catalog
+HS-04,X40,07174000,Verdigris River (KS),36855,2370,297.37,0.75,22.0,273.0,frozen_from_runtime_benchmark_catalog
+HS-05,X60,15060105,Upper Gila HUC-8 (AZ),51685,17296,1436.92,3.77,56.0,1374.0,frozen_from_runtime_benchmark_catalog
+HS-06,L,03100101,Peace River HUC-8,94303,8181,1352.57,3.29,149.0,1197.0,frozen_from_runtime_benchmark_catalog

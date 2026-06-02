@@ -1,0 +1,3 @@
+catalog_model_id,site_no,station_name,production_gis_channel,v3_gis_channel,same_gis_as_production,v1b_nhdplusid,mapping_method,assignment_class,calibration_eligible,swat_nhd_ratio,notes
+10348850,10348850,"GALENA CK AT GALENA CK STATE PARK, NV",8,7,False,70000300027136,downstream_replacement,mainstem_known_nhd_offset,True,1.1114939059198137,Mapped at downstream step 1 to NHD 70000300035749 (ref 70000300027136).
+10348850,10348900,"GALENA CK NR STEAMBOAT, NV",7,7,True,70000300035749,exact_crosswalk,mainstem_clean,True,1.0001988416945442,

@@ -1,0 +1,4 @@
+catalog_model_id,site_no,station_name,production_gis_channel,v3_gis_channel,same_gis_as_production,v1b_nhdplusid,mapping_method,assignment_class,calibration_eligible,swat_nhd_ratio,notes
+09312500,09312000,"NORTH FORK WHITE RIVER NEAR SOLDIER SUMMIT, UTAH",391,391,True,41000400017000,exact_crosswalk,mainstem_clean,True,0.9996273008160138,
+09312500,09312500,"WHITE RIVER NEAR SOLDIER SUMMIT, UTAH",21,22,False,41000400016974,exact_crosswalk,mainstem_clean,True,0.9990623856894972,
+09312500,09312600,"WHITE R BL TABBYUNE CRK NR SOLDIER SUMMIT, UT",11,11,True,41000400017252,exact_crosswalk,mainstem_clean,True,0.9991385461841125,

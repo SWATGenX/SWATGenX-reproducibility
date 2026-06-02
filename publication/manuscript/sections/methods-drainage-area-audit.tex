@@ -1,0 +1,28 @@
+\subsection{Station--channel assignment and drainage-area fidelity audit}
+\label{sec:methods-drainage-audit}
+
+Objective~2 evaluation includes an intermediate fidelity check that sits between structural preprocessing QA (\S\ref{sec:methods-nhd}) and hydrologic performance: does the \emph{executable} SWAT\textsuperscript{+} model preserve cumulative drainage-area structure relative to the original NHDPlus HR network at gaged channels?
+Answering this requires first assigning each USGS streamgage to a SWAT\textsuperscript{+} channel without circularity, then comparing the assigned channel's drainage area to the unmodified hydrography.
+
+\subsubsection*{NHD-first, SWAT-second station assignment}
+Gage-to-channel assignment uses a two-stage rule that deliberately excludes SWAT\textsuperscript{+} area from the channel choice, so that the subsequent drainage-area comparison is not tautological.
+\emph{NHD-first}: a reference reach is selected on the original NHDPlus HR network from gage coordinates, USGS NWIS site drainage area (where available), GNIS/name context, stream order, LevelPath, \texttt{FType}, and lake/canal flags---never from SWAT\textsuperscript{+} \texttt{AreaC} or \texttt{chandeg.con} area.
+\emph{SWAT-second}: that reference reach is mapped to an executable \texttt{chandeg.con} channel by an NHD$\rightarrow$GIS crosswalk, or by a controlled lake-outlet or downstream replacement where the reference reach has no direct executable channel.
+Each gage is then labeled with an assignment class (clean tributary, clean mainstem, known mainstem NHD offset, or lake/canal review) and a calibration-eligibility flag.
+Drainage-area comparison runs only after assignment.
+
+\subsubsection*{Drainage-area definitions}
+The audit distinguishes four drainage-area definitions at each gage: (i)~the \textbf{USGS NWIS site} drainage area from the gage metadata catalog; (ii)~the \textbf{NHD reference} cumulative drainage \texttt{NHDPlusFlowlineVAA.TotDASqKm} on the assigned reach (within 500~m of the gage); (iii)~the \textbf{SWAT\textsuperscript{+}} executable channel area in \texttt{chandeg.con} (hectares $\div$ 100, converted to km\textsuperscript{2}); and (iv)~the \textbf{WBD HU12} upstream-polygon sum, retained as administrative context only.
+The NHD reference is read from the domain-clipped USGS HU4 geodatabase---the unmodified source vectors, \emph{not} the cleaned national pickles in which orphan catchments have already been dissolved---so that any offset cannot be an artifact of comparing to a post-processed network.
+
+\subsubsection*{Two alignment comparisons}
+Two questions are evaluated separately because they probe different parts of the pipeline.
+The \textbf{NHD--USGS} comparison aligns hydrography catalog area (ii) with gage metadata (i), summarized by agreement within 10\% and within 25\% of the NWIS site area; it tests whether the hydrography reach assigned to a gage carries a plausible catalog drainage area.
+The \textbf{SWAT\textsuperscript{+}--NHD} comparison aligns the executable model (iii) with the hydrography reference (ii), summarized by the SWAT\textsuperscript{+}/NHD ratio against a loose band ($0.5$--$2.0\times$) and a tight band ($0.8$--$1.25\times$); it tests whether project assembly preserves cumulative drainage structure.
+Large SWAT\textsuperscript{+}--NWIS gaps are treated as gage--reach assignment diagnostics, not as evidence of NHD$\rightarrow$SWAT\textsuperscript{+} conversion error.
+The SWAT\textsuperscript{+}--NHD audit is applied across the eight catalog Model IDs of the evaluation matrix (Table~\ref{tab:model-roster}); the whole-HUC-8 Peace River domain (\texttt{03100101}, 76 gages) supports per-class analysis of both comparisons.
+
+\subsubsection*{Pipeline-stage decomposition}
+Where a systematic SWAT\textsuperscript{+}/NHD offset appears, its origin is localized by tracing cumulative drainage area through successive pipeline stages on the Peace mainstem (Table~\ref{tab:drainage-area-pipeline-trace}): original VAA \texttt{TotDASqKm} (A) and upstream catchment-area sums on the original (B) and cleaned (C) networks, the pre-QSWAT\textsuperscript{+} reach attribute carried in \texttt{streams.pkl} (G), the SWATGenX post-processed watershed-polygon area sum (D), the QSWAT\textsuperscript{+}/TauDEM channel \texttt{AreaC} at assignment (E), and the executable \texttt{chandeg.con} area (F).
+A live project channel-area stage (H, \texttt{rivs1.AreaC} and the project SQLite \texttt{gis\_channels} table) confirms whether the offset is already established in the QSWAT\textsuperscript{+} project channel area before the SWAT\textsuperscript{+} text export.
+This decomposition attributes any offset to a specific stage rather than to preprocessing in aggregate.

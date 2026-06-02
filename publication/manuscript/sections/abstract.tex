@@ -1,0 +1,9 @@
+\begin{abstract}
+High-resolution national hydrography and environmental datasets make detailed SWAT\textsuperscript{+} model construction possible across broad spatial extents, but reproducible model assembly remains difficult because routing topology, attributes, and export structure can vary across analysts and study sites.
+This paper evaluates SWATGenX as a reference implementation of an automated NHDPlus High Resolution (NHDPlus HR) workflow that converts U.S.\ national vectors and ancillary layers into SWAT\textsuperscript{+}-compatible project structures with explicit preprocessing rules and quality-assurance checks.
+\textbf{Primary evidence} documents implementation auditability and quantified hydrography preprocessing trade-offs, including a drainage-area fidelity audit that compares executable SWAT\textsuperscript{+} channel areas with original NHDPlus HR cumulative drainage at gaged channels (Objectives~1--2).
+\textbf{Secondary evidence} reports structural scaling, model-assembly cost, and downstream workflow readiness---initialization, split-sample calibration and verification, and Morris sensitivity on two controlled gage basins (Objectives~3--4).
+\textbf{Supporting evidence} reports measured SWAT\textsuperscript{+} simulation cost on one documented host/build configuration (Objective~5).
+Hydrologic skill metrics are workflow diagnostics on selected basins, not a national validation study.
+SWATGenX demonstrates that high-resolution SWAT\textsuperscript{+} project generation from NHDPlus HR and national datasets can be automated into executable, auditable model packages with documented preprocessing trade-offs and compatibility for calibration, sensitivity, and uncertainty workflows, with expert review still required before decision use.
+\end{abstract}

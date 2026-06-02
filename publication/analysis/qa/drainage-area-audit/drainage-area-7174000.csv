@@ -1,0 +1,4 @@
+usgsSiteNo,stationName,gisChannel,swatLcha,swatplusDrainageAreaKm2,nhdHrTotdasqkmKm2,nwisDrainageAreaKm2,ratioSwatNhd,ratioSwatNwis,auditClass
+07173300,"M CANEY C AT SEDAN, KS",78,78.0,309.99,309.61,405.57,1.0012,0.7643,swat_nhd_ok
+07173500,"BEE C NR HAVANA, KS",376,357.0,29.44,29.41,88.12,1.001,0.3341,swat_nhd_ok
+07174000,"Little Caney River near Copan, OK",1,,,1106.34,1116.88,,,missing_chandeg

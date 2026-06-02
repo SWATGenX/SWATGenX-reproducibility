@@ -1,0 +1,11 @@
+\section{Conclusions}
+
+This paper evaluated whether national high-resolution hydrography and environmental datasets can be converted into structurally consistent, executable, and auditable SWAT\textsuperscript{+} projects through a documented automated workflow implemented in SWATGenX.
+
+SWATGenX demonstrates that NHDPlus HR and national ancillary data can be converted automatically into executable, auditable SWAT\textsuperscript{+} project packages with documented preprocessing trade-offs and evidence that those packages can enter standard downstream calibration, sensitivity, and uncertainty workflows.
+Primary evidence comprises a layered implementation with inspectable outputs and a stated preprocessing rule set that yields quantified structural changes relative to original NHDPlus HR sources, together with a drainage-area fidelity audit showing that executable channel areas preserve original NHDPlus HR cumulative drainage at gaged channels (85\% of matched gages within $0.5$--$2.0\times$).
+Secondary evidence comprises structural and assembly-cost scaling across three benchmark size classes and workflow-readiness tests on two controlled gage basins.
+Supporting evidence comprises measured simulation cost on one documented host/build configuration.
+
+The evaluation does not establish nationwide hydrologic validity, comparative superiority to other national platforms, or readiness for regulatory filing without expert review.
+Further work should isolate hydrologic consequences of alternative preprocessing choices and expand domain coverage beyond the selected evaluation matrix (Table~\ref{tab:model-roster}).

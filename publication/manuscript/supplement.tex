@@ -1,0 +1,40 @@
+% SWATGenX supplementary material — standalone PDF (compile after first main.tex pass).
+% From publication/manuscript:
+%   pdflatex main && bibtex main && pdflatex main && pdflatex main
+%   pdflatex supplement && pdflatex supplement
+%   pdflatex main && pdflatex supplement
+\documentclass[12pt]{article}
+
+\input{preamble-common.tex}
+\usepackage{xr}
+\externaldocument{main}
+
+\title{Supplementary Material for:\\[0.6em]
+  {\large Automating High-Resolution SWAT+ Watershed Model Generation from NHDPlus HR and National Environmental Datasets}}
+
+\author{%
+  TBD Author One\\
+  TBD Affiliation\\
+  \and
+  TBD Author Two\\
+  TBD Affiliation\\
+}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\setcounter{section}{0}
+\setcounter{table}{0}
+\setcounter{figure}{0}
+\renewcommand{\thesection}{S\arabic{section}}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\thefigure}{S\arabic{figure}}
+
+\input{sections/supplementary-material}
+\input{sections/supplementary-calval-sensitivity}
+\input{sections/supplementary-runtime-benchmark}
+
+\end{document}

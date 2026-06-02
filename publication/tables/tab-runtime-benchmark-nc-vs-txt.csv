@@ -1,0 +1,5 @@
+row_id,tier,model_id,output_format,wall_s,sec_per_day,total_output_gb,status
+NT-01,S,03080102,NC,21.13,0.05,0.13,frozen_from_runtime_benchmark_catalog
+NT-02,S,03080102,TXT,26.15,0.07,0.61,frozen_from_runtime_benchmark_catalog
+NT-03,M,09471300,NC,269.37,0.68,3.07,frozen_from_runtime_benchmark_catalog
+NT-04,M,09471300,TXT,596.98,1.6,14.57,frozen_from_runtime_benchmark_catalog

@@ -1,0 +1,4 @@
+catalog_model_id,site_no,station_name,production_gis_channel,v3_gis_channel,same_gis_as_production,v1b_nhdplusid,mapping_method,assignment_class,calibration_eligible,swat_nhd_ratio,notes
+09471300,09471300,HUACHUCA CAN NR FT HUACHUCA ARIZ,317,341,False,40000400092060,exact_crosswalk,mainstem_clean,True,0.9992508357105485,
+09471300,09471310,"HUACHUCA CANYON NEAR FORT HUACHUCA, AZ",295,295,True,40000400091923,exact_crosswalk,mainstem_clean,True,0.9990752461645557,
+09471300,09471380,"UPPER BABOCOMARI RIVER NEAR HUACHUCA CITY, AZ",12,13,False,40000400091991,exact_crosswalk,mainstem_clean,True,0.7646797255501437,

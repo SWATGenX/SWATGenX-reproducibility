@@ -1,0 +1,54 @@
+% SWATGenX manuscript — generic Wiley/JAWRA-ready skeleton (no journal-specific .cls).
+% Compile from publication/manuscript (see publication/README.md).
+\documentclass[12pt]{article}
+
+\input{preamble-common.tex}
+\usepackage{lineno}
+\usepackage{xr}
+\externaldocument{supplement}
+
+\doublespacing
+\linenumbers
+
+\title{Automating High-Resolution SWAT+ Watershed Model Generation from NHDPlus HR and National Environmental Datasets}
+
+\author{%
+  TBD Author One\\
+  TBD Affiliation\\
+  \texttt{TBD email}
+  \and
+  TBD Author Two\\
+  TBD Affiliation\\
+}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\input{sections/abstract}
+\input{sections/keywords}
+
+\input{sections/introduction}
+
+\input{sections/methods-system-overview}
+\input{sections/methods-domain-definition}
+\input{sections/methods-nhdplus-hr}
+\input{sections/methods-drainage-area-audit}
+\input{sections/methods-data-inputs}
+\input{sections/methods-swat-assembly}
+\input{sections/methods-software-reproducibility}
+\input{sections/methods-calibration-sensitivity}
+
+\input{sections/results}
+\input{sections/discussion}
+\input{sections/conclusions}
+
+\input{sections/data-availability}
+\input{sections/acknowledgments}
+
+\bibliographystyle{apalike}
+\bibliography{../bib/references}
+
+\end{document}

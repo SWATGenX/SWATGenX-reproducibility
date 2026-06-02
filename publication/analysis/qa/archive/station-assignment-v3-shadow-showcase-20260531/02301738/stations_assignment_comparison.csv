@@ -1,0 +1,5 @@
+catalog_model_id,site_no,station_name,production_gis_channel,v3_gis_channel,same_gis_as_production,v1b_nhdplusid,mapping_method,assignment_class,calibration_eligible,swat_nhd_ratio,notes
+02301738,02301738,ARCHIE CREEK AT 78TH STREET NEAR TAMPA FL,32,291,False,15000700039997,exact_crosswalk,tributary_clean,True,0.00016666666666666666,
+02301738,02301740,NORTH ARCHIE CREEK AT PROGRESS BLVD. NEAR TAMPA FL,95,108,False,15000700028203,downstream_replacement,tributary_clean,True,1.125735286890361,Mapped at downstream step 1 to NHD 15000700052346 (ref 15000700028203).
+02301738,02301745,DELANEY CREEK POPOFF CANAL NEAR TAMPA FL,111,111,True,15000700015826,exact_crosswalk,canal_or_artificial_review,False,1.0123320933745896,
+02301738,02301750,DELANEY CREEK NEAR TAMPA FL,75,75,True,15000700052142,exact_crosswalk,tributary_clean,True,1.2114299418377779,

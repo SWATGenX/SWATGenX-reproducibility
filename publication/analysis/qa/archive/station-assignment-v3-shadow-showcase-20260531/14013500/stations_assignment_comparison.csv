@@ -1,0 +1,2 @@
+catalog_model_id,site_no,station_name,production_gis_channel,v3_gis_channel,same_gis_as_production,v1b_nhdplusid,mapping_method,assignment_class,calibration_eligible,swat_nhd_ratio,notes
+14013500,14013500,"BLUE CREEK NEAR WALLA WALLA, WA",2,4,False,55000400101691,exact_crosswalk,tributary_clean,True,1.002852173628914,

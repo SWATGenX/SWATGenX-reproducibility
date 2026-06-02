@@ -1,0 +1,13 @@
+\subsection{Domain definition and modeling extents}
+\label{sec:methods-domain}
+
+The modeling domain is specified by hydrologic units and/or a streamflow outlet consistent with national hydrography products.
+SWATGenX supports multiple \emph{extent modes} (e.g., watersheds keyed to U.S.\ Geological Survey (USGS) streamgages \citep{USGSNWIS}, Hydrologic Unit Code (HUC12) outlet sets, and whole HUC8 extents) so that the same hydrography preprocessor can be reused across national-scale automation; an exhaustive UI enumeration of every supported mode is not required for the structural-first scope of this draft.
+For any mode, outlet and upstream routing must be unambiguous relative to the NHDPlus HR network after preprocessing (Section~\ref{sec:methods-nhd}).
+
+Catchment polygons from NHDPlus HR are attributed to WBD HUC8 and HUC12 units by spatial join of catchment centroids to HUC polygons, with downstream HUC12 connectivity (\texttt{tohuc}) carried where available; multipart HUC polygons are deduplicated by retaining the largest-area part so that each reach carries a single HUC label where possible.
+Basin delineation for structural reporting uses the small, medium, and large benchmark domains (size classes S, M, L) only (Table~\ref{tab:model-roster}; Table~\ref{tab:benchmark-sm-l-products}).
+Objective~4 controlled gage basins (\texttt{02297600}, \texttt{05536265}) are separate compact gage watersheds and are not listed in Table~\ref{tab:benchmark-sm-l-products}.
+For USGS-station workflows, catalog ``basin area'' in structural tables is the union of exported SWAT subbasin polygons for the upstream HUC12 assembly, which can exceed the USGS station drainage area when the gage lies upstream of the administrative HUC12 outlet.
+
+% Optional: add a domain schematic figure in revision if editorially required.

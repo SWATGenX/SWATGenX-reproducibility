@@ -1,0 +1,5 @@
+catalog_model_id,site_no,station_name,production_gis_channel,v3_gis_channel,same_gis_as_production,v1b_nhdplusid,mapping_method,assignment_class,calibration_eligible,swat_nhd_ratio,notes
+14161500,14161500,"LOOKOUT CREEK NEAR BLUE RIVER, OR",1,2,False,55000900061097,exact_crosswalk,tributary_clean,True,0.9980963884923071,
+14161500,441344122095400,"LOOKOUT CREEK ABOVE MACK CREEK, NR BLUE RIVER, OR",65,65,True,55000900133417,exact_crosswalk,tributary_clean,True,0.999330491786615,
+14161500,441400122123000,"MCRAE CREEK NEAR BLUE RIVER, OR",41,43,False,55000900097837,exact_crosswalk,tributary_clean,True,0.9991690398712019,
+14161500,441504122105500,"UNNAMED TRIB TO MCRAE CREEK NEAR BLUE RIVER, OR",117,71,False,55000900132809,exact_crosswalk,tributary_clean,True,0.9991695191734641,

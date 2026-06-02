@@ -1,0 +1,49 @@
+file_or_folder,purpose,manuscript_link,generated_by,notes
+publication/tables/tab-model-roster.csv,Evaluation model sets (S/M/L benchmark X20–X60 cal gages),Table model-roster; Introduction,emit_tab_model_roster_tex.py,Cross-ref RP-03
+publication/tables/tab-model-complexity.csv,Structural discretization fields for locked domains,Table benchmark-sm-l-products (via emit),emit_tab_model_complexity_tex.py,Cross-ref RP-08
+publication/tables/tab-package-manifest.csv,SWAT+ project output file classes,Table package-manifest-abridged,emit_tab_package_manifest_tex.py,Cross-ref RP-11
+publication/tables/tab-nhd-rules.csv,NHDPlus HR preprocessing rule catalog,Table nhd-rules-abridged; Methods NHD,emit_tab_nhd_rules_tex.py,Full catalog in supplement; abridged in main text
+publication/tables/tab-nhd-preprocessing-qa.csv,Original vs exported NHD vector QA counters,Table nhd-preprocessing-qa,run_nhd_preprocessing_qa_benchmark.py; emit_tab_nhd_preprocessing_qa_tex.py,Objective 2 evidence
+publication/tables/tab-data-master.csv,Dataset provenance and audit flags,Table data-master-abridged,emit_tab_data_master_tex.py,Cross-ref RP-04 RP-12
+publication/tables/tab-runtime.csv,Model-assembly wall times for S/M/L,Table benchmark-sm-l-products (assembly column),populate_tab_runtime_showcase.py; emit_tab_runtime_tex.py,Cross-ref RP-10
+publication/tables/tab-metrics.csv,Calibration and verification skill metrics,Table hydrologic-metrics,export_objectives_4_5.py; emit_tab_metrics_tex.py,Objective 4 controlled gages 02297600 05536265
+publication/tables/tab-controlled-gage-structure.csv,Objective 4 gage-basin structural context,Table controlled-gage-structure,emit_tab_controlled_gage_structure_tex.py,Joined from tab-nhd-preprocessing-qa + tab-calibration-run-settings; HRU column pending workspace audit
+publication/tables/tab-sensitivity-morris.csv,Morris global sensitivity indices,Table morris-sensitivity; tab-morris-sensitivity-05536265,export_objectives_4_5.py; emit_tab_sensitivity_morris_tex.py,Both controlled basins (02297600 FL; 05536265 IL)
+publication/tables/tab-calibration-run-settings.csv,PSO and verification window settings,Methods cal/val (archived protocol),Manual freeze from completed runs,Supports Objective 4 audit trail
+publication/tables/tab-streamflow-availability.csv,NWIS period-of-record audit for cal gages,Methods cal/val (archived),Manual from NWIS audit,Window selection support
+publication/tables/tab-runtime-benchmark.csv,Primary one-year simulation wall times,Table runtime-benchmark,export_benchmark_objective5.py; emit_tab_runtime_benchmark_tex.py,Objective 5; aligned with public benchmark catalog
+publication/tables/tab-runtime-benchmark-print-scope.csv,Print-scope runtime comparison,Table runtime-benchmark-print-scope,export_benchmark_objective5.py; emit_tab_runtime_benchmark_suite_tex.py,Objective 5 supplement
+publication/tables/tab-runtime-benchmark-nc-vs-txt.csv,NetCDF vs formatted text export cost,Table runtime-benchmark-nc-vs-txt,export_benchmark_objective5.py; emit_tab_runtime_benchmark_suite_tex.py,Objective 5 supplement
+publication/tables/tab-runtime-benchmark-compiler.csv,Compiler variant runtime rows,Table runtime-benchmark-compiler,export_benchmark_objective5.py; emit_tab_runtime_benchmark_suite_tex.py,Objective 5 supplement
+publication/tables/tab-runtime-benchmark-hru-scaling.csv,Six-point HRU scaling ladder,Table runtime-benchmark-hru-scaling; Figure runtime-benchmark-hru-scaling,export_benchmark_objective5.py; emit_tab_runtime_benchmark_suite_tex.py,Objective 5
+publication/tables/tab-runtime-benchmark-vtune.csv,VTune profiling notes (optional),Supplement only,export_benchmark_objective5.py,Not cited in main text unless enabled
+publication/tables/tab-runtime-phases.csv,Assembly phase breakdown (internal),Supplement only,populate_tab_runtime_showcase.py,Supports assembly timing audit
+publication/tables/tab-product-metrics.csv,Product-level metrics inventory,Supplement only,export_tab_product_metrics.py,Internal inventory
+publication/tables/tab-tool-contrast.csv,Qualitative platform positioning,Table tool-contrast,emit_tab_tool_contrast_tex.py,Cross-ref RP-15
+publication/tables/tab-repro-checklist.csv,Submission reproducibility checklist,Data Availability; Supplement Table S1,Manual curation,Cross-ref RP-01 through RP-15
+publication/analysis/scripts/export_objectives_4_5.py,Export Objective 4 tables and hydrograph figures,Tables hydrologic-metrics morris-sensitivity; Figures cal-val-hydro,Manual run from repo root,Reads controlled-basin artifacts on evaluation host
+publication/analysis/scripts/export_benchmark_objective5.py,Export Objective 5 runtime benchmark tables,Tables runtime-benchmark suite,Manual run from repo root,Source: public runtime benchmark catalog JSON
+publication/analysis/scripts/render_benchmark_figures.py,Runtime benchmark figure PNGs,Figures runtime-benchmark-print-scope runtime-benchmark-hru-scaling,Manual run from repo root,Companion to export_benchmark_objective5.py
+publication/analysis/scripts/render_platform_figures.py,Workflow and architecture figure PNGs,Figures workflow architecture-layers nhd-workflow,Manual run from repo root,Objective 1–2 figures
+publication/analysis/scripts/render_example_basin_maps.py,S/M/L benchmark map panel,Figure example-basin-maps,Manual run from repo root,Cross-ref RP-09
+publication/analysis/scripts/run_nhd_preprocessing_qa_benchmark.py,NHD original-vs-export QA recomputation,Table nhd-preprocessing-qa,Manual run from repo root,Uses staged USGS HU4 geodatabase archives
+publication/analysis/scripts/emit_tab_*.py,LaTeX table fragment generators,All generated tab-*.tex inputs,pdflatex build step,One script per main-table CSV where applicable
+publication/figures/final/fig-workflow.png,End-to-end model-generation workflow,Figure workflow,render_platform_figures.py,Objective 1
+publication/figures/final/fig-architecture-layers.png,Client API worker artifact layers,Figure architecture-layers,render_platform_figures.py,Objective 1
+publication/figures/final/fig-nhd-workflow.png,NHDPlus HR preprocessing stages,Figure nhd-workflow,render_platform_figures.py,Objective 2
+publication/figures/final/fig-example-basin-maps-combined-3panel.png,S/M/L benchmark domain maps,Figure example-basin-maps,render_example_basin_maps.py,Objective 3
+publication/figures/final/fig-cal-val-02297600-hydrographs-3panel.png,Florida controlled gage hydrographs,Figure cal-val-hydro,export_objectives_4_5.py,Objective 4
+publication/figures/final/fig-cal-val-05536265-hydrographs-3panel.png,Illinois controlled gage hydrographs,Figure cal-val-hydro-05536265,export_objectives_4_5.py,Objective 4
+publication/figures/final/fig-sensitivity-ensemble-controlled-basins-daily.png,Morris 999-member ensemble daily hydrographs,Figure sensitivity-ensemble,export_objectives_4_5.py,Objective 4 main-text uncertainty figure
+publication/tables/tab-sensitivity-ensemble-metrics.csv,Morris ensemble P-factor and R-factor,Table sensitivity-ensemble-metrics,export_objectives_4_5.py; emit_tab_sensitivity_ensemble_metrics_tex.py,Objective 4
+publication/figures/supplement/fig-sensitivity-ensemble-controlled-basins-monthly.png,Morris ensemble monthly hydrographs,Supplementary Figure supp-sensitivity-ensemble-monthly,export_objectives_4_5.py,Objective 4 supplement
+publication/figures/final/fig-morris-spider-controlled-basins.png,Morris spider charts (FL top-8; IL top-6),Supplementary Figure supp-morris-spider,plot_morris_spider.py,Objective 4 supplement
+publication/figures/final/fig-runtime-benchmark-print-scope.png,Print-scope runtime comparison,Figure runtime-benchmark-print-scope,render_benchmark_figures.py,Objective 5
+publication/figures/final/fig-runtime-benchmark-hru-scaling.png,HRU scaling ladder plot,Figure runtime-benchmark-hru-scaling,render_benchmark_figures.py,Objective 5
+publication/analysis/evaluation-protocol.md,Locked evaluation protocol and phase gates,Methods; Data Availability,Manual curation,Cross-ref RP-03
+publication/analysis/cal-val-sensitivity-basin-02297600.md,Florida controlled basin protocol,Results cal-val Florida,Manual freeze from completed runs,Objective 4
+publication/analysis/cal-val-sensitivity-basin-05536265.md,Illinois controlled basin protocol,Results cal-val Illinois,Manual freeze from completed runs,Objective 4
+documents/NHDPlus_HR_SWATPlus_Methods.md,Extended NHDPlus HR methods narrative,Methods NHD,Manual curation,Cross-ref RP-05 RP-06
+documents/SWATGenX/README_NHDPlus_HR_SWATPlus.md,NHDPlus HR pipeline operator README,Methods overview,Manual curation,Cross-ref RP-04 RP-06
+web_application/frontend/src/data/swatPlusRuntimeBenchmarkCatalog.json,Public runtime benchmark catalog source,Objective 5; public benchmark page,export_runtime_benchmark_catalog.py (swatplus_perf),Public interactive benchmark page
+publication/bib/references.bib,Frozen bibliography keys,All sections,Manual curation,Cross-ref RP-14

@@ -1,0 +1,2 @@
+catalog_model_id,site_no,station_name,production_gis_channel,v3_gis_channel,same_gis_as_production,v1b_nhdplusid,mapping_method,assignment_class,calibration_eligible,swat_nhd_ratio,notes
+02297600,02297600,SHELL CREEK AT CIRCLE K GROVES NEAR FT OGDEN FL,2,2,True,15000700021819,exact_crosswalk,tributary_clean,True,1.0773558562868886,

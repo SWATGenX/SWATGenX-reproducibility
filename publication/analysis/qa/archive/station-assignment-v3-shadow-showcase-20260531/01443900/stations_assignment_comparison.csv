@@ -1,0 +1,5 @@
+catalog_model_id,site_no,station_name,production_gis_channel,v3_gis_channel,same_gis_as_production,v1b_nhdplusid,mapping_method,assignment_class,calibration_eligible,swat_nhd_ratio,notes
+01443900,01443250,Paulins Kill at Warbasse Jct Rd near Lafayette NJ,253,305,False,10000200503356,exact_crosswalk,mainstem_clean,True,0.7638187114781781,
+01443900,01443280,East Branch Paulins Kill near Lafayette NJ,291,308,False,10000200500932,exact_crosswalk,tributary_clean,True,1.0627050205178823,
+01443900,01443500,Paulins Kill at Blairstown NJ,87,88,False,10000200505865,exact_crosswalk,mainstem_clean,True,0.836179255452316,
+01443900,01443900,Yards Creek near Blairstown NJ,437,459,False,10000200514815,exact_crosswalk,tributary_clean,True,0.11461778252491024,

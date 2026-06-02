@@ -1,0 +1,2 @@
+catalog_model_id,site_no,station_name,production_gis_channel,v3_gis_channel,same_gis_as_production,v1b_nhdplusid,mapping_method,assignment_class,calibration_eligible,swat_nhd_ratio,notes
+09513860,09513860,"SKUNK CREEK NEAR PHOENIX, AZ",1,2,False,40000300033041,exact_crosswalk,tributary_clean,True,0.997871764662269,

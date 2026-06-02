@@ -1,0 +1,4 @@
+model_id,tier,catalog_model_id,label,state,area_km2,n_hrus,n_channels,n_ls_units,n_subbasins,n_catchments,n_lakes,dem_resolution_m,model_kind,level,status,notes
+0308/huc12/030801020804,S,03080102,Oklawaha (FL),FL,52.61,473,45,53,3,53,4,30.0,huc12_outlet,huc12,locked_from_shapefiles,Benchmark tier S; n_subbasins=3 from SWAT_plus_subbasins.shp (2026-05-31 audit).
+1505/huc12/09471300,M,09471300,Upper San Pedro (AZ),AZ,579.83,11284,1371,1367,12,1367,,30.0,usgs_station,huc12,locked_from_inventory,Benchmark tier M; package channel count (1371) is full routed network; simulation benchmark uses gauge-filtered print scope.
+0310/huc8/03100101,L,03100101,Peace River HUC-8,FL,5982.53,94303,8181,9341,162,8181,,30.0,huc8,huc8,locked_from_inventory,Benchmark tier L; whole-HUC8 domain.

@@ -1,0 +1,7 @@
+catalog_model_id,site_no,station_name,production_gis_channel,v3_gis_channel,same_gis_as_production,v1b_nhdplusid,mapping_method,assignment_class,calibration_eligible,swat_nhd_ratio,notes
+03152000,03151400,"LITTLE KANAWHA RIVER NR WILDCAT, WV",54,55,False,24000300035280,exact_crosswalk,mainstem_clean,True,0.8728107204024377,
+03152000,03151500,"L KANAWHA R NR BURNSVILLE, WV",946,35,False,24000300006899,lake_outlet_replacement,lake_outlet_review,False,0.9635923865653442,Mapped at downstream step 8 to NHD 24000300025462 (ref 24000300006899).
+03152000,03151520,"LITTLE KANAWHA RIVER BELOW BURNSVILLE DAM, WV",35,35,True,24000300025462,exact_crosswalk,mainstem_clean,True,0.9123741043319479,
+03152000,03151600,"LITTLE KANAWHA RIVER AT BURNSVILLE, WV",27,27,True,24000300006361,lake_outlet_replacement,lake_outlet_review,False,0.9230583982087008,Mapped at downstream step 1 to NHD 24000300006219 (ref 24000300006361).
+03152000,03151915,"SAND FORK NEAR GLENVILLE, WV",87,88,False,24000300052751,exact_crosswalk,mainstem_clean,True,0.15740165433995482,
+03152000,03152000,"LITTLE KANAWHA RIVER AT GLENVILLE, WV",6,8,False,24000300052104,lake_outlet_replacement,lake_outlet_review,False,0.7723787258536287,Mapped at downstream step 1 to NHD 24000300061393 (ref 24000300052104).

@@ -1,0 +1,10 @@
+catalog_model_id,site_no,station_name,production_gis_channel,v3_gis_channel,same_gis_as_production,v1b_nhdplusid,mapping_method,assignment_class,calibration_eligible,swat_nhd_ratio,notes
+03345000,03343350,"BLACK SLOUGH AT CR 500N NR PHILO, IL",1383,1383,True,24001300766245,exact_crosswalk,tributary_clean,True,0.9995294093289757,
+03345000,03343400,"EMBARRAS RIVER NEAR CAMARGO, IL",275,275,True,24001300575045,exact_crosswalk,mainstem_clean,True,1.0055393983975809,
+03345000,03343500,"EMBARRAS RIVER NEAR OAKLAND, IL",179,179,True,24001300863985,lake_outlet_replacement,lake_outlet_review,False,1.0126647202191226,Mapped at downstream step 1 to NHD 24001300001352 (ref 24001300863985).
+03345000,03343550,"EMBARRAS RIVER AT STATE HWY 133 NR OAKLAND, IL",173,172,False,24001300001351,lake_outlet_replacement,lake_outlet_review,False,1.0117115465180468,Mapped at downstream step 1 to NHD 24001300767629 (ref 24001300001351).
+03345000,03343805,"KICKAPOO CREEK NEAR MATTOON, IL",1195,1113,False,24001301247242,downstream_replacement,tributary_clean,True,1.0176694208445956,Mapped at downstream step 1 to NHD 24001301055048 (ref 24001301247242).
+03345000,03343820,"KICKAPOO CREEK AT 1320E ROAD NR CHARLESTON, IL",476,476,True,24001300478692,exact_crosswalk,tributary_clean,True,0.9993055825379961,
+03345000,03344000,"EMBARRAS RIVER NEAR DIONA, IL",110,109,False,24001300383284,lake_outlet_replacement,lake_outlet_review,False,0.16744341954348554,Mapped at downstream step 1 to NHD 24001301151487 (ref 24001300383284).
+03345000,03344500,"RANGE CREEK NEAR CASEY, IL",972,972,True,24001300959763,exact_crosswalk,tributary_clean,True,0.9990645769218918,
+03345000,03345000,"EMBARRAS RIVER AT NEWTON, IL",4,3,False,24001300478888,lake_outlet_replacement,lake_outlet_review,False,0.45820350945944094,Mapped at downstream step 2 to NHD 24001300959478 (ref 24001300478888).

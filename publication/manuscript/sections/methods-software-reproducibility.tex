@@ -1,0 +1,10 @@
+\subsection{Software implementation and reproducibility}
+\label{sec:methods-software}
+
+The NHDPlus HR preprocessing and extraction pipeline is implemented as ordered Python modules (vector discovery and download by HU4 listing; geodatabase extraction to projected pickles; network cleaning and attribution; raster download and alignment; model-scale extraction to SWAT\textsuperscript{+} shapefiles) with dependencies typical of geospatial stacks (e.g., GeoPandas, GDAL) documented in repository materials.
+A submission-oriented reproducibility checklist and evaluation protocol accompany the archived release (Supplementary Table~S1).
+
+Long-running generation tasks are executed outside interactive analysis sessions using asynchronous workers so that compute-heavy work can be scheduled and retried without blocking lightweight client interactions; the manuscript does not rely on specific queue depths, retry budgets, or internal Redis key names for scientific claims.
+Operational parameters that affect reproducibility (e.g., declared limits on concurrent model builds) must be read from the frozen deployment configuration rather than from informal documentation, because internal operator notes have disagreed on default numeric values for some settings.
+
+The Data Availability Statement summarizes archival policy and national dataset obligations for readers reproducing this work.

@@ -1,0 +1,5 @@
+row_id,model_id,site_no,state,run_label,frequency,n_morris_members,morris_best_member_index,p_factor,r_factor,best_nse,status
+SE-01,0310/huc12/02297600,02297600,FL,controlled_eval_02297600_split20260601,Daily,999,925,0.7052,0.7328,0.8170,frozen_from_morris_ensemble_npz
+SE-02,0310/huc12/02297600,02297600,FL,controlled_eval_02297600_split20260601,Monthly,999,925,0.7222,0.8937,0.8820,frozen_from_morris_ensemble_npz
+SE-03,0712/huc12/05536265,05536265,IL,controlled_eval_05536265_split20260601,Daily,999,19,0.8741,3.1250,0.2904,frozen_from_morris_ensemble_npz
+SE-04,0712/huc12/05536265,05536265,IL,controlled_eval_05536265_split20260601,Monthly,999,19,0.9000,5.1235,0.4700,frozen_from_morris_ensemble_npz

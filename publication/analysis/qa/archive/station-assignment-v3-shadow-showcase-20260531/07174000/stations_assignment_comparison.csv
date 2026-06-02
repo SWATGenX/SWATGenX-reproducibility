@@ -1,0 +1,4 @@
+catalog_model_id,site_no,station_name,production_gis_channel,v3_gis_channel,same_gis_as_production,v1b_nhdplusid,mapping_method,assignment_class,calibration_eligible,swat_nhd_ratio,notes
+07174000,07173300,"M CANEY C AT SEDAN, KS",78,78.0,True,21001300139309,exact_crosswalk,mainstem_clean,True,1.001232819819498,
+07174000,07173500,"BEE C NR HAVANA, KS",376,371.0,False,21001300121695,downstream_replacement,review,False,1.9141896174378277,Mapped at downstream step 1 to NHD 21001300005852 (ref 21001300121695).
+07174000,07174000,"Little Caney River near Copan, OK",1,,False,21001300044776,missing,exclude_from_auto_calibration,False,,No chandeg.con channel for reference reach or downstream walk.

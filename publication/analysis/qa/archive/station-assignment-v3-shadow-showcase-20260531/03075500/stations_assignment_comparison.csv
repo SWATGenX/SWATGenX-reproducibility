@@ -1,0 +1,6 @@
+catalog_model_id,site_no,station_name,production_gis_channel,v3_gis_channel,same_gis_as_production,v1b_nhdplusid,mapping_method,assignment_class,calibration_eligible,swat_nhd_ratio,notes
+03075500,03075500,"YOUGHIOGHENY RIVER NEAR OAKLAND, MD",19,18,False,24000500016771,lake_outlet_replacement,lake_outlet_review,False,1.045457081785145,Mapped at downstream step 1 to NHD 24000500008092 (ref 24000500016771).
+03075500,03075590,"YOUGHIOGHENY RIVER NEAR SWALLOW FALLS PARK, MD",7,7,True,24000500029689,exact_crosswalk,mainstem_clean,True,1.0069938694100704,
+03075500,03075650,"HAYES RUN NR CRANESVILLE, WV",336,336,True,24000500012210,exact_crosswalk,tributary_clean,True,1.0001425517921736,
+03075500,03075670,"MUDDY CREEK NR CRANESVILLE, WV",161,119,False,24000500016615,downstream_replacement,tributary_clean,True,2.422402029953555,Mapped at downstream step 2 to NHD 24000500033977 (ref 24000500016615).
+03075500,03075680,"CUPP RUN NR CRANESVILLE, WV",380,232,False,24000500029408,downstream_replacement,tributary_clean,True,1.9591071245825373,Mapped at downstream step 1 to NHD 24000500016612 (ref 24000500029408).

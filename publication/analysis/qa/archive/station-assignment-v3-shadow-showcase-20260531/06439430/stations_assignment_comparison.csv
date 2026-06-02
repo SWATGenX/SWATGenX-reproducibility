@@ -1,0 +1,2 @@
+catalog_model_id,site_no,station_name,production_gis_channel,v3_gis_channel,same_gis_as_production,v1b_nhdplusid,mapping_method,assignment_class,calibration_eligible,swat_nhd_ratio,notes
+06439430,06439430,COTTONWOOD CR NR CHERRY CR SD,1,,False,23002200163720,missing,exclude_from_auto_calibration,False,,No chandeg.con channel for reference reach or downstream walk.

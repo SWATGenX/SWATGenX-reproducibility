@@ -1,0 +1,11 @@
+catalog_model_id,site_no,station_name,production_gis_channel,v3_gis_channel,same_gis_as_production,v1b_nhdplusid,mapping_method,assignment_class,calibration_eligible,swat_nhd_ratio,notes
+06230500,06228350,"SF L WIND RIV AB WASHAKIE RES, NR FT WASHAKIE, WY",225,226,False,23002600134388,exact_crosswalk,mainstem_known_nhd_offset,True,1.0727080272514635,
+06230500,06228450,"SOUTH FORK LITTLE WIND RIV BEL WASHAKIE RES, WY",221,220,False,23002600014058,lake_outlet_replacement,lake_outlet_review,False,1.0691944071786292,Mapped at downstream step 1 to NHD 23002600036833 (ref 23002600014058).
+06230500,06228500,"LITTLE WIND R NR FORT WASHAKIE, WYO.",206,207,False,23002600169311,exact_crosswalk,mainstem_known_nhd_offset,True,1.069907092979255,
+06230500,06228800,"NORTH FORK LITTLE WIND RIVER NR FORT WASHAKIE, WY",313,318,False,23002600149200,lake_outlet_replacement,lake_outlet_review,False,1.0506573557024728,Mapped at downstream step 1 to NHD 23002600099785 (ref 23002600149200).
+06230500,06229000,"N Fk Little Wind R at Fort Washakie, WY",292,205,False,23002600105902,exact_crosswalk,mainstem_known_nhd_offset,True,1.06051925451325,
+06230500,06229680,"SAGE CR AB NORKOK MEADOWS CR, NR FT WASHAKIE, WY",546,533,False,23002600149202,downstream_replacement,tributary_clean,True,1.0803249934761612,Mapped at downstream step 1 to NHD 23002600152089 (ref 23002600149202).
+06230500,06229900,"Trout Creek near Fort Washakie, WY",746,746,True,23002600105805,exact_crosswalk,tributary_clean,True,1.1598619275558166,
+06230500,06230190,"MILL CR AB RAY LAKE OUTLET CANAL, NR FT WASHAKIE",916,954,False,23002600128999,exact_crosswalk,canal_or_artificial_review,False,1.1092714907178483,
+06230500,06230500,"LITTLE WIND RIVER NEAR ARAPAHOE, WY",31,31,True,23002600158313,lake_outlet_replacement,lake_outlet_review,False,0.677311445135134,Mapped at downstream step 1 to NHD 23002600100406 (ref 23002600158313).
+06230500,06231000,"Little Wind River above Arapahoe, WY",6,6,True,23002600135330,exact_crosswalk,mainstem_clean,True,0.6653703585929267,

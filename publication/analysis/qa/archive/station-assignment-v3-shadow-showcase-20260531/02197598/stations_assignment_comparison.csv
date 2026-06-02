@@ -1,0 +1,3 @@
+catalog_model_id,site_no,station_name,production_gis_channel,v3_gis_channel,same_gis_as_production,v1b_nhdplusid,mapping_method,assignment_class,calibration_eligible,swat_nhd_ratio,notes
+02197598,02197598,"BRUSHY CREEK AT CAMPGROUND ROAD, NEAR WRENS, GA",35,35,True,15000600171059,exact_crosswalk,tributary_clean,True,0.9995992128423474,
+02197598,02197600,"BRUSHY CREEK NEAR WRENS, GA",30,28,False,15000600200597,exact_crosswalk,tributary_clean,True,0.9994891997494212,

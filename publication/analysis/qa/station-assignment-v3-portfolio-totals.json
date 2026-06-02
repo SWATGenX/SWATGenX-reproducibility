@@ -1,0 +1,10 @@
+{
+  "suite": "roster",
+  "inventory_status": "canonical_v3_production",
+  "peace_frozen": true,
+  "n_models_processed": 8,
+  "n_models_skipped": 0,
+  "n_models_with_changed_station": 7,
+  "n_stations_total": 99,
+  "n_stations_changed": 54
+}

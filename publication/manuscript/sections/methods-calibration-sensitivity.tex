@@ -1,0 +1,32 @@
+\subsection{Downstream workflow evaluation on controlled gage basins}
+\label{sec:methods-calibration}
+
+Objective~4 tests whether generated SWAT\textsuperscript{+} projects can enter a standard downstream workflow---initialization, particle-swarm optimization (PSO) calibration, independent verification, and Morris global sensitivity---not whether the platform achieves national hydrologic validity.
+Two compact HUC12 gage watersheds (\texttt{02297600}, Florida; \texttt{05536265}, Illinois) are evaluated separately from the S/M/L structural benchmark set (Table~\ref{tab:model-roster}).
+
+\paragraph{Workflow success criteria.}
+A basin is counted as workflow-ready when the platform completes, without manual project repair: (i)~initialization pool generation and retention of the best draw on the calibration window; (ii)~PSO on a Morris-trimmed parameter subset through stagnation-based stop; (iii)~forward simulation of the global-best vector on the independent verification window; and (iv)~Morris batch execution with at least 999 successful forward runs, ensemble band diagnostics (P-factor, R-factor), and archived $\mu^*$ rankings.
+Failure at any stage would indicate incompatibility with the production calibration hooks rather than low hydrologic skill.
+
+\paragraph{Split-sample periods and warm-up.}
+Scored calibration and verification windows were chosen basin by basin from NWIS daily discharge availability and meteorological coverage, with \textbf{no temporal overlap} between scored calibration and verification days (Table~\ref{tab:controlled-gage-structure}).
+Calendar warm-up years precede each scored window via SWAT\textsuperscript{+} \texttt{nyskip} so that scored statistics begin after spin-up.
+Florida daily NWIS record 00060 begins 2009-10-01, so an early 2003--2010 calibration design was infeasible; the executed split uses scored calibration 2013--2018 (warm-up from 2010, \texttt{nyskip}=3) and post-calibration verification 2019--2024.
+Illinois uses scored calibration 2020--2024 (warm-up from 2018, \texttt{nyskip}=2) and a \textbf{pre-calibration} verification holdout 2012--2015 (warm-up from 2011, \texttt{nyskip}=1).
+Frozen run metadata appear in the archived \texttt{tab-calibration-run-settings.csv} (run labels \texttt{controlled\_eval\_*\_split20260601}; scenario \texttt{Default\_calval\_split202606}).
+
+\paragraph{Calibration workflow and objective.}
+The production \texttt{init\_cal\_val} sequence applies, in order: (i)~a Latin-hypercube initialization pool and retention of the best draw on the calibration window (\emph{initialization pool best}); (ii)~PSO on a Morris-trimmed parameter subset from \texttt{cal\_parms\_SWAT\_MODEL\_Web\_Application.cal}, minimizing the negative sum of daily and monthly Nash--Sutcliffe efficiency (NSE) at the gaged channel (\emph{calibration global best}); and (iii)~forward simulation of the global-best parameter vector on the independent verification window (\emph{verification global best}).
+PSO used six concurrent SWAT\textsuperscript{+} forward runs on a ten-core host (36 particles for Florida, 48 for Illinois) with stagnation-based early stop (both basins stopped after iteration~26 in the reported runs).
+Stations with more than 10\% missing daily observations in a scored window contribute objective zero for that evaluation, following the platform streamflow gap rule.
+
+\paragraph{Reported hydrologic metrics.}
+Supplementary Table~\ref{tab:hydrologic-metrics} lists daily and monthly NSE, KGE, PBIAS, and RMSE (cfs) by workflow stage.
+Supplementary Figures~S\ref{fig:supp-cal-val-hydro-fl} and~S\ref{fig:supp-cal-val-hydro-il} show daily hydrographs for the three stages.
+These metrics characterize controlled-basin plausibility only; they are not interpreted as proof of preprocessing fidelity or CONUS-scale predictive skill.
+
+\paragraph{Morris sensitivity (separate scenario).}
+Morris screening used 1000 parameter-space samples (27 trajectories, four levels) on each basin's \textbf{calibration} simulation window, executed under scenario \texttt{Default\_initialized} (distinct from the split-sample calibration scenario above).
+Completed forward runs ($n=999$ per basin) form streamflow ensembles; Figures~\ref{fig:sensitivity-ensemble} and~S\ref{fig:supp-sensitivity-ensemble-monthly} show the 2.5--97.5\% predictive uncertainty band, ensemble median, observed discharge, and the best-scoring member trace.
+Following SWAT-CUP conventions, \textbf{P-factor} is the fraction of observations inside the band and \textbf{R-factor} is mean band width divided by observed standard deviation (Table~\ref{tab:sensitivity-ensemble-metrics}).
+Morris $\mu^*$ rankings (Tables~\ref{tab:morris-sensitivity} and~\ref{tab:morris-sensitivity-05536265}; full parameter lists in archived \texttt{tab-sensitivity-morris.csv}) identify influential parameters but do not substitute for calibrating or verifying alternative preprocessing rule sets.

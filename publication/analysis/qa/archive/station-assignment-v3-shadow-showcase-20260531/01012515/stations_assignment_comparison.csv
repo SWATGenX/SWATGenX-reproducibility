@@ -1,0 +1,4 @@
+catalog_model_id,site_no,station_name,production_gis_channel,v3_gis_channel,same_gis_as_production,v1b_nhdplusid,mapping_method,assignment_class,calibration_eligible,swat_nhd_ratio,notes
+01012515,01012515,CLAYTON STREAM AT OUTLET CLAYTON LAKE ME SITE 6,6,5,False,5000100091866,lake_outlet_replacement,lake_outlet_review,False,1.1291045014669852,Mapped at downstream step 1 to NHD 5000100061473 (ref 5000100091866).
+01012515,01012520,BALD MOUNTAIN BROOK NR BALD MOUNTAIN ME SITE 2,51,51,True,5000100068684,exact_crosswalk,tributary_clean,True,1.0001114675913256,
+01012515,01012525,BISHOP MOUNTAIN BROOK NR BISHOP MTN ME  SITE 14,77,3,False,5000100061509,downstream_replacement,tributary_clean,True,20.181992439174127,Mapped at downstream step 2 to NHD 5000100088027 (ref 5000100061509).

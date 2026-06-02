@@ -1,0 +1,5 @@
+catalog_model_id,site_no,station_name,production_gis_channel,v3_gis_channel,same_gis_as_production,v1b_nhdplusid,mapping_method,assignment_class,calibration_eligible,swat_nhd_ratio,notes
+15060105,09498800,"TONTO CREEK NEAR GISELA, ARIZ.",1003,357,False,40000600090920,exact_crosswalk,tributary_clean,True,1.0008804304747208,
+15060105,09498870,"RYE CREEK NR GISELA, ARIZ.",459,471,False,40000600078713,exact_crosswalk,tributary_clean,True,0.9992624283908144,
+15060105,09499000,"TONTO CREEK ABOVE GUN CREEK, NEAR ROOSEVELT, AZ",228,227,False,40000600056480,exact_crosswalk,tributary_clean,True,1.0001827107847796,
+15060105,09499500,TONTO C NR ROOSEVELT ARIZ,1220,119,False,40000600077394,downstream_replacement,assignment_ambiguous,False,2.708134936843472e-05,Mapped at downstream step 1 to NHD 40000600077445 (ref 40000600077394).

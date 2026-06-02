@@ -1,0 +1,8 @@
+catalog_model_id,site_no,station_name,production_gis_channel,v3_gis_channel,same_gis_as_production,v1b_nhdplusid,mapping_method,assignment_class,calibration_eligible,swat_nhd_ratio,notes
+08380400,08379990,"GALLINAS CREEK AT BIG PINES NR GALLINAS, NM",87,90,False,35000800018794,exact_crosswalk,tributary_clean,True,0.999597653307929,
+08380400,08380040,"GALLINAS CREEK AT OAK FLAT NR GALLINAS, NM",73,72,False,35000800054074,downstream_replacement,tributary_clean,True,1.0325550397833216,Mapped at downstream step 1 to NHD 35000800010433 (ref 35000800054074).
+08380400,08380070,"BEAVER CREEK NEAR EL PORVENIR, NM",61,60,False,35000800062833,downstream_replacement,tributary_clean,True,1.0541749017654027,Mapped at downstream step 1 to NHD 35000800054075 (ref 35000800062833).
+08380400,08380088,"BEAVER CREEK NEAR GALLINAS, NM",56,55,False,35000800045280,downstream_replacement,tributary_clean,True,2.1218939749327625,Mapped at downstream step 1 to NHD 35000800063026 (ref 35000800045280).
+08380400,08380400,"GALLINAS CREEK AT GALLINAS, NM",47,48,False,35000800045583,exact_crosswalk,tributary_clean,True,0.9993597318652402,
+08380400,08380500,"GALLINAS CREEK NEAR MONTEZUMA, NM",41,42,False,35000800002189,exact_crosswalk,tributary_clean,True,0.9993828020844496,
+08380400,08381000,"GALLINAS CREEK AT MONTEZUMA, NM",109,23,False,35000800011354,exact_crosswalk,tributary_clean,True,1.0122375451703174,

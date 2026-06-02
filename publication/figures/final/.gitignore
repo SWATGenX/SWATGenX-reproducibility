@@ -1,0 +1,20 @@
+# Track only manuscript Fig-ExampleBasinMaps outputs from
+# publication/analysis/scripts/render_example_basin_maps.py --final --layout combined
+*
+!.gitignore
+!fig-example-basin-maps-combined-3panel.png
+!fig-example-basin-maps-metadata.json
+!fig-cal-val-02297600-hydrographs-3panel.png
+!fig-cal-val-02297600-hydrographs-metadata.json
+!fig-sensitivity-ensemble-controlled-basins-daily.png
+!fig-sensitivity-ensemble-controlled-basins-daily-metadata.json
+!fig-morris-spider-controlled-basins.png
+!fig-morris-spider-controlled-basins-metadata.json
+!fig-runtime-benchmark-hru-scaling.png
+!fig-runtime-benchmark-print-scope.png
+!fig-workflow.png
+!fig-architecture-layers.png
+!fig-nhd-workflow.png
+!fig-cal-val-05536265-hydrographs-3panel.png
+!fig-cal-val-05536265-hydrographs-metadata.json
+!fig-drainage-area-audit-peace-scatter.png

@@ -1,0 +1,4 @@
+usgsSiteNo,stationName,gisChannel,swatLcha,swatplusDrainageAreaKm2,nhdHrTotdasqkmKm2,nwisDrainageAreaKm2,wbdUpstreamHu12AreaKm2,ratioSwatNhd,ratioSwatNwis,auditClass
+09471300,HUACHUCA CAN NR FT HUACHUCA ARIZ,341,341,9.07,7.79,8.39,579.86,1.1637,1.0808,swat_nhd_ok
+09471310,"HUACHUCA CANYON NEAR FORT HUACHUCA, AZ",295,295,11.9,10.03,10.54,579.86,1.1861,1.129,swat_nhd_ok
+09471380,"UPPER BABOCOMARI RIVER NEAR HUACHUCA CITY, AZ",13,13,319.39,417.68,408.44,484.3,0.7647,0.782,swat_nhd_ok

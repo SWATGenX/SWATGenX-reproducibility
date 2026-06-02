@@ -1,0 +1,19 @@
+\begin{table}[htbp]
+  \centering
+  \caption{Objectives, evidence tiers, and where each is evaluated in this paper.}
+  \label{tab:objective-evidence-map}
+  \footnotesize
+  \setlength{\tabcolsep}{3pt}
+  \renewcommand{\arraystretch}{1.12}
+  \begin{tabular}{@{}clp{2.0cm}p{3.2cm}p{2.4cm}@{}}
+    \toprule
+    Obj. & Question & Evidence tier & Main evidence & Methods anchor \\
+    \midrule
+    1 & Can national HR data be converted into auditable SWAT\textsuperscript{+} projects? & Primary & \S\ref{sec:results-obj1}; Figs.~\ref{fig:workflow}, \ref{fig:architecture-layers}; Table~\ref{tab:package-manifest-abridged} & \S\ref{sec:methods-software} \\
+    2 & Are preprocessing rules stated, QA quantified, and drainage area preserved? & Primary & \S\ref{sec:results-obj2}, \ref{sec:results-drainage-audit}; Tables~\ref{tab:nhd-preprocessing-qa}, \ref{tab:drainage-area-audit} & \S\ref{sec:methods-nhd}, \ref{sec:methods-drainage-audit} \\
+    3 & How do structure and assembly cost scale? & Secondary & \S\ref{sec:results-obj3}; Table~\ref{tab:benchmark-sm-l-products} & \S\ref{sec:methods-software} \\
+    4 & Can projects enter calibration/sensitivity workflows? & Secondary & \S\ref{sec:results-cal-val-sensitivity}; Morris Fig.~\ref{fig:sensitivity-ensemble} & \S\ref{sec:methods-calibration} \\
+    5 & What is simulation cost on one host/build? & Supporting & \S\ref{sec:results-runtime-benchmark}; Table~\ref{tab:runtime-benchmark} & Supp.~\S\ref{sec:supp-runtime-benchmark} \\
+    \bottomrule
+  \end{tabular}
+\end{table}

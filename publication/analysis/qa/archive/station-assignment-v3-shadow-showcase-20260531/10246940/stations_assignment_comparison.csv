@@ -1,0 +1,2 @@
+catalog_model_id,site_no,station_name,production_gis_channel,v3_gis_channel,same_gis_as_production,v1b_nhdplusid,mapping_method,assignment_class,calibration_eligible,swat_nhd_ratio,notes
+10246940,10246940,"MOORES STATION SPGS AT MOORES STATION, NV",7,8,False,70000100131462,exact_crosswalk,mainstem_clean,True,1.030397405050334,

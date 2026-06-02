@@ -1,0 +1,6 @@
+row_id,tier,model_id,print_scope,wall_s,sec_per_day,channel_sd_mb,status
+PS-01,S,03080102,full_export,21.13,0.05,5.46,frozen_from_runtime_benchmark_catalog
+PS-02,S,03080102,calibration_filtered,5.42,0.01,0.45,frozen_from_runtime_benchmark_catalog
+PS-03,M,09471300,full_export,269.37,0.68,175.26,frozen_from_runtime_benchmark_catalog
+PS-04,M,09471300,calibration_filtered,99.79,0.26,0.56,frozen_from_runtime_benchmark_catalog
+PS-05,L,03100101,calibration_filtered,1378.13,3.37,4.89,frozen_from_runtime_benchmark_catalog

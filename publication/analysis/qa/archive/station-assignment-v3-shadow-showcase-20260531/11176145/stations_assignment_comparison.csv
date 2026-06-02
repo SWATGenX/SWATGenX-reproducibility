@@ -1,0 +1,5 @@
+catalog_model_id,site_no,station_name,production_gis_channel,v3_gis_channel,same_gis_as_production,v1b_nhdplusid,mapping_method,assignment_class,calibration_eligible,swat_nhd_ratio,notes
+11176145,11176100,ARROYO LAS POSITAS AB LIVERMORE CA,36,7,False,50000300044055,downstream_replacement,assignment_ambiguous,False,1.1119834480046593,Mapped at downstream step 1 to NHD 50000300026132 (ref 50000300044055).
+11176145,11176140,ALTAMONT C NR LIVERMORE CA,17,14,False,50000300038032,downstream_replacement,mainstem_known_nhd_offset,True,1.1325843491244902,Mapped at downstream step 1 to NHD 50000300038031 (ref 50000300038032).
+11176145,11176145,ARROYO LAS POSITAS A LIVERMORE CA,4,3,False,50000300026411,downstream_replacement,review,False,1.3295123721787798,Mapped at downstream step 1 to NHD 50000300032136 (ref 50000300026411).
+11176145,11176150,ARROYO LAS POSITAS NR LIVERMORE CA,2,2,True,50000300017314,exact_crosswalk,mainstem_known_nhd_offset,True,1.0717243452477672,

@@ -1,0 +1,3 @@
+row_id,site_no,state,channel,orig_catchments,orig_reaches,div2_removed,isolated_reaches_removed,final_channels,final_subbasins,calibration_period,verification_period,n_hrus,status,notes
+CGS-02297600,02297600,FL,2,41,41,0,4,37,4,2013-2018,2019-2024,not reported,frozen_joined_sources,"NWIS daily from 2009-10-01; ver 2019-2024 independent of cal"
+CGS-05536265,05536265,IL,25,224,224,6,13,206,8,2020-2024,2012-2015,not reported,frozen_joined_sources,"From tab-nhd-preprocessing-qa NQA-05536265 + tab-calibration-run-settings; HRU TODO: freeze from workspace shapefile/SQLite audit"

@@ -1,0 +1,4 @@
+usgsSiteNo,stationName,gisChannel,swatLcha,swatplusDrainageAreaKm2,nhdHrTotdasqkmKm2,nwisDrainageAreaKm2,wbdUpstreamHu12AreaKm2,ratioSwatNhd,ratioSwatNwis,auditClass
+02239501,"SILVER RIVER NEAR OCALA, FL",6,6,35.3,41.57,53.37,53.37,0.8492,0.6614,swat_nhd_ok
+02239600,TRIBUTARY TO SILVER RIVER AT SH 40 NEAR OCALA FL,6,6,35.3,41.57,53.37,53.37,0.8492,0.6614,swat_nhd_ok
+02239601,"TRIBUTARY TO SILVER RIVER BL SH 40 NR OCALA, FL",6,6,35.3,41.57,53.37,53.37,0.8492,0.6614,swat_nhd_ok

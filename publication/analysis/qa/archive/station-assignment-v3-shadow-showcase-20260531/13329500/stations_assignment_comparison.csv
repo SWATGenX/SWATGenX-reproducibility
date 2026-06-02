@@ -1,0 +1,2 @@
+catalog_model_id,site_no,station_name,production_gis_channel,v3_gis_channel,same_gis_as_production,v1b_nhdplusid,mapping_method,assignment_class,calibration_eligible,swat_nhd_ratio,notes
+13329500,13329500,"HURRICANE CREEK NEAR JOSEPH, OREG.",6,5,False,55000600000016,downstream_replacement,tributary_clean,True,0.9012730653822527,Mapped at downstream step 1 to NHD 55000600008709 (ref 55000600000016).

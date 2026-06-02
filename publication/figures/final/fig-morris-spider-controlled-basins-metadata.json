@@ -1,0 +1,10 @@
+{
+  "figure_id": "Fig-MorrisSpider-ControlledBasins",
+  "chart_type": "spider_radar",
+  "top_n_by_site": {
+    "02297600": 8,
+    "05536265": 6
+  },
+  "source_csv": "/data/SWATGenXApp/codes/publication/tables/tab-sensitivity-morris.csv",
+  "generated_utc": "2026-06-01T13:38:11Z"
+}

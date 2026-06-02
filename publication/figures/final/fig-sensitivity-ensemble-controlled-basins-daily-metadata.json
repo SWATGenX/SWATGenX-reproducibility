@@ -1,0 +1,19 @@
+{
+  "figure_id": "Fig-SensitivityEnsemble-ControlledBasins-Daily",
+  "chart_type": "morris_ensemble_hydrograph",
+  "layout": "vertical_2panel",
+  "n_morris_samples": 999,
+  "panels": [
+    {
+      "site_no": "02297600",
+      "daily_source": "${SWATGENX_USER_PATH}/SWATplus_by_VPUID/0310/huc12/02297600/calibration_artifacts/Default_initialized/figures_SWAT_MODEL_Web_Application/SF/sensitivity/SensitivityEnsemble_daily.png",
+      "monthly_source": "${SWATGENX_USER_PATH}/SWATplus_by_VPUID/0310/huc12/02297600/calibration_artifacts/Default_initialized/figures_SWAT_MODEL_Web_Application/SF/sensitivity/SensitivityEnsemble_monthly.png"
+    },
+    {
+      "site_no": "05536265",
+      "daily_source": "${SWATGENX_USER_PATH}/SWATplus_by_VPUID/0712/huc12/05536265/calibration_artifacts/Default_initialized/figures_SWAT_MODEL_Web_Application/SF/sensitivity/SensitivityEnsemble_daily.png",
+      "monthly_source": "${SWATGENX_USER_PATH}/SWATplus_by_VPUID/0712/huc12/05536265/calibration_artifacts/Default_initialized/figures_SWAT_MODEL_Web_Application/SF/sensitivity/SensitivityEnsemble_monthly.png"
+    }
+  ],
+  "generated_utc": "2026-06-01T13:53:04Z"
+}

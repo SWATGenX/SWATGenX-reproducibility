@@ -1,0 +1,3 @@
+catalog_model_id,site_no,station_name,production_gis_channel,v3_gis_channel,same_gis_as_production,v1b_nhdplusid,mapping_method,assignment_class,calibration_eligible,swat_nhd_ratio,notes
+11152650,11152600,GABILAN C NR SALINAS CA,24,23,False,50000200127016,downstream_replacement,mainstem_known_nhd_offset,True,1.0549246595394473,Mapped at downstream step 1 to NHD 50000200022832 (ref 50000200127016).
+11152650,11152650,RECLAMATION DITCH NR SALINAS CA,14,12,False,50000200145735,downstream_replacement,canal_or_artificial_review,False,0.8427718976728561,Mapped at downstream step 2 to NHD 50000200126302 (ref 50000200145735).

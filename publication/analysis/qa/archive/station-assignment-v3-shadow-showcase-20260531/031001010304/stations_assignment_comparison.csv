@@ -1,0 +1,2 @@
+catalog_model_id,site_no,station_name,production_gis_channel,v3_gis_channel,same_gis_as_production,v1b_nhdplusid,mapping_method,assignment_class,calibration_eligible,swat_nhd_ratio,notes
+031001010304,02295013,BOWLEGS CREEK NEAR FORT MEADE FL,21,21,True,15000700071244,exact_crosswalk,tributary_clean,True,0.9217276684011191,

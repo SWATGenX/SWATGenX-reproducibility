@@ -1,0 +1,4 @@
+catalog_model_id,site_no,station_name,production_gis_channel,v3_gis_channel,same_gis_as_production,v1b_nhdplusid,mapping_method,assignment_class,calibration_eligible,swat_nhd_ratio,notes
+02234990,02234815,"LAKE WEKIVA OUTLET NR MAITLAND, FLA.",68,68,True,15000300011184,exact_crosswalk,lake_outlet_review,False,0.9991457401997522,
+02234990,02234990,"LITTLE WEKIVA RIVER NEAR ALTAMONTE SPRINGS, FL",35,37,False,15000300019154,downstream_replacement,review,False,0.9877206109658064,Mapped at downstream step 1 to NHD 15000300003186 (ref 15000300019154).
+02234990,02234998,"LITTLE WEKIVA RIVER NEAR LONGWOOD, FL",25,25,True,15000300043401,exact_crosswalk,mainstem_clean,True,0.9887900367179554,

@@ -1,0 +1,48 @@
+\subsection{Objective 4: calibration, verification, and Morris ensemble figures}
+\label{sec:supp-calval-sensitivity}
+
+\vspace{0.5em}
+Downstream workflow evaluation design, workflow success criteria, PSO settings, and metric definitions are in Section~\ref{sec:methods-calibration} of the main text; frozen run metadata are in archived \texttt{tab-calibration-run-settings.csv}.
+Main text (\S\ref{sec:results-cal-val-sensitivity}) reports Morris ensembles and split-sample summaries first; this section provides full hydrologic metric tables and hydrographs.
+Morris parameter-ranking spider charts and monthly ensemble hydrographs are in Figures~S\ref{fig:supp-morris-spider} and~S\ref{fig:supp-sensitivity-ensemble-monthly} (Morris ensembles use scenario \texttt{Default\_initialized} on each basin's calibration window).
+
+\begin{table}[htbp]
+  \centering
+  \caption{Supplementary streamflow skill metrics for Objective~4 gage basins by analysis stage (definitions in Methods).}
+  \label{tab:hydrologic-metrics}
+  \small
+  \resizebox{\textwidth}{!}{%
+    \input{../tables/generated/tab-metrics}%
+  }
+\end{table}
+
+Daily calibration and verification hydrographs for the controlled gage basins appear in Supplementary Figures~S\ref{fig:supp-cal-val-hydro-fl} and~S\ref{fig:supp-cal-val-hydro-il}.
+
+\vspace{0.75em}
+\begin{figure}[p]
+  \centering
+  \includegraphics[width=\textwidth,keepaspectratio]{final/fig-cal-val-02297600-hydrographs-3panel.png}
+  \caption{Supplementary daily hydrographs at USGS \texttt{02297600} (channel~2): initialization pool best, calibration global best, verification global best (panels stacked; scored periods in panel titles).}
+  \label{fig:supp-cal-val-hydro-fl}
+\end{figure}
+
+\begin{figure}[p]
+  \centering
+  \includegraphics[width=\textwidth,keepaspectratio]{final/fig-cal-val-05536265-hydrographs-3panel.png}
+  \caption{Supplementary daily hydrographs at USGS \texttt{05536265} (channel~25): initialization pool best, calibration global best, verification global best (panels stacked; scored periods in panel titles).}
+  \label{fig:supp-cal-val-hydro-il}
+\end{figure}
+
+\begin{figure}[p]
+  \centering
+  \includegraphics[width=\linewidth,keepaspectratio]{final/fig-morris-spider-controlled-basins.png}
+  \caption{Supplementary Morris spider charts: (a)~\texttt{02297600} (Florida, top eight $\mu^*$) and (b)~\texttt{05536265} (Illinois, top six $\mu^*$).}
+  \label{fig:supp-morris-spider}
+\end{figure}
+
+\begin{figure}[p]
+  \centering
+  \includegraphics[width=\textwidth,keepaspectratio]{supplement/fig-sensitivity-ensemble-controlled-basins-monthly.png}
+  \caption{Supplementary monthly Morris ensemble hydrographs (999 members): (a)~\texttt{02297600} and (b)~\texttt{05536265}, stacked at full width (panel titles). Same legend as Figure~\ref{fig:sensitivity-ensemble}.}
+  \label{fig:supp-sensitivity-ensemble-monthly}
+\end{figure}

@@ -1,0 +1,264 @@
+\section{Results}
+
+\subsection{Overview and evidence tiers}
+\label{sec:results-overview}
+
+Results are organized in three parts aligned with the evidence tiers in Table~\ref{tab:objective-evidence-map}.
+\textbf{Part~A} (\S\ref{sec:results-assembly-preprocessing}) presents primary evidence on implementation auditability and hydrography preprocessing (Objectives~1--2).
+\textbf{Part~B} (\S\ref{sec:results-cal-val-sensitivity}) presents secondary evidence on structural scaling and assembly cost (Objective~3) together with downstream workflow readiness on controlled gage basins (Objective~4).
+\textbf{Part~C} (\S\ref{sec:results-runtime-benchmark}) presents supporting evidence on simulation runtime (Objective~5).
+The small, medium, and large benchmark domains illustrate discretization scaling; controlled gage basins test workflow execution; the runtime catalog reports simulation cost on one host/build.
+
+\subsection{Assembly and preprocessing evidence}
+\label{sec:results-assembly-preprocessing}
+
+\subsubsection{Objective 1: Implementation and workflow architecture}
+\label{sec:results-obj1}
+
+The automated workflow produces a standard SWAT\textsuperscript{+} project tree---vector hydrography, gridded and station climate inputs, SQLite project tables, and optional QA sidecars---through the layered pipeline in Figure~\ref{fig:workflow}.
+Asynchronous worker processes (Figure~\ref{fig:architecture-layers}) separate long-running model assembly from interactive use so outputs remain in a predictable per-basin directory layout that can be inspected and audited.
+Table~\ref{tab:package-manifest-abridged} summarizes representative output file classes; complete path patterns are listed in Supplementary Table~S1.
+
+Structural footprint metrics for the S/M/L benchmark size classes appear in Table~\ref{tab:benchmark-sm-l-products} (\S\ref{sec:results-obj3}).
+
+\subsubsection{Objective 2: Hydrography preprocessing outcomes}
+\label{sec:results-obj2}
+
+National NHDPlus HR vectors are transformed into SWAT\textsuperscript{+}-compatible channel, subbasin, and lake layers through the staged pipeline in Figure~\ref{fig:nhd-workflow}.
+Table~\ref{tab:nhd-rules-abridged} lists core rules applied before model-scale clipping; the complete rule catalog is in Supplementary Table~S1.
+Table~\ref{tab:nhd-preprocessing-qa} compares original USGS NHDPlus HR (HU4 geodatabase, domain-clipped) with exported SWAT\textsuperscript{+} shapefiles from the generated projects.
+For the small (S) benchmark domain, 56 original catchments and 56 flowlines include two divergence-code-2 reaches and two isolated reaches (two isolated catchments merged); four orphan catchments are dissolved before the workflow output retains 53 SWAT\textsuperscript{+} watershed polygons and 45 routed channels.
+The medium (M) domain shows eleven divergence-code-2 drops and eleven orphan catchments among 1{,}382 original catchments (no isolated reaches in domain), ending at 1{,}371 final watershed polygons and channels.
+The large (L) domain includes 88 isolated reaches, 282 orphan catchments, and 34 no-VAA catchments among 9{,}739 original catchments; final routed counts are 8{,}181 channels and 162 subbasins per the structural inventory.
+Input counts are recomputed from USGS HU4 geodatabase archives; isolated and orphan catchment columns apply SWATGenX stream-drop rules in memory on the domain-clipped original graph before comparing to exported vectors.
+These counts document structural rule application, not demonstrated hydrologic benefit from each preprocessing choice.
+
+\subsubsection{Objective 2 (continued): Drainage-area fidelity audit}
+\label{sec:results-drainage-audit}
+
+Structural counts confirm that preprocessing rules were applied; they do not confirm that the \emph{executable} model preserves cumulative drainage-area structure.
+To close that gap, drainage area from each generated SWAT\textsuperscript{+} project's \texttt{chandeg.con} was compared with original NHDPlus HR \texttt{TotDASqKm} at gage-assigned channels (Section~\ref{sec:methods-drainage-audit}) across all eight catalog Model IDs (Table~\ref{tab:drainage-area-audit}).
+Of 98 audited gages, 97 matched a SWAT\textsuperscript{+} channel and 82 (85\%) fell within the loose $0.5$--$2.0\times$ agreement band; the single unmatched gage lacked a \texttt{chandeg.con} row (a reservoir/auxiliary channel).
+Per-model median SWAT\textsuperscript{+}/NHD ratios span $0.57$--$1.16$, with the lowest medians driven by a small number of gage--reach assignment outliers on the sparsely gaged scaling domains (Upper Gila X60, Little Kanawaha X20) rather than by basin-wide conversion error.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Drainage-area fidelity audit: SWAT\textsuperscript{+} \texttt{chandeg.con} area versus original NHDPlus HR \texttt{TotDASqKm} at gage-assigned channels, by catalog Model ID (Objective~2). ``Outliers'' are gage--channel assignment outliers reported separately from the agreement band.}
+  \label{tab:drainage-area-audit}
+  \footnotesize
+  \setlength{\tabcolsep}{4pt}
+  \renewcommand{\arraystretch}{1.05}
+  \resizebox{\textwidth}{!}{%
+    \input{../tables/generated/tab-drainage-area-audit}%
+  }
+\end{table}
+
+\paragraph{USGS station--channel assignment (Peace River).}
+The whole-HUC-8 Peace River domain (\texttt{03100101}; 76 gages) supports per-class analysis.
+The NHD-first/SWAT-second method (\S\ref{sec:methods-drainage-audit}; Table~\ref{tab:station-assignment}) mapped 61 gages by exact NHD$\rightarrow$GIS crosswalk, 10 by lake-outlet replacement, and 5 by controlled downstream replacement, yielding 36 clean tributaries, 2 clean mainstem reaches, 16 mainstem reaches with a known NHD offset, and 13 lake-outlet plus 9 canal/artificial cases flagged for review.
+A reconciliation funnel reduced these to a calibration-ready set: 54 gages passed the auto-calibration assignment class, 20 had usable 2000--2024 daily streamflow ($\geq$80\% coverage), and 16 were fully calibration-ready.
+
+\begin{table}[htbp]
+  \centering
+  \caption{NHD-first/SWAT-second USGS station-to-channel assignment for the Peace River HUC-8 domain (Objective~2).}
+  \label{tab:station-assignment}
+  \small
+  \setlength{\tabcolsep}{6pt}
+  \renewcommand{\arraystretch}{1.05}
+  \input{../tables/generated/tab-station-assignment}%
+\end{table}
+
+\paragraph{SWAT\textsuperscript{+}--NHD agreement (Peace River).}
+All 76 gages matched a SWAT\textsuperscript{+} channel; the median SWAT\textsuperscript{+}/NHD ratio was 1.11 (10th--90th percentile $0.78$--$1.28$), with 66 of 76 inside the loose band and six flagged as assignment outliers (tiny tributary or canal channels picked near a much larger mainstem reach; Figure~\ref{fig:drainage-area-audit-scatter}).
+
+\paragraph{NHD--USGS alignment and joint credibility (Peace River).}
+The NHD reference area also tracks the independent USGS NWIS site catalog (Table~\ref{tab:drainage-credibility}): of the 57 gages with a USGS site drainage area, 43 agree within 25\% (15 within 10\%) and the median NHD/NWIS ratio is 0.85---NHD cumulative area on the assigned reach runs about 15\% below the USGS site value, as expected where gages sit on tributaries, lake outlets, or canals whose USGS catalog area is local rather than cumulative; 19 gages lack a USGS site area entirely.
+The two alignment questions are largely independent: of the 57 gages with both metrics, 40 (70\%) agree on both, only one (a drainage canal) fails both, and the Pearson correlation between $|$NHD$-$NWIS$|$\% and $|\log(\mathrm{SWAT/NHD})|$ is near zero ($r=-0.005$).
+USGS site-file drainage variance therefore does not drive the model--hydrography discrepancies; in particular, all mainstem-offset gages agree with the USGS site area within 25\% while still carrying the SWAT\textsuperscript{+} excess, so that excess is not a catalog-area artifact.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Peace River two-way drainage-area alignment: NHD reference versus USGS NWIS site area, and joint NHD--USGS / SWAT\textsuperscript{+}--NHD agreement (Objective~2). The two comparisons are near-independent ($r=-0.005$).}
+  \label{tab:drainage-credibility}
+  \small
+  \setlength{\tabcolsep}{6pt}
+  \renewcommand{\arraystretch}{1.05}
+  \input{../tables/generated/tab-drainage-credibility}%
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Peace River mainstem drainage-area pipeline trace on a diagnostic panel of representative mainstem reaches: median SWAT\textsuperscript{+}/NHD ratio by stage, localizing the systematic offset (Objective~2). Stage labels defined in Section~\ref{sec:methods-drainage-audit}.}
+  \label{tab:drainage-area-pipeline-trace}
+  \footnotesize
+  \setlength{\tabcolsep}{4pt}
+  \renewcommand{\arraystretch}{1.1}
+  \resizebox{\textwidth}{!}{%
+    \input{../tables/generated/tab-drainage-area-pipeline-trace}%
+  }
+\end{table}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.72\textwidth]{final/fig-drainage-area-audit-peace-scatter.png}
+  \caption{Peace River HUC-8 drainage-area agreement: SWAT\textsuperscript{+} \texttt{chandeg.con} area versus original NHDPlus HR \texttt{TotDASqKm} at 76 gage-assigned channels (log--log), colored by SWAT\textsuperscript{+}/NHD agreement band; the $1{:}1$ line and the systematic mainstem $+10$--$17\%$ offset are annotated.}
+  \label{fig:drainage-area-audit-scatter}
+\end{figure}
+
+\paragraph{Where the offset enters.}
+The 16 Peace gages in the mainstem-offset class carry a systematic $+10$--$17\%$ excess in SWAT\textsuperscript{+} cumulative area relative to original NHD VAA.
+Tracing that area through the pipeline on a diagnostic panel of representative mainstem reaches (Table~\ref{tab:drainage-area-pipeline-trace}) localizes the offset: the original VAA \texttt{TotDASqKm}, the independent upstream catchment-area sums, the pre-QSWAT\textsuperscript{+} \texttt{streams.pkl} reach attribute, and the SWATGenX post-processed watershed polygons all agree with the reference within $\pm3\%$ (median ratios $0.99$--$1.03$).
+The excess first appears at the QSWAT\textsuperscript{+}/TauDEM channel-area stage (\texttt{AreaC}, ratio $\approx1.17$) and persists into \texttt{chandeg.con}.
+The NHDPlus HR preprocessing therefore preserves cumulative drainage structure; the residual offset is a delineation-definition difference between TauDEM-derived channel contributing area and NHDPlus HR hydrosequence cumulative drainage, introduced downstream of the preprocessing this paper documents.
+The live project channel area confirms this directly: \texttt{rivs1.AreaC} and the project SQLite \texttt{gis\_channels} table carry the full mainstem $+17\%$ (Table~\ref{tab:drainage-area-pipeline-trace}, stage~H), and \texttt{chandeg.con} reproduces them to within $0.1\%$---so the SWAT\textsuperscript{+} text export is faithful and the offset originates entirely in the QSWAT\textsuperscript{+}/TauDEM channel-area computation.
+These are structural-fidelity diagnostics, not hydrologic validation.
+
+\subsubsection{Objective 3: Structural scalability and model-assembly cost}
+\label{sec:results-obj3}
+
+The small, medium, and large benchmark domains (Table~\ref{tab:model-roster}) use the same Model IDs reported in the public runtime benchmark catalog: \texttt{03080102} Oklawaha, Florida; \texttt{09471300} Upper San Pedro, Arizona; and \texttt{03100101} Peace River, Florida (whole HUC8).
+No other structural benchmark domains appear in this paper.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{final/fig-example-basin-maps-combined-3panel.png}
+  \caption{Small, medium, and large benchmark domains (size classes S, M, L). Panels (a)--(c) are independently zoomed and are not at a common geographic scale. Structure and model-assembly cost: Table~\ref{tab:benchmark-sm-l-products}.}
+  \label{fig:example-basin-maps}
+\end{figure}
+
+HRU, channel, and subbasin counts illustrate how geometric and topological workload scales with domain size under fixed national data and discretization settings (473 to 94{,}303 HRUs across the three size classes).
+Table~\ref{tab:benchmark-sm-l-products} combines structural discretization, on-disk project size, and measured model-assembly wall time for the same three Model IDs (measured on the production evaluation host; assembly logs archived with the release).
+For size classes S and M, assembly time is the end-to-end production worker job duration; for L (whole HUC-8), it is the maximum logged QSWAT\textsuperscript{+} project-assembly phase duration during the documented production build.
+Simulation runtime is reported separately in Part~C.
+
+\subsection{Downstream workflow readiness}
+\label{sec:results-cal-val-sensitivity}
+
+\subsubsection{Objective 4: Workflow execution on controlled gage basins}
+\label{sec:results-obj4}
+
+Two controlled gage basins (\texttt{02297600} and \texttt{05536265}) that are not part of the S/M/L benchmark domain set (Table~\ref{tab:model-roster}) test whether generated projects can enter a standard downstream modeling workflow (Section~\ref{sec:methods-calibration}).
+On both basins the platform completed initialization pools, PSO calibration, independent-period forward runs, and Morris batch execution with ensemble diagnostics (Table~\ref{tab:controlled-gage-structure}).
+Verification windows were selected separately for each basin based on NWIS data availability and forcing coverage, with no overlap between scored calibration and verification periods (Florida: post-calibration holdout 2019--2024; Illinois: pre-calibration holdout 2012--2015).
+These results do not isolate the hydrologic effect of individual preprocessing choices and are not used as proof of national hydrologic validity.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Structural context for Objective~4 controlled gage basins.}
+  \label{tab:controlled-gage-structure}
+  \scriptsize
+  \setlength{\tabcolsep}{3pt}
+  \renewcommand{\arraystretch}{1.05}
+  \resizebox{\textwidth}{!}{%
+    \input{../tables/generated/tab-controlled-gage-structure}%
+  }
+\end{table}
+
+\paragraph{Morris sensitivity and ensemble uncertainty.}
+Morris analysis (scenario \texttt{Default\_initialized}) used 1000 parameter-space evaluations (27 trajectories, four levels) on each basin's calibration simulation window; streamflow ensembles from 999 completed members provide a 2.5--97.5\% predictive uncertainty band, ensemble median, and best-scoring member trace (Figure~\ref{fig:sensitivity-ensemble}; Table~\ref{tab:sensitivity-ensemble-metrics}).
+P-factor and R-factor characterize ensemble machinery on the calibration window, not overall model goodness-of-fit.
+Florida's ensemble is narrower (daily P-factor~0.71, R-factor~0.73) than Illinois (daily P-factor~0.87, R-factor~3.13), reflecting a wider 95\% band relative to observed variability on the Illinois calibration window.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Morris ensemble uncertainty diagnostics (999 completed members; P-factor and R-factor defined in Methods).}
+  \label{tab:sensitivity-ensemble-metrics}
+  \footnotesize
+  \setlength{\tabcolsep}{4pt}
+  \renewcommand{\arraystretch}{1.05}
+  \input{../tables/generated/tab-sensitivity-ensemble-metrics}%
+\end{table}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth,keepaspectratio]{final/fig-sensitivity-ensemble-controlled-basins-daily.png}
+  \caption{Morris ensemble daily streamflow for controlled gage basins on each basin's calibration window: (a)~\texttt{02297600} (Florida) and (b)~\texttt{05536265} (Illinois). Shaded band: 2.5--97.5\% of 999 Morris members; dashed gray: ensemble median; navy: observed; dark red: best Morris member. P-factor and R-factor annotated on each panel.}
+  \label{fig:sensitivity-ensemble}
+\end{figure}
+
+Morris $\mu^*$ indices (Tables~\ref{tab:morris-sensitivity} and~\ref{tab:morris-sensitivity-05536265}) rank parameter influence.
+Florida's largest sensitivities include \texttt{surq\_lag}, \texttt{perco}, \texttt{alpha\_bf}, and \texttt{cn3\_swf}; snow parameters show negligible $\mu^*$, consistent with subtropical domain QC.
+Illinois shows a contrasting driver set---snow-process parameters (\texttt{melt\_min}, \texttt{melt\_max}) and channel routing (\texttt{k}, \texttt{mann}) among the largest $\mu^*$, together with \texttt{cn3\_swf}, \texttt{perco}, and urban curve-number classes (parameter-ranking spider charts in Supplementary Figure~S\ref{fig:supp-morris-spider}).
+Monthly ensembles and calibration/verification hydrographs are in Supplementary Section~\ref{sec:supp-calval-sensitivity}.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Top eight Morris $\mu^*$ for basin \texttt{02297600} (full 36-parameter ranking in archived \texttt{tab-sensitivity-morris.csv}).}
+  \label{tab:morris-sensitivity}
+  \footnotesize
+  \setlength{\tabcolsep}{4pt}
+  \renewcommand{\arraystretch}{1.05}
+  \input{../tables/generated/tab-sensitivity-morris-02297600}%
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Top eight Morris $\mu^*$ for basin \texttt{05536265} (full 36-parameter ranking in archived \texttt{tab-sensitivity-morris.csv}).}
+  \label{tab:morris-sensitivity-05536265}
+  \footnotesize
+  \setlength{\tabcolsep}{4pt}
+  \renewcommand{\arraystretch}{1.05}
+  \input{../tables/generated/tab-sensitivity-morris-05536265}%
+\end{table}
+
+\paragraph{Split-sample calibration diagnostics.}
+Full daily and monthly NSE, RMSE (cfs), and PBIAS by workflow stage appear in Supplementary Table~\ref{tab:hydrologic-metrics} (archived \texttt{tab-metrics.csv}).
+The summaries below report holdout skill only; they are not interpreted as platform validation.
+
+\subsubsection{Basin 02297600 (Florida)}
+
+NWIS gage \texttt{02297600}; SWAT\textsuperscript{+} routing channel index~2.
+Because daily NWIS streamflow for \texttt{02297600} begins on 2009-10-01, the originally planned early calibration window was not feasible.
+The final split used 2013--2018 for calibration (three-year warm-up from 2010) and 2019--2024 for independent post-calibration verification (Table~\ref{tab:controlled-gage-structure}).
+Scenario \texttt{Default\_calval\_split202606} used a Morris-trimmed parameter subset (36 particles; stagnation after iteration~26).
+Run settings are frozen in the archived calibration-settings table (\texttt{tab-calibration-run-settings.csv}; Section~\ref{sec:methods-calibration}).
+
+The initialization pool best captured seasonal timing (daily NSE~0.80).
+Calibration improved daily and monthly NSE to 0.84 and 0.90; independent verification retained daily NSE~0.73 and monthly NSE~0.80 with modest wet bias (PBIAS about $+7\%$).
+These metrics document workflow execution on a humid subtropical gage basin; they do not establish preprocessing optimality or national skill.
+
+\subsubsection{Basin 05536265 (Illinois)}
+\label{sec:results-cal-val-05536265}
+
+NWIS gage \texttt{05536265}; SWAT\textsuperscript{+} routing channel index~25.
+Calibration used scored window 2020--2024 after a two-year warm-up from 2018.
+Verification used an independent pre-calibration holdout on 2012--2015 after a one-year warm-up from 2011.
+Scenario \texttt{Default\_calval\_split202606} used a Morris-trimmed subset (48 particles; stagnation after iteration~26).
+The initialization pool best was weak on the calibration window (daily NSE~0.20).
+Calibration global best reached daily NSE~0.37 and monthly NSE~0.60; verification skill remained modest (daily NSE~0.22, monthly NSE~0.42).
+Illinois reports low holdout skill as a workflow diagnostic on a second hydroclimate; automated assembly does not ensure calibration-ready hydrology, and process causes for weak skill are not diagnosed here.
+Morris screening still completed (999 members) with the wider ensemble band noted above, illustrating that workflow execution does not replace expert process review and calibration.
+
+\subsection{Operational simulation cost}
+\label{sec:results-runtime-benchmark}
+
+\subsubsection{Objective 5: SWAT\textsuperscript{+} simulation runtime benchmark}
+\label{sec:results-obj5}
+
+Objective~5 reports measured SWAT\textsuperscript{+} simulation cost on one documented host/build configuration as supporting evidence for computational feasibility (Table~\ref{tab:model-roster}).
+Primary results use the small, medium, and large size classes; the six-point scaling ladder (X20/X40/X60) is summarized in Supplementary Section~\ref{sec:supp-runtime-benchmark}.
+Extended scenarios and the full six-point ladder are on the public benchmark page (\url{https://www.swatgenx.com/swat-plus-runtime-benchmark}).
+
+\paragraph{Measurement protocol.}
+All runs use calendar 2021 (365 days) on AMD EPYC 7282 (10~vCPU).
+Production binary: Intel ifx \texttt{-O3 -ipo}.
+Primary profile: filtered NetCDF \texttt{channel\_sd} at gauge channels via \texttt{print\_filter.prt}.
+
+\paragraph{Primary calibration-profile scaling (S/M/L).}
+Table~\ref{tab:runtime-benchmark}: filtered runs scale from about 5~s (473 HRUs) to about 100~s (11{,}284 HRUs) and about 23~min (94{,}303 HRUs) per simulated year.
+Print-scope, export-format, compiler, and six-point ladder tables appear in Supplementary Section~\ref{sec:supp-runtime-benchmark}.
+
+\begin{table}[htbp]
+  \centering
+  \caption{One-year simulation wall time under calibration filtered NetCDF profile for the small, medium, and large benchmark domains.}
+  \label{tab:runtime-benchmark}
+  \small
+  \input{../tables/generated/tab-runtime-benchmark}%
+\end{table}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.78\textwidth]{final/fig-runtime-benchmark-hru-scaling.png}
+  \caption{Wall time versus HRU count for the six published benchmark domains (Supplementary Table~\ref{tab:runtime-benchmark-hru-scaling}).}
+  \label{fig:runtime-benchmark-hru-scaling}
+\end{figure}

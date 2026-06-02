@@ -1,0 +1,3 @@
+catalog_model_id,site_no,station_name,production_gis_channel,v3_gis_channel,same_gis_as_production,v1b_nhdplusid,mapping_method,assignment_class,calibration_eligible,swat_nhd_ratio,notes
+04080206,04157005,"SAGINAW RIVER AT HOLLAND AVENUE AT SAGINAW, MI",20,20,True,60001800023789,exact_crosswalk,mainstem_clean,True,0.004359570762338211,
+04080206,04157060,"SAGINAW RIVER AT MIDLAND STREET AT BAY CITY, MI",8,7,False,60001800000082,lake_outlet_replacement,lake_outlet_review,False,0.03944545557723209,Mapped at downstream step 1 to NHD 60001800023896 (ref 60001800000082).

@@ -1,0 +1,5 @@
+catalog_model_id,site_no,station_name,production_gis_channel,v3_gis_channel,same_gis_as_production,v1b_nhdplusid,mapping_method,assignment_class,calibration_eligible,swat_nhd_ratio,notes
+01115185,01115185,"WINSOR BROOK AT WINSOR RD NEAR SOUTH FOSTER, RI",36,44,False,5000801711436,exact_crosswalk,tributary_clean,True,1.0003088304752217,
+01115185,01115187,"PONAGANSET RIVER AT SOUTH FOSTER, RI",6,6,True,5000801767104,exact_crosswalk,mainstem_clean,True,1.0005091546171831,
+01115185,01115190,"DOLLY COLE BK AT OLD DANIELSON PK AT S FOSTER, RI",47,6,False,5000801767104,exact_crosswalk,tributary_clean,True,1.0005091546171831,
+01115185,01115265,"HEMLOCK BROOK AT KING ROAD NR FOSTER, RI",27,25,False,5000801729471,exact_crosswalk,tributary_clean,True,1.0003304353574798,

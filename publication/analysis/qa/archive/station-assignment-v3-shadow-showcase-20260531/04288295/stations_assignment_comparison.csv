@@ -1,0 +1,5 @@
+catalog_model_id,site_no,station_name,production_gis_channel,v3_gis_channel,same_gis_as_production,v1b_nhdplusid,mapping_method,assignment_class,calibration_eligible,swat_nhd_ratio,notes
+04288295,04288225,"W BRANCH LITTLE R ABV BINGHAM FALLS NEAR STOWE, VT",204,204,True,60000200048975,exact_crosswalk,tributary_clean,True,0.9999453037384177,
+04288295,04288230,"RANCH BROOK AT RANCH CAMP, NEAR STOWE, VT",235,235,True,60000200022478,exact_crosswalk,tributary_clean,True,1.0011406932612894,
+04288295,04288295,"LITTLE RIVER NEAR STOWE, VT",31,31,True,60000200036027,exact_crosswalk,mainstem_clean,True,1.0001589012639012,
+04288295,04289000,"LITTLE RIVER NEAR WATERBURY, VT",6,6,True,60000200014414,exact_crosswalk,mainstem_clean,True,1.000047669786745,

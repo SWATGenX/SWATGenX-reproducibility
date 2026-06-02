@@ -1,0 +1,10 @@
+catalog_model_id,site_no,station_name,production_gis_channel,v3_gis_channel,same_gis_as_production,v1b_nhdplusid,mapping_method,assignment_class,calibration_eligible,swat_nhd_ratio,notes
+02294217,02294217,SADDLE CREEK AT ST.HWY 542 NEAR LAKELAND FL,4,4.0,True,15000700057875,exact_crosswalk,tributary_clean,True,1.2227666881263664,
+02294217,02294260,LAKE PARKER OUTLET AT LAKELAND FL,18,18.0,True,15000700021204,lake_outlet_replacement,lake_outlet_review,False,1.2199605022733666,Mapped at downstream step 1 to NHD 15000700093457 (ref 15000700021204).
+02294217,02294261,LAKE PARKER OUTLET AT COMBEE SETTLEMENT FL,18,18.0,True,15000700093457,exact_crosswalk,lake_outlet_review,False,1.169979946469084,
+02294217,02294290,SADDLE CREEK AT STATE HWY 570 NEAR EATON PARK FL,1,,False,15000700045993,missing,exclude_from_auto_calibration,False,,No chandeg.con channel for reference reach or downstream walk.
+02294217,280242081531600,TENOROC DITCH (SITE 20) NEAR LAKELAND FL,115,115.0,True,15000700045798,exact_crosswalk,canal_or_artificial_review,False,0.9997691465753051,
+02294217,280441081520200,TENOROC DITCH (SITE 17B) NEAR LAKELAND FL,231,231.0,True,15000700009684,exact_crosswalk,canal_or_artificial_review,False,1.5380350896957704,
+02294217,280531081520500,TENOROC DITCH ABV STR (SITE 17A) NEAR LAKELAND FL,61,61.0,True,15000700081951,exact_crosswalk,canal_or_artificial_review,False,1.2040836812435984,
+02294217,280531081520501,TENOROC DITCH BEL STR (SITE 17A) NEAR LAKELAND FL,61,61.0,True,15000700081951,exact_crosswalk,canal_or_artificial_review,False,1.2040836812435984,
+02294217,280557081512300,TENOROC DITCH (SITE 13) NEAR LAKELAND FL,109,109.0,True,15000700070177,exact_crosswalk,canal_or_artificial_review,False,0.9999963888480041,

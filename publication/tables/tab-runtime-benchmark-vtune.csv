@@ -1,0 +1,3 @@
+row_id,tier,model_id,sim_window_days,hru_control_pct_daily,channel_pct_daily,strcmp_pct_daily,memset_pct_daily,init_pct,status
+VT-01,L,03100101,90,16.6,11.8,20.7,18.7,5.1,frozen_from_runtime_benchmark_catalog
+VT-02,X60,15060105,90,8.0,47.6,5.6,6.3,1.8,frozen_from_runtime_benchmark_catalog

@@ -1,0 +1,10 @@
+{
+  "suite": "showcase",
+  "inventory_status": "canonical_v3_production",
+  "peace_frozen": false,
+  "n_models_processed": 60,
+  "n_models_skipped": 10,
+  "n_models_with_changed_station": 52,
+  "n_stations_total": 254,
+  "n_stations_changed": 148
+}

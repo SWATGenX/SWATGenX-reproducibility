@@ -1,0 +1,11 @@
+catalog_model_id,site_no,station_name,production_gis_channel,v3_gis_channel,same_gis_as_production,v1b_nhdplusid,mapping_method,assignment_class,calibration_eligible,swat_nhd_ratio,notes
+11458000,11455900,NAPA R AT CALISTOGA CA,239,245,False,50000300039282,exact_crosswalk,mainstem_clean,True,1.0324083864198637,
+11458000,11455950,SULPHUR C NR ST HELENA CA,237,262,False,50000300001164,exact_crosswalk,mainstem_clean,True,0.998826660513335,
+11458000,11456000,NAPA R NR ST HELENA CA,95,95,True,50000300015928,exact_crosswalk,mainstem_clean,True,1.012429581610824,
+11458000,11456500,CONN C NR OAKVILLE CA,47,47,True,50000300019087,exact_crosswalk,mainstem_clean,True,0.9957331168567868,
+11458000,11457000,DRY C NR NAPA CA,123,141,False,50000300019144,exact_crosswalk,mainstem_clean,True,1.0241782317998431,
+11458000,11457500,DRY C NR YOUNTVILLE CA,1673,1385,False,50000300039862,downstream_replacement,mainstem_known_nhd_offset,True,1.1812496738220164,Mapped at downstream step 1 to NHD 50000300016240 (ref 50000300039862).
+11458000,11458000,NAPA R NR NAPA CA,8,8,True,50000300004598,exact_crosswalk,mainstem_clean,True,1.024670721431782,
+11458000,11458100,MILLIKEN C NR NAPA,185,174,False,50000300013532,downstream_replacement,mainstem_known_nhd_offset,True,1.2038863114581868,Mapped at downstream step 1 to NHD 50000300022397 (ref 50000300013532).
+11458000,11458200,REDWOOD C NR NAPA CA,489,489,True,50000300020657,exact_crosswalk,mainstem_clean,True,1.0195603578770265,
+11458000,11458300,NAPA C A NAPA,444,444,True,50000300028120,exact_crosswalk,mainstem_clean,True,1.0132942604418025,

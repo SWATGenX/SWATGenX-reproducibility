@@ -1,0 +1,26 @@
+{
+  "figure_id": "Fig-CalValHydrograph-02297600",
+  "model_id": "0310/huc12/02297600",
+  "site_no": "02297600",
+  "layout": "vertical_3panel",
+  "panel_width_in": 7.2,
+  "dpi": 300,
+  "generated_utc": "2026-06-01T13:48:24Z",
+  "panels": [
+    {
+      "stage": "initialization_pool_best",
+      "caption": "(a) Initialization pool best (2013-01-01\u20132018-12-31)",
+      "source": "${SWATGENX_USER_PATH}/SWATplus_by_VPUID/0310/huc12/02297600/calibration_artifacts/Default_calval_split202606/figures_SWAT_MODEL_Web_Application/SF/calibration/init/daily/2_daily.png"
+    },
+    {
+      "stage": "calibration_global_best",
+      "caption": "(b) Calibration global best (2013-01-01\u20132018-12-31)",
+      "source": "${SWATGENX_USER_PATH}/SWATplus_by_VPUID/0310/huc12/02297600/calibration_artifacts/Default_calval_split202606/figures_SWAT_MODEL_Web_Application/SF/calibration/iter_0026/daily/2 (unchanged since iter 20)_daily.png"
+    },
+    {
+      "stage": "verification_global_best",
+      "caption": "(c) Verification global best (2019-01-01\u20132024-12-31)",
+      "source": "${SWATGENX_USER_PATH}/SWATplus_by_VPUID/0310/huc12/02297600/calibration_artifacts/Default_calval_split202606/figures_SWAT_MODEL_Web_Application/SF/verification/VerificationEnsemble_daily.png"
+    }
+  ]
+}

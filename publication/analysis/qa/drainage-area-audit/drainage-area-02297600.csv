@@ -1,0 +1,2 @@
+usgsSiteNo,stationName,gisChannel,swatLcha,swatplusDrainageAreaKm2,nhdHrTotdasqkmKm2,nwisDrainageAreaKm2,wbdUpstreamHu12AreaKm2,ratioSwatNhd,ratioSwatNwis,auditClass
+02297600,SHELL CREEK AT CIRCLE K GROVES NEAR FT OGDEN FL,2,2,165.61,153.72,198.16,198.16,1.0774,0.8357,swat_nhd_ok

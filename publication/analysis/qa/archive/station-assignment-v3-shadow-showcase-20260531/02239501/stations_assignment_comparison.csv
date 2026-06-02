@@ -1,0 +1,5 @@
+catalog_model_id,site_no,station_name,production_gis_channel,v3_gis_channel,same_gis_as_production,v1b_nhdplusid,mapping_method,assignment_class,calibration_eligible,swat_nhd_ratio,notes
+02239501,02239501,"SILVER RIVER NEAR OCALA, FL",5,6.0,False,15000300040713,exact_crosswalk,mainstem_clean,True,1.010656631508087,
+02239501,02239510,"SILVER RIVER NEAR CONNER, FL",1,,False,15000300024889,missing,exclude_from_auto_calibration,False,,No chandeg.con channel for reference reach or downstream walk.
+02239501,02239600,TRIBUTARY TO SILVER RIVER AT SH 40 NEAR OCALA FL,7,6.0,False,15000300040713,exact_crosswalk,mainstem_clean,True,1.010656631508087,
+02239501,02239601,"TRIBUTARY TO SILVER RIVER BL SH 40 NR OCALA, FL",7,6.0,False,15000300040713,exact_crosswalk,mainstem_clean,True,1.010656631508087,

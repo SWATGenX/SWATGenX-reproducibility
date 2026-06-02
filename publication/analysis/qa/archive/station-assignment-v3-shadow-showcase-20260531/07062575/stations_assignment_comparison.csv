@@ -1,0 +1,10 @@
+catalog_model_id,site_no,station_name,production_gis_channel,v3_gis_channel,same_gis_as_production,v1b_nhdplusid,mapping_method,assignment_class,calibration_eligible,swat_nhd_ratio,notes
+07062575,07061270,"East Fork Black River near Lesterville, MO",830,845,False,21001400013795,exact_crosswalk,mainstem_clean,True,1.0001538466587656,
+07062575,07061290,E. Fk. Black R. bl Lower Taum Sauk Reservoir,641,641,True,21001400043657,exact_crosswalk,lake_outlet_review,False,1.0001493120938254,
+07062575,07061300,"East Fork Black River at Lesterville, MO",529,518,False,21001400028794,lake_outlet_replacement,lake_outlet_review,False,1.0003983708182107,Mapped at downstream step 1 to NHD 21001400073636 (ref 21001400028794).
+07062575,07061500,"Black River near Annapolis, MO",165,163,False,21001400014041,lake_outlet_replacement,lake_outlet_review,False,0.8517402154238667,Mapped at downstream step 2 to NHD 21001400058911 (ref 21001400014041).
+07062575,07061600,"Black River below Annapolis, MO",156,156,True,21001400029014,exact_crosswalk,mainstem_clean,True,0.8465934649114728,
+07062575,07061900,"Logan Creek at Ellington, MO",569,573,False,21001400117520,exact_crosswalk,tributary_clean,True,0.9999638419032398,
+07062575,07062050,"Clearwater Tailwater near Piedmont, MO",101,101,True,21001400014102,exact_crosswalk,mainstem_clean,True,0.9183889209819954,
+07062575,07062500,"Black River at Leeper, MO",61,61,True,21001400014354,exact_crosswalk,mainstem_clean,True,0.9274308898674279,
+07062575,07062575,"Black River above Williamsville, MO",15,16,False,21001400089183,exact_crosswalk,mainstem_clean,True,0.9353284771961713,
