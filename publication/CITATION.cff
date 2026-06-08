@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "If you use SWATGenX or this reproducibility material, please cite the article below."
+title: "Automating High-Resolution SWAT+ Watershed Model Generation from NHDPlus HR and National Environmental Datasets"
+type: software
+authors:
+  - family-names: Rafiei
+    given-names: Vahid
+    orcid: "https://orcid.org/0009-0009-8309-1895"
+    affiliation: "Independent Researcher"
+    email: vahidr32@gmail.com
+repository-code: "https://github.com/SWATGenX/SWATGenX-reproducibility"
+url: "https://www.swatgenx.com"
+license: MIT
+date-released: "2026-06-08"
+keywords:
+  - SWAT+
+  - NHDPlus HR
+  - watershed model generation
+  - reproducibility
+  - hydrology
+preferred-citation:
+  type: article
+  title: "Automating High-Resolution SWAT+ Watershed Model Generation from NHDPlus HR and National Environmental Datasets"
+  authors:
+    - family-names: Rafiei
+      given-names: Vahid
+      orcid: "https://orcid.org/0009-0009-8309-1895"
+      affiliation: "Independent Researcher"
+  year: 2026
+  notes: "Journal, volume, and DOI to be added on acceptance."

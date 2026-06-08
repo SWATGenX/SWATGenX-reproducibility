@@ -1,50 +1,13 @@
 \subsection{Hydrography from NHDPlus HR}
 \label{sec:methods-nhd}
 
-Watershed delineation and channel geometry for automated SWAT\textsuperscript{+} setup use NHDPlus HR vector products for the conterminous United States \citep{Moore2019NHDPlusHR}, together with WBD HU8 and HU12 polygons distributed by vector processing unit (VPU), aligned with HUC4 regions \citep{Jones2022WBD}.
+Watershed delineation and channel geometry for automated SWAT\textsuperscript{+} setup use NHDPlus HR vector products for the conterminous United States \citep{Moore2019NHDPlusHR, Moore2025NHDPlusHR}, together with WBD HU8 and HU12 polygons distributed by vector processing unit (VPU), aligned with HUC4 regions \citep{Jones2022WBD}.
 Core layers include flowlines (\texttt{NHDFlowline}), catchments (\texttt{NHDPlusCatchment}), value-added attributes (\texttt{NHDPlusFlowlineVAA}), waterbodies (\texttt{NHDWaterbody}), and WBD HU8/HU12; reach elevations from NHDPlus HR grids support channel drop.
 Preprocessing is applied \emph{per VPU} before clipping to user-specified HUC12 lists or analogous extents, so that topology cleaning and hydrologic sequence edits operate on a consistent national graph within each HU4 tile.
 
-\subsubsection*{Coordinate reference system and geometric attributes}
-Feature geometries are projected from geographic coordinates to a Universal Transverse Mercator (UTM) zone determined from the centroid of the WBD HU4 polygon for the VPU, yielding metric lengths and areas for SWAT\textsuperscript{+} inputs.
-Reach lengths distributed in kilometers are converted to meters.
-Channel \emph{drop} (elevation loss along a reach) is computed from maximum and minimum smoothed reach elevations (\texttt{MaxElevSmo}, \texttt{MinElevSmo}) supplied with NHDPlus HR in centimeters and scaled to meters; the extrema are retained in the working stream table so that when reaches are merged to enforce downstream connectivity rules, drop can be recomputed from merged maxima and minima.
-Headwater and terminal flags are recomputed from cleaned upstream and downstream hydrologic sequence links rather than taken as authoritative from vendor flags where those conflict with the edited network.
+NHDPlus HR is not a single-resolution product: its flowlines derive from the National Hydrography Dataset, whose source map scale varies by region (recorded per source in \texttt{NHDSourceCitation.SourceScaleDenominator}). Across our conterminous-U.S.\ archive the finest source scale ranges from 1:1,200 to 1:24,000 and reach density spans roughly an order of magnitude, so SWATGenX records the source resolution and publication vintage per model (Supplementary Table~\ref{tab:nhdplus-provenance}), making delineation density interpretable against the underlying hydrography rather than assumed uniform.
 
-\subsubsection*{Topology cleaning for a single-valued downstream network}
-NHDPlus assigns a divergence code to braided and split-flow configurations.
-Reaches with divergence code~2 are excluded from the routed network because they create circular or ambiguous hydrosequence graphs when enforcing a single-valued downstream path; for hydrologic accounting, each removed reach's catchment polygon is merged into the catchment of its immediate downstream reach so that contributing area is conserved at the catchment level while the stream layer remains tree-like for SWAT\textsuperscript{+} routing.
-Flowlines without a matching \texttt{NHDPlusCatchment} record (same \texttt{NHDPlusID}) are dropped.
-Coastal artificial flowlines, identified as boundary-condition line work rather than inland fluvial channels, are removed using NHDPlus HR product identifier rules implemented in the extraction code.
-After harmonizing hydrologic sequence keys, reaches with no valid upstream or downstream neighbor in the retained network are removed from the working stream set; they may be retained in separate diagnostic exports for quality assurance but are not treated as standalone routed subbasins.
-
-\subsubsection*{Initial subbasin scaffolding and the one-outlet partition}
-For each terminal reach in the VPU-wide network, all upstream reaches are collected by walking hydrologic sequence links; each such drainage set defines a level-1 subbasin index used together with HUC12 to build model-scale subbasins.
-SWAT\textsuperscript{+} assumes a hierarchical subbasin structure in which each subbasin has a single outlet to at most one downstream subbasin (or the modeled domain boundary); HUC12 units alone can violate this rule when multiple outlet streams, internal confluences, or braided connectivity occur relative to administrative boundaries.
-The implementation therefore partitions the clipped stream network into subbasins that satisfy the one-outlet rule by (i)~initial grouping on HUC12 and level-1 index, (ii)~enumeration of outlets where flow leaves a group, and (iii)~iterative splitting by upstream traces until no subbasin has more than one outlet within the retained hydrologic sequence set.
-
-\subsubsection*{Waterbodies and lake--channel linkage}
-Waterbody polygons below a minimum surface area (implementation threshold: $0.1~\mathrm{km}^2$) are excluded to limit negligible ponds and slivers from the lake module.
-National Hydrography \texttt{FType} values are mapped to SWAT\textsuperscript{+} waterbody classes for export (reservoir, wetland, playa, and a general lake/pond class) with a compact reservoir/lake class field compatible with SWAT\textsuperscript{+} inputs.
-Flowlines are joined to \texttt{NHDWaterbody} using permanent identifiers to assign a lake identifier where reaches coincide with catalogued waterbodies.
-Reaches are classified along downstream walks into lake inflow, interior, primary outlet, and related roles so that the exported schema respects SWAT\textsuperscript{+} expectations for a single primary lake outlet where the national geometry implies a simplification; adjacent waterbodies that create inconsistent inlet/outlet tagging may be harmonized, and lake and channel indices used in SWAT\textsuperscript{+} tables are renumbered to contiguous integers starting at one after geometric and topological processing.
-
-\subsubsection*{Subbasin polygons and minimum-area refinement}
-Subbasin polygons are built by dissolving \texttt{NHDPlusCatchment} polygons that share the same final subbasin identifier after one-outlet partitioning.
-A subsequent modified-input generation pass (standard in the shapefile export pipeline for all manuscript benchmark domains) applies two distinct area controls.
-
-First, subbasins whose total polygon area is below a fixed threshold ($A_{\min}=62.5~\mathrm{km}^2$, coded as $250\times250\times1{,}000~\mathrm{m}^2$) are merged into their immediate downstream subbasin when such a downstream neighbor exists within the clipped domain; this is a single forward pass, not an iteration that forces every remaining subbasin above $A_{\min}$.
-The value $A_{\min}$ was chosen during early Michigan calibration work as roughly 75\% of the mean WBD HUC12 area in that region (order $80$--$85~\mathrm{km}^2$), i.e.\ a typical administrative subwatershed scale rather than a hydrologic response unit.
-The $250~\mathrm{m}$ factors echo the nominal land-cover/soils grid resolution used elsewhere in the workflow but do \emph{not} mean ``1{,}000 DEM cells must fit inside every subbasin.''
-
-Second, after outlet-topology repairs, an additional guard merges basins below about $0.01~\mathrm{km}^2$ (or with extremely short total channel length) into a downstream neighbor to avoid QSWAT\textsuperscript{+} table omissions.
-
-Domain-size behavior merits separate note because the rule does \emph{not} require the modeled watershed to exceed $A_{\min}$.
-Terminal subbasins at the domain outlet with area between $A_{\min}/5$ ($12.5~\mathrm{km}^2$) and $A_{\min}$ are retained when no downstream merge target exists---as on the small (S) benchmark domain (52.6~km$^2$ total, three subbasins after export: 0.24, 0.62, and 51.75~km$^2$).
-Very small subbasins ($<A_{\min}/5$) that lack an in-domain downstream neighbor are flagged and may receive a nearest-neighbor stream connection for routing continuity without polygon merge.
-Readers should treat $A_{\min}$ as a documented implementation parameter, not a universal hydrologic discretization criterion.
-
-\subsubsection*{Design rationale}
+Geometries are projected to a UTM zone from the WBD HU4 centroid (metric lengths and areas), and channel drop is computed from smoothed reach-elevation extrema. The network is then cleaned into a single-valued, tree-like routing graph compatible with the SWAT\textsuperscript{+} subbasin hierarchy \citep{Bieger2017SWATPlus}: divergence-code-2 reaches are removed (their catchment area merged downstream to conserve contributing area), orphan and coastal-artificial flowlines are dropped, the network is partitioned into subbasins satisfying a one-outlet rule, waterbodies above $0.1~\mathrm{km}^2$ are wired to channels under a single-primary-outlet simplification, and a modified-input post-pass merges subbasins below a documented minimum area ($A_{\min}=62.5~\mathrm{km}^2$) into their downstream neighbor where one exists. Full rule-by-rule detail---CRS and geometric attributes, topology cleaning, one-outlet scaffolding, lake--channel linkage, and the $A_{\min}$ minimum-area behavior (including small-domain retention)---is given in Supplementary Section~\ref{sec:supp-nhd-extended}.
 
 \begin{figure}[htbp]
   \centering
@@ -63,17 +26,10 @@ Readers should treat $A_{\min}$ as a documented implementation parameter, not a 
   }
 \end{table}
 
-These rules prioritize a single-valued, tree-like routing graph compatible with SWAT\textsuperscript{+} subbasin hierarchy \citep{Bieger2017SWATPlus} over retaining every national-graph feature.
-Divergence-code-2 reaches are removed because they create ambiguous hydrosequence cycles when enforcing one downstream neighbor per reach; catchment area is merged downstream to conserve contributing area at the polygon level.
-VPU-wide preprocessing before HUC12 clipping ensures topology cleaning operates on a consistent national graph within each HU4 tile.
-Lake integration follows a single-primary-outlet simplification where national cartography is ambiguous; expert review remains appropriate for complex reservoirs.
-Figure~\ref{fig:nhd-workflow} summarizes stages; Table~\ref{tab:nhd-rules-abridged} lists core rules (complete rule catalog: Supplementary Table~S1).
+These rules prioritize a single-valued routing graph and consistent, auditable national exports over retaining every national-graph feature; they are not claimed to be hydrologically optimal discretizations, and alternative rule sets would require separate evaluation. Figure~\ref{fig:nhd-workflow} summarizes the stages and Table~\ref{tab:nhd-rules-abridged} lists the core rules (complete catalog: Supplementary Table~S1).
 
 \subsubsection*{Quality assurance checks}
-
-Programmatic checks include one-to-one stream--catchment pairing by \texttt{NHDPlusID}, assignment of each reach to exactly one subbasin after partitioning, participation of retained lakes in the graph with modeled outlets where required (unresolved cases logged), removal of cyclic constructs on the main routing used by SWAT\textsuperscript{+}, enforcement of a single outlet per subbasin, and uniqueness of exported channel and lake identifiers starting at one.
-Rule-level documentation with conservative metric flags is maintained in the archived release; quantitative before/after reach and catchment counts for evaluation domains appear in Table~\ref{tab:nhd-preprocessing-qa} (\S\ref{sec:results-obj2}).
-Column abbreviations: Orig.\ = domain-clipped NHDPlus catchment and flowline layers with value-added attributes from the USGS HU4 geodatabase; Isol.\ reach/cat.\ = isolated flowlines and catchments dissolved into neighbours; Orphan cat.\ = catchments whose flowline was dropped (divergence-code-2, isolated, or coastal rules) before orphan dissolve; No-VAA = catchments without an assigned flowline merged into the nearest streamed catchment; Final = exported channel, subbasin, and watershed polygon counts in the generated SWAT\textsuperscript{+} project (large-domain totals from structural inventory).
+Programmatic checks include one-to-one stream--catchment pairing by \texttt{NHDPlusID}, assignment of each reach to exactly one subbasin, participation of retained lakes with modeled outlets (unresolved cases logged), removal of cyclic constructs on the SWAT\textsuperscript{+} routing, a single outlet per subbasin, and unique exported channel/lake identifiers. Quantitative before/after reach and catchment counts for the evaluation domains appear in Table~\ref{tab:nhd-preprocessing-qa} (\S\ref{sec:results-obj2}); column definitions are given there.
 
 \begin{table}[htbp]
   \centering
@@ -86,8 +42,3 @@ Column abbreviations: Orig.\ = domain-clipped NHDPlus catchment and flowline lay
     \input{../tables/generated/tab-nhd-preprocessing-qa-sm-l}%
   }
 \end{table}
-
-The preprocessing rules above target SWAT\textsuperscript{+} topological legality, consistent national exports, and auditability of each transformation.
-They are not claimed to be hydrologically optimal discretizations; alternative rule sets could yield different structural footprints and would require separate evaluation before inferring hydrologic consequences.
-
-% Camera-ready: add SWAT+ Editor manual citation only if the text references a specific Editor UI version.

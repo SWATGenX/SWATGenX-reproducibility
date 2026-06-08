@@ -16,6 +16,8 @@ build_main() {
 
 build_supplement() {
   pdflatex -interaction=nonstopmode supplement.tex >/dev/null
+  bibtex supplement >/dev/null 2>&1 || true
+  pdflatex -interaction=nonstopmode supplement.tex >/dev/null
   pdflatex -interaction=nonstopmode supplement.tex >/dev/null
 }
 

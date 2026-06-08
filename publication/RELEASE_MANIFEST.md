@@ -38,6 +38,7 @@ publication/analysis/logs/**         # raw calibration/validation run logs (6.9M
 publication/analysis/runtime-runs/** # raw timing JSONL (mostly gitignored)
 publication/figures/drafts/**        # draft figure iterations
 publication/journal-notes.md         # submission portal URLs / APF notes
+publication/manuscript/PRESUBMISSION_REVIEW.md  # internal self-review (kept private)
 publication/submission/**            # cover letter drafts
 publication/review/**                # internal TODO/audit snapshots
 publication/source-bank/**           # legacy-document reuse triage

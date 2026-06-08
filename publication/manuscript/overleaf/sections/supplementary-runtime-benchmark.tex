@@ -1,0 +1,107 @@
+\subsection{Objective 5: extended runtime benchmark material}
+\label{sec:supp-runtime-benchmark}
+
+\subsubsection{Print scope, export format, and HRU scaling ladder}
+\label{sec:supp-runtime-print-scope}
+
+Print-scope savings dominate calibration-oriented runs (Table~\ref{tab:runtime-benchmark-print-scope}; Figure~\ref{fig:runtime-benchmark-print-scope}).
+NetCDF is faster than formatted text under full export (Table~\ref{tab:runtime-benchmark-nc-vs-txt}).
+Production compiler rows are in Table~\ref{tab:runtime-benchmark-compiler}; the six-point HRU scaling ladder is in Table~\ref{tab:runtime-benchmark-hru-scaling}.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Print-scope comparison (full vs calibration filtered NetCDF).}
+  \label{tab:runtime-benchmark-print-scope}
+  \small
+  \input{tables/tab-runtime-benchmark-print-scope}%
+\end{table}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.72\textwidth]{final/fig-runtime-benchmark-print-scope.png}
+  \caption{Print-scope effect for the small and medium benchmark domains.}
+  \label{fig:runtime-benchmark-print-scope}
+\end{figure}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Full-export NetCDF vs formatted text (one-year run).}
+  \label{tab:runtime-benchmark-nc-vs-txt}
+  \small
+  \input{tables/tab-runtime-benchmark-nc-vs-txt}%
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Production ifx \texttt{-O3 -ipo} on filtered profile.}
+  \label{tab:runtime-benchmark-compiler}
+  \small
+  \input{tables/tab-runtime-benchmark-compiler-prod}%
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Six-point simulation benchmark ladder (S/M/L + X20/X40/X60 runtime scaling cases; filtered profile; production ifx).}
+  \label{tab:runtime-benchmark-hru-scaling}
+  \small
+  \input{tables/tab-runtime-benchmark-hru-scaling}%
+\end{table}
+
+\subsubsection{Full compiler matrix (Scenario 3)}
+\label{sec:supp-runtime-compiler}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Supplementary Table~S2. Compiler optimization matrix on the filtered calibration print profile (365-day runs). ``Prod.'' marks the production ifx \texttt{-O3 -ipo} build used elsewhere.}
+  \label{tab:supp-runtime-compiler}
+  \scriptsize
+  \setlength{\tabcolsep}{3pt}
+  \renewcommand{\arraystretch}{1.05}
+  \input{tables/tab-runtime-benchmark-compiler-full.tex}%
+\end{table}
+
+\subsubsection{VTune CPU splits (Scenario 4, large basins)}
+\label{sec:supp-runtime-vtune}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Supplementary Table~S3. Intel VTune hotspot shares on filtered calibration runs (90 simulated days). Daily-loop percentages are shown for the repeating simulation phase; Init is reported separately.}
+  \label{tab:supp-runtime-vtune}
+  \scriptsize
+  \setlength{\tabcolsep}{4pt}
+  \renewcommand{\arraystretch}{1.08}
+  \input{tables/tab-runtime-benchmark-vtune.tex}%
+\end{table}
+
+Peace River allocates a larger share to HRU processing; Upper Gila allocates nearly half of daily-loop CPU to channel routing despite fewer HRUs, consistent with the six-point ladder inversion discussed in Section~\ref{sec:results-runtime-benchmark}.
+
+\subsubsection{Calibration wall-time extrapolation}
+\label{sec:supp-runtime-calibration-cost}
+
+Scenario~4 measures one filtered forward run per model (365 simulated days).
+A full particle-swarm calibration repeats comparable runs while searching parameter space.
+Typical watershed calibrations adjust on the order of 30--40 parameters; our production setup often uses 24--48 particles and a maximum of about 75 iterations, with early stop when the objective stagnates (often between 30 and 75 iterations).
+
+We extrapolate each model's measured initialization and daily-loop split to a seven-year simulation window and estimate calibration wall time as
+\[
+\text{wall} \approx N_{\mathrm{iter}} \times \left\lceil N_{\mathrm{particles}} / N_{\mathrm{cores}} \right\rceil \times \bigl(t_{\mathrm{init}} + 7 \times t_{\mathrm{daily}}\bigr),
+\]
+using Scenario~4 timing and the filtered calibration NetCDF profile.
+Reported ranges span 24--48 particles, 30--75 iterations, and example servers with 16, 32, or 64 cores.
+RAM limits are ignored in the formula; in practice memory can cap concurrent particles even when core count is higher.
+Doubling cores helps only until $N_{\mathrm{cores}} \geq N_{\mathrm{particles}}$ each iteration; further speedup requires fewer particles, fewer iterations, a shorter scored window, or the print-scope reductions in Scenarios~1--2.
+
+\subsubsection{Production calibration optimizations beyond forward-run timing}
+\label{sec:supp-runtime-optimization-stack}
+
+The measured scenarios isolate single forward runs.
+SWATGenX production calibration additionally applies:
+\begin{itemize}
+  \item \textbf{Gauge-limited printing} --- \texttt{print\_filter.prt} restricts daily \texttt{channel\_sd} to calibration gauges (\texttt{swift\_out=0}, \texttt{wq\_cha=0}).
+  \item \textbf{NetCDF export} --- \texttt{cdfout=y} when full daily/monthly exports are required (fork extension; Table~\ref{tab:runtime-benchmark-nc-vs-txt}).
+  \item \textbf{Compiler selection} --- Intel ifx \texttt{-O3 -ipo} on the reference host (Table~\ref{tab:runtime-benchmark-compiler}; Table~S2).
+  \item \textbf{Shared climate I/O} --- common weather paths via \texttt{file.cio} so parallel particles reuse the same forcing files where possible.
+  \item \textbf{Optional coarser landuse/soil grids} at model build to reduce HRU cardinality before calibration.
+  \item \textbf{PSO pool sizing and stagnation stop} --- limit particles and terminate when the objective plateaus.
+\end{itemize}
+These workflow choices reduce batch overhead beyond what a one-year forward-run ladder alone captures.

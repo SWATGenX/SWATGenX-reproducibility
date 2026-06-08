@@ -167,7 +167,9 @@ def resolve_model_paths(row: dict) -> ModelPaths | None:
 
     model_base = USER_ROOT / ws_id / "SWAT_MODEL_Web_Application"
     txtinout = model_base / "Scenarios" / "Default" / "TxtInOut"
-    stations_shp = model_base.parent / "streamflow_data" / "stations.shp"
+    stations_shp = model_base / "streamflow_data" / "stations.shp"
+    if not stations_shp.is_file():
+        stations_shp = model_base.parent / "streamflow_data" / "stations.shp"  # legacy site-level
     if not stations_shp.is_file() or not (txtinout / "chandeg.con").is_file():
         return None
     meta_csv = Path(SWATGenXPaths.streamflow_vpuid_path) / vpuid / f"meta_{vpuid}.csv"

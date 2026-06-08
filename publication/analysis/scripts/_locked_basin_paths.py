@@ -54,7 +54,7 @@ def load_locked_inventory_rows(csv_path: Path) -> list[dict[str, str]]:
     with csv_path.open(newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for row in reader:
-            if (row.get("status") or "").strip() != "locked_from_inventory":
+            if not (row.get("status") or "").strip().startswith("locked_"):
                 continue
             mid = (row.get("model_id") or "").strip()
             if not mid:

@@ -54,7 +54,7 @@ def main():
     ax.set_xlim(lo, hi); ax.set_ylim(lo, hi)
     ax.set_xlabel("Original NHDPlus HR cumulative drainage  TotDASqKm  (km$^2$)")
     ax.set_ylabel("SWAT+ executable channel area  chandeg.con  (km$^2$)")
-    ax.set_title("Peace River HUC-8 (03100101): drainage-area fidelity audit")
+    # Title omitted from the figure per Elsevier artwork rule (lives in caption).
     ax.annotate(
         f"n = {s['nMatchedSwatNhd']} matched\nmedian SWAT+/NHD = {s['medianSwatNhdRatio']:.2f}\n"
         f"{s['withinHalfToDouble']}/{s['nMatchedSwatNhd']} within 0.5–2.0×\n"

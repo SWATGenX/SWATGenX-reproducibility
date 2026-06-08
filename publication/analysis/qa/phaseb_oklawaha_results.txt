@@ -1,0 +1,13 @@
+variant              dem   strm  chan          burn     lakes  subs  lsus  rivs  area_km2    sec  built
+-------------------------------------------------------------------------------------------------------
+NHDPlus-HR(ref)                                                   3    53    45     52.61              
+pb_base250           250    216     7          none      none     4   100   100     80.69   82.0   True
+pb_base30             30  15000   500          none      none     4   100   100     83.44  123.5   True
+pb_burnall250        250    216     7           all      none     3   103   103     74.19   66.5   True
+pb_burnall30          30  15000   500           all      none     4   104   104     83.49  150.5   True
+pb_burnmajor250      250    216     7  major_rivers      none     6   106   106      85.5   70.0   True
+pb_burnmajor30        30  15000   500  major_rivers      none     4   106   106     83.49  124.9   True
+pb_burnmajorlk250                                              None  None  None      None              
+pb_burnmajorlk30                                               None   106   102      None              
+
+Reference NHDPlus-HR: subs/lsus/rivs above; WBD basin truth = 53.37 km^2

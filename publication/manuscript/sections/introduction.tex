@@ -1,27 +1,19 @@
 \section{Introduction}
 
-High-resolution national hydrography and environmental datasets make detailed SWAT\textsuperscript{+} model construction possible across broad spatial extents, but reproducible model assembly remains difficult because routing topology, attributes, and export structure can vary across analysts and study sites.
-National SWAT-family platforms such as HAWQS \citep{Yen2016HAWQS} and BASINS \citep{EPABASINSFramework} emphasize decision support and analyst-driven setup on medium-resolution hydrography rather than automated, auditable assembly from NHDPlus High Resolution (NHDPlus HR) at national scale.
+The Soil and Water Assessment Tool and its restructured successor SWAT\textsuperscript{+} are among the most widely applied watershed models for streamflow, sediment, and nutrient assessment \citep{Arnold1998SWAT, Gassman2007SWAT, Bieger2017SWATPlus}.
+High-resolution national hydrography and environmental datasets make detailed SWAT\textsuperscript{+} construction possible across broad extents, but reproducible assembly remains difficult because routing topology, attributes, and export structure vary across analysts and sites---a specific instance of the broader finding that much computational hydrology cannot be reproduced from its published description \citep{Hutton2016Reproducible}.
+Existing setup tools span analyst-driven desktop GIS \citep{Dile2016QSWAT} and scriptable configuration-file workflows for single-catchment studies \citep{Chawanda2020SWATPlusAW}, while national SWAT-family platforms such as HAWQS \citep{Yen2016HAWQS} and BASINS \citep{EPABASINSFramework} emphasize decision support on medium-resolution hydrography, and continental-scale applications \citep{Abbaspour2015Europe} are typically bespoke regional efforts \citep{MooreDewald2016RoadToNHDPlus}---rather than automated, auditable assembly from NHDPlus High Resolution (NHDPlus HR) at national scale.
 This paper evaluates SWATGenX as a reference implementation of an automated NHDPlus HR workflow that converts U.S.\ national vectors and ancillary layers into SWAT\textsuperscript{+}-compatible project structures with explicit preprocessing rules and quality-assurance checks.
 
 \subsection{Contribution and scope}
 
-The narrow contribution is auditable, automated conversion of NHDPlus HR and national ancillary data into structurally consistent, executable SWAT\textsuperscript{+} projects, with documented preprocessing trade-offs and evidence that those projects can enter standard downstream calibration and sensitivity workflows.
-The evaluation is \emph{not} a national hydrologic validation study: reported streamflow metrics on two gage basins are workflow diagnostics only.
+The contribution is twofold: (i)~auditable, automated conversion of NHDPlus HR and national ancillary data into structurally consistent, executable SWAT\textsuperscript{+} projects, with documented preprocessing trade-offs and evidence that those projects enter standard downstream calibration and sensitivity workflows; and (ii)~a drainage-area fidelity audit that localizes \emph{where} executable model area departs from national cumulative drainage, isolating a reusable QSWAT\textsuperscript{+}/TauDEM channel-area definitional offset downstream of preprocessing. \emph{Auditable} is operational: every intermediate artifact is inspectable and ships with machine-readable quality-assurance sidecars, so a third party can trace each transformation rather than trust an opaque build. The evaluation is \emph{not} a national hydrologic validation study; streamflow metrics on two gage basins are workflow diagnostics only.
 
-\subsection{Evidence tiers}
+\subsection{Evidence tiers and evaluation models}
 
-Evidence is organized in three tiers (Table~\ref{tab:objective-evidence-map}).
-\textbf{Primary} evidence (Objectives~1--2) documents implementation auditability and quantified hydrography preprocessing outcomes, including a drainage-area fidelity audit at gaged channels.
-\textbf{Secondary} evidence (Objectives~3--4) reports structural scaling, model-assembly cost, and downstream workflow readiness on selected domains.
-\textbf{Supporting} evidence (Objective~5) reports measured simulation cost on one documented host/build configuration.
+Evidence is organized in three tiers (Table~\ref{tab:objective-evidence-map}). \textbf{Primary} (Objectives~1--2): implementation auditability and quantified hydrography preprocessing, including the drainage-area audit at gaged channels. \textbf{Secondary} (Objectives~3--4): structural scaling, model-assembly cost, and downstream workflow readiness. \textbf{Supporting} (Objective~5): measured simulation cost on one documented host/build.
 
-\subsection{Evaluation model sets}
-
-Table~\ref{tab:model-roster} lists the eight catalog Model IDs used in this evaluation.
-Three size classes (S/M/L) benchmark structural products and primary runtime; three scaling cases (X20/X40/X60) extend the runtime ladder; two controlled gage basins test calibration and Morris sensitivity workflows.
-The matrix spans humid subtropical, semi-arid, and snow-influenced temperate domains in the eastern and western U.S.\ but does not represent arid ephemeral systems, heavily regulated reservoir complexes, dense urban cores, or coastal tidal networks.
-A CONUS-capable workflow is demonstrated on these selected domains only.
+Table~\ref{tab:model-roster} lists the eight catalog Model IDs: three size classes (S/M/L) benchmark structural products and primary runtime, three scaling cases (X20/X40/X60) extend the runtime ladder, and two controlled gage basins test calibration and Morris sensitivity. The matrix spans humid subtropical, semi-arid, and snow-influenced temperate domains in the eastern and western U.S.\ but not arid ephemeral systems, heavily regulated reservoir complexes, dense urban cores, or coastal tidal networks; a CONUS-capable workflow is demonstrated on these selected domains only.
 
 \begin{table}[htbp]
   \centering
@@ -37,7 +29,7 @@ A CONUS-capable workflow is demonstrated on these selected domains only.
 
 \subsection{Research objectives}
 
-Objectives are grouped by evidence tier rather than presented as five equal-weight claims.
+Objectives are grouped by evidence tier rather than as five equal-weight claims.
 
 \textbf{Primary.}
 \begin{enumerate}
@@ -49,7 +41,7 @@ Objectives are grouped by evidence tier rather than presented as five equal-weig
 \begin{enumerate}
   \setcounter{enumi}{2}
   \item \textbf{Structural scalability and model-assembly cost.} How do HRU, channel, and subbasin counts and assembly wall time scale across the S/M/L benchmark size classes?
-  \item \textbf{Downstream workflow readiness.} Can generated projects be initialized, calibrated, verified on independent holdout periods, and analyzed with Morris sensitivity workflows on controlled gage basins?
+  \item \textbf{Downstream workflow readiness.} Can generated projects be initialized, calibrated, verified on independent holdout periods, and analyzed with Morris sensitivity on controlled gage basins?
 \end{enumerate}
 
 \textbf{Supporting.}
@@ -58,7 +50,6 @@ Objectives are grouped by evidence tier rather than presented as five equal-weig
   \item \textbf{Simulation runtime benchmark.} What is measured SWAT\textsuperscript{+} simulation cost on one documented host/build configuration for the published benchmark domains?
 \end{enumerate}
 
-Table~\ref{tab:objective-evidence-map} maps each objective to its tier, main evidence location, and Methods anchor.
-Results follow the same tiered structure (\S\ref{sec:results-overview}).
+Table~\ref{tab:objective-evidence-map} maps each objective to its tier, main evidence location, and Methods anchor; Results follow the same tiered structure (\S\ref{sec:results-overview}).
 
 \input{sections/objective-evidence-map}

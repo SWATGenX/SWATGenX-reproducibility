@@ -100,9 +100,8 @@ def plot_morris_spider_dual(
         rows = _rows_for_site(csv_path, site_no)[:top_n]
         labels = [r["parameter"] for r in rows]
         mu_star = np.array([float(r["mu_star"]) for r in rows], dtype=float)
-        state = "FL" if site_no.startswith("02") else "IL"
-        title = f"{panel_labels[col]} {site_no} ({state}, top {top_n} mu*)"
-        _polar_spider(axes[0, col], labels, mu_star, title=title)
+        # Panel letter only; basin/state/top-N described in the caption (Elsevier rule).
+        _polar_spider(axes[0, col], labels, mu_star, title=panel_labels[col])
     fig.subplots_adjust(left=0.02, right=0.98, top=0.92, bottom=0.06, wspace=0.42)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(output_path, dpi=300, bbox_inches="tight", pad_inches=0.08)

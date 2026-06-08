@@ -7,23 +7,23 @@
   "basemaps": "none (local vector layers only)",
   "basins": [
     {
-      "tier": "Small",
+      "tier": "S",
       "model_id": "0308/huc12/030801020804",
       "state": "FL",
       "area_km2": "52.61",
       "n_hrus": "473",
       "n_channels": "45",
-      "n_subbasins": "4",
+      "n_subbasins": "3",
       "n_lakes": "4",
       "output_image": "publication/figures/final/fig-example-basin-maps-combined-3panel.png",
       "stats_line": "52.6 km\u00b2 | 473 HRUs | 45 channels | 4 lakes",
-      "panel_title": "(a) Small \u2014 Florida",
+      "panel_title": "(a) S \u2014 Florida",
       "combined_panel": true,
       "independent_zoom": true
     },
     {
-      "tier": "Medium",
-      "model_id": "1505/huc12/09471300",
+      "tier": "M",
+      "model_id": "1505/usgs_station/09471300",
       "state": "AZ",
       "area_km2": "579.83",
       "n_hrus": "11284",
@@ -32,12 +32,12 @@
       "n_lakes": "",
       "output_image": "publication/figures/final/fig-example-basin-maps-combined-3panel.png",
       "stats_line": "579.8 km\u00b2 | 11284 HRUs | 1371 channels",
-      "panel_title": "(b) Medium \u2014 Arizona",
+      "panel_title": "(b) M \u2014 Arizona",
       "combined_panel": true,
       "independent_zoom": true
     },
     {
-      "tier": "Large",
+      "tier": "L",
       "model_id": "0310/huc8/03100101",
       "state": "FL",
       "area_km2": "5982.53",
@@ -47,7 +47,7 @@
       "n_lakes": "",
       "output_image": "publication/figures/final/fig-example-basin-maps-combined-3panel.png",
       "stats_line": "5982.5 km\u00b2 | 94303 HRUs | 8181 channels",
-      "panel_title": "(c) Large \u2014 Florida",
+      "panel_title": "(c) L \u2014 Florida",
       "combined_panel": true,
       "independent_zoom": true
     }
@@ -55,13 +55,13 @@
   "manuscript": {
     "model_ids_small_to_large": [
       "0308/huc12/030801020804",
-      "1505/huc12/09471300",
+      "1505/usgs_station/09471300",
       "0310/huc8/03100101"
     ],
     "panel_titles": [
-      "(a) Small \u2014 Florida",
-      "(b) Medium \u2014 Arizona",
-      "(c) Large \u2014 Florida"
+      "(a) S \u2014 Florida",
+      "(b) M \u2014 Arizona",
+      "(c) L \u2014 Florida"
     ],
     "independent_zoom": true,
     "viewport_padding_ratio": 1.05,

@@ -1,0 +1,44 @@
+\subsection{Hydrography from NHDPlus HR}
+\label{sec:methods-nhd}
+
+Watershed delineation and channel geometry for automated SWAT\textsuperscript{+} setup use NHDPlus HR vector products for the conterminous United States \citep{Moore2019NHDPlusHR, Moore2025NHDPlusHR}, together with WBD HU8 and HU12 polygons distributed by vector processing unit (VPU), aligned with HUC4 regions \citep{Jones2022WBD}.
+Core layers include flowlines (\texttt{NHDFlowline}), catchments (\texttt{NHDPlusCatchment}), value-added attributes (\texttt{NHDPlusFlowlineVAA}), waterbodies (\texttt{NHDWaterbody}), and WBD HU8/HU12; reach elevations from NHDPlus HR grids support channel drop.
+Preprocessing is applied \emph{per VPU} before clipping to user-specified HUC12 lists or analogous extents, so that topology cleaning and hydrologic sequence edits operate on a consistent national graph within each HU4 tile.
+
+NHDPlus HR is not a single-resolution product: its flowlines derive from the National Hydrography Dataset, whose source map scale varies by region (recorded per source in \texttt{NHDSourceCitation.SourceScaleDenominator}). Across our conterminous-U.S.\ archive the finest source scale ranges from 1:1,200 to 1:24,000 and reach density spans roughly an order of magnitude, so SWATGenX records the source resolution and publication vintage per model (Supplementary Table~\ref{tab:nhdplus-provenance}), making delineation density interpretable against the underlying hydrography rather than assumed uniform.
+
+Geometries are projected to a UTM zone from the WBD HU4 centroid (metric lengths and areas), and channel drop is computed from smoothed reach-elevation extrema. The network is then cleaned into a single-valued, tree-like routing graph compatible with the SWAT\textsuperscript{+} subbasin hierarchy \citep{Bieger2017SWATPlus}: divergence-code-2 reaches are removed (their catchment area merged downstream to conserve contributing area), orphan and coastal-artificial flowlines are dropped, the network is partitioned into subbasins satisfying a one-outlet rule, waterbodies above $0.1~\mathrm{km}^2$ are wired to channels under a single-primary-outlet simplification, and a modified-input post-pass merges subbasins below a documented minimum area ($A_{\min}=62.5~\mathrm{km}^2$) into their downstream neighbor where one exists. Full rule-by-rule detail---CRS and geometric attributes, topology cleaning, one-outlet scaffolding, lake--channel linkage, and the $A_{\min}$ minimum-area behavior (including small-domain retention)---is given in Supplementary Section~\ref{sec:supp-nhd-extended}.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{final/fig-nhd-workflow.png}
+  \caption{NHDPlus HR preprocessing stages from VPU-scoped vectors to SWAT\textsuperscript{+} export (Objective~2).}
+  \label{fig:nhd-workflow}
+\end{figure}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Core NHDPlus HR preprocessing rules (abridged).}
+  \label{tab:nhd-rules-abridged}
+  \footnotesize
+  \resizebox{\textwidth}{!}{%
+    \input{tables/tab-nhd-rules-abridged}%
+  }
+\end{table}
+
+These rules prioritize a single-valued routing graph and consistent, auditable national exports over retaining every national-graph feature; they are not claimed to be hydrologically optimal discretizations, and alternative rule sets would require separate evaluation. Figure~\ref{fig:nhd-workflow} summarizes the stages and Table~\ref{tab:nhd-rules-abridged} lists the core rules (complete catalog: Supplementary Table~S1).
+
+\subsubsection*{Quality assurance checks}
+Programmatic checks include one-to-one stream--catchment pairing by \texttt{NHDPlusID}, assignment of each reach to exactly one subbasin, participation of retained lakes with modeled outlets (unresolved cases logged), removal of cyclic constructs on the SWAT\textsuperscript{+} routing, a single outlet per subbasin, and unique exported channel/lake identifiers. Quantitative before/after reach and catchment counts for the evaluation domains appear in Table~\ref{tab:nhd-preprocessing-qa} (\S\ref{sec:results-obj2}); column definitions are given there.
+
+\begin{table}[htbp]
+  \centering
+  \caption{NHDPlus HR change from original source vectors to exported SWAT\textsuperscript{+} model vectors (Objective~2).}
+  \label{tab:nhd-preprocessing-qa}
+  \scriptsize
+  \setlength{\tabcolsep}{3pt}
+  \renewcommand{\arraystretch}{1.05}
+  \resizebox{\textwidth}{!}{%
+    \input{tables/tab-nhd-preprocessing-qa-sm-l}%
+  }
+\end{table}

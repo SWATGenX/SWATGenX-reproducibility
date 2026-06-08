@@ -38,9 +38,10 @@ from streamflow_drainage_area import (  # noqa: E402
 
 
 def load_nwis_da_km2(site_no: str, meta_csv: Path) -> float | None:
-    """USGS NWIS site catalog drainage area (km²), not WBD HU12 sum."""
-    da, _ = load_station_drainage_area_km2(site_no, meta_csv)
-    return da
+    """USGS NWIS site catalog drainage area (km²) only — never the WBD HU12 fallback
+    (the loader silently falls back to WBD when NWIS is missing; do not mislabel it)."""
+    da, src = load_station_drainage_area_km2(site_no, meta_csv)
+    return da if (da is not None and str(src).startswith("nwis")) else None
 
 ROSTER = REPO / "publication/tables/tab-model-roster.csv"
 OUT_JSON = REPO / "web_application/frontend/src/data/drainageAreaAuditCatalog.json"
@@ -161,7 +162,9 @@ def audit_model(row: dict, names: dict[str, str]) -> dict | None:
 
     model_base = USER_ROOT / ws_id / "SWAT_MODEL_Web_Application"
     txtinout = model_base / "Scenarios" / "Default" / "TxtInOut"
-    stations_shp = model_base.parent / "streamflow_data" / "stations.shp"
+    stations_shp = model_base / "streamflow_data" / "stations.shp"
+    if not stations_shp.is_file():
+        stations_shp = model_base.parent / "streamflow_data" / "stations.shp"  # legacy site-level
     if not stations_shp.is_file() or not (txtinout / "chandeg.con").is_file():
         print(f"  skip {ws_id}: missing stations or chandeg.con")
         return None

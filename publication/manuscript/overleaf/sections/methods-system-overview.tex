@@ -1,0 +1,31 @@
+\section{Materials and Methods}
+\subsection{System overview}
+\label{sec:methods-overview}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{final/fig-workflow.png}
+  \caption{End-to-end automated workflow for SWAT\textsuperscript{+} project generation (Objective~1).}
+  \label{fig:workflow}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.62\textwidth]{final/fig-architecture-layers.png}
+  \caption{System layers: interactive client, API, asynchronous workers, and retained SWAT\textsuperscript{+} project outputs (Objective~1).}
+  \label{fig:architecture-layers}
+\end{figure}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Structural discretization, on-disk project size, and model-assembly wall time for S/M/L benchmark domains (Objective~3).}
+  \label{tab:benchmark-sm-l-products}
+  \small
+  \resizebox{\textwidth}{!}{%
+    \input{tables/tab-benchmark-sm-l-products}%
+  }
+\end{table}
+
+SWATGenX assembles spatially explicit SWAT\textsuperscript{+} projects \citep{Bieger2017SWATPlus} from U.S.\ national hydrography and ancillary environmental layers under explicit, auditable preprocessing rules. A browser-based Watershed Explorer, REST API, and asynchronous workers (Figure~\ref{fig:architecture-layers}) run long-running generation without blocking interactive use, writing outputs to a per-basin directory tree for QSWAT\textsuperscript{+}/SWAT\textsuperscript{+} Editor handoff. Users request a basin; workers execute the pipeline (Figure~\ref{fig:workflow}); logs, QA JSON, and vector/project outputs are retained for audit. The same preprocessor supports several extent modes---watersheds keyed to USGS streamgages \citep{USGSNWIS}, HUC12 outlet sets, and whole-HUC8 exports---with outlet semantics defined relative to the cleaned NHDPlus HR network (\S\ref{sec:methods-domain}). Work proceeds from (i)~domain definition, (ii)~NHDPlus HR hydrography preprocessing, (iii)~national environmental-data integration, (iv)~SWAT\textsuperscript{+} project assembly, and (v)~provenance documentation; Objective~4 then applies the pipeline to controlled gage basins through initialization, PSO calibration, basin-specific verification, and Morris sensitivity (\S\ref{sec:methods-calibration}).
+
+This manuscript evaluates that pipeline on the selected domains of Table~\ref{tab:model-roster}, not as a CONUS-wide hydrologic validation. Structural footprints and model-assembly wall times for the S/M/L domains are in Table~\ref{tab:benchmark-sm-l-products} (Model IDs matching the public runtime catalog; times on the 10-vCPU production host---end-to-end worker job for S/M, maximum logged QSWAT\textsuperscript{+} assembly phase for the whole-HUC-8 L domain---excluding simulation cost). Each methodological comparison below also has an interactive companion page that lets readers explore the underlying models, figures, and per-gage tables \citep{SWATGenXcompanion}.

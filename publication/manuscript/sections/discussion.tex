@@ -3,44 +3,21 @@
 \subsection{Principal finding}
 
 National NHDPlus HR and ancillary U.S.\ datasets can be converted automatically into structurally consistent, executable, and auditable SWAT\textsuperscript{+} projects through the documented SWATGenX workflow.
-Primary evidence comprises a layered implementation with inspectable outputs and a stated preprocessing rule set with quantified structural changes relative to original NHDPlus HR sources (Objectives~1--2).
-Secondary evidence comprises structural and assembly-cost scaling across three benchmark size classes and successful execution of initialization, split-sample calibration and verification, and Morris sensitivity on two controlled gage basins (Objectives~3--4).
-Supporting evidence comprises predictable simulation cost on one documented host/build configuration (Objective~5).
+Primary evidence is a layered implementation with inspectable outputs and a stated preprocessing rule set with quantified structural changes relative to original NHDPlus HR sources (Objectives~1--2); secondary evidence is structural and assembly-cost scaling across three benchmark size classes and successful initialization, split-sample calibration/verification, and Morris sensitivity on two controlled gage basins (Objectives~3--4); supporting evidence is predictable simulation cost on one documented host/build (Objective~5).
 That evidence supports reproducible national preprocessing and project generation; it does \emph{not} establish nationwide hydrologic validity, cross-tool superiority, or readiness for regulatory filing without expert review.
 
 \subsection{Objective-by-objective synthesis}
 
-Objective 1 (implementation structure). Figures~\ref{fig:workflow} and \ref{fig:architecture-layers} show that generation follows a layered, auditable design; manifest classes in Table~\ref{tab:package-manifest-abridged} confirm standard vector layers, climate station files, SQLite project tables, and QA sidecars rather than ad hoc folder layouts per analyst.
-
-Objective 2 (preprocessing rules). The NHDPlus HR rule set (Table~\ref{tab:nhd-rules-abridged}; Figure~\ref{fig:nhd-workflow}) trades retention of every national-graph feature for a SWAT\textsuperscript{+}-legal routing tree; Table~\ref{tab:nhd-preprocessing-qa} quantifies that trade using original HU4 geodatabase zips versus exported project shapefiles (e.g., three of 56 original catchments consolidated for the small benchmark domain; 11 of 1{,}382 for the medium domain).
-These rules target topological legality and auditability, not demonstrated hydrologic optimality.
+The layered design (Figures~\ref{fig:workflow}, \ref{fig:architecture-layers}) yields standard, auditable manifest classes rather than per-analyst folder layouts (Objective~1), and the NHDPlus HR rule set (Table~\ref{tab:nhd-rules-abridged}) trades retention of every national-graph feature for a SWAT\textsuperscript{+}-legal routing tree, with the trade quantified in Table~\ref{tab:nhd-preprocessing-qa} (Objective~2). These rules target topological legality and auditability, not demonstrated hydrologic optimality.
 
 \paragraph{Drainage-area fidelity.}
-A complementary audit (Table~\ref{tab:drainage-area-audit}; \S\ref{sec:results-drainage-audit}) tests whether the executable model preserves cumulative drainage area, comparing \texttt{chandeg.con} channel areas with original NHDPlus HR \texttt{TotDASqKm} at gage-assigned channels across the eight catalog Model IDs: 82 of 97 matched gages (85\%) agree within $0.5$--$2.0\times$, and on the gage-dense Peace River domain the median SWAT\textsuperscript{+}/NHD ratio is 1.11 with assignment outliers reported separately.
-Gage-to-channel assignment is itself auditable: an NHD-first/SWAT-second rule (Table~\ref{tab:station-assignment}) deliberately excludes SWAT\textsuperscript{+} area from the channel choice, and a two-way credibility check (Table~\ref{tab:drainage-credibility}) shows the NHD--USGS and SWAT\textsuperscript{+}--NHD agreement questions are near-independent ($r=-0.005$), so USGS catalog-area variance does not explain the model--hydrography offset.
-A pipeline-stage trace (Table~\ref{tab:drainage-area-pipeline-trace}) localizes the systematic Peace-mainstem $+10$--$17\%$ excess: the original VAA, upstream catchment sums, pre-QSWAT\textsuperscript{+} reach attributes, and post-processed subbasin polygons all agree with the reference within $\pm3\%$, and the excess first appears at the QSWAT\textsuperscript{+}/TauDEM channel-area stage.
-This is evidence that the NHDPlus HR preprocessing preserves cumulative drainage structure and that the residual offset is a delineation-definition difference introduced downstream---not a preprocessing error.
-The live project channel area (\texttt{rivs1.AreaC} and SQLite \texttt{gis\_channels}) carries the full offset while the exported \texttt{chandeg.con} matches it to within $0.1\%$, confirming the offset is established in the QSWAT\textsuperscript{+}/TauDEM channel area ahead of a faithful SWAT\textsuperscript{+} export (Table~\ref{tab:drainage-area-pipeline-trace}, stage~H).
+A complementary audit (Table~\ref{tab:drainage-area-audit}; \S\ref{sec:results-drainage-audit}) tests whether the \emph{executable} model preserves cumulative drainage area: 82 of 97 matched gages (85\%) agree within $0.5$--$2.0\times$, and on the gage-dense Peace domain the median ratio is 1.11. Assignment is itself auditable---an NHD-first/SWAT-second rule (Table~\ref{tab:station-assignment}) excludes SWAT\textsuperscript{+} area from the channel choice, and a two-way credibility check (Table~\ref{tab:drainage-credibility}) shows the NHD--USGS and SWAT\textsuperscript{+}--NHD questions are near-independent ($r=-0.005$), so USGS catalog variance does not explain the offset. A pipeline-stage trace (Table~\ref{tab:drainage-area-pipeline-trace}) localizes the $+10$--$17\%$ mainstem excess: every stage through the post-processed polygons agrees within $\pm3\%$, the excess first appears at the QSWAT\textsuperscript{+}/TauDEM channel-area stage, and \texttt{chandeg.con} carries it faithfully (within $0.1\%$). The NHDPlus HR preprocessing is therefore exonerated; the residual is a delineation-definition difference introduced downstream.
 
-Objective 3 (structural and assembly cost). The S/M/L benchmark size classes span three orders of magnitude in HRU space; Table~\ref{tab:benchmark-sm-l-products} reports discretization counts, on-disk project size, and model-assembly wall time for the same Model IDs published in the runtime benchmark catalog.
+The benchmark size classes span three orders of magnitude in HRU space (Objective~3), and the two controlled gage basins complete initialization, PSO calibration, independent verification, and Morris batches on non-overlapping holdout periods (Objective~4). Morris screening returns repeatable 999-member predictive bands and ranked $\mu^*$ that differ between Florida (subsurface/lag) and Illinois (snowmelt/channel routing). Split-sample NSE, PBIAS, and RMSE (Supplementary Table~\ref{tab:hydrologic-metrics}) are workflow diagnostics only: under equifinality many parameter sets yield comparable fit \citep{Beven2006EquifinalityManifesto}, so a favorable score confirms that generated projects run an end-to-end calibration workflow, not that they recover correct process representation or national skill. On one documented host/build, filtered print profiles dominate calibration-batch throughput, and the scaling ladder (Supplementary Section~\ref{sec:supp-runtime-benchmark}) shows channel-routing density can exceed HRU count as a driver (Objective~5).
 
-Objective 4 (downstream workflow readiness). Gage basins \texttt{02297600} and \texttt{05536265} (Table~\ref{tab:model-roster}; Table~\ref{tab:controlled-gage-structure}) show that generated projects can complete initialization, PSO calibration, independent verification, and Morris batches on non-overlapping holdout periods.
+\subsection{Context relative to existing watershed-modeling platforms}
 
-\paragraph{What Morris demonstrates.}
-Morris screening on the calibration window provides repeatable parameter perturbation, 999-member predictive bands with reported P-factor and R-factor (Table~\ref{tab:sensitivity-ensemble-metrics}; Figure~\ref{fig:sensitivity-ensemble}), ranked $\mu^*$ sensitivities that differ between Florida (subsurface and lag parameters) and Illinois (snowmelt and channel routing among the largest effects), and evidence that ensemble machinery runs end-to-end on both hydroclimates.
-
-\paragraph{What hydrologic metrics do not demonstrate.}
-Split-sample NSE, PBIAS, and RMSE (Supplementary Table~\ref{tab:hydrologic-metrics}) characterize controlled-basin workflow diagnostics only.
-They do not validate preprocessing fidelity, establish national predictive skill, or diagnose why Illinois holdout skill remained modest.
-High Florida verification NSE is reported as a diagnostic, not as proof of platform success.
-
-Objective 5 (simulation runtime; supporting evidence). On one documented host/build configuration, filtered print profiles dominate calibration-batch throughput on the small, medium, and large benchmark domains; the six-point ladder in Supplementary Section~\ref{sec:supp-runtime-benchmark} shows that channel routing density can exceed HRU count as a scaling driver.
-
-\subsection{Context relative to existing SWAT-family workflows}
-
-Table~\ref{tab:tool-contrast} provides \textbf{positioning context only} for this workflow relative to HAWQS \citep{Yen2016HAWQS} and BASINS \citep{EPABASINSFramework}.
-HAWQS is documented around SWAT classic on medium-resolution NHDPlus V2 at HUC8--HUC12 resolutions; BASINS provides desktop GIS access with analyst-driven setup.
-Automating NHDPlus HR at national resolution is a distinct engineering problem---enforcing tree-like topology, lake simplification, and national QA burden at HR fidelity---not a claim of superior hydrologic skill or runtime versus those platforms.
+Table~\ref{tab:tool-contrast} positions this workflow against comparable U.S.\ SWAT-family platforms (context only, not a performance benchmark). As of its current public release (HAWQS~2.x, 2024--25), HAWQS is documented around SWAT classic on medium-resolution NHDPlus~V2 at HUC8--HUC12, and BASINS provides analyst-driven desktop GIS setup \citep{Yen2016HAWQS, EPABASINSFramework}; a higher-resolution successor (HAWQS\textsuperscript{+}) has been signaled but is not, at the time of writing, a comparably documented artifact. The closest prior art on the reproducibility axis is the move from interactive GIS \citep{Dile2016QSWAT} to scriptable configuration-file setup \citep{Chawanda2020SWATPlusAW}; SWATGenX extends that to unattended, auditable generation conditioned on NHDPlus HR. Comparable large-extent efforts elsewhere either build a single pre-assembled domain (e.g.\ CoSWAT at $\sim$2~km with TauDEM thresholds \citep{Chawanda2025CoSWAT}; continental HYPE/mHM/LISFLOOD systems \citep{Arheimer2020WorldWideHYPE, Samaniego2010mHM, VanDerKnijff2010LISFLOOD}) or generate routing inputs for a separate solver (Australian and Canadian frameworks \citep{Welsh2013Source, Craig2020Raven, Han2023BasinMaker}; model-agnostic HydroMT on coarse global hydrography \citep{Eilander2023HydroMT}); none is an automated \emph{generator} of executable SWAT\textsuperscript{+} models conditioned on a high-resolution attributed national network. That distinction matters for calibration: a coarser or DEM-simplified network thins the modeled channels, and a gage can enter calibration only if it maps to a modeled reach of comparable contributing area \citep{Jha2004Subdivision, Chaplot2005DEMmesh}, so preserving the high-resolution NHDPlus HR network keeps more of the national gage inventory usable as calibration targets.
 
 \begin{table}[htbp]
   \centering
@@ -54,43 +31,16 @@ Automating NHDPlus HR at national resolution is a distinct engineering problem--
 
 \subsection{Limitations}
 
-\textbf{(1) Preprocessing hydrologic effects not isolated.}
-The hydrography treatment in Section~\ref{sec:methods-nhd} prioritizes SWAT\textsuperscript{+}-compatible topology over retaining every national-graph feature.
-This study documents and audits preprocessing choices but does not quantify uncertainty propagated from each preprocessing decision into hydrologic outputs or compare alternative rule configurations.
-\begin{itemize}
-  \item Divergence simplification. Reaches with divergence code~2 are removed; braided conveyance may require expert inspection of QA exports.
-  \item Coastal and artificial flowlines. Near-ocean domains may require independent coastal checks.
-  \item Isolated reaches. Dropped reaches are not promoted to standalone routed subbasins.
-  \item Lakes and multi-outlet waterbodies. Single-primary-outlet simplification may require expert edits for complex reservoirs.
-  \item Minimum subbasin area ($A_{\min}=62.5~\mathrm{km}^2$). The merge rule targets typical HUC12-scale units, not whole-domain coarsening; basins smaller than $A_{\min}$ can retain multiple subbasins when terminal units have no in-domain downstream merge target (small benchmark domain: 52.6~km$^2$, three subbasins). Isolated fragments below $A_{\min}/5$ may remain after nearest-neighbor connection.
-  \item Raster--vector consistency. Terrain grids align to the preprocessed stream product; local mismatches remain possible.
-  \item Dataset versioning. Authoritative version pins remain in the dataset inventory audit rows (Table~\ref{tab:data-master-abridged}; Supplementary Table~S1) before camera-ready submission.
-\end{itemize}
-The one-outlet partition, divergence-code-2 removal, lake simplification, and the $A_{\min}$ minimum-area rule are evaluated through structural counts and workflow execution, not through sensitivity analysis of alternative preprocessing configurations.
-
-\textbf{(2) Workflow evaluation is not national validation.}
-Controlled gage basins demonstrate that generated projects can enter standard calibration and Morris workflows; reported metrics do not establish CONUS-scale predictive skill.
-
-\textbf{(3) Tool contrast is contextual only.}
-Table~\ref{tab:tool-contrast} contrasts platform scope and hydrography resolution; it does not benchmark comparative hydrologic performance or batch runtime.
-
-\textbf{(4) Generality limited to the evaluation matrix.}
-Table~\ref{tab:model-roster} spans humid subtropical, semi-arid, and snow-influenced temperate domains in the eastern and western U.S.\ on selected catalog Model IDs.
-Domains not represented include arid ephemeral systems, heavily regulated reservoir complexes, dense urban cores, and coastal tidal networks.
-A CONUS-capable workflow is demonstrated on these selected domains only.
-
-\textbf{(5) Drainage-area definition offset (characterized, not an error).}
-The audit (\S\ref{sec:results-drainage-audit}) localizes the systematic $+10$--$17\%$ SWAT\textsuperscript{+}/NHD mainstem offset to the QSWAT\textsuperscript{+}/TauDEM channel-area computation: the live project channel area (\texttt{rivs1.AreaC} and SQLite \texttt{gis\_channels}) carries the full offset and the exported \texttt{chandeg.con} matches it to within $0.1\%$, so the SWAT\textsuperscript{+} export is faithful and the NHDPlus HR preprocessing is exonerated.
-The residual offset is a TauDEM-contributing-area versus NHD-VAA delineation-definition difference rather than a defect; quantifying its hydrologic consequence (for example, on calibrated parameters) is left to future work.
-Gage--channel assignment outliers on sparsely gaged domains are reported separately and warrant per-gage review before calibrating those stations.
+\textbf{(1) Preprocessing hydrologic effects not isolated.} The hydrography treatment (\S\ref{sec:methods-nhd}) prioritizes SWAT\textsuperscript{+}-compatible topology---divergence simplification, coastal/artificial and isolated-reach handling, single-primary-outlet lakes, and the $A_{\min}$ minimum-area rule---and is evaluated through structural counts and workflow execution, not through sensitivity analysis of alternative rule configurations; complex reservoirs, near-coastal domains, and braided conveyance warrant expert inspection of the QA exports.
+\textbf{(2) Workflow evaluation is not national validation.} Controlled gage basins show that generated projects enter standard calibration and Morris workflows; reported metrics do not establish CONUS-scale predictive skill.
+\textbf{(3) Tool contrast is contextual only} (Table~\ref{tab:tool-contrast}); it does not benchmark comparative performance or runtime.
+\textbf{(4) Generality limited to the evaluation matrix.} Table~\ref{tab:model-roster} spans humid subtropical, semi-arid, and snow-influenced temperate domains but excludes arid-ephemeral, heavily regulated reservoir, dense urban, and coastal-tidal systems. The claim is that high-resolution, structurally consistent SWAT\textsuperscript{+} models can be \emph{generated automatically and audited} from national data, not that they achieve calibrated national skill; broader multi-regime validation against independent benchmarks (e.g.\ the National Water Model; \citealp{Cosgrove2024NWM}) is orthogonal future work that this auditable generation is designed to make tractable.
+\textbf{(5) Drainage-area definition offset (characterized, not an error).} The audit localizes the $+10$--$17\%$ mainstem offset to the QSWAT\textsuperscript{+}/TauDEM channel-area computation ahead of a faithful export; quantifying its hydrologic consequence, and per-gage review of assignment outliers on sparsely gaged domains, is left to future work.
 
 \subsection{Professional judgment and decision support}
 
-Automated assembly does not remove the modeler's responsibility for problem framing, parameter choices, calibration where hydrologic inference is required, or review of data licenses and uncertainties.
-Readers should not treat any generated SWAT\textsuperscript{+} project as a substitute for professional judgment in regulatory or design filings without independent verification.
+Automated assembly does not remove the modeler's responsibility for problem framing, parameter choices, calibration, and review of data licenses and uncertainties. No generated SWAT\textsuperscript{+} project should be treated as a substitute for professional judgment in regulatory or design filings without independent verification.
 
 \subsection{Future work}
 
-Phase-resolved cold-build timing (future work; documented in the archived evaluation materials) would further separate external acquisition from core processing for HUC-8 and huc12\_outlet extent modes beyond the production worker durations in Table~\ref{tab:benchmark-sm-l-products}.
-Expanded QA reporting tied to the full preprocessing rule catalog (Supplementary Table~S1) would ease peer review of preprocessing decisions.
-Large-domain exported vectors would close remaining gaps in Table~\ref{tab:nhd-preprocessing-qa} post-extract counts.
+Priorities are phase-resolved cold-build timing that separates external acquisition from core processing, expanded QA reporting tied to the full preprocessing rule catalog (Supplementary Table~S1), completion of large-domain post-extract counts in Table~\ref{tab:nhd-preprocessing-qa}, and multi-regime hydrologic validation across the excluded domain types.

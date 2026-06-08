@@ -663,8 +663,10 @@ def main(argv: list[str] | None = None) -> int:
                 ax.set_aspect("equal", adjustable="box")
                 ax.set_axis_off()
                 letter = chr(ord("a") + idx)
+                # Panel letter only; descriptive title (tier/place) lives in the
+                # LaTeX caption per Elsevier artwork rule.
                 ax.set_title(
-                    _panel_title_journal(letter, row),
+                    f"({letter})",
                     loc="left",
                     fontsize=10,
                     color="0.15",

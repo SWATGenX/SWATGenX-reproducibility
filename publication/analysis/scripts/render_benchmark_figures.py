@@ -28,13 +28,24 @@ def fig_hru_scaling() -> None:
     ax.scatter(hrus, wall, c="#2563eb", s=60, zorder=3)
     for h, w, t in zip(hrus, wall, labels):
         ax.annotate(t, (h, w), textcoords="offset points", xytext=(4, 4), fontsize=8)
-    fit = json.loads(CATALOG.read_text())["hruScaling"]["linearFit"]
+    # Least-squares linear fit computed from the frozen CSV points (the catalog
+    # no longer carries the fit constants).
+    n = len(hrus)
+    mean_x = sum(hrus) / n
+    mean_y = sum(wall) / n
+    sxx = sum((x - mean_x) ** 2 for x in hrus)
+    sxy = sum((x - mean_x) * (y - mean_y) for x, y in zip(hrus, wall))
+    slope = sxy / sxx
+    intercept = mean_y - slope * mean_x
+    ss_tot = sum((y - mean_y) ** 2 for y in wall)
+    ss_res = sum((y - (slope * x + intercept)) ** 2 for x, y in zip(hrus, wall))
+    r_squared = 1 - ss_res / ss_tot
     xs = [min(hrus), max(hrus)]
-    ys = [fit["wallPerHru"] * x + fit["interceptS"] for x in xs]
-    ax.plot(xs, ys, "--", color="#64748b", linewidth=1, label=f"Linear fit ($R^2$={fit['rSquared']:.2f})")
+    ys = [slope * x + intercept for x in xs]
+    ax.plot(xs, ys, "--", color="#64748b", linewidth=1, label=f"Linear fit ($R^2$={r_squared:.2f})")
     ax.set_xlabel("HRU count")
     ax.set_ylabel("Wall time (s), 365-day filtered run")
-    ax.set_title("Calibration-profile runtime vs HRU count")
+    # Title omitted from figure per Elsevier artwork rule (lives in caption).
     ax.legend(loc="upper left", fontsize=8)
     ax.grid(True, alpha=0.25)
     fig.tight_layout()
@@ -61,7 +72,7 @@ def fig_print_scope() -> None:
     ax.set_xticklabels(tiers)
     ax.set_xlabel("Tier")
     ax.set_ylabel("Wall time (s)")
-    ax.set_title("Print scope effect (NetCDF, one-year run)")
+    # Title omitted from figure per Elsevier artwork rule (lives in caption).
     ax.legend(fontsize=8)
     ax.grid(True, axis="y", alpha=0.25)
     fig.tight_layout()

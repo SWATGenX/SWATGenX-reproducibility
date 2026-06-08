@@ -1,0 +1,12 @@
+\subsection{SWAT\textsuperscript{+} project assembly and workflow outputs}
+\label{sec:methods-assembly}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Representative SWAT\textsuperscript{+} output file classes.}
+  \label{tab:package-manifest-abridged}
+  \small
+  \input{tables/tab-package-manifest-abridged}%
+\end{table}
+
+For a declared VPU and list of HUC12 units, the extractor clips the preprocessed stream network, applies the one-outlet subbasin logic and lake-linkage rules of \S\ref{sec:methods-nhd}, and writes ESRI shapefiles into a SWAT\textsuperscript{+} project tree for QSWAT\textsuperscript{+}-oriented workflows \citep{QSWATplusSoftware}; every benchmark domain then runs the modified-input post-pass ($A_{\min}$ subbasin merge, outlet-topology enforcement, tiny-basin guard). Weather text inputs, SWAT\textsuperscript{+} configuration, and metadata accompanying the vector exports are part of the same generated project tree (representative file classes in Table~\ref{tab:package-manifest-abridged}; path patterns and integrity expectations in Supplementary Table~S1). Groundwater coupling (MODFLOW) and regional recharge workflows are out of scope for this hydrography-first contribution.

@@ -1,0 +1,58 @@
+% SWATGenX manuscript — generic Wiley/JAWRA-ready skeleton (no journal-specific .cls).
+% Compile from publication/manuscript (see publication/README.md).
+\documentclass[12pt]{article}
+
+\input{preamble-common.tex}
+\usepackage{lineno}
+\usepackage{xr}
+\externaldocument{supplement}
+
+\doublespacing
+\linenumbers
+
+\title{Automating High-Resolution SWAT+ Watershed Model Generation from NHDPlus HR and National Environmental Datasets}
+
+\author{%
+  Vahid Rafiei\\
+  Independent Researcher\\
+  \texttt{vahidr32@gmail.com}\\
+  ORCID: \href{https://orcid.org/0009-0009-8309-1895}{0009-0009-8309-1895}
+}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\input{sections/highlights}
+
+\input{sections/abstract}
+\input{sections/keywords}
+
+\input{sections/introduction}
+
+\input{sections/methods-system-overview}
+\input{sections/methods-domain-definition}
+\input{sections/methods-nhdplus-hr}
+\input{sections/methods-delineation-comparison}
+\input{sections/methods-drainage-area-audit}
+\input{sections/methods-data-inputs}
+\input{sections/methods-swat-assembly}
+\input{sections/methods-software-reproducibility}
+\input{sections/methods-calibration-sensitivity}
+
+\input{sections/results}
+\input{sections/discussion}
+\input{sections/conclusions}
+
+\input{sections/code-availability}
+\input{sections/data-availability}
+
+\input{sections/declarations}
+\input{sections/acknowledgments}
+
+\bibliographystyle{apalike}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,1488 @@
+{
+  "summary": {
+    "n_vpu_local": 69,
+    "n_missing_filename_vintage": 49,
+    "vintages_present": [
+      "20220323",
+      "20220324",
+      "20220412",
+      "20220414",
+      "20220418",
+      "20220901",
+      "20230713"
+    ],
+    "finest_source_scale_overall": 1200
+  },
+  "records": [
+    {
+      "vpu": "0101",
+      "vintage_filename": "20220901",
+      "vintage_in_filename": true,
+      "zip": "NHDPLUS_H_0101_HU4_20220901_GDB.zip",
+      "states": "CN,ME",
+      "name": "St. John",
+      "area_km2": 36485.3,
+      "wbd_loaddate": "2019-10-15T17:01:06+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 41917,
+      "reaches_per_km2": 1.149,
+      "source_scales": {
+        "24000": 133,
+        "100000": 6
+      },
+      "source_scales_finest": 24000,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "0105",
+      "vintage_filename": "20230713",
+      "vintage_in_filename": true,
+      "zip": "NHDPLUS_H_0105_HU4_20230713_GDB.zip",
+      "states": "CN,ME",
+      "name": "Maine Coastal",
+      "area_km2": 29957.3,
+      "wbd_loaddate": "2020-12-09T09:41:52+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 38845,
+      "reaches_per_km2": 1.297,
+      "source_scales": {
+        "24000": 115,
+        "100000": 8
+      },
+      "source_scales_finest": 24000,
+      "source_scales_sub1000": {
+        "1": 4
+      }
+    },
+    {
+      "vpu": "0106",
+      "vintage_filename": "20230713",
+      "vintage_in_filename": true,
+      "zip": "NHDPLUS_H_0106_HU4_20230713_GDB.zip",
+      "states": "MA,ME,NH",
+      "name": "Saco",
+      "area_km2": 12568.1,
+      "wbd_loaddate": "2020-12-16T11:42:51+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 33914,
+      "reaches_per_km2": 2.698,
+      "source_scales": {
+        "5000": 2,
+        "24000": 121,
+        "100000": 9
+      },
+      "source_scales_finest": 5000,
+      "source_scales_sub1000": {
+        "1": 2
+      }
+    },
+    {
+      "vpu": "0108",
+      "vintage_filename": "20220324",
+      "vintage_in_filename": true,
+      "zip": "NHDPLUS_H_0108_HU4_20220324_GDB.zip",
+      "states": "CN,CT,MA,ME,NH,VT",
+      "name": "Connecticut",
+      "area_km2": 29173.8,
+      "wbd_loaddate": "2020-12-16T11:42:48+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 104740,
+      "reaches_per_km2": 3.59,
+      "source_scales": {
+        "4800": 1,
+        "5000": 1,
+        "24000": 111,
+        "25000": 8,
+        "100000": 21
+      },
+      "source_scales_finest": 4800,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "0109",
+      "vintage_filename": "20230713",
+      "vintage_in_filename": true,
+      "zip": "NHDPLUS_H_0109_HU4_20230713_GDB.zip",
+      "states": "MA,RI",
+      "name": "Massachusetts-Rhode Island Coastal",
+      "area_km2": 18397.0,
+      "wbd_loaddate": "2021-01-25T09:57:16+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 65569,
+      "reaches_per_km2": 3.564,
+      "source_scales": {
+        "2400": 1,
+        "24000": 148,
+        "25000": 5,
+        "100000": 10
+      },
+      "source_scales_finest": 2400,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "0110",
+      "vintage_filename": "20220323",
+      "vintage_in_filename": true,
+      "zip": "NHDPLUS_H_0110_HU4_20220323_GDB.zip",
+      "states": "CT,MA,NY,RI",
+      "name": "Connecticut Coastal",
+      "area_km2": 12561.6,
+      "wbd_loaddate": "2021-05-17T14:04:06+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 76164,
+      "reaches_per_km2": 6.063,
+      "source_scales": {
+        "2400": 1,
+        "24000": 122,
+        "25000": 4,
+        "100000": 18
+      },
+      "source_scales_finest": 2400,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "0204",
+      "vintage_filename": "20220324",
+      "vintage_in_filename": true,
+      "zip": "NHDPLUS_H_0204_HU4_20220324_GDB.zip",
+      "states": "DE,MD,NJ,NY,PA,VA",
+      "name": "Delaware-Mid Atlantic Coastal",
+      "area_km2": 46680.1,
+      "wbd_loaddate": "2020-11-03T11:01:54+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 311116,
+      "reaches_per_km2": 6.665,
+      "source_scales": {
+        "2400": 4,
+        "5000": 1,
+        "9999": 1,
+        "24000": 158,
+        "99999": 3,
+        "100000": 45
+      },
+      "source_scales_finest": 2400,
+      "source_scales_sub1000": {
+        "200": 2
+      }
+    },
+    {
+      "vpu": "0205",
+      "vintage_filename": "20220323",
+      "vintage_in_filename": true,
+      "zip": "NHDPLUS_H_0205_HU4_20220323_GDB.zip",
+      "states": "MD,NY,PA",
+      "name": "Susquehanna",
+      "area_km2": 71224.2,
+      "wbd_loaddate": "2021-01-07T13:33:54+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 122906,
+      "reaches_per_km2": 1.726,
+      "source_scales": {
+        "2400": 9,
+        "24000": 169,
+        "100000": 36
+      },
+      "source_scales_finest": 2400,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "0207",
+      "vintage_filename": "20220324",
+      "vintage_in_filename": true,
+      "zip": "NHDPLUS_H_0207_HU4_20220324_GDB.zip",
+      "states": "DC,MD,PA,VA,WV",
+      "name": "Potomac",
+      "area_km2": 38018.6,
+      "wbd_loaddate": "2020-11-03T11:02:04+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 100634,
+      "reaches_per_km2": 2.647,
+      "source_scales": {
+        "4800": 1,
+        "24000": 89,
+        "100000": 21
+      },
+      "source_scales_finest": 4800,
+      "source_scales_sub1000": {
+        "200": 7
+      }
+    },
+    {
+      "vpu": "0208",
+      "vintage_filename": "20220324",
+      "vintage_in_filename": true,
+      "zip": "NHDPLUS_H_0208_HU4_20220324_GDB.zip",
+      "states": "DE,MD,VA,WV",
+      "name": "Lower Chesapeake",
+      "area_km2": 53570.4,
+      "wbd_loaddate": "2020-11-03T11:01:41+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 196027,
+      "reaches_per_km2": 3.659,
+      "source_scales": {
+        "24000": 147,
+        "100000": 35
+      },
+      "source_scales_finest": 24000,
+      "source_scales_sub1000": {
+        "200": 16
+      }
+    },
+    {
+      "vpu": "0302",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_0302_HU4_GDB.zip",
+      "states": "NC",
+      "name": "Neuse-Pamlico",
+      "area_km2": 36985.2,
+      "wbd_loaddate": "2017-08-25T15:13:07+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 123395,
+      "reaches_per_km2": 3.336,
+      "source_scales": {
+        "24000": 96,
+        "100000": 21
+      },
+      "source_scales_finest": 24000,
+      "source_scales_sub1000": {
+        "200": 1
+      }
+    },
+    {
+      "vpu": "0303",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_0303_HU4_GDB.zip",
+      "states": "NC",
+      "name": "Cape Fear",
+      "area_km2": 23847.2,
+      "wbd_loaddate": "2017-08-10T20:27:33+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 89678,
+      "reaches_per_km2": 3.761,
+      "source_scales": {
+        "24000": 65,
+        "100000": 16
+      },
+      "source_scales_finest": 24000,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "0304",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_0304_HU4_GDB.zip",
+      "states": "NC,SC,VA",
+      "name": "Pee Dee",
+      "area_km2": 48857.9,
+      "wbd_loaddate": "2017-08-10T20:27:31+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 180427,
+      "reaches_per_km2": 3.693,
+      "source_scales": {
+        "24000": 89,
+        "100000": 18
+      },
+      "source_scales_finest": 24000,
+      "source_scales_sub1000": {
+        "200": 1
+      }
+    },
+    {
+      "vpu": "0306",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_0306_HU4_GDB.zip",
+      "states": "GA,NC,SC",
+      "name": "Ogeechee-Savannah",
+      "area_km2": 43806.4,
+      "wbd_loaddate": "2017-07-23T21:17:37+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 117720,
+      "reaches_per_km2": 2.687,
+      "source_scales": {
+        "24000": 96,
+        "100000": 21
+      },
+      "source_scales_finest": 24000,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "0308",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_0308_HU4_GDB.zip",
+      "states": "FL",
+      "name": "St. Johns",
+      "area_km2": 31559.8,
+      "wbd_loaddate": "2017-07-11T11:21:23+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 64247,
+      "reaches_per_km2": 2.036,
+      "source_scales": {
+        "2000": 2,
+        "2400": 7,
+        "12000": 77,
+        "24000": 309,
+        "40000": 16,
+        "100000": 28,
+        "2000000": 1
+      },
+      "source_scales_finest": 2000,
+      "source_scales_sub1000": {
+        "1": 75,
+        "3": 3,
+        "15": 47
+      }
+    },
+    {
+      "vpu": "0310",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_0310_HU4_GDB.zip",
+      "states": "FL",
+      "name": "Peace-Tampa Bay",
+      "area_km2": 27562.7,
+      "wbd_loaddate": "2017-07-11T11:21:21+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 96077,
+      "reaches_per_km2": 3.486,
+      "source_scales": {
+        "2400": 8,
+        "12000": 88,
+        "24000": 325,
+        "40000": 12,
+        "100000": 28,
+        "2000000": 1
+      },
+      "source_scales_finest": 2400,
+      "source_scales_sub1000": {
+        "1": 96,
+        "15": 54
+      }
+    },
+    {
+      "vpu": "0313",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_0313_HU4_GDB.zip",
+      "states": "AL,FL,GA",
+      "name": "Apalachicola",
+      "area_km2": 53422.2,
+      "wbd_loaddate": "2017-06-30T11:00:10+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 106235,
+      "reaches_per_km2": 1.989,
+      "source_scales": {
+        "4800": 1,
+        "12000": 23,
+        "24000": 171,
+        "100000": 34
+      },
+      "source_scales_finest": 4800,
+      "source_scales_sub1000": {
+        "1": 17,
+        "15": 18
+      }
+    },
+    {
+      "vpu": "0314",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_0314_HU4_GDB.zip",
+      "states": "AL,FL",
+      "name": "Choctawhatchee-Escambia",
+      "area_km2": 40426.3,
+      "wbd_loaddate": "2017-09-08T13:01:35+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 113421,
+      "reaches_per_km2": 2.806,
+      "source_scales": {
+        "4800": 2,
+        "12000": 67,
+        "24000": 245,
+        "100000": 37
+      },
+      "source_scales_finest": 4800,
+      "source_scales_sub1000": {
+        "1": 25,
+        "15": 40,
+        "999": 1
+      }
+    },
+    {
+      "vpu": "0315",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_0315_HU4_GDB.zip",
+      "states": "AL,GA,TN",
+      "name": "Alabama",
+      "area_km2": 58896.5,
+      "wbd_loaddate": "2017-08-04T12:39:23+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 163574,
+      "reaches_per_km2": 2.777,
+      "source_scales": {
+        "24000": 99,
+        "100000": 36
+      },
+      "source_scales_finest": 24000,
+      "source_scales_sub1000": {
+        "999": 2
+      }
+    },
+    {
+      "vpu": "0403",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_0403_HU4_GDB.zip",
+      "states": "MI,WI",
+      "name": "Northwestern Lake Michigan",
+      "area_km2": 53659.2,
+      "wbd_loaddate": "2019-04-02T12:17:54+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 53834,
+      "reaches_per_km2": 1.003,
+      "source_scales": {
+        "2400": 1,
+        "24000": 230,
+        "100000": 35
+      },
+      "source_scales_finest": 2400,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "0408",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_0408_HU4_GDB.zip",
+      "states": "MI",
+      "name": "Southwestern Lake Huron-Lake Huron",
+      "area_km2": 23665.8,
+      "wbd_loaddate": "2019-10-31T11:11:40+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 25406,
+      "reaches_per_km2": 1.074,
+      "source_scales": {
+        "24000": 124,
+        "100000": 15
+      },
+      "source_scales_finest": 24000,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "0409",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_0409_HU4_GDB.zip",
+      "states": "CN,MI",
+      "name": "St. Clair-Detroit",
+      "area_km2": 19098.7,
+      "wbd_loaddate": "2019-12-27T14:51:20+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 37607,
+      "reaches_per_km2": 1.969,
+      "source_scales": {
+        "24000": 100,
+        "100000": 8
+      },
+      "source_scales_finest": 24000,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "0430",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_0430_HU4_GDB.zip",
+      "states": "CN,ME,NH,NY,VT",
+      "name": "Middle Saint Lawrence River",
+      "area_km2": 34774.6,
+      "wbd_loaddate": "2019-10-22T10:21:05+00:00",
+      "wbd_metasourceid": "{1F9C33C3-25A8-4011-8B9B-C8828736F317} ",
+      "reach_count": 116911,
+      "reaches_per_km2": 3.362,
+      "source_scales": {
+        "24000": 124,
+        "100000": 8
+      },
+      "source_scales_finest": 24000,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "0502",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_0502_HU4_GDB.zip",
+      "states": "MD,PA,WV",
+      "name": "Monongahela",
+      "area_km2": 19104.3,
+      "wbd_loaddate": "2012-06-11T07:54:59+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 34582,
+      "reaches_per_km2": 1.81,
+      "source_scales": {
+        "2400": 1,
+        "24000": 58,
+        "100000": 16,
+        "250000": 2
+      },
+      "source_scales_finest": 2400,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "0503",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_0503_HU4_GDB.zip",
+      "states": "OH,PA,WV",
+      "name": "Upper Ohio",
+      "area_km2": 34687.2,
+      "wbd_loaddate": "2017-04-19T09:51:31+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 75104,
+      "reaches_per_km2": 2.165,
+      "source_scales": {
+        "2400": 1,
+        "24000": 126,
+        "100000": 31
+      },
+      "source_scales_finest": 2400,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "0504",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_0504_HU4_GDB.zip",
+      "states": "OH",
+      "name": "Muskingum",
+      "area_km2": 20849.4,
+      "wbd_loaddate": "2017-04-18T14:42:24+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 41649,
+      "reaches_per_km2": 1.998,
+      "source_scales": {
+        "24000": 54,
+        "100000": 17
+      },
+      "source_scales_finest": 24000,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "0509",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_0509_HU4_GDB.zip",
+      "states": "IN,KY,OH,WV",
+      "name": "Middle Ohio",
+      "area_km2": 23054.7,
+      "wbd_loaddate": "2017-05-19T13:12:46+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 109287,
+      "reaches_per_km2": 4.74,
+      "source_scales": {
+        "1200": 1,
+        "2400": 7,
+        "12000": 222,
+        "24000": 164,
+        "40000": 2,
+        "100000": 26
+      },
+      "source_scales_finest": 1200,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "0510",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_0510_HU4_GDB.zip",
+      "states": "KY,VA",
+      "name": "Kentucky-Licking",
+      "area_km2": 27638.7,
+      "wbd_loaddate": "2017-04-24T11:44:59+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 74582,
+      "reaches_per_km2": 2.698,
+      "source_scales": {
+        "1200": 4,
+        "2400": 7,
+        "12000": 1234,
+        "24000": 349,
+        "40000": 1,
+        "100000": 22
+      },
+      "source_scales_finest": 1200,
+      "source_scales_sub1000": {
+        "1": 38
+      }
+    },
+    {
+      "vpu": "0512",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_0512_HU4_GDB.zip",
+      "states": "IL,IN,OH",
+      "name": "Wabash",
+      "area_km2": 85349.1,
+      "wbd_loaddate": "2017-05-24T11:33:48+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 1532101,
+      "reaches_per_km2": 17.951,
+      "source_scales": {
+        "1200": 23,
+        "2400": 5,
+        "12000": 8,
+        "24000": 218,
+        "100000": 53
+      },
+      "source_scales_finest": 1200,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "0514",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_0514_HU4_GDB.zip",
+      "states": "IL,IN,KY",
+      "name": "Lower Ohio",
+      "area_km2": 32633.7,
+      "wbd_loaddate": "2017-05-24T11:33:50+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 296920,
+      "reaches_per_km2": 9.099,
+      "source_scales": {
+        "1200": 10,
+        "2400": 15,
+        "4800": 1,
+        "12000": 1028,
+        "24000": 431,
+        "25402": 4,
+        "100000": 42
+      },
+      "source_scales_finest": 1200,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "0601",
+      "vintage_filename": "20220418",
+      "vintage_in_filename": true,
+      "zip": "NHDPLUS_H_0601_HU4_20220418_GDB.zip",
+      "states": "GA,KY,NC,SC,TN,VA,WV",
+      "name": "Upper Tennessee",
+      "area_km2": 44787.9,
+      "wbd_loaddate": "2021-02-01T10:10:15+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 268831,
+      "reaches_per_km2": 6.002,
+      "source_scales": {
+        "2400": 1,
+        "4800": 11,
+        "12000": 24,
+        "24000": 201,
+        "100000": 31
+      },
+      "source_scales_finest": 2400,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "0602",
+      "vintage_filename": "20220418",
+      "vintage_in_filename": true,
+      "zip": "NHDPLUS_H_0602_HU4_20220418_GDB.zip",
+      "states": "AL,GA,NC,TN",
+      "name": "Middle Tennessee-Hiwassee",
+      "area_km2": 13365.7,
+      "wbd_loaddate": "2021-02-02T09:10:33+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 37460,
+      "reaches_per_km2": 2.803,
+      "source_scales": {
+        "24000": 64,
+        "100000": 7
+      },
+      "source_scales_finest": 24000,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "0708",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_0708_HU4_GDB.zip",
+      "states": "IA,IL,MN,MO",
+      "name": "Upper Mississippi-Iowa-Skunk-Wapsipinicon",
+      "area_km2": 59402.8,
+      "wbd_loaddate": "2012-06-11T07:54:59+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 88888,
+      "reaches_per_km2": 1.496,
+      "source_scales": {
+        "24000": 121,
+        "40000": 4,
+        "100000": 32
+      },
+      "source_scales_finest": 24000,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "0710",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_0710_HU4_GDB.zip",
+      "states": "IA,MN,MO",
+      "name": "Des Moines",
+      "area_km2": 37442.4,
+      "wbd_loaddate": "2016-12-22T17:41:06+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 46333,
+      "reaches_per_km2": 1.237,
+      "source_scales": {
+        "24000": 103,
+        "40000": 5,
+        "100000": 28
+      },
+      "source_scales_finest": 24000,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "0712",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_0712_HU4_GDB.zip",
+      "states": "IL,IN,MI,WI",
+      "name": "Upper Illinois",
+      "area_km2": 28314.2,
+      "wbd_loaddate": "2017-02-13T19:27:45+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 249122,
+      "reaches_per_km2": 8.798,
+      "source_scales": {
+        "1200": 11,
+        "2400": 1,
+        "4800": 1,
+        "24000": 103,
+        "100000": 20
+      },
+      "source_scales_finest": 1200,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "0713",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_0713_HU4_GDB.zip",
+      "states": "IL",
+      "name": "Lower Illinois",
+      "area_km2": 46353.9,
+      "wbd_loaddate": "2017-02-13T19:27:39+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 115014,
+      "reaches_per_km2": 2.481,
+      "source_scales": {
+        "1200": 4,
+        "24000": 112,
+        "100000": 18
+      },
+      "source_scales_finest": 1200,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "0802",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_0802_HU4_GDB.zip",
+      "states": "AR,MO,MS",
+      "name": "Lower Mississippi-St. Francis",
+      "area_km2": 41892.4,
+      "wbd_loaddate": "2018-05-21T11:38:45+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 112077,
+      "reaches_per_km2": 2.675,
+      "source_scales": {
+        "2400": 3,
+        "4800": 5,
+        "12000": 1,
+        "24000": 152,
+        "100000": 29
+      },
+      "source_scales_finest": 2400,
+      "source_scales_sub1000": {
+        "12": 1,
+        "24": 8,
+        "40": 1
+      }
+    },
+    {
+      "vpu": "0807",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_0807_HU4_GDB.zip",
+      "states": "LA,MS",
+      "name": "Lower Mississippi-Lake Maurepas",
+      "area_km2": 15074.4,
+      "wbd_loaddate": "2017-10-16T01:33:31+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 34477,
+      "reaches_per_km2": 2.287,
+      "source_scales": {
+        "2400": 6,
+        "24000": 117,
+        "100000": 18
+      },
+      "source_scales_finest": 2400,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "0809",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_0809_HU4_GDB.zip",
+      "states": "LA,MS",
+      "name": "Lower Mississippi",
+      "area_km2": 29240.2,
+      "wbd_loaddate": "2017-10-16T01:33:31+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 46555,
+      "reaches_per_km2": 1.592,
+      "source_scales": {
+        "2400": 6,
+        "4800": 4,
+        "24000": 120,
+        "100000": 13
+      },
+      "source_scales_finest": 2400,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "0903",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_0903_HU4_GDB.zip",
+      "states": "CN,MI,MN,WI",
+      "name": "Western Lake Superior",
+      "area_km2": 25428.6,
+      "wbd_loaddate": "2012-06-11T07:54:58+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 107133,
+      "reaches_per_km2": 4.213,
+      "source_scales": {
+        "24000": 84,
+        "40000": 2,
+        "100000": 23
+      },
+      "source_scales_finest": 24000,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "1003",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_1003_HU4_GDB.zip",
+      "states": "MT",
+      "name": "Missouri-Marias",
+      "area_km2": 51433.4,
+      "wbd_loaddate": "2016-10-07T20:07:08+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 92676,
+      "reaches_per_km2": 1.802,
+      "source_scales": {
+        "4000": 2,
+        "4500": 12,
+        "5000": 1,
+        "6000": 1,
+        "8000": 1,
+        "12000": 7,
+        "24000": 90,
+        "100000": 19
+      },
+      "source_scales_finest": 4000,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "1004",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_1004_HU4_GDB.zip",
+      "states": "MT",
+      "name": "Missouri-Marias",
+      "area_km2": 51433.4,
+      "wbd_loaddate": "2016-10-07T20:07:08+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 168386,
+      "reaches_per_km2": 3.274,
+      "source_scales": {
+        "4500": 18,
+        "5000": 2,
+        "6000": 2,
+        "10000": 1,
+        "24000": 84,
+        "100000": 19
+      },
+      "source_scales_finest": 4500,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "1008",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_1008_HU4_GDB.zip",
+      "states": "CO,NE,WY",
+      "name": "North Platte",
+      "area_km2": 80472.0,
+      "wbd_loaddate": "2016-12-01T14:55:10+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 183885,
+      "reaches_per_km2": 2.285,
+      "source_scales": {
+        "4000": 5,
+        "24000": 124,
+        "100000": 34
+      },
+      "source_scales_finest": 4000,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "1012",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_1012_HU4_GDB.zip",
+      "states": "MT,ND,SD,WY",
+      "name": "Missouri-Little Missouri",
+      "area_km2": 44637.9,
+      "wbd_loaddate": "2012-06-11T07:54:59+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 328260,
+      "reaches_per_km2": 7.354,
+      "source_scales": {
+        "4000": 1,
+        "12000": 2,
+        "24000": 127,
+        "100000": 17
+      },
+      "source_scales_finest": 4000,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "1014",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_1014_HU4_GDB.zip",
+      "states": "IA,MN,NE,SD",
+      "name": "Missouri-Big Sioux",
+      "area_km2": 37994.9,
+      "wbd_loaddate": "2016-10-06T05:10:08+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 120880,
+      "reaches_per_km2": 3.181,
+      "source_scales": {
+        "12000": 2,
+        "24000": 73,
+        "100000": 25
+      },
+      "source_scales_finest": 12000,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "1018",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_1018_HU4_GDB.zip",
+      "states": "CO,NE,WY",
+      "name": "North Platte",
+      "area_km2": 80472.0,
+      "wbd_loaddate": "2016-12-01T14:55:10+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 201926,
+      "reaches_per_km2": 2.509,
+      "source_scales": {
+        "12000": 2,
+        "24000": 110,
+        "100000": 15
+      },
+      "source_scales_finest": 12000,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "1101",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_1101_HU4_GDB.zip",
+      "states": "AR,MO",
+      "name": "Upper White",
+      "area_km2": 57880.3,
+      "wbd_loaddate": "2017-04-17T09:00:59+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 119071,
+      "reaches_per_km2": 2.057,
+      "source_scales": {
+        "24000": 121,
+        "100000": 34,
+        "250000": 1
+      },
+      "source_scales_finest": 24000,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "1102",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_1102_HU4_GDB.zip",
+      "states": "CO,KS,NM",
+      "name": "Upper Arkansas",
+      "area_km2": 64556.2,
+      "wbd_loaddate": "2017-04-17T09:39:52+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 217295,
+      "reaches_per_km2": 3.366,
+      "source_scales": {
+        "24000": 107,
+        "100000": 27
+      },
+      "source_scales_finest": 24000,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "1107",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_1107_HU4_GDB.zip",
+      "states": "AR,KS,MO,OK",
+      "name": "Neosho-Verdigris",
+      "area_km2": 53851.4,
+      "wbd_loaddate": "2017-04-21T13:34:23+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 154447,
+      "reaches_per_km2": 2.868,
+      "source_scales": {
+        "12000": 3,
+        "24000": 101,
+        "100000": 26,
+        "250000": 5
+      },
+      "source_scales_finest": 12000,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "1201",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_1201_HU4_GDB.zip",
+      "states": "AR,LA,OK,TX",
+      "name": "Red-Sulphur",
+      "area_km2": 71621.0,
+      "wbd_loaddate": "2016-03-16T12:59:40+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 101720,
+      "reaches_per_km2": 1.42,
+      "source_scales": {
+        "2400": 5,
+        "24000": 75,
+        "100000": 21,
+        "250000": 6
+      },
+      "source_scales_finest": 2400,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "1207",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_1207_HU4_GDB.zip",
+      "states": "TX",
+      "name": "Middle Brazos",
+      "area_km2": 40429.7,
+      "wbd_loaddate": "2012-06-11T07:54:59+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 121648,
+      "reaches_per_km2": 3.009,
+      "source_scales": {
+        "24000": 56,
+        "100000": 14,
+        "250000": 10
+      },
+      "source_scales_finest": 24000,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "1210",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_1210_HU4_GDB.zip",
+      "states": "TX",
+      "name": "Lower Colorado-San Bernard Coastal",
+      "area_km2": 73153.7,
+      "wbd_loaddate": "2012-06-11T07:54:59+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 104977,
+      "reaches_per_km2": 1.435,
+      "source_scales": {
+        "24000": 91,
+        "100000": 22,
+        "250000": 22
+      },
+      "source_scales_finest": 24000,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "1211",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_1211_HU4_GDB.zip",
+      "states": "TX",
+      "name": "Central Texas Coastal",
+      "area_km2": 46360.2,
+      "wbd_loaddate": "2012-06-11T07:54:59+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 108920,
+      "reaches_per_km2": 2.349,
+      "source_scales": {
+        "24000": 91,
+        "100000": 22,
+        "250000": 13
+      },
+      "source_scales_finest": 24000,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "1306",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_1306_HU4_GDB.zip",
+      "states": "NM,TX",
+      "name": "Upper Pecos",
+      "area_km2": 60947.7,
+      "wbd_loaddate": "2017-09-20T20:59:52+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 69731,
+      "reaches_per_km2": 1.144,
+      "source_scales": {
+        "24000": 93,
+        "100000": 23,
+        "250000": 6
+      },
+      "source_scales_finest": 24000,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "1406",
+      "vintage_filename": "20220414",
+      "vintage_in_filename": true,
+      "zip": "NHDPLUS_H_1406_HU4_20220414_GDB.zip",
+      "states": "CO,UT",
+      "name": "Lower Green",
+      "area_km2": 37701.5,
+      "wbd_loaddate": "2020-12-21T11:18:25+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 62684,
+      "reaches_per_km2": 1.663,
+      "source_scales": {
+        "24000": 65,
+        "100000": 20,
+        "124000": 1
+      },
+      "source_scales_finest": 24000,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "1503",
+      "vintage_filename": "20220901",
+      "vintage_in_filename": true,
+      "zip": "NHDPLUS_H_1503_HU4_20220901_GDB.zip",
+      "states": "AZ,CA,MX,NV",
+      "name": "Lower Colorado",
+      "area_km2": 53742.7,
+      "wbd_loaddate": "2021-06-16T09:18:00+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 125982,
+      "reaches_per_km2": 2.344,
+      "source_scales": {
+        "4800": 2,
+        "24000": 175,
+        "50000": 11,
+        "100000": 22
+      },
+      "source_scales_finest": 4800,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "1505",
+      "vintage_filename": "20220901",
+      "vintage_in_filename": true,
+      "zip": "NHDPLUS_H_1505_HU4_20220901_GDB.zip",
+      "states": "AZ,MX",
+      "name": "Middle Gila",
+      "area_km2": 46572.9,
+      "wbd_loaddate": "2021-06-30T16:16:17+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 142724,
+      "reaches_per_km2": 3.065,
+      "source_scales": {
+        "24000": 77,
+        "50000": 3,
+        "100000": 14
+      },
+      "source_scales_finest": 24000,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "1506",
+      "vintage_filename": "20220901",
+      "vintage_in_filename": true,
+      "zip": "NHDPLUS_H_1506_HU4_20220901_GDB.zip",
+      "states": "AZ",
+      "name": "Salt",
+      "area_km2": 34900.9,
+      "wbd_loaddate": "2021-10-28T17:46:59+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 106406,
+      "reaches_per_km2": 3.049,
+      "source_scales": {
+        "24000": 79,
+        "100000": 20
+      },
+      "source_scales_finest": 24000,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "1507",
+      "vintage_filename": "20220901",
+      "vintage_in_filename": true,
+      "zip": "NHDPLUS_H_1507_HU4_20220901_GDB.zip",
+      "states": "AZ",
+      "name": "Lower Gila",
+      "area_km2": 39046.2,
+      "wbd_loaddate": "2021-10-28T17:47:04+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 107048,
+      "reaches_per_km2": 2.742,
+      "source_scales": {
+        "24000": 68,
+        "100000": 17
+      },
+      "source_scales_finest": 24000,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "1601",
+      "vintage_filename": "20220412",
+      "vintage_in_filename": true,
+      "zip": "NHDPLUS_H_1601_HU4_20220412_GDB.zip",
+      "states": "ID,UT,WY",
+      "name": "Bear",
+      "area_km2": 19462.7,
+      "wbd_loaddate": "2020-11-30T11:08:19+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 42571,
+      "reaches_per_km2": 2.187,
+      "source_scales": {
+        "24000": 111,
+        "40000": 8,
+        "100000": 22
+      },
+      "source_scales_finest": 24000,
+      "source_scales_sub1000": {
+        "10": 8
+      }
+    },
+    {
+      "vpu": "1605",
+      "vintage_filename": "20220418",
+      "vintage_in_filename": true,
+      "zip": "NHDPLUS_H_1605_HU4_20220418_GDB.zip",
+      "states": "CA,NV",
+      "name": "Central Lahontan",
+      "area_km2": 32840.6,
+      "wbd_loaddate": "2020-11-25T13:57:35+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 71880,
+      "reaches_per_km2": 2.189,
+      "source_scales": {
+        "24000": 119,
+        "100000": 26
+      },
+      "source_scales_finest": 24000,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "1606",
+      "vintage_filename": "20220418",
+      "vintage_in_filename": true,
+      "zip": "NHDPLUS_H_1606_HU4_20220418_GDB.zip",
+      "states": "CA,NV",
+      "name": "Central Nevada Desert Basins",
+      "area_km2": 123604.1,
+      "wbd_loaddate": "2020-11-30T10:59:15+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 269992,
+      "reaches_per_km2": 2.184,
+      "source_scales": {
+        "24000": 95,
+        "100000": 27
+      },
+      "source_scales_finest": 24000,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "1706",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_1706_HU4_GDB.zip",
+      "states": "ID,MT,OR,WA",
+      "name": "Lower Snake",
+      "area_km2": 90764.3,
+      "wbd_loaddate": "2017-08-24T11:15:13+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 254367,
+      "reaches_per_km2": 2.803,
+      "source_scales": {
+        "2400": 3,
+        "4800": 1,
+        "5000": 1,
+        "24000": 233,
+        "100000": 54
+      },
+      "source_scales_finest": 2400,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "1707",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_1707_HU4_GDB.zip",
+      "states": "OR,WA",
+      "name": "Middle Columbia",
+      "area_km2": 77449.0,
+      "wbd_loaddate": "2017-11-06T19:21:00+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 273469,
+      "reaches_per_km2": 3.531,
+      "source_scales": {
+        "2400": 20,
+        "4800": 5,
+        "5000": 1,
+        "12000": 1,
+        "24000": 304,
+        "100000": 31
+      },
+      "source_scales_finest": 2400,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "1709",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_1709_HU4_GDB.zip",
+      "states": "OR",
+      "name": "Willamette",
+      "area_km2": 29698.9,
+      "wbd_loaddate": "2017-11-06T20:28:28+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 276664,
+      "reaches_per_km2": 9.316,
+      "source_scales": {
+        "2400": 27,
+        "4800": 11,
+        "12000": 8,
+        "24000": 206,
+        "31680": 1,
+        "100000": 16
+      },
+      "source_scales_finest": 2400,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "1801",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_1801_HU4_GDB.zip",
+      "states": "CA,OR",
+      "name": "Klamath-Northern California Coastal",
+      "area_km2": 67761.6,
+      "wbd_loaddate": "2017-11-06T19:39:41+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 341762,
+      "reaches_per_km2": 5.044,
+      "source_scales": {
+        "2400": 8,
+        "4800": 8,
+        "10000": 1,
+        "12000": 3,
+        "24000": 223,
+        "100000": 32
+      },
+      "source_scales_finest": 2400,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "1805",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_1805_HU4_GDB.zip",
+      "states": "CA",
+      "name": "San Francisco Bay",
+      "area_km2": 13909.8,
+      "wbd_loaddate": "2018-05-14T15:33:15+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 47293,
+      "reaches_per_km2": 3.4,
+      "source_scales": {
+        "4000": 3,
+        "4800": 1,
+        "10000": 2,
+        "24000": 119,
+        "100000": 18
+      },
+      "source_scales_finest": 4000,
+      "source_scales_sub1000": {
+        "2": 1,
+        "4": 1
+      }
+    },
+    {
+      "vpu": "1806",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_1806_HU4_GDB.zip",
+      "states": "CA",
+      "name": "Central California Coastal",
+      "area_km2": 34286.9,
+      "wbd_loaddate": "2018-05-14T15:25:52+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 166606,
+      "reaches_per_km2": 4.859,
+      "source_scales": {
+        "24000": 119,
+        "100000": 32
+      },
+      "source_scales_finest": 24000,
+      "source_scales_sub1000": {}
+    },
+    {
+      "vpu": "1807",
+      "vintage_filename": null,
+      "vintage_in_filename": false,
+      "zip": "NHDPLUS_H_1807_HU4_GDB.zip",
+      "states": "CA,MX",
+      "name": "Southern California Coastal",
+      "area_km2": 35863.6,
+      "wbd_loaddate": "2018-05-14T15:25:44+00:00",
+      "wbd_metasourceid": null,
+      "reach_count": 225480,
+      "reaches_per_km2": 6.287,
+      "source_scales": {
+        "5000": 1,
+        "24000": 208,
+        "50000": 3,
+        "100000": 48
+      },
+      "source_scales_finest": 5000,
+      "source_scales_sub1000": {}
+    }
+  ],
+  "errors": [
+    {
+      "zip": "NHDPLUS_H_1111_HU4_GDB.zip",
+      "error": "Failed to open dataset (flags=68): /vsizip//data/SWATGenXApp/GenXAppData/NHDPlusHR/zipped/NHDPLUS_H_1111_HU4_GDB.zip/NHDPLUS_H_1111_HU4_GDB.gdb"
+    }
+  ]
+}

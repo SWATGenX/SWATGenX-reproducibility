@@ -1,0 +1,45 @@
+% SWATGenX supplementary material — standalone PDF (compile after first main.tex pass).
+% From publication/manuscript:
+%   pdflatex main && bibtex main && pdflatex main && pdflatex main
+%   pdflatex supplement && pdflatex supplement
+%   pdflatex main && pdflatex supplement
+\documentclass[12pt]{article}
+
+\input{preamble-common.tex}
+\usepackage{xr}
+\externaldocument{main}
+
+\title{Supplementary Material for:\\[0.6em]
+  {\large Automating High-Resolution SWAT+ Watershed Model Generation from NHDPlus HR and National Environmental Datasets}}
+
+\author{%
+  Vahid Rafiei\\
+  Independent Researcher\\
+  \texttt{vahidr32@gmail.com}\\
+  ORCID: \href{https://orcid.org/0009-0009-8309-1895}{0009-0009-8309-1895}
+}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\setcounter{section}{0}
+\setcounter{table}{0}
+\setcounter{figure}{0}
+\renewcommand{\thesection}{S\arabic{section}}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\thefigure}{S\arabic{figure}}
+
+\input{sections/supplementary-material}
+\input{sections/supplementary-nhdplus-extended}
+\input{sections/supplementary-delineation-comparison}
+\input{sections/supplementary-calval-sensitivity}
+\input{sections/supplementary-runtime-benchmark}
+\input{sections/supplementary-nhdplus-provenance}
+
+\bibliographystyle{apalike}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,17 @@
+\subsection{Terrestrial, meteorological, and ancillary national inputs}
+\label{sec:methods-inputs}
+
+Beyond hydrography (\S\ref{sec:methods-nhd}), project generation draws on additional U.S.\ national environmental layers resolved through the same workflow---PRISM \citep{Daly2008PRISM}, NLCD \citep{Dewitz2021NLCD}, gSSURGO \citep{NRCSgSSURGO}, NSRDB \citep{Sengupta2018NSRDB}, and NWIS \citep{USGSNWIS} among them. Table~\ref{tab:data-master-abridged} summarizes datasets, providers, and roles; the full auditable inventory (with version pins) is in Supplementary Table~S1.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Abridged national data inventory.}
+  \label{tab:data-master-abridged}
+  \footnotesize
+  \resizebox{\textwidth}{!}{%
+    \input{tables/tab-data-master-abridged}%
+  }
+\end{table}
+
+Raster elevation used with the vector hydrography is derived from NHDPlus HR staged rasters: source \texttt{elev\_cm} grids are resampled to $30~\mathrm{m}$ using bilinear resampling and reprojected to the coordinate reference system of the preprocessed stream product (\texttt{USGS\_DEM\_30m.tif} naming in implementation documentation), so that terrain derivatives remain consistent with the cleaned network.
+If gridded solar or related drivers are included, product-specific horizontal resolution and vertical correction policies must match the audited configuration recorded in the dataset inventory (Table~\ref{tab:data-master-abridged}); no grid spacing is asserted here beyond that inventory.

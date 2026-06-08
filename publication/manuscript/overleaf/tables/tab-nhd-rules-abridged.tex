@@ -1,0 +1,19 @@
+\begin{tabular}{@{}llp{6.8cm}@{}}
+\toprule
+Rule & Name & Processing action \\
+\midrule
+NH-00 & VPU / HU4 hydrography unit selection & Parse HU4 listing; download and unpack geodatabase and rasters for the selected processing unit \\
+NH-01 & Required NHDPlus HR core layers & Extract required layers to projected working tables following the documented preprocessing s\ldots \\
+NH-02 & WBD HU8/HU12 attribution & Spatial join centroids; carry tohuc; multipart dedupe largest area \\
+NH-03 & CRS / UTM projection & Select UTM zone from HU4 centroid; project features \\
+NH-04 & Divergence code 2 removal & Remove reaches with DivDivergence=2; merge each removed reach catchment into immediate downs\ldots \\
+NH-05 & Stream–catchment pairing integrity & Drop flowlines without matching NHDPlusCatchment \\
+NH-06 & Coastal / artificial flowline stripping & Filter using implemented coastal and boundary identifier rules \\
+NH-07 & Isolated reach policy & Remove from working routed set; optional export to QA folder \\
+NH-08 & Reach length and channel drop & Convert km→m; compute drop from smoothed elevations (cm→m scaling) \\
+NH-09 & Headwater and terminal flags & Recompute StartFlag and TerminalFl from cleaned links \\
+NH-10 & Terminal-reach upstream walk (Subbasin\_level\_1) & Walk upstream from each terminal reach \\
+NH-11 & One-outlet partition & Split multi-outlet groups by upstream trace; iterate until $\leq$1 outlet per subbasin withi\ldots \\
+NH-12 & Lake / waterbody integration & Area threshold 0.1 km2; map FType to SWAT+ classes; harmonize adjacent lakes; renumber lake/\ldots \\
+\bottomrule
+\end{tabular}

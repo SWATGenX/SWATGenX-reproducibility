@@ -1,0 +1,14 @@
+\begin{tabularx}{\textwidth}{@{}lYl@{}}
+\toprule
+Output class & Purpose & Always? \\
+\midrule
+Vector shapefile & Channel geometry for QSWAT+ / SWAT+ GIS import & always \\
+Vector shapefile & Reach watershed polygons & always \\
+Vector shapefile & Dissolved subbasin polygons after one-outlet partition & always \\
+Vector shapefile & Lake polygons when present & conditional \\
+Weather text & PRISM-derived precipitation and temperature station files & always \\
+JSON sidecar & Channel/subbasin processing statistics for QA & always \\
+SWAT+ SQLite project & SWAT+ Editor / SQLite project tables after import pipeline & always \\
+Project archive & Exported SWAT+ project archive bundle & conditional \\
+\bottomrule
+\end{tabularx}

@@ -1,0 +1,15 @@
+\section*{Code and Software Availability}
+
+\noindent
+\begin{description}
+  \item[Name of software:] SWATGenX
+  \item[Developer:] Vahid Rafiei
+  \item[Contact:] \href{mailto:vahidr32@gmail.com}{vahidr32@gmail.com}; ORCID \href{https://orcid.org/0009-0009-8309-1895}{0009-0009-8309-1895}
+  \item[Year first available:] 2026
+  \item[Program language:] Python (geospatial preprocessing and assembly); the SWAT\textsuperscript{+} simulation engine is Fortran.
+  \item[Software dependencies:] Python 3.10 with a standard geospatial stack (GeoPandas, GDAL/OGR); QSWAT\textsuperscript{+}/TauDEM for delineation; the SWAT\textsuperscript{+} executable for simulation. Document compilation requires TeX Live (\texttt{pdflatex}, \texttt{bibtex}).
+  \item[Hardware required:] 64-bit x86-64 Linux workstation or server. Memory scales with domain size; large (HUC-8) packages were generated and run on a host with tens of GB of RAM (peak resident set sizes are reported in the runtime benchmark).
+  \item[Availability and cost:] The reproducibility materials (preprocessing documentation, analysis scripts, derived tables, figures, and the manuscript sources) are openly available under the MIT License at \url{https://github.com/SWATGenX/SWATGenX-reproducibility}; the tagged release used for peer review is recorded there. These materials are sufficient to reproduce and independently test the method reported in this paper. The SWATGenX web platform that runs this workflow as a hosted service operates on maintained infrastructure; access is tiered and computationally intensive operations (for example, calibration) may be limited or subject to cost.
+  \item[Executable model packages:] The eight evaluation SWAT\textsuperscript{+} project packages (Table~\ref{tab:model-roster}) are downloadable directly from the SWATGenX example-models portal, \url{https://www.swatgenx.com/example-models}. Packages range from $\sim$1.6\,GB to $\sim$6\,GB and are therefore distributed through the portal rather than the source repository.
+  \item[Program size:] Source and reproducibility materials are lightweight ($<$100\,MB); generated model packages are large (see above).
+\end{description}

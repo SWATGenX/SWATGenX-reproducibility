@@ -1,0 +1,14 @@
+\begin{tabular}{@{}llp{5.5cm}@{}}
+\toprule
+Dataset & Provider & Role in SWATGenX \\
+\midrule
+NHDPlus HR vector hydrography bundle & U.S. Geological Survey (The National Map) & Primary routed network; catchment polygons; lake polygons; VAA attributes; hy\ldots \\
+NHDPlus HR bundled elevation raster & U.S. Geological Survey (The National Map) & Reach elevation extrema for channel drop; aligned terrain grid for SWAT+ GIS \ldots \\
+Watershed Boundary Dataset & U.S. Geological Survey & Administrative hydrologic unit labels; multipart handling; UTM zone selection\ldots \\
+PRISM gridded precipitation and temperature & Oregon State University PRISM Climate Group & SWAT+ climate station inputs (.pcp/.tmp) and CLI wiring \\
+NSRDB gridded solar / humidity / wind drivers & National Renewable Energy Laboratory / NSRDB program & SWAT+ .slr/.hmd/.wnd station files and CLI lists where enabled \\
+NLCD land cover & U.S. Geological Survey (MRLC) / Google Earth Engine & Land use / land cover rasters for HRU delineation stack \\
+gSSURGO / SSURGO soils & USDA Natural Resources Conservation Service & Soil map layers and database tables consumed by SWAT+ soil definition workflows \\
+NWIS streamgage catalog context & U.S. Geological Survey & Outlet semantics and optional QA tables referencing NWIS identifiers \\
+\bottomrule
+\end{tabular}

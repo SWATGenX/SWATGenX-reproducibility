@@ -1,0 +1,23 @@
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lllrrrl@{}}
+\toprule
+Size class & Model & Build & Wall (s) & s/day & vs ref (\%) & Prod. \\
+\midrule
+S & \texttt{03080102} & gfortran -O2 & 5.54 & 0.01 & -1.2 &  \\
+S & \texttt{03080102} & gfortran -O3 & 6.5 & 0.01 & 15.9 &  \\
+S & \texttt{03080102} & ifx -O2 & 5.61 & 0.01 & 0.0 &  \\
+S & \texttt{03080102} & ifx -O3 & 5.49 & 0.01 & -2.1 &  \\
+S & \texttt{03080102} & ifx -O3 -xHost & 6.04 & 0.01 & 7.7 &  \\
+S & \texttt{03080102} & ifx -O3 -ipo & 5.05 & 0.01 & -10.0 & yes \\
+M & \texttt{09471300} & gfortran -O2 & 111.56 & 0.28 & 15.3 &  \\
+M & \texttt{09471300} & gfortran -O3 & 156.99 & 0.41 & 62.2 &  \\
+M & \texttt{09471300} & ifx -O2 & 96.79 & 0.25 & 0.0 &  \\
+M & \texttt{09471300} & ifx -O3 & 92.2 & 0.24 & -4.7 &  \\
+M & \texttt{09471300} & ifx -O3 -xHost & 104.72 & 0.27 & 8.2 &  \\
+M & \texttt{09471300} & ifx -O3 -ipo & 89.55 & 0.23 & -7.5 & yes \\
+L & \texttt{03100101} & gfortran -O2 & 1269.09 & 2.93 & -8.9 &  \\
+L & \texttt{03100101} & ifx -O2 & 1393.06 & 3.39 & 0.0 &  \\
+L & \texttt{03100101} & ifx -O3 & 1391.73 & 3.38 & -0.1 &  \\
+L & \texttt{03100101} & ifx -O3 -xHost & 1363.69 & 3.33 & -2.1 &  \\
+L & \texttt{03100101} & ifx -O3 -ipo & 1352.57 & 3.29 & -2.9 & yes \\
+\bottomrule
+\end{tabular*}

@@ -1,0 +1,21 @@
+\section{NHDPlus HR source resolution and version provenance}
+\label{sec:supp-nhdplus-provenance}
+
+NHDPlus HR is a multi-resolution product: its flowlines derive from the National Hydrography Dataset, whose source map scale was contributed by state stewards and therefore varies by region.
+The source scale is recorded per source in the \texttt{NHDSourceCitation} table that ships inside each HU4 geodatabase (field \texttt{SourceScaleDenominator}; e.g., 24{,}000 denotes 1:24{,}000), and the per-VPU publication vintage is carried in the distribution package.
+Across the conterminous-U.S.\ tiles in our local archive the finest source scale ranges from 1:1{,}200 to 1:24{,}000, and reach density---a proxy for effective network resolution---spans roughly an order of magnitude (about 1.0~reaches\,km\textsuperscript{-2} in the coarsest tiles, such as the lower-Michigan VPUs sourced only at 1:24{,}000, to nearly 18~reaches\,km\textsuperscript{-2} in the densest, which incorporate sub-1:5{,}000 local hydrography).
+
+Because each generated model inherits the source resolution and vintage of its VPU, SWATGenX writes these provenance fields into every model directory (a \texttt{README.md} and a machine-readable \texttt{provenance.json}) at build time; the per-VPU publication vintage is recovered from the geodatabase's own ESRI metadata (the maximum \texttt{CreaDate}), and an archive-wide registry is maintained per VPU.
+Table~\ref{tab:nhdplus-provenance} reports the hydrography provenance for the eight catalog Model IDs.
+The Illinois calibration basin (VPU~\texttt{0712}) draws on the finest local sources (to 1:1{,}200) and the densest network; the two semi-arid Arizona benchmarks (VPUs~\texttt{1505}, \texttt{1506}) are sourced at 1:24{,}000.
+This heterogeneity bounds how finely a basin's channels---and therefore the number of gaged reaches available for calibration---can be resolved, independent of the SWAT\textsuperscript{+} assembly.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Per-model NHDPlus HR source-resolution and version provenance for the eight catalog Model IDs, read from the \texttt{NHDSourceCitation} table and distribution package of each model's VPU. ``Finest source scale'' is the smallest \texttt{SourceScaleDenominator} present; reach density is total \texttt{NHDFlowline} count per VPU area; the NHDPlus vintage (year-month) is the geodatabase's maximum ESRI \texttt{CreaDate}. All eight models use NHDPlus~HR (existing-network) delineation.}
+  \label{tab:nhdplus-provenance}
+  \footnotesize
+  \setlength{\tabcolsep}{4pt}
+  \renewcommand{\arraystretch}{1.15}
+  \input{tables/tab-nhdplus-provenance}%
+\end{table}

@@ -33,8 +33,10 @@ REPO_ROOT = SCRIPT_DIR.parents[2]
 
 
 def _panel_caption(letter: str, site_no: str, state: str, cal_period: str, frequency: str) -> str:
-    period = cal_period.replace(" to ", "–")
-    return f"({letter}) USGS {site_no} ({state}) — {frequency} Morris ensemble, calibration window {period}"
+    # Panel letter only; the descriptive title (gage, state, window) lives in the
+    # LaTeX caption per Elsevier artwork rule.
+    _ = (site_no, state, cal_period, frequency)
+    return f"({letter})"
 
 
 def render_all(*, copy_per_basin: bool = True) -> None:

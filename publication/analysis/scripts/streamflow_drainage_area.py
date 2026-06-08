@@ -23,6 +23,18 @@ def load_station_drainage_area_km2(site_no: str, meta_csv: Path) -> tuple[float 
     return station_drainage_area_km2(row.iloc[0].to_dict(), for_da_distance=False)
 
 
+def load_station_nwis_da_km2(site_no: str, meta_csv: Path) -> tuple[float | None, str]:
+    """Real USGS NWIS site drainage area only (km², source_label).
+
+    Returns (None, source) when the meta row has no NWIS site area and only a WBD HU12
+    fallback exists — so callers never mislabel the WBD polygon area as NWIS.
+    """
+    da, src = load_station_drainage_area_km2(site_no, meta_csv)
+    if da is not None and str(src).startswith("nwis"):
+        return da, src
+    return None, src
+
+
 def load_wbd_upstream_area_km2(site_no: str, meta_csv: Path) -> float | None:
     if not meta_csv.is_file():
         return None
