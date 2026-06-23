@@ -1,6 +1,6 @@
-# Evaluation SWAT+ model bundles (paper 1)
+# Evaluation SWAT+ model bundles
 
-The eight evaluation SWAT+ models analysed in the manuscript are distributed as
+The eight evaluation SWAT+ models analysed in the manuscript "Automating High-Resolution SWAT+ Watershed Model Generation from NHDPlus HR and National Environmental Datasets" (Computers & Geosciences) are distributed as
 **input-only ZIP bundles attached to the GitHub Release [`models-v1.0`]**, so this
 repository is permanently independent of the SWATGenX web server (whose hosted
 example-model versions evolve over time). Each bundle is the SWAT+ project
@@ -19,7 +19,7 @@ project, so the repository reproduces the manuscript rather than the evolving li
 
 ## Verification — reported vs. bundled
 
-Structural metrics are reported for the three showcase tiers (S/M/L) and match the
+Structural metrics are reported in the manuscript for the three showcase tiers (S/M/L) and match the
 bundles exactly. The scaling-ladder (X20/X40/X60) and calibration basins are documented
 here for completeness.
 

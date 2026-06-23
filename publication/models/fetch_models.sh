@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Download the paper-1 evaluation SWAT+ model bundles (input-only) from the GitHub
+# Download the evaluation SWAT+ model bundles (Computers & Geosciences submission) (input-only) from the GitHub
 # Release — server-independent, frozen to the versions reported in the manuscript.
 # Usage: bash fetch_models.sh [DEST_DIR]   (default: ./models_download)
 set -euo pipefail
