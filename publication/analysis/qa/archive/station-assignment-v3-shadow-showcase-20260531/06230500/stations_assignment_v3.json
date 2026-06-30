@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "06230500",
-    "workspace_model_id": "1008/huc12/06230500",
-    "label": "1008/huc12/06230500 (WY)",
+    "workspace_model_id": "1008/usgs_station/06230500",
+    "label": "1008/usgs_station/06230500 (WY)",
     "vpuid": "1008",
     "n_stations": 10,
     "n_production_assigned": 10,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "06230500",
-      "workspace_model_id": "1008/huc12/06230500",
-      "label": "1008/huc12/06230500 (WY)",
+      "workspace_model_id": "1008/usgs_station/06230500",
+      "label": "1008/usgs_station/06230500 (WY)",
       "site_no": "06228350",
       "station_name": "SF L WIND RIV AB WASHAKIE RES, NR FT WASHAKIE, WY",
       "usgs_da_km2": 232.3219334971392,
@@ -55,8 +55,8 @@
     },
     {
       "catalog_model_id": "06230500",
-      "workspace_model_id": "1008/huc12/06230500",
-      "label": "1008/huc12/06230500 (WY)",
+      "workspace_model_id": "1008/usgs_station/06230500",
+      "label": "1008/usgs_station/06230500 (WY)",
       "site_no": "06228450",
       "station_name": "SOUTH FORK LITTLE WIND RIV BEL WASHAKIE RES, WY",
       "usgs_da_km2": 242.163888316416,
@@ -84,8 +84,8 @@
     },
     {
       "catalog_model_id": "06230500",
-      "workspace_model_id": "1008/huc12/06230500",
-      "label": "1008/huc12/06230500 (WY)",
+      "workspace_model_id": "1008/usgs_station/06230500",
+      "label": "1008/usgs_station/06230500 (WY)",
       "site_no": "06228500",
       "station_name": "LITTLE WIND R NR FORT WASHAKIE, WYO.",
       "usgs_da_km2": 303.028608909312,
@@ -113,8 +113,8 @@
     },
     {
       "catalog_model_id": "06230500",
-      "workspace_model_id": "1008/huc12/06230500",
-      "label": "1008/huc12/06230500 (WY)",
+      "workspace_model_id": "1008/usgs_station/06230500",
+      "label": "1008/usgs_station/06230500 (WY)",
       "site_no": "06228800",
       "station_name": "NORTH FORK LITTLE WIND RIVER NR FORT WASHAKIE, WY",
       "usgs_da_km2": 290.07866835763195,
@@ -142,8 +142,8 @@
     },
     {
       "catalog_model_id": "06230500",
-      "workspace_model_id": "1008/huc12/06230500",
-      "label": "1008/huc12/06230500 (WY)",
+      "workspace_model_id": "1008/usgs_station/06230500",
+      "label": "1008/usgs_station/06230500 (WY)",
       "site_no": "06229000",
       "station_name": "N Fk Little Wind R at Fort Washakie, WY",
       "usgs_da_km2": 331.518478123008,
@@ -171,8 +171,8 @@
     },
     {
       "catalog_model_id": "06230500",
-      "workspace_model_id": "1008/huc12/06230500",
-      "label": "1008/huc12/06230500 (WY)",
+      "workspace_model_id": "1008/usgs_station/06230500",
+      "label": "1008/usgs_station/06230500 (WY)",
       "site_no": "06229680",
       "station_name": "SAGE CR AB NORKOK MEADOWS CR, NR FT WASHAKIE, WY",
       "usgs_da_km2": 305.618597019648,
@@ -200,8 +200,8 @@
     },
     {
       "catalog_model_id": "06230500",
-      "workspace_model_id": "1008/huc12/06230500",
-      "label": "1008/huc12/06230500 (WY)",
+      "workspace_model_id": "1008/usgs_station/06230500",
+      "label": "1008/usgs_station/06230500 (WY)",
       "site_no": "06229900",
       "station_name": "Trout Creek near Fort Washakie, WY",
       "usgs_da_km2": 45.32479193088,
@@ -229,8 +229,8 @@
     },
     {
       "catalog_model_id": "06230500",
-      "workspace_model_id": "1008/huc12/06230500",
-      "label": "1008/huc12/06230500 (WY)",
+      "workspace_model_id": "1008/usgs_station/06230500",
+      "label": "1008/usgs_station/06230500 (WY)",
       "site_no": "06230190",
       "station_name": "MILL CR AB RAY LAKE OUTLET CANAL, NR FT WASHAKIE",
       "usgs_da_km2": 40.9218121433088,
@@ -258,8 +258,8 @@
     },
     {
       "catalog_model_id": "06230500",
-      "workspace_model_id": "1008/huc12/06230500",
-      "label": "1008/huc12/06230500 (WY)",
+      "workspace_model_id": "1008/usgs_station/06230500",
+      "label": "1008/usgs_station/06230500 (WY)",
       "site_no": "06230500",
       "station_name": "LITTLE WIND RIVER NEAR ARAPAHOE, WY",
       "usgs_da_km2": 1600.612652187648,
@@ -287,8 +287,8 @@
     },
     {
       "catalog_model_id": "06230500",
-      "workspace_model_id": "1008/huc12/06230500",
-      "label": "1008/huc12/06230500 (WY)",
+      "workspace_model_id": "1008/usgs_station/06230500",
+      "label": "1008/usgs_station/06230500 (WY)",
       "site_no": "06231000",
       "station_name": "Little Wind River above Arapahoe, WY",
       "usgs_da_km2": 1706.802164711424,

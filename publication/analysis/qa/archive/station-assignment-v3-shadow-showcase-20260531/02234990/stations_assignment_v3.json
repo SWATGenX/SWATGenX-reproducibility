@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "02234990",
-    "workspace_model_id": "0308/huc12/02234990",
-    "label": "0308/huc12/02234990 (FL)",
+    "workspace_model_id": "0308/usgs_station/02234990",
+    "label": "0308/usgs_station/02234990 (FL)",
     "vpuid": "0308",
     "n_stations": 3,
     "n_production_assigned": 3,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "02234990",
-      "workspace_model_id": "0308/huc12/02234990",
-      "label": "0308/huc12/02234990 (FL)",
+      "workspace_model_id": "0308/usgs_station/02234990",
+      "label": "0308/usgs_station/02234990 (FL)",
       "site_no": "02234815",
       "station_name": "LAKE WEKIVA OUTLET NR MAITLAND, FLA.",
       "usgs_da_km2": 34.7058406785024,
@@ -55,8 +55,8 @@
     },
     {
       "catalog_model_id": "02234990",
-      "workspace_model_id": "0308/huc12/02234990",
-      "label": "0308/huc12/02234990 (FL)",
+      "workspace_model_id": "0308/usgs_station/02234990",
+      "label": "0308/usgs_station/02234990 (FL)",
       "site_no": "02234990",
       "station_name": "LITTLE WEKIVA RIVER NEAR ALTAMONTE SPRINGS, FL",
       "usgs_da_km2": 109.8154958782464,
@@ -84,8 +84,8 @@
     },
     {
       "catalog_model_id": "02234990",
-      "workspace_model_id": "0308/huc12/02234990",
-      "label": "0308/huc12/02234990 (FL)",
+      "workspace_model_id": "0308/usgs_station/02234990",
+      "label": "0308/usgs_station/02234990 (FL)",
       "site_no": "02234998",
       "station_name": "LITTLE WEKIVA RIVER NEAR LONGWOOD, FL",
       "usgs_da_km2": 115.254470909952,

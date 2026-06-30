@@ -1,0 +1,164 @@
+%% ===========================================================================
+%% Bibliography — SWAT+ engine acceleration paper
+%% NOTE: DOIs/pages gathered from publisher pages + web search (2026-06). RE-VERIFY
+%% page ranges and DOIs against the publisher PDF before camera-ready. Entries marked
+%% [VERIFY] need a second pass.
+%% ===========================================================================
+
+%% ---- SWAT / SWAT+ core ----
+@article{Arnold1998SWAT,
+  author  = {Arnold, J. G. and Srinivasan, R. and Muttiah, R. S. and Williams, J. R.},
+  title   = {Large Area Hydrologic Modeling and Assessment Part I: Model Development},
+  journal = {Journal of the American Water Resources Association},
+  volume  = {34}, number = {1}, pages = {73--89}, year = {1998},
+  doi     = {10.1111/j.1752-1688.1998.tb05961.x}
+}
+
+@article{Bieger2017SWATPlus,
+  author  = {Bieger, Katrin and Arnold, J. G. and Rathjens, Hendrik and White, Michael J. and Bosch, D. D. and Allen, P. M. and Volk, Martin and Srinivasan, Raghavan},
+  title   = {Introduction to {SWAT+}, a Completely Restructured Version of the Soil and Water Assessment Tool},
+  journal = {Journal of the American Water Resources Association},
+  volume  = {53}, number = {1}, pages = {115--130}, year = {2017},
+  doi     = {10.1111/1752-1688.12482}
+}
+
+%% ---- SWAT parallelization / parallel calibration (prior art: ensemble & grid level) ----
+@article{Rouholahnejad2012Parallelization,
+  author  = {Rouholahnejad, Elham and Abbaspour, Karim C. and Vejdani, M. and Srinivasan, R. and Schulin, R. and Lehmann, A.},
+  title   = {A parallelization framework for calibration of hydrological models},
+  journal = {Environmental Modelling \& Software},
+  volume  = {31}, pages = {28--36}, year = {2012},
+  doi     = {10.1016/j.envsoft.2011.12.001}
+}
+
+@article{Zhang2013Multiobjective,
+  author  = {Zhang, Xuesong and Beeson, Peter and Link, Robert and Manowitz, David and Izaurralde, R. C. and Sadeghi, Ali and Thomson, Allison M. and Sahajpal, Ritvik and Srinivasan, Raghavan and Arnold, Jeffrey G.},
+  title   = {Efficient multi-objective calibration of a computationally intensive hydrologic model with parallel computing software in {Python}},
+  journal = {Environmental Modelling \& Software},
+  volume  = {46}, pages = {208--218}, year = {2013},
+  doi     = {10.1016/j.envsoft.2013.03.013}
+}
+
+@article{Yalew2013Grid,
+  author  = {Yalew, S. and van Griensven, A. and Ray, N. and Kokoszkiewicz, L. and Betrie, G. D.},
+  title   = {Distributed computation of large scale {SWAT} models on the {Grid}},
+  journal = {Environmental Modelling \& Software},
+  volume  = {41}, pages = {223--230}, year = {2013},
+  doi     = {10.1016/j.envsoft.2012.08.002}
+}
+
+@article{Ki2015OpenMPSWAT,
+  author  = {Ki, Seo Jin and Sugimura, Tak and Kim, Albert S.},
+  title   = {{OpenMP}-accelerated {SWAT} simulation using {Intel} {C} and {FORTRAN} compilers: Development and benchmark},
+  journal = {Computers \& Geosciences},
+  volume  = {75}, pages = {66--72}, year = {2015},
+  doi     = {10.1016/j.cageo.2014.10.017}
+}
+
+@article{Zhang2017SWATG,
+  author  = {Zhang, Ying and Hou, Jingwen and Cao, Yongheng and Gu, Juan and Huang, Chunlin},
+  title   = {{OpenMP} parallelization of a gridded {SWAT} ({SWATG})},
+  journal = {Computers \& Geosciences},
+  volume  = {109}, pages = {228--237}, year = {2017},
+  doi     = {10.1016/j.cageo.2017.08.002}
+}
+
+@article{Gorgan2014DistributedSWAT,
+  author  = {Rao, Y. and others},
+  title   = {A new parallel framework of distributed {SWAT} calibration},
+  journal = {Journal of Arid Land},
+  volume  = {6}, number = {6}, pages = {730--741}, year = {2014},
+  doi     = {10.1007/s40333-014-0041-5},
+  note    = {[VERIFY authors/pages]}
+}
+
+@article{PASS4SWAT2024,
+  author  = {Lin, Qiaoying and Zhang, Dejian and Wu, Jiefeng and Chen, Xingwei and Fang, Yihui and Lin, Bingqing},
+  title   = {{PASS4SWAT}: Orchestration of containerized {SWAT} for facilitating computational reproducibility of model calibration and uncertainty analysis},
+  journal = {Environmental Modelling \& Software},
+  volume  = {178}, pages = {106085}, year = {2024},
+  doi     = {10.1016/j.envsoft.2024.106085}
+}
+
+%% ---- River-network routing with serial topological dependencies (other models) ----
+@article{David2011RAPID,
+  author  = {David, C{\'e}dric H. and Maidment, David R. and Niu, Guo-Yue and Yang, Zong-Liang and Habets, Florence and Eijkhout, Victor},
+  title   = {River Network Routing on the {NHDPlus} Dataset},
+  journal = {Journal of Hydrometeorology},
+  volume  = {12}, number = {5}, pages = {913--934}, year = {2011},
+  doi     = {10.1175/2011JHM1345.1}
+}
+
+@article{Mizukami2021mizuRoute,
+  author  = {Mizukami, Naoki and Clark, Martyn P. and Gharari, Shervan and Kluzek, Erik and Pan, Ming and Lin, Peirong and Beck, Hylke E. and Yamazaki, Dai},
+  title   = {A Vector-Based River Routing Model for {Earth} System Models: Parallelization and Global Applications},
+  journal = {Journal of Advances in Modeling Earth Systems},
+  volume  = {13}, number = {6}, pages = {e2020MS002434}, year = {2021},
+  doi     = {10.1029/2020MS002434}
+}
+
+@article{Yamazaki2011CaMaFlood,
+  author  = {Yamazaki, Dai and Kanae, Shinjiro and Kim, Hyungjun and Oki, Taikan},
+  title   = {A physically based description of floodplain inundation dynamics in a global river routing model},
+  journal = {Water Resources Research},
+  volume  = {47}, number = {4}, pages = {W04501}, year = {2011},
+  doi     = {10.1029/2010WR009726}
+}
+
+@article{Liu2023DomainDecompRouting,
+  author  = {Liu, Yong-He and Yang, Zong-Liang and Lin, Pei-Rong},
+  title   = {Parallel river channel routing computation based on a straightforward domain decomposition of river networks},
+  journal = {Journal of Hydrology},
+  volume  = {625}, pages = {129988}, year = {2023},
+  doi     = {10.1016/j.jhydrol.2023.129988}
+}
+
+%% ---- HPC / correctness / reproducibility methodology ----
+@article{Amdahl1967,
+  author  = {Amdahl, Gene M.},
+  title   = {Validity of the single processor approach to achieving large scale computing capabilities},
+  journal = {AFIPS Conference Proceedings},
+  volume  = {30}, pages = {483--485}, year = {1967},
+  doi     = {10.1145/1465482.1465560}
+}
+
+@article{Baker2015CESMECT,
+  author  = {Baker, Allison H. and Hammerling, Dorit M. and Levy, Michael N. and Xu, Haiying and Dennis, John M. and Eaton, Brian E. and Edwards, Jim and Hannay, Cecile and Mickelson, Sheri A. and Neale, Richard B. and Nychka, Doug and Shollenberger, John and Tribbia, Joe and Vertenstein, Mariana and Williamson, Dave},
+  title   = {A new ensemble-based consistency test for the {Community} {Earth} {System} {Model} ({pyCECT} v1.0)},
+  journal = {Geoscientific Model Development},
+  volume  = {8}, number = {9}, pages = {2829--2840}, year = {2015},
+  doi     = {10.5194/gmd-8-2829-2015}
+}
+
+@inproceedings{Atzeni2016ARCHER,
+  author    = {Atzeni, Simone and Gopalakrishnan, Ganesh and Rakamaric, Zvonimir and Ahn, Dong H. and Laguna, Ignacio and Schulz, Martin and Lee, Gregory L. and Protze, Joachim and M{\"u}ller, Matthias S.},
+  title     = {{ARCHER}: Effectively Spotting Data Races in Large {OpenMP} Applications},
+  booktitle = {IEEE International Parallel and Distributed Processing Symposium (IPDPS)},
+  pages     = {53--62}, year = {2016},
+  doi       = {10.1109/IPDPS.2016.68}
+}
+
+@misc{IntelOneAPI,
+  author = {{Intel Corporation}},
+  title  = {Intel oneAPI DPC++/C++ and Fortran Compiler (ifx)},
+  year   = {2026},
+  note   = {Toolchain reference}
+}
+
+@article{Rafiei2022Calibration,
+  author  = {Rafiei, Vahid and Nejadhashemi, A. Pouyan and Mushtaq, Shahbaz and Bailey, Ryan T. and An-Vo, Duc-Anh},
+  title   = {An improved calibration technique to address high dimensionality and non-linearity in integrated groundwater and surface water models},
+  journal = {Environmental Modelling \& Software},
+  volume  = {149},
+  pages   = {105312},
+  year    = {2022},
+  doi     = {10.1016/j.envsoft.2022.105312}
+}
+
+@article{Rafiei2026SWATGenX,
+  author  = {Rafiei, Vahid},
+  title   = {Automating High-Resolution {SWAT+} Watershed Model Generation from {NHDPlus~HR} and National Environmental Datasets},
+  journal = {Computers \& Geosciences},
+  year    = {2026},
+  note    = {Manuscript submitted for publication; \textit{Computers \& Geosciences} CAGEO-D-26-00981}
+}

@@ -1,0 +1,79 @@
+We organize prior work along the axis that matters for this paper: \emph{where} the
+parallelism is extracted. Three layers are distinguishable---ensemble (many independent
+runs), spatial-domain decomposition (split the watershed), and engine-internal
+(parallelize one run's daily step)---and the serial routing dependency reappears as the
+central obstacle at every layer.
+
+\subsection{Ensemble-level parallelism for calibration}
+The most mature line of work parallelizes the \emph{calibration loop} rather than the model.
+\citet{Rouholahnejad2012Parallelization} introduced a parallelization framework for SWAT
+calibration (the basis of the widely used SWAT-CUP workflow), distributing independent
+parameter sets across cores. \citet{Zhang2013Multiobjective} coupled SWAT to a Python
+parallel layer (mpi4py/OpenMPI) driving a multi-objective evolutionary optimizer, reporting
+ensemble speedups of 45--109$\times$ on a cluster depending on model complexity.
+\citet{Yalew2013Grid} parallelized a large spatially distributed model via MPI, and
+\citet{PASS4SWAT2024} recently containerized the calibration ensemble for computational
+reproducibility. These approaches are complementary to ours and remain the right tool for
+exploring parameter space. Their limitation is structural: population-based search over a
+model with $\sim$tens of parameters saturates at $\sim$tens of concurrent evaluations, so
+ensemble parallelism cannot reduce the wall-clock cost of an \emph{individual} large
+simulation, nor apply more than that handful of cores to a single model. That is precisely
+the regime this paper addresses.
+
+\subsection{Engine-internal parallelism in SWAT/SWAT+}
+Fewer studies parallelize the SWAT engine itself, and those that do concentrate on the land
+phase, which is embarrassingly parallel across HRUs. \citet{Ki2015OpenMPSWAT} applied
+Intel-compiler OpenMP to SWAT and benchmarked the result; \citet{Zhang2017SWATG} added OpenMP
+over HRUs to the gridded SWATG variant (``SWATGP''), reporting up to $\sim$9$\times$ on a
+$\sim$2000~km$^2$ watershed at 500~m with 15 threads. Two observations motivate our work.
+First, these efforts parallelize the land phase but do not tackle the channel-routing
+critical path, which our profiling (Section~\ref{sec:results}) shows is roughly $7\times$ the
+land-phase cost on a large basin---so land-phase-only speedup is Amdahl-bounded by the
+serial routing remainder. Second, the SWAT+ restructuring \citep{Bieger2017SWATPlus}
+replaced subbasins with an object/command architecture, which changes the parallelization
+problem from ``loop over HRUs'' to ``traverse a heterogeneous object DAG''; to our knowledge
+a routing-DAG-aware shared-memory parallelization of SWAT+ that preserves bit-level results
+has not been reported.
+
+\subsection{The serial routing dependency in other hydrological models}
+The obstacle we confront---downstream reaches depend on upstream outflow---is fundamental to
+river routing and has shaped the design of every continental routing model. The strategies
+divide cleanly:
+\begin{itemize}
+  \item \textbf{Matrix linearization (solve all reaches at once).} RAPID
+        \citep{David2011RAPID} casts Muskingum routing on a vector network into a single
+        sparse linear system per time step and solves it with a parallel linear-algebra
+        backend (PETSc), turning the topological dependency into matrix structure. This
+        scales but requires a linear routing scheme and a global solve.
+  \item \textbf{Spatial-domain decomposition.} mizuRoute
+        \citep{Mizukami2021mizuRoute} partitions the network into sub-basins with a two-level
+        hierarchical decomposition for distributed-memory (MPI) execution, and---in its
+        impulse-response mode---parallelizes primarily in the \emph{time} dimension while
+        preserving sequential topological order. CaMa-Flood \citep{Yamazaki2011CaMaFlood}
+        partitions the global domain into subdomains and advances local inertial equations,
+        updating cells in parallel across space. A recent study parallelizes channel routing
+        by straightforward domain decomposition of the network \citep{Liu2023DomainDecompRouting}.
+\end{itemize}
+These are predominantly \emph{distributed-memory} designs that either change the numerics
+(linearization) or partition the domain across ranks (decomposition), and they generally do
+not guarantee bitwise identity to a serial reference. Our setting differs in three ways: we
+keep SWAT+'s existing (nonlinear, sub-stepped) routing numerics unchanged; we target
+\emph{shared}-memory many-core nodes (the common cloud-calibration unit) rather than clusters;
+and we make preservation of the serial result a hard requirement. Our mechanism---a
+topological \emph{level wavefront} that runs all DAG nodes at the same depth concurrently and
+synchronizes between levels---is the shared-memory analogue of the dependency-respecting
+ordering those models implement across ranks.
+
+\subsection{Correctness and reproducibility of parallel scientific code}
+Shared-memory parallelization of a large mutable-state Fortran model is dominated by the risk
+of data races, which are intermittent and poorly exposed by ordinary testing
+\citep{Atzeni2016ARCHER}. Dynamic and static race detectors exist but scale awkwardly to a
+model of SWAT+'s size and global-state idioms. We instead adopt an output-level criterion:
+\emph{thread-count invariance}, requiring repeated runs at different thread counts to produce
+identical daily output. This is conceptually aligned with the ensemble-consistency testing
+used to certify Earth-system-model ports across compilers and machines
+\citep{Baker2015CESMECT}, but applied at bit granularity and used \emph{diagnostically}---a
+run-to-run difference localizes the exact unprotected state. We also separate genuine races
+from benign floating-point non-associativity introduced by aggressive compiler optimization
+(\texttt{-ipo}); the latter is a known source of bit-level variation \citep{IntelOneAPI} and
+is quantified rather than conflated with incorrectness.

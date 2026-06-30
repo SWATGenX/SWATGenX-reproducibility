@@ -1,0 +1,45 @@
+{
+  "pdf": "OR_27529_CLAC",
+  "model": "gemini-2.5-flash-lite",
+  "usage": {
+    "prompt_tokens": 491,
+    "output_tokens": 294,
+    "usd": 0.00016669999999999999,
+    "seconds": 13.4
+  },
+  "extracted": {
+    "lithology": [
+      {
+        "top_ft": 0.0,
+        "bottom_ft": 2.0,
+        "description": "Soil brown",
+        "normalized": "clay"
+      },
+      {
+        "top_ft": 2.0,
+        "bottom_ft": 19.0,
+        "description": "Cobble rock brown",
+        "normalized": "gravel"
+      },
+      {
+        "top_ft": 19.0,
+        "bottom_ft": 38.0,
+        "description": "Gravel brown",
+        "normalized": "gravel"
+      },
+      {
+        "top_ft": 38.0,
+        "bottom_ft": 42.0,
+        "description": "Sand & gravel brown W.B.",
+        "normalized": "sand_and_gravel"
+      }
+    ],
+    "legibility": "clear",
+    "extraction_confidence": 0.9,
+    "static_water_level_ft": 38.0,
+    "total_depth_ft": 42.0,
+    "water_bearing_zones_ft": [
+      4.0
+    ]
+  }
+}

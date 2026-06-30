@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "03302300",
-    "workspace_model_id": "0514/huc12/03302300",
-    "label": "0514/huc12/03302300 (IN)",
+    "workspace_model_id": "0514/usgs_station/03302300",
+    "label": "0514/usgs_station/03302300 (IN)",
     "vpuid": "0514",
     "n_stations": 1,
     "n_production_assigned": 1,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "03302300",
-      "workspace_model_id": "0514/huc12/03302300",
-      "label": "0514/huc12/03302300 (IN)",
+      "workspace_model_id": "0514/usgs_station/03302300",
+      "label": "0514/usgs_station/03302300 (IN)",
       "site_no": "03302300",
       "station_name": "LITTLE INDIAN CREEK NEAR GALENA, IN",
       "usgs_da_km2": 41.6988085764096,

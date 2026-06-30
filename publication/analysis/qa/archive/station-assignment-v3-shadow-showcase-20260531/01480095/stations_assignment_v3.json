@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "01480095",
-    "workspace_model_id": "0204/huc12/01480095",
-    "label": "0204/huc12/01480095 (DE)",
+    "workspace_model_id": "0204/usgs_station/01480095",
+    "label": "0204/usgs_station/01480095 (DE)",
     "vpuid": "0204",
     "n_stations": 2,
     "n_production_assigned": 2,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "01480095",
-      "workspace_model_id": "0204/huc12/01480095",
-      "label": "0204/huc12/01480095 (DE)",
+      "workspace_model_id": "0204/usgs_station/01480095",
+      "label": "0204/usgs_station/01480095 (DE)",
       "site_no": "01480095",
       "station_name": "LITTLE MILL CREEK NEAR NEWPORT, DE",
       "usgs_da_km2": 13.57153769816064,
@@ -55,8 +55,8 @@
     },
     {
       "catalog_model_id": "01480095",
-      "workspace_model_id": "0204/huc12/01480095",
-      "label": "0204/huc12/01480095 (DE)",
+      "workspace_model_id": "0204/usgs_station/01480095",
+      "label": "0204/usgs_station/01480095 (DE)",
       "site_no": "01480100",
       "station_name": "LITTLE MILL CREEK AT ELSMERE, DE",
       "usgs_da_km2": 17.3529203392512,

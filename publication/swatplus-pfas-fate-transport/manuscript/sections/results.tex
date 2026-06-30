@@ -1,0 +1,55 @@
+\section{Results}\label{sec:results}
+
+\subsection{Engine correctness and conservation}
+Two checks establish that the implementation is correct before any calibration is attempted. The soil three-phase equilibrium solver reproduces a 40-digit decimal reference to a worst-case relative error of $1.7\times10^{-7}$ over $29{,}160$ parameter combinations, confirming that double precision is sufficient and that the original quadruple-precision implementation was defensive overkill. The in-stream routine, driven over a 60-day synthetic reach with matched parameters, agrees with the established SWAT\textsuperscript{+} pesticide channel solver---reduced to its linear-partition subset---to a maximum absolute difference of $2.4\times10^{-7}$~kg and a maximum relative difference of $2.6\times10^{-7}$ across all nine shared mass terms. Conservation holds at watershed scale: the land-phase soil-pool change balances the four pathway losses to a relative residual of order $10^{-5}$ for every HRU, and the whole-network in-stream balance closes, with cumulative reach inflow minus outflow equal to the sum of burial and channel-storage change, and with the prescribed point-source load reconciled exactly. With PFAS active and no point source, $12$~kg of land-delivered PFOS routes through the $590$-channel network over a simulation year while burial and channel storage account for less than $0.2$~kg, consistent with PFOS being predominantly mobile in the dissolved phase.
+
+\subsection{Spatial calibration on the Rogue}
+The uncalibrated model---initialized from land-use and soil-class background concentrations alone---reproduces the spatial \emph{pattern} of ambient PFOS, including the Rogue mainstem downstream gradient, but overpredicts the \emph{magnitude} by a nearly uniform factor of approximately nine across the gauged mainstem reaches. Because reach concentration is linear in soil loading, a single global soil-loading scale factor of $0.11$ corrects the magnitude in one step, reducing the log-space root-mean-square error across the $20$ gauged reaches ($29$ stations) from $1.33$ to $0.74$~dex and the percent bias from $+1516\%$ to $+78\%$. The improvement is concentrated where the model is physically anchored: along the $7$ Rogue mainstem reaches---the directly source-attributable signal---the calibrated log-RMSE is $0.15$~dex (a factor of $1.4$) with a log-space Nash--Sutcliffe efficiency of $+0.61$ and a percent bias of $-7\%$, and the modeled concentration rises monotonically downstream from $6.2$~ng~L\textsuperscript{-1} in the headwaters toward the Wolverine corridor against an observed rise from $6.3$ to $27$~ng~L\textsuperscript{-1} (Table~\ref{tab:gradient}). The calibrated in-stream PFOS field (Fig.~\ref{fig:instream}) renders this gradient over the full $590$-reach network, and the reach-by-reach comparison (Fig.~\ref{fig:calib}) shows the mainstem reaches clustering on the $1{:}1$ line within a factor of two while the tributaries scatter.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.6\textwidth]{fig2_instream_pfos.pdf}
+\caption{Calibrated ($0.11$ soil-loading scale, no point source) flow-weighted in-stream PFOS over the $590$-reach Rogue network on a logarithmic colour scale. Concentration rises along the mainstem from green tributaries through the orange mid-river toward the Wolverine source (red star); open rings are the EGLE stations.}
+\label{fig:instream}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{fig3_calibration.pdf}
+\caption{(a) Observed versus modeled PFOS, one point per gauged reach ($20$ reaches, $29$ stations; station-maximum observed). The all-reach log-NSE is negative because tributary reaches are over-predicted; the mainstem reaches lie within the $\times2$ envelope. (b) The $29$ EGLE stations coloured by observed PFOS, showing the downstream rise toward the source (red star). Colour map: batlow.}
+\label{fig:calib}
+\end{figure}
+
+\begin{table}[ht]
+\centering
+\caption{Observed (EGLE ambient) and modeled flow-weighted PFOS concentration along the Rogue River mainstem, upstream to downstream, at the calibrated soil-loading scale ($0.11$, no point source). Channel is the assigned model reach.}
+\label{tab:gradient}
+\begin{tabular}{llrr}
+\toprule
+Channel & Station & Observed (ng~L\textsuperscript{-1}) & Modeled (ng~L\textsuperscript{-1}) \\
+\midrule
+26 & RR-0600 (headwaters) & 6.3  & 6.2  \\
+18 & RR-0300              & 6.8  & 7.7  \\
+15 & RR-0200              & 7.2  & 9.2  \\
+11 & RR-0060              & 6.7  & 11.2 \\
+10 & RR-0050              & 9.6  & 12.4 \\
+1  & RR-0010              & 19.0 & 14.7 \\
+2  & RR-0020 (lower river)& 27.0 & 15.4 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Interpretable residuals}
+The remaining misfit is structured and physically interpretable rather than random, which is itself an attribution result. At the two lowest mainstem reaches nearest the Wolverine corridor (channels~1 and~2), the distributed-background model underpredicts the observed peak ($14.7$--$15.4$ vs $19$--$27$~ng~L\textsuperscript{-1}); this gap is the signature of the concentrated House Street source, which a spatially uniform soil background cannot reproduce and which an explicit per-reach point load closes. Among the tributaries, the scatter is bidirectional---some sub-watersheds overpredict and others (notably a station with an observed $24$~ng~L\textsuperscript{-1}) underpredict---reflecting per-land-use heterogeneity in soil PFAS that a single global scale factor cannot capture and that a class-resolved soil initialization would address. Neither residual indicates an error in the transport physics, which the conservation and cross-validation checks have already isolated; both point to identifiable refinements of the \emph{source representation}.
+
+\subsection{Predictive uncertainty and parameter sensitivity}
+The $120$-member Latin-hypercube ensemble quantifies how much of the misfit is parametric and where the model is trustworthy (Fig.~\ref{fig:ua}). The decomposition by hydrologic position is decisive. Along the $7$ mainstem reaches the $5$th--$95$th-percentile predictive envelope encloses $5$ of $7$ observations ($P\text{-factor}=0.71$) at a normalized width of $R\text{-factor}=1.5$: the source-attributable signal is both well reproduced and well bounded by the physically plausible parameter range. Across the $13$ tributary reaches, by contrast, the envelope encloses almost none of the observations ($P\text{-factor}=0.08$) and the central estimate over-predicts by $+170\%$; pooled over all $20$ reaches the envelope covers $30\%$ of observations ($R\text{-factor}=2.0$). The interpretation is not that the ensemble is too narrow but that the unexplained tributary variance is \emph{not parametric}: no setting of the five global parameters within their plausible ranges reconciles the tributary observations, because their variance is driven by local, sub-grid soil and source heterogeneity that a single global field cannot represent---the same conclusion the structured residuals reached, now made quantitative. Consistent with the near-linear structure of the problem, the global soil-loading multiplier dominates the parametric response (Spearman $\rho=0.95$ with reach-mean concentration; Fig.~\ref{fig:ua}c), with the Langmuir maximum surface excess and the in-stream partition multiplier second-order and the remaining parameters negligible. The full per-parameter sensitivity and the spatial distribution of predictive width (Fig.~\ref{fig:ua}d, with the mainstem more tightly constrained than the headwaters) are reported in Supplementary Tables~S2--S3.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.92\textwidth]{fig5_calibration_uncertainty.pdf}\\[3pt]
+\includegraphics[width=0.46\textwidth]{fig6_param_sensitivity.pdf}\hfill
+\includegraphics[width=0.46\textwidth]{fig7_spatial_uncertainty.pdf}
+\caption{Predictive uncertainty from the $120$-member ensemble. (a) Observed versus modeled per reach with the $5$th--$95$th\% envelope as error bars; mainstem reaches (blue) lie within the $\times2$ envelope, tributaries (orange) scatter. (b) Reach-rank coverage: observed (black), ensemble median (blue), $5$--$95$\% envelope (bars). (c) Parameter influence (Spearman $\rho$); soil loading dominates. (d) Per-reach relative predictive width $(95{-}5)/\text{median}$, diverging about $1.0$; the mainstem (blue) is more constrained than headwater tributaries (red). Panels (a)/(b) compose \texttt{fig5}; (c)/(d) are \texttt{fig6}/\texttt{fig7}.}
+\label{fig:ua}
+\end{figure}

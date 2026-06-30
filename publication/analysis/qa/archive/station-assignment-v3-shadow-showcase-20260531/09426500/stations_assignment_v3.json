@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "09426500",
-    "workspace_model_id": "1503/huc12/09426500",
-    "label": "1503/huc12/09426500 (AZ)",
+    "workspace_model_id": "1503/usgs_station/09426500",
+    "label": "1503/usgs_station/09426500 (AZ)",
     "vpuid": "1503",
     "n_stations": 1,
     "n_production_assigned": 1,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "09426500",
-      "workspace_model_id": "1503/huc12/09426500",
-      "label": "1503/huc12/09426500 (AZ)",
+      "workspace_model_id": "1503/usgs_station/09426500",
+      "label": "1503/usgs_station/09426500 (AZ)",
       "site_no": "09426500",
       "station_name": "BILL WILLIAMS RIVER AT PLANET, AZ",
       "usgs_da_km2": 13063.900028534785,

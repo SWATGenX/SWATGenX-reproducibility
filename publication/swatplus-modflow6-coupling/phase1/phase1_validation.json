@@ -1,0 +1,56 @@
+{
+  "model": "04124500",
+  "n_obs_total": 520,
+  "n_bad_dropped": 10,
+  "n_used": 510,
+  "window": "2021-12-31..2024-12-30",
+  "avg_annual": {
+    "n": 510,
+    "NSE": -0.765,
+    "RMSE": 22.17,
+    "PBIAS": 8.1,
+    "R2": 0.43,
+    "KGE": 0.27,
+    "MAE": 17.84
+  },
+  "by_year": {
+    "2022": {
+      "n": 510,
+      "NSE": -0.753,
+      "RMSE": 22.1,
+      "PBIAS": 8.06,
+      "R2": 0.429,
+      "KGE": 0.27,
+      "MAE": 17.75
+    },
+    "2023": {
+      "n": 510,
+      "NSE": -0.763,
+      "RMSE": 22.16,
+      "PBIAS": 8.09,
+      "R2": 0.429,
+      "KGE": 0.269,
+      "MAE": 17.82
+    },
+    "2024": {
+      "n": 510,
+      "NSE": -0.778,
+      "RMSE": 22.25,
+      "PBIAS": 8.15,
+      "R2": 0.432,
+      "KGE": 0.27,
+      "MAE": 17.93
+    }
+  },
+  "steady_baseline": {
+    "n": 510,
+    "NSE": -0.749,
+    "RMSE": 22.07,
+    "PBIAS": 8.09,
+    "R2": 0.446,
+    "KGE": 0.28,
+    "MAE": 17.78
+  },
+  "interannual_wellmean_spread_m": 0.201,
+  "note": "uncalibrated model; avg-annual fit ~ steady baseline -> misfit is a calibration gap, not a coupling artifact. Calibration is a separate step."
+}

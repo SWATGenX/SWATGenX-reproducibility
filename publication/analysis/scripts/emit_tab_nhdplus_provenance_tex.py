@@ -20,14 +20,14 @@ OUT_CSV = "/data/SWATGenXApp/codes/publication/tables/generated/tab-nhdplus-prov
 
 # (tier label, workspace model id)---the eight catalog Model IDs.
 ROSTER = [
-    ("S---Oklawaha", "0308/huc12/030801020804"),
-    ("M---Upper San Pedro", "1505/huc12/09471300"),
+    ("S---Oklawaha", "0308/huc12_outlet/030801020804"),
+    ("M---Upper San Pedro", "1505/usgs_station/09471300"),
     ("L---Peace River", "0310/huc8/03100101"),
-    ("X20---Little Kanawha", "0503/huc12/03152000"),
-    ("X40---Verdigris", "1107/huc12/07174000"),
+    ("X20---Little Kanawha", "0503/usgs_station/03152000"),
+    ("X40---Verdigris", "1107/usgs_station/07174000"),
     ("X60---Upper Gila", "1506/huc8/15060105"),
-    ("Cal---Florida basin", "0310/huc12/02297600"),
-    ("Cal---Illinois basin", "0712/huc12/05536265"),
+    ("Cal---Florida basin", "0310/usgs_station/02297600"),
+    ("Cal---Illinois basin", "0712/usgs_station/05536265"),
 ]
 
 

@@ -1,0 +1,55 @@
+{
+  "pdf": "KS_sid=1292660817",
+  "model": "gemini-2.5-flash",
+  "usage": {
+    "prompt_tokens": 491,
+    "output_tokens": 262,
+    "usd": 0.0008023000000000001,
+    "seconds": 6.5
+  },
+  "extracted": {
+    "lithology": [
+      {
+        "top_ft": 0,
+        "bottom_ft": 3,
+        "description": "topsoil",
+        "normalized": "topsoil"
+      },
+      {
+        "top_ft": 3,
+        "bottom_ft": 7,
+        "description": "clay,tan",
+        "normalized": "clay"
+      },
+      {
+        "top_ft": 7,
+        "bottom_ft": 21,
+        "description": "shale,broken,green",
+        "normalized": "shale"
+      },
+      {
+        "top_ft": 21,
+        "bottom_ft": 127,
+        "description": "shale,broken,blue",
+        "normalized": "shale"
+      },
+      {
+        "top_ft": 127,
+        "bottom_ft": 134,
+        "description": "shale,broken",
+        "normalized": "shale"
+      },
+      {
+        "top_ft": 134,
+        "bottom_ft": 140,
+        "description": "limestone,broken",
+        "normalized": "limestone"
+      }
+    ],
+    "legibility": "clear",
+    "extraction_confidence": 1.0,
+    "static_water_level_ft": 31,
+    "total_depth_ft": 140,
+    "water_bearing_zones_ft": []
+  }
+}

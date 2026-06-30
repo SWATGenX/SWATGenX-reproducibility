@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "03075500",
-    "workspace_model_id": "0502/huc12/03075500",
-    "label": "0502/huc12/03075500 (nan)",
+    "workspace_model_id": "0502/usgs_station/03075500",
+    "label": "0502/usgs_station/03075500 (nan)",
     "vpuid": "0502",
     "n_stations": 5,
     "n_production_assigned": 5,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "03075500",
-      "workspace_model_id": "0502/huc12/03075500",
-      "label": "0502/huc12/03075500 (nan)",
+      "workspace_model_id": "0502/usgs_station/03075500",
+      "label": "0502/usgs_station/03075500 (nan)",
       "site_no": "03075500",
       "station_name": "YOUGHIOGHENY RIVER NEAR OAKLAND, MD",
       "usgs_da_km2": 347.058406785024,
@@ -55,8 +55,8 @@
     },
     {
       "catalog_model_id": "03075500",
-      "workspace_model_id": "0502/huc12/03075500",
-      "label": "0502/huc12/03075500 (nan)",
+      "workspace_model_id": "0502/usgs_station/03075500",
+      "label": "0502/usgs_station/03075500 (nan)",
       "site_no": "03075590",
       "station_name": "YOUGHIOGHENY RIVER NEAR SWALLOW FALLS PARK, MD",
       "usgs_da_km2": 419.578073874432,
@@ -84,8 +84,8 @@
     },
     {
       "catalog_model_id": "03075500",
-      "workspace_model_id": "0502/huc12/03075500",
-      "label": "0502/huc12/03075500 (nan)",
+      "workspace_model_id": "0502/usgs_station/03075500",
+      "label": "0502/usgs_station/03075500 (nan)",
       "site_no": "03075650",
       "station_name": "HAYES RUN NR CRANESVILLE, WV",
       "usgs_da_km2": 2.35688918040576,
@@ -113,8 +113,8 @@
     },
     {
       "catalog_model_id": "03075500",
-      "workspace_model_id": "0502/huc12/03075500",
-      "label": "0502/huc12/03075500 (nan)",
+      "workspace_model_id": "0502/usgs_station/03075500",
+      "label": "0502/usgs_station/03075500 (nan)",
       "site_no": "03075670",
       "station_name": "MUDDY CREEK NR CRANESVILLE, WV",
       "usgs_da_km2": 13.15713960050688,
@@ -142,8 +142,8 @@
     },
     {
       "catalog_model_id": "03075500",
-      "workspace_model_id": "0502/huc12/03075500",
-      "label": "0502/huc12/03075500 (nan)",
+      "workspace_model_id": "0502/usgs_station/03075500",
+      "label": "0502/usgs_station/03075500 (nan)",
       "site_no": "03075680",
       "station_name": "CUPP RUN NR CRANESVILLE, WV",
       "usgs_da_km2": 3.70368299778048,

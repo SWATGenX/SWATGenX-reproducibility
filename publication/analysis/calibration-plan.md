@@ -1,6 +1,6 @@
 # Calibration / validation plan — Small locked basin (Florida)
 
-**Basin:** `model_id` = `0308/huc12/02239501` (NWIS `02239501`, VPU `0308`, ~52.64 km²).  
+**Basin:** `model_id` = `0308/usgs_station/02239501` (NWIS `02239501`, VPU `0308`, ~52.64 km²).  
 **Purpose:** Pre-specify a **lightweight hydrologic plausibility** exercise acceptable to reviewers **without** reframing the JAWRA manuscript as a regional calibration study.  
 **Status:** Planning only — **no** calibration jobs are mandated on this branch.
 
@@ -104,7 +104,7 @@ Defaults live in `ModelProcessing/ModelProcessing/config.py` and `ModelProcessin
 
 ### Pilot-basin execution decision
 
-- **Proceed with FL `0308/huc12/02239501` as the first streamflow pilot** under the audited periods and `tab-calibration-run-settings.csv` **ready_for_execution** row — **after** a dedicated execution branch prepares model + `streamflow_data` CSV + weather (still **not** run on this audit branch).  
+- **Proceed with FL `0308/usgs_station/02239501` as the first streamflow pilot** under the audited periods and `tab-calibration-run-settings.csv` **ready_for_execution** row — **after** a dedicated execution branch prepares model + `streamflow_data` CSV + weather (still **not** run on this audit branch).  
 - **PA** is **data-ready** on the same windows; **compute cost** (many HRUs) is the practical gate, not NWIS gaps.  
 - **KS** row in run-settings remains **`needs_data_review`**.
 

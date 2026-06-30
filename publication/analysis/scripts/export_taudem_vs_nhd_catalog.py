@@ -30,7 +30,7 @@ from pathlib import Path
 import geopandas as gpd
 
 REPO = Path(__file__).resolve().parents[3]
-DEFAULT_SITE = "${SWATGENX_USER_PATH}/SWATplus_by_VPUID/0308/huc12/030801020804"
+DEFAULT_SITE = "${SWATGENX_USER_PATH}/SWATplus_by_VPUID/0308/huc12_outlet/030801020804"
 DEFAULT_OUT = REPO / "web_application/frontend/src/data/taudemVsNhdComparison.json"
 
 REFERENCE_ID = "nhd"

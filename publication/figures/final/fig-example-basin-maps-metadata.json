@@ -8,7 +8,7 @@
   "basins": [
     {
       "tier": "S",
-      "model_id": "0308/huc12/030801020804",
+      "model_id": "0308/huc12_outlet/030801020804",
       "state": "FL",
       "area_km2": "52.61",
       "n_hrus": "473",
@@ -54,7 +54,7 @@
   ],
   "manuscript": {
     "model_ids_small_to_large": [
-      "0308/huc12/030801020804",
+      "0308/huc12_outlet/030801020804",
       "1505/usgs_station/09471300",
       "0310/huc8/03100101"
     ],

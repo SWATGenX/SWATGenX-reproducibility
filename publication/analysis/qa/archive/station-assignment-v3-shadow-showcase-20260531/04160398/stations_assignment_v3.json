@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "04160398",
-    "workspace_model_id": "0409/huc12/04160398",
-    "label": "0409/huc12/04160398 (MI)",
+    "workspace_model_id": "0409/usgs_station/04160398",
+    "label": "0409/usgs_station/04160398 (MI)",
     "vpuid": "0409",
     "n_stations": 1,
     "n_production_assigned": 1,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "04160398",
-      "workspace_model_id": "0409/huc12/04160398",
-      "label": "0409/huc12/04160398 (MI)",
+      "workspace_model_id": "0409/usgs_station/04160398",
+      "label": "0409/usgs_station/04160398 (MI)",
       "site_no": "04160398",
       "station_name": "PINE RIVER AT NEUMAN ROAD NEAR MARYSVILLE, MI",
       "usgs_da_km2": 440.29797875712,

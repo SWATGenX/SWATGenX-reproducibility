@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "07062575",
-    "workspace_model_id": "1101/huc12/07062575",
-    "label": "1101/huc12/07062575 (MO)",
+    "workspace_model_id": "1101/usgs_station/07062575",
+    "label": "1101/usgs_station/07062575 (MO)",
     "vpuid": "1101",
     "n_stations": 9,
     "n_production_assigned": 9,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "07062575",
-      "workspace_model_id": "1101/huc12/07062575",
-      "label": "1101/huc12/07062575 (MO)",
+      "workspace_model_id": "1101/usgs_station/07062575",
+      "label": "1101/usgs_station/07062575 (MO)",
       "site_no": "07061270",
       "station_name": "East Fork Black River near Lesterville, MO",
       "usgs_da_km2": 135.1973793595392,
@@ -55,8 +55,8 @@
     },
     {
       "catalog_model_id": "07062575",
-      "workspace_model_id": "1101/huc12/07062575",
-      "label": "1101/huc12/07062575 (MO)",
+      "workspace_model_id": "1101/usgs_station/07062575",
+      "label": "1101/usgs_station/07062575 (MO)",
       "site_no": "07061290",
       "station_name": "E. Fk. Black R. bl Lower Taum Sauk Reservoir",
       "usgs_da_km2": 226.1059620323328,
@@ -84,8 +84,8 @@
     },
     {
       "catalog_model_id": "07062575",
-      "workspace_model_id": "1101/huc12/07062575",
-      "label": "1101/huc12/07062575 (MO)",
+      "workspace_model_id": "1101/usgs_station/07062575",
+      "label": "1101/usgs_station/07062575 (MO)",
       "site_no": "07061300",
       "station_name": "East Fork Black River at Lesterville, MO",
       "usgs_da_km2": 242.9408847495168,
@@ -113,8 +113,8 @@
     },
     {
       "catalog_model_id": "07062575",
-      "workspace_model_id": "1101/huc12/07062575",
-      "label": "1101/huc12/07062575 (MO)",
+      "workspace_model_id": "1101/usgs_station/07062575",
+      "label": "1101/usgs_station/07062575 (MO)",
       "site_no": "07061500",
       "station_name": "Black River near Annapolis, MO",
       "usgs_da_km2": 1253.554245402624,
@@ -142,8 +142,8 @@
     },
     {
       "catalog_model_id": "07062575",
-      "workspace_model_id": "1101/huc12/07062575",
-      "label": "1101/huc12/07062575 (MO)",
+      "workspace_model_id": "1101/usgs_station/07062575",
+      "label": "1101/usgs_station/07062575 (MO)",
       "site_no": "07061600",
       "station_name": "Black River below Annapolis, MO",
       "usgs_da_km2": 1276.8641383956478,
@@ -171,8 +171,8 @@
     },
     {
       "catalog_model_id": "07062575",
-      "workspace_model_id": "1101/huc12/07062575",
-      "label": "1101/huc12/07062575 (MO)",
+      "workspace_model_id": "1101/usgs_station/07062575",
+      "label": "1101/usgs_station/07062575 (MO)",
       "site_no": "07061900",
       "station_name": "Logan Creek at Ellington, MO",
       "usgs_da_km2": 360.008347336704,
@@ -200,8 +200,8 @@
     },
     {
       "catalog_model_id": "07062575",
-      "workspace_model_id": "1101/huc12/07062575",
-      "label": "1101/huc12/07062575 (MO)",
+      "workspace_model_id": "1101/usgs_station/07062575",
+      "label": "1101/usgs_station/07062575 (MO)",
       "site_no": "07062050",
       "station_name": "Clearwater Tailwater near Piedmont, MO",
       "usgs_da_km2": 2325.809323081728,
@@ -229,8 +229,8 @@
     },
     {
       "catalog_model_id": "07062575",
-      "workspace_model_id": "1101/huc12/07062575",
-      "label": "1101/huc12/07062575 (MO)",
+      "workspace_model_id": "1101/usgs_station/07062575",
+      "label": "1101/usgs_station/07062575 (MO)",
       "site_no": "07062500",
       "station_name": "Black River at Leeper, MO",
       "usgs_da_km2": 2556.318264901632,
@@ -258,8 +258,8 @@
     },
     {
       "catalog_model_id": "07062575",
-      "workspace_model_id": "1101/huc12/07062575",
-      "label": "1101/huc12/07062575 (MO)",
+      "workspace_model_id": "1101/usgs_station/07062575",
+      "label": "1101/usgs_station/07062575 (MO)",
       "site_no": "07062575",
       "station_name": "Black River above Williamsville, MO",
       "usgs_da_km2": 2608.118027108352,

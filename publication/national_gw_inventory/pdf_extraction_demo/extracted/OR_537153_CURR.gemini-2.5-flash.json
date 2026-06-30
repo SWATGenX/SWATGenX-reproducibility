@@ -1,0 +1,20 @@
+{
+  "pdf": "OR_537153_CURR",
+  "model": "gemini-2.5-flash",
+  "usage": {
+    "prompt_tokens": 491,
+    "output_tokens": 74,
+    "usd": 0.0003323,
+    "seconds": 8.0
+  },
+  "extracted": {
+    "lithology": [],
+    "legibility": "clear",
+    "extraction_confidence": 1.0,
+    "static_water_level_ft": 10,
+    "total_depth_ft": 40,
+    "water_bearing_zones_ft": [
+      10
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "pdf": "OR_41444_COLU",
+  "model": "gemini-2.5-flash",
+  "usage": {
+    "prompt_tokens": 491,
+    "output_tokens": 155,
+    "usd": 0.0005348,
+    "seconds": 5.1
+  },
+  "extracted": {
+    "lithology": [
+      {
+        "top_ft": 0,
+        "bottom_ft": 5,
+        "description": "TOP SOIL",
+        "normalized": "topsoil"
+      },
+      {
+        "top_ft": 5,
+        "bottom_ft": 12,
+        "description": "BROWN CLAY",
+        "normalized": "clay"
+      },
+      {
+        "top_ft": 12,
+        "bottom_ft": 40,
+        "description": "BLUE SAND STONE",
+        "normalized": "sandstone"
+      }
+    ],
+    "legibility": "clear",
+    "extraction_confidence": 0.9,
+    "static_water_level_ft": 30,
+    "total_depth_ft": 40,
+    "water_bearing_zones_ft": [
+      12
+    ]
+  }
+}

@@ -19,13 +19,13 @@
 
 | Field | Value |
 |-------|--------|
-| **model_id** | `0712/huc12/05536265` |
+| **model_id** | `0712/usgs_station/05536265` |
 | **USGS site** | `05536265` |
 | **VPUID** | `0712` |
 | **State** | IL (~59 km²) |
 | **Gage channel (GIS)** | **25** (`streamflow_data/25_05536265.csv`) |
 | **Calibration scenario** | `Default_initialized` |
-| **User tree** | `${SWATGENX_USER_PATH}/SWATplus_by_VPUID/0712/huc12/05536265/` |
+| **User tree** | `${SWATGENX_USER_PATH}/SWATplus_by_VPUID/0712/usgs_station/05536265/` |
 
 ---
 

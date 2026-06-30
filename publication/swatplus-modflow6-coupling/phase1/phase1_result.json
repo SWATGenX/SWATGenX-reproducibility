@@ -1,0 +1,15 @@
+{
+  "model": "04124500",
+  "nper": 1096,
+  "date_start": "2022-01-01",
+  "date_end": "2024-12-31",
+  "steady_baseline_mean_head_m": 232.408,
+  "transient_mean_head_first": 232.47,
+  "transient_mean_head_last": 232.519,
+  "transient_mean_head_min": 232.284,
+  "transient_mean_head_max": 232.606,
+  "n_converged_steps": 1096,
+  "n_periods": 1096,
+  "all_steps_solved": true,
+  "basin_mean_perc_mm_day": 0.7818
+}

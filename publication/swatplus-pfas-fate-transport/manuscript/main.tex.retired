@@ -1,0 +1,47 @@
+% PFAS surface-water fate-and-transport manuscript — Water Research target.
+% Same skeleton as the SWATGenX / engine-acceleration manuscripts (generic
+% article + shared preamble). Compile: bash build_pdfs.sh
+\documentclass[12pt]{article}
+
+\input{preamble-common.tex}
+\usepackage{lineno}
+
+\doublespacing
+\linenumbers
+
+\title{A high-resolution, process-based PFAS surface-water fate-and-transport
+model in SWAT\textsuperscript{+}: engine development, cross-validation, and a
+source-attribution demonstration on the Rogue River, Michigan}
+
+\author{%
+  Vahid Rafiei\\
+  Independent Researcher\\
+  \texttt{menly42@gmail.com}\\
+  ORCID: \href{https://orcid.org/0009-0009-8309-1895}{0009-0009-8309-1895}
+}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\input{sections/highlights}
+\input{sections/abstract}
+\input{sections/keywords}
+
+\input{sections/introduction}
+\input{sections/methods-engine}
+\input{sections/methods-model-study-area}
+\input{sections/methods-calibration}
+\input{sections/results}
+\input{sections/discussion}
+\input{sections/conclusions}
+
+\input{sections/availability}
+\input{sections/declarations}
+
+\bibliographystyle{apalike}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,228 @@
+% Supplement --- national groundwater inventory data descriptor.
+\documentclass[12pt]{article}
+\input{preamble-common.tex}
+\usepackage{xr}
+\externaldocument{main}
+
+\renewcommand{\thesection}{S\arabic{section}}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\thefigure}{S\arabic{figure}}
+
+\title{Supplementary Material\\[4pt]
+\large A national inventory of groundwater well and lithology data for the conterminous United States}
+\author{Vahid Rafiei}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Harvest-mode taxonomy}
+State subsurface data hides behind about ten distinct access modes (Table~\ref{tab:modes}). The method is
+to identify which mode a state uses, then apply the matching harvester. Cost decreases up the digital end.
+
+\begin{table}[h]\centering\small
+\caption{The ten harvest modes encountered, with example states.}
+\label{tab:modes}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{c L{0.18\textwidth} L{0.28\textwidth} l Y}
+\toprule
+\# & Mode & How & Cost & States \\
+\midrule
+1 & Bulk REST pagination & \code{resultOffset} paging $\rightarrow$ FlatGeobuf & free & most ArcGIS layers \\
+2 & objectIds-batch fallback & \code{returnIdsOnly} then \code{objectIds} batches & free & MS (181k recovered) \\
+3 & Bulk file download & CSV / GeoPackage / shapefile & free & CA, MN, MO/MSDIS \\
+4 & Inline structured lithology & interval table or wide cols in record & free & MT, AL, MO, KY, IL-bulk \\
+5 & HTML-table scrape & server-rendered lithology table per well & free & OK, IA \\
+6 & Constructible text-layer PDF & born-digital per-well PDF $\rightarrow$ \code{pdftotext} & $\sim$free & IL \\
+7 & Per-well scanned PDF (URL in record) & direct PDF/image URL $\rightarrow$ vision model & \$ & OR, WI, FL, NV, SD, KS \\
+8 & Detail-page hop $\rightarrow$ scanned doc & record $\rightarrow$ page $\rightarrow$ scan & \$ $+$ recon & ID, NY, UT, VT, NH, TN \\
+9 & Per-county framework service & aquifer-study framework, not logs & n/a & CO CGS (4 counties) \\
+10 & Other modality / by-request & geophysical logs; email/FOIA & n/a & CO DWR; NJ, MA, ND, \ldots \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Per-state attempt record}
+Table~\ref{tab:attempts} is the engineering record of what was tried per state. Status:
+\checkmark{} harvested; $\circ$ partial/slice; $\triangleright$ calibrated, not fully mined;
+$\times$ blocked/remaining; --- out of scope.
+
+\footnotesize
+\begin{longtable}{L{0.085\textwidth} L{0.17\textwidth} c c L{0.40\textwidth}}
+\caption{Per-state harvest-attempt record.}\label{tab:attempts}\\
+\toprule
+State & Source & Mode & Status & Notes \\ \midrule \endfirsthead
+\toprule State & Source & Mode & Status & Notes \\ \midrule \endhead
+MI & Wellogic (EGLE) & 4 & \checkmark & 5.47M intervals; canonical schema \\
+TX & TWDB SDR & 4 & \checkmark & 5.29M intervals; bulk lithology/strata files \\
+MN & CWI C5ST & 3 & \checkmark & 2.84M intervals (GeoPackage) \\
+IL & ISGS $\rightarrow$ water\_summary & 4$\to$6 & \checkmark & 2.20M intervals; text-layer PDF (free) \\
+MT & GWIC & 4 & \checkmark & 1.54M intervals, 100\% non-null \\
+CA & OSWCR (4-CSV) & 3 & \checkmark & 1.33M intervals; section-center geometry \\
+WI & DNR ReportViewer & 6/7 & \checkmark & 1.26M intervals; born-digital triage \\
+OK & OWRB printreport & 5 & \checkmark & 1.10M intervals; HTML scrape \\
+MO & DNR / MSDIS & 3/4 & \checkmark & 947k intervals \\
+MA & MassDEP & 6 & \checkmark & 742k intervals; born-digital report PDFs \\
+VT & ANR & 3 & \checkmark & 377k intervals; structured grid \\
+TN & TDEC & 5 & \checkmark & 309k intervals; viewer-resolved \\
+KY & KGS & 4 & \checkmark & 168k intervals; inline \\
+OH & ODNR & 5 & \checkmark & 162k intervals; viewer-resolved \\
+IA & GeoSam & 5 & \checkmark & 118k intervals (HTML scrape) \\
+NM & OSE & 7 & $\circ$ & 52k intervals; structured API, WAF-limited (partial) \\
+AL & NGWMN & 4 & $\circ$ & 41k intervals, sparse source \\
+OR & OWRD vault & 7 & $\triangleright$ & VLM route; characterized by sampling, not bulk-harvested \\
+FL & SJRWMD DOCLINK & 7 & $\triangleright$ & VLM route; sampled; one WMD only \\
+NV & NDWR images & 7 & $\triangleright$ & VLM route; sampled \\
+SD & DANR images & 7 & $\triangleright$ & VLM route; sampled \\
+KS & KGS Azure blob & 7 & $\triangleright$ & VLM route; sampled \\
+ID & IDWR Laserfiche & 8 & $\triangleright$ & VLM route; sampled \\
+NY & DEC WCR & 8 & $\times$ & scanned; resolver not wired \\
+UT & waterrights wlbrowse & 8 & $\times$ & $\sim$1.1k geologic-log wells only \\
+CO & CGS / DWR & 9/10 & $\times$ & geophysical + framework, weak driller-lithology \\
+WA & Ecology & 7 & $\times$ & 1.18M wells; report-PDF base URL needed \\
+MS & state & 2 & $\times$ & points harvested; lithology not yet wired \\
+NE, AZ, WY, NH, ME, VA, SC & various & 7/8 & $\times$ & points harvested; lithology resolvers not wired \\
+NJ, ND, MD, RI, WV, NC, GA, AR, LA & --- & 10 & $\times$ & by-request / app-gated \\
+AK, HI & --- & --- & --- & out of scope (CONUS only) \\
+\bottomrule
+\end{longtable}
+\normalsize
+
+\section{Hydraulic-ingredient coverage}
+Measured conductivity is never in a driller's log; it must be derived from a pump test (specific capacity
+$\rightarrow$ transmissivity) and a screened thickness. Table~\ref{tab:hydraulics} audits, per ingested
+state, which raw ingredients exist and how populated they are (cell $=$ max non-null \% in a 1{,}500-row
+sample of any matching field; name-based lower bound). Static water level and total depth form a broad
+backbone; the pump-test fields are scarce.
+
+\begin{table}[h]\centering\footnotesize
+\caption{Hydraulic-ingredient coverage (selected states; ``--'' $=$ no matching field).}
+\label{tab:hydraulics}
+\begin{tabular}{l c c c c c c}
+\toprule
+State & SWL & yield & drawdown & spec.\ cap. & transmiss. & depth \\
+\midrule
+WI & 1\% & 1\% & 1\% & 1\% & -- & 3\% \\
+NV & 61\% & 9\% & 5\% & 5\% & 5\% & 97\% \\
+KS & 100\% & 100\% & -- & -- & -- & 100\% \\
+MO & 91\% & 81\% & -- & -- & -- & 100\% \\
+OR & 100\% & 72\% & -- & -- & -- & 96\% \\
+AZ & 87\% & 67\% & 67\% & -- & -- & 91\% \\
+ID & 89\% & 63\% & -- & -- & -- & 74\% \\
+VA & 100\% & 100\% & -- & -- & -- & -- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent\emph{Reading it:} direct specific capacity appears in only NV and WI; drawdown in AZ, NV, WI;
+measured transmissivity in NV alone. A national derived-conductivity layer is therefore feasible only where
+yield and drawdown co-occur; elsewhere conductivity must fall back to lithology-facies estimates anchored to
+the observed log. Full matrix and generator: \code{hydraulic\_coverage.md} and
+\code{audit\_hydraulic\_coverage.py} (under \code{national\_gw\_inventory/}).
+
+\section{Extraction schema and validation}
+The forced JSON schema returns, per log: ordered intervals (top/bottom feet, verbatim description,
+normalized class), total depth, static water level, a legibility flag, and a self-confidence score.
+Validation across the seven calibrated states found faithful transcription of driller shorthand
+(including preserved misspellings), legibility flags on illegible scans, and \emph{empty} arrays rather
+than fabricated intervals on blank logs --- the key trust signal. A quantitative ground-truth comparison
+against a state agency's own hand-transcriptions ($n=1{,}499$ wells) is reported in the main text.
+
+% =====================================================================
+\section{Data sources and access provenance}
+\label{sec:provenance}
+This section documents, for every state we touched, exactly how its well and lithology data were
+accessed: the custodian agency and dataset, the access endpoint (a bulk-file portal or, more often, an
+ArcGIS/REST feature service or a per-well report endpoint), the access method, the harvested point count,
+the route by which lithology is recovered, and the date the endpoint was last accessed and verified
+(2026-06-24 throughout). Table~\ref{tab:provenance} is the citable per-state ledger; each agency portal
+also carries a data-citation entry in the bibliography (citekeys \code{data\_<st>\_<agency>}).
+
+The lithology route falls into three provenance \emph{tiers}, ordered by extraction cost.
+\textbf{(a) Structured / bulk} (no vision model): lithology arrives already machine-readable --- a bulk
+file (CA OSWCR CSVs, MN CWI GeoPackage, MO/MSDIS shapefile), an inline interval table or wide columns in
+the REST record (MI, MT, AL, KY, IL-bulk), or a server-rendered HTML grid scraped per well (OK, IA, VT,
+NM). \textbf{(b) Born-digital text-layer PDF} (cheap text-only LLM): the per-well report is a digital PDF
+whose strata table survives \code{pdftotext}, so no image tokens are needed (TX, OH, NY, IL via the
+\code{water\_summary} endpoint, MA). \textbf{(c) Scanned PDF} (vision-language model): the log is a raster
+scan of a paper form and must be read with a vision model (WA, MS, NE, UT, ID, OR, WI, FL, NV, SD, KS).
+For ten states the data is present but was, at audit time, \emph{out of reach} of an automated anonymous
+client, and we record \emph{why}, because the obstruction is procedural rather than an absence of data:
+TN, NH, and AZ return HTTP~403 to our primary datacenter IP (an AWS~ELB/WAF, an Akamai edge rule, and a
+Cloudflare JS/Turnstile challenge, respectively). These are IP-reputation blocks, not data restrictions,
+and are only partially circumventable: re-issuing the requests from a fresh AWS~EC2 elastic IP cleared
+\emph{TN} --- whose report page in fact renders a \emph{structured HTML} lithology table requiring no vision
+model, from which we then harvested 77{,}836 wells --- whereas the Akamai (NH) and Cloudflare (AZ) rules
+fingerprint datacenter IP ranges generally and still returned 403, so those two require a residential or
+headless-browser egress. WY places
+its statements of completion behind an eGov login with no anonymous handler; PA's scanned records exist
+only as GIF images keyed by an internal identifier with no public record-to-image mapping; and VA, ME, and
+SC publish only located-well tables, with the actual completion reports held in internal storage or
+released by request. None of these is a confidentiality restriction --- the records are public; they are
+simply not yet harvestable by an automated, anonymous client.
+
+\footnotesize
+\begin{longtable}{L{0.05\textwidth} L{0.16\textwidth} L{0.26\textwidth} L{0.10\textwidth} r L{0.10\textwidth} c}
+\caption{Per-state groundwater data sources, access methods, and provenance. ``Wells'' is the harvested
+point count; ``--'' marks states for which only locations (not logs) are reachable. Method vocabulary:
+bulk file; REST/ArcGIS; structured HTML; text PDF (born-digital, text layer); scanned PDF (VLM); blocked
+(WAF/login); by-request gap. All endpoints last accessed 2026-06-24.}
+\label{tab:provenance}\\
+\toprule
+State & Agency / dataset & Access endpoint & Method & Wells & Lithology route & Last acc. \\
+\midrule \endfirsthead
+\multicolumn{7}{c}{\tablename~\thetable\ (continued)}\\
+\toprule
+State & Agency / dataset & Access endpoint & Method & Wells & Lithology route & Last acc. \\
+\midrule \endhead
+\midrule \multicolumn{7}{r}{\emph{continued on next page}}\\ \endfoot
+\bottomrule \endlastfoot
+% --- Tier A: structured / bulk ---
+MI & Wellogic / EGLE \citep{data_mi_wellogic} & state DB export & bulk file & 5.77M$^\dagger$ & inline interval table (a) & 2026-06-24 \\
+MN & MN Health / CWI \citep{data_mn_cwi} & CWI C5ST GeoPackage & bulk file & 2.84M$^\dagger$ & bulk strata table (a) & 2026-06-24 \\
+MT & MBMG GWIC \citep{data_mt_gwic} & \url{mbmgmap.mtech.edu/.../GWIC_Database/FeatureServer/13} & REST/ArcGIS & 330{,}278 & inline interval table (a) & 2026-06-24 \\
+CA & CA DWR OSWCR \citep{data_ca_oswcr} & \url{data.cnra.ca.gov/dataset/well-completion-reports} & bulk file & 1.11M & 4-CSV union (a) & 2026-06-24 \\
+MO & MO DNR / MSDIS \citep{data_mo_msdis} & \url{gis.dnr.mo.gov/.../water_wells/MapServer/1} & REST $+$ bulk & 194{,}607 & wide-column un-pivot (a) & 2026-06-24 \\
+IL & ISGS ILWATER \citep{data_il_isgs} & \url{maps.isgs.illinois.edu/.../ILWATER/.../MapServer/2} & REST $+$ text PDF & 390{,}443 & bulk col.\ (a) $+$ text PDF (b) & 2026-06-24 \\
+KY & KGS \citep{data_ky_kgs} & \url{kgs.uky.edu/.../KYWaterWells/MapServer/1} & REST/ArcGIS & 105{,}714 & inline columns (a) & 2026-06-24 \\
+AL & GSA NGWMN \citep{data_al_ngwmn} & \url{map.ogb.state.al.us/.../NGWMN/Construction/MapServer/0} & REST/ArcGIS & 38{,}408 & inline interval table (a) & 2026-06-24 \\
+IA & Iowa GS GeoSam \citep{data_ia_geosam} & \url{services3.arcgis.com/.../GeoSam/FeatureServer/0} & structured HTML & 99{,}729 & HTML stratigraphy scrape (a) & 2026-06-24 \\
+OK & OWRB \citep{data_ok_owrb} & \url{owrb.csa.ou.edu/.../Groundwater_Wells/MapServer/4} & structured HTML & 243{,}801 & \code{printreport.php} scrape (a) & 2026-06-24 \\
+VT & VT DEC anrweb \citep{data_vt_anr} & \url{anrweb.vt.gov/DEC/IWIS/} & structured HTML & 120{,}051 & lithology grid scrape (a) & 2026-06-24 \\
+NM & NM OSE NMWRRS \citep{data_nm_ose} & \url{services2.arcgis.com/.../OSE_Points_of_Diversion/.../0} & structured HTML & 278{,}408 & POD-report strata grid (a) & 2026-06-24 \\
+% --- Tier B: born-digital text PDF ---
+TX & TWDB SDR \citep{data_tx_twdb} & \url{www3.twdb.texas.gov/apps/.../GetReports.aspx} & text PDF & 680{,}660 & SSRS Well Report PDF (b) & 2026-06-24 \\
+OH & ODNR \citep{data_oh_odnr} & \url{gis2.ohiodnr.gov/.../waterwells/MapServer/0} & text PDF & 478{,}224 & born-digital log PDF (b) & 2026-06-24 \\
+NY & NYSDEC \citep{data_ny_dec} & \url{services6.arcgis.com/.../Water_Wells/FeatureServer/28} & text PDF & 144{,}498 & RPTURL $\to$ Completion.pdf (b) & 2026-06-24 \\
+MA & MassDEP EEA \citep{data_ma_massdep} & \url{eeaonline.eea.state.ma.us/.../WellDrilling/} & text PDF & 214{,}806 & born-digital report PDF (b) & 2026-06-24 \\
+% --- Tier C: scanned PDF (VLM) ---
+WA & WA Ecology \citep{data_wa_ecology} & \url{appswr.ecology.wa.gov/wellconstruction/WellReport/<ID>} & scanned PDF & 1.18M & embedded scan $\to$ VLM (c) & 2026-06-24 \\
+MS & MDEQ \citep{data_ms_mdeq} & \url{landandwater.deq.ms.gov/DrillScans/} & scanned PDF & 181{,}279 & DrillScans archive $\to$ VLM (c) & 2026-06-24 \\
+NE & NE DNR/DWEE \citep{data_ne_dnr} & \url{nednr.nebraska.gov/dynamic/PublicScans/} & scanned PDF & 266{,}555 & PublicScans 2-hop $\to$ VLM (c) & 2026-06-24 \\
+UT & UT DWRi \citep{data_ut_dwri} & \url{waterrights.utah.gov/cgi-bin/docview.exe?Folder=welllog<WIN>} & scanned PDF & 94{,}258 & TIFF pages $\to$ PDF $\to$ VLM (c) & 2026-06-24 \\
+ID & IDWR \citep{data_id_idwr} & \url{gis.idwr.idaho.gov/.../Groundwater/Wells/.../0} (Laserfiche) & scanned PDF & 207{,}787 & detail-hop $\to$ scan $\to$ VLM (c) & 2026-06-24 \\
+OR & OWRD \citep{data_or_owrd} & \url{gis.wrd.state.or.us/.../Wells_by_Theme_WGS84/.../0} & scanned PDF & 594{,}185 & \code{well\_log\_url} $\to$ VLM (c) & 2026-06-24 \\
+WI & WI DNR \citep{data_wi_dnr} & \url{services5.arcgis.com/.../GW_SAMPLE_PT_EXT_VAR_gdb2/.../0} & scanned PDF & 871{,}268 & \code{WELL\_CONSTR\_URL} $\to$ VLM (c) & 2026-06-24 \\
+FL & SJRWMD \citep{data_fl_sjrwmd} & \url{services.arcgis.com/s8wtJX9suxFen6TA/.../0} & scanned PDF & 410{,}841 & \code{DOCLINK} $\to$ VLM (c) & 2026-06-24 \\
+NV & NDWR \citep{data_nv_ndwr} & \url{arcgis.water.nv.gov/.../Well_Driller_Reports/.../0} & scanned PDF & 144{,}746 & \code{WellLogReport} $\to$ VLM (c) & 2026-06-24 \\
+SD & SD DANR \citep{data_sd_danr} & \url{arcgis.sd.gov/.../DENR/WellLogs_Public/MapServer/0} & scanned PDF & 78{,}246 & \code{LINK} $\to$ VLM (c) & 2026-06-24 \\
+KS & KGS WWC5 \citep{data_ks_kgs} & \url{services2.arcgis.com/.../Water_Wells_WWC5/.../0} & scanned PDF & 313{,}546 & \code{FILE\_URL} $\to$ VLM (c) & 2026-06-24 \\
+% --- blocked / gap ---
+AZ & ADWR Wells55 \citep{data_az_adwr} & \url{infoshare.azwater.gov} (DocuShare) & blocked (WAF) & 239{,}567 & Cloudflare 403; needs egress & 2026-06-24 \\
+TN & TDEC DWR \citep{data_tn_tdec} & \url{dataviewers.tdec.tn.gov} (APEX) & structured HTML & 77{,}836 & fresh AWS egress cleared ELB/WAF & 2026-06-24 \\
+NH & NHDES OneStop \citep{data_nh_des} & \url{www4.des.state.nh.us/DESOnestop/WLSDetail.aspx} & blocked (WAF) & 111{,}476 & Akamai 403; needs egress & 2026-06-24 \\
+WY & WY SEO e-Permit \citep{data_wy_seo} & \url{seoweb.wyo.gov/e-Permit/} & blocked (login) & 208{,}813 & login-gated completion scans & 2026-06-24 \\
+PA & PA DCNR PaGWIS \citep{data_pa_dcnr} & \url{iframeapps.dcnr.state.pa.us/.../WellReports/} & by-request gap & 417{,}259 & GIF, no record$\to$image map & 2026-06-24 \\
+VA & VA Energy DGMR \citep{data_va_dgmr} & \url{energy.virginia.gov/.../DGMR/VA_Water_Wells/.../0} & by-request gap & 19{,}937 & reports by request (internal) & 2026-06-24 \\
+ME & Maine GS \citep{data_me_mgs} & \url{services1.arcgis.com/.../MGS_Wells_Database/.../0} & by-request gap & 94{,}685 & scanned cards by request & 2026-06-24 \\
+SC & SC DES/DNR \citep{data_sc_des} & \url{services.arcgis.com/.../SCDNR_Coastal_Plain_Well_Inventory/0} & by-request gap & 14{,}146 & logs by request (photocopy) & 2026-06-24 \\
+\end{longtable}
+\normalsize
+\noindent$^\dagger$ MI and MN counts are harmonized lithology \emph{intervals} (bulk state exports
+predate the REST point harvest); all other ``Wells'' values are harvested point counts.
+
+\bibliographystyle{apalike}
+\bibliography{references}
+
+\end{document}

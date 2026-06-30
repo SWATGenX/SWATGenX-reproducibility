@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "02294405",
-    "workspace_model_id": "0310/huc12/02294405",
-    "label": "0310/huc12/02294405 (FL)",
+    "workspace_model_id": "0310/usgs_station/02294405",
+    "label": "0310/usgs_station/02294405 (FL)",
     "vpuid": "0310",
     "n_stations": 12,
     "n_production_assigned": 12,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "02294405",
-      "workspace_model_id": "0310/huc12/02294405",
-      "label": "0310/huc12/02294405 (FL)",
+      "workspace_model_id": "0310/usgs_station/02294405",
+      "label": "0310/usgs_station/02294405 (FL)",
       "site_no": "02294217",
       "station_name": "SADDLE CREEK AT ST.HWY 542 NEAR LAKELAND FL",
       "usgs_da_km2": 137.26936984780798,
@@ -55,8 +55,8 @@
     },
     {
       "catalog_model_id": "02294405",
-      "workspace_model_id": "0310/huc12/02294405",
-      "label": "0310/huc12/02294405 (FL)",
+      "workspace_model_id": "0310/usgs_station/02294405",
+      "label": "0310/usgs_station/02294405 (FL)",
       "site_no": "02294260",
       "station_name": "LAKE PARKER OUTLET AT LAKELAND FL",
       "usgs_da_km2": 159.4730888687525,
@@ -84,8 +84,8 @@
     },
     {
       "catalog_model_id": "02294405",
-      "workspace_model_id": "0310/huc12/02294405",
-      "label": "0310/huc12/02294405 (FL)",
+      "workspace_model_id": "0310/usgs_station/02294405",
+      "label": "0310/usgs_station/02294405 (FL)",
       "site_no": "02294261",
       "station_name": "LAKE PARKER OUTLET AT COMBEE SETTLEMENT FL",
       "usgs_da_km2": 159.4730888687525,
@@ -113,8 +113,8 @@
     },
     {
       "catalog_model_id": "02294405",
-      "workspace_model_id": "0310/huc12/02294405",
-      "label": "0310/huc12/02294405 (FL)",
+      "workspace_model_id": "0310/usgs_station/02294405",
+      "label": "0310/usgs_station/02294405 (FL)",
       "site_no": "02294290",
       "station_name": "SADDLE CREEK AT STATE HWY 570 NEAR EATON PARK FL",
       "usgs_da_km2": 157.989274730496,
@@ -142,8 +142,8 @@
     },
     {
       "catalog_model_id": "02294405",
-      "workspace_model_id": "0310/huc12/02294405",
-      "label": "0310/huc12/02294405 (FL)",
+      "workspace_model_id": "0310/usgs_station/02294405",
+      "label": "0310/usgs_station/02294405 (FL)",
       "site_no": "02294330",
       "station_name": "LAKE LENA RUN NEAR AUBURNDALE FL",
       "usgs_da_km2": 55.4257455611904,
@@ -171,8 +171,8 @@
     },
     {
       "catalog_model_id": "02294405",
-      "workspace_model_id": "0310/huc12/02294405",
-      "label": "0310/huc12/02294405 (FL)",
+      "workspace_model_id": "0310/usgs_station/02294405",
+      "label": "0310/usgs_station/02294405 (FL)",
       "site_no": "02294405",
       "station_name": "BANANA-HANCOCK CANAL NR HIGHLAND CITY, FL",
       "usgs_da_km2": 48.6917764743168,
@@ -200,8 +200,8 @@
     },
     {
       "catalog_model_id": "02294405",
-      "workspace_model_id": "0310/huc12/02294405",
-      "label": "0310/huc12/02294405 (FL)",
+      "workspace_model_id": "0310/usgs_station/02294405",
+      "label": "0310/usgs_station/02294405 (FL)",
       "site_no": "02294491",
       "station_name": "SADDLE CREEK AT STRUCTURE P-11 NEAR BARTOW FL",
       "usgs_da_km2": 349.64839489536,
@@ -229,8 +229,8 @@
     },
     {
       "catalog_model_id": "02294405",
-      "workspace_model_id": "0310/huc12/02294405",
-      "label": "0310/huc12/02294405 (FL)",
+      "workspace_model_id": "0310/usgs_station/02294405",
+      "label": "0310/usgs_station/02294405 (FL)",
       "site_no": "280242081531600",
       "station_name": "TENOROC DITCH (SITE 20) NEAR LAKELAND FL",
       "usgs_da_km2": 159.4730888687525,
@@ -258,8 +258,8 @@
     },
     {
       "catalog_model_id": "02294405",
-      "workspace_model_id": "0310/huc12/02294405",
-      "label": "0310/huc12/02294405 (FL)",
+      "workspace_model_id": "0310/usgs_station/02294405",
+      "label": "0310/usgs_station/02294405 (FL)",
       "site_no": "280441081520200",
       "station_name": "TENOROC DITCH (SITE 17B) NEAR LAKELAND FL",
       "usgs_da_km2": 159.4730888687525,
@@ -287,8 +287,8 @@
     },
     {
       "catalog_model_id": "02294405",
-      "workspace_model_id": "0310/huc12/02294405",
-      "label": "0310/huc12/02294405 (FL)",
+      "workspace_model_id": "0310/usgs_station/02294405",
+      "label": "0310/usgs_station/02294405 (FL)",
       "site_no": "280531081520500",
       "station_name": "TENOROC DITCH ABV STR (SITE 17A) NEAR LAKELAND FL",
       "usgs_da_km2": 159.4730888687525,
@@ -316,8 +316,8 @@
     },
     {
       "catalog_model_id": "02294405",
-      "workspace_model_id": "0310/huc12/02294405",
-      "label": "0310/huc12/02294405 (FL)",
+      "workspace_model_id": "0310/usgs_station/02294405",
+      "label": "0310/usgs_station/02294405 (FL)",
       "site_no": "280531081520501",
       "station_name": "TENOROC DITCH BEL STR (SITE 17A) NEAR LAKELAND FL",
       "usgs_da_km2": 159.4730888687525,
@@ -345,8 +345,8 @@
     },
     {
       "catalog_model_id": "02294405",
-      "workspace_model_id": "0310/huc12/02294405",
-      "label": "0310/huc12/02294405 (FL)",
+      "workspace_model_id": "0310/usgs_station/02294405",
+      "label": "0310/usgs_station/02294405 (FL)",
       "site_no": "280557081512300",
       "station_name": "TENOROC DITCH (SITE 13) NEAR LAKELAND FL",
       "usgs_da_km2": 159.4730888687525,

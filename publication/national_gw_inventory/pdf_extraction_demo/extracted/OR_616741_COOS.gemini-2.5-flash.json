@@ -1,0 +1,112 @@
+{
+  "pdf": "OR_616741_COOS",
+  "model": "gemini-2.5-flash",
+  "usage": {
+    "prompt_tokens": 1007,
+    "output_tokens": 858,
+    "usd": 0.0024471000000000002,
+    "seconds": 12.4
+  },
+  "extracted": {
+    "lithology": [
+      {
+        "top_ft": 0,
+        "bottom_ft": 2,
+        "description": "Clay brown",
+        "normalized": "clay"
+      },
+      {
+        "top_ft": 2,
+        "bottom_ft": 4,
+        "description": "Clay brown orange",
+        "normalized": "clay"
+      },
+      {
+        "top_ft": 4,
+        "bottom_ft": 6,
+        "description": "Sandy clay tan",
+        "normalized": "clay"
+      },
+      {
+        "top_ft": 6,
+        "bottom_ft": 8,
+        "description": "Sand f-m tan w/wood",
+        "normalized": "sand"
+      },
+      {
+        "top_ft": 8,
+        "bottom_ft": 13,
+        "description": "Sand f-m tan w/gravel f tan",
+        "normalized": "sand_and_gravel"
+      },
+      {
+        "top_ft": 13,
+        "bottom_ft": 15,
+        "description": "Clay tan",
+        "normalized": "clay"
+      },
+      {
+        "top_ft": 15,
+        "bottom_ft": 17,
+        "description": "Gravel f-m w/w/sand f-c brown",
+        "normalized": "sand_and_gravel"
+      },
+      {
+        "top_ft": 17,
+        "bottom_ft": 19,
+        "description": "Gravel f-m w/sand f-c & sandy clay orange",
+        "normalized": "sand_and_gravel"
+      },
+      {
+        "top_ft": 19,
+        "bottom_ft": 21,
+        "description": "Gravel f-c w/sand f-c gray green",
+        "normalized": "sand_and_gravel"
+      },
+      {
+        "top_ft": 21,
+        "bottom_ft": 23.5,
+        "description": "Gravel f-c w/sandy clay tan",
+        "normalized": "sand_and_gravel"
+      },
+      {
+        "top_ft": 23.5,
+        "bottom_ft": 28,
+        "description": "Sandy clay tan",
+        "normalized": "clay"
+      },
+      {
+        "top_ft": 28,
+        "bottom_ft": 29,
+        "description": "Cemented sand black",
+        "normalized": "sand"
+      },
+      {
+        "top_ft": 29,
+        "bottom_ft": 37,
+        "description": "Sand f-c brown",
+        "normalized": "sand"
+      },
+      {
+        "top_ft": 37,
+        "bottom_ft": 40,
+        "description": "Gravel c w/fractured rock brown",
+        "normalized": "gravel"
+      },
+      {
+        "top_ft": 40,
+        "bottom_ft": 41,
+        "description": "Clay gray",
+        "normalized": "clay"
+      }
+    ],
+    "legibility": "clear",
+    "extraction_confidence": 1,
+    "static_water_level_ft": 27,
+    "total_depth_ft": 39.83,
+    "water_bearing_zones_ft": [
+      18,
+      29
+    ]
+  }
+}

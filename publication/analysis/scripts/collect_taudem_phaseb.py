@@ -11,7 +11,7 @@ import json
 import os
 import sys
 
-SITE = "${SWATGENX_USER_PATH}/SWATplus_by_VPUID/0308/huc12/030801020804"
+SITE = "${SWATGENX_USER_PATH}/SWATplus_by_VPUID/0308/huc12_outlet/030801020804"
 WBD_TRUTH_KM2 = 53.37  # Oklawaha S basin area (WBD)
 REF_NAME = "SWAT_MODEL_Web_Application"  # NHDPlus-HR reference
 

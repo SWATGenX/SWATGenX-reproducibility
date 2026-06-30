@@ -1,9 +1,9 @@
 cohort,tier,catalog_model_id,workspace_model_id,label,n_huc12_in_domain,input_catchments,input_reaches,divergence2_removed,coastal_removed,unmatched_catchment_removed,no_vaa_catchments_dissolved,isolated_reaches_removed,orphan_catchments_merged,retained_reaches_after_preprocess,retained_catchments_after_preprocess,nhd_waterbodies_in_domain,lakes_in_final_swat,lakes_not_in_final_swat,post_extract_streams,final_channels,final_subbasins,reach_reduction_input_to_retained,reach_reduction_retained_to_post_extract,reach_reduction_post_extract_to_final,qa_divergence2_shp_in_domain,status,run_datetime_utc
-benchmark,S,03080102,0308/huc12/030801020804,Oklawaha (FL),1,56,56,2,0,0,0,1,0,53,53,129,4,125,53,45,3,3,0,8,2,ok,2026-05-31T18:55:28Z
-benchmark,M,09471300,1505/huc12/09471300,Upper San Pedro (AZ),6,1382,1382,11,0,0,0,0,0,1371,1371,152,0,152,1371,1371,12,11,0,0,11,ok,2026-05-31T18:55:40Z
+benchmark,S,03080102,0308/huc12_outlet/030801020804,Oklawaha (FL),1,56,56,2,0,0,0,1,0,53,53,129,4,125,53,45,3,3,0,8,2,ok,2026-05-31T18:55:28Z
+benchmark,M,09471300,1505/usgs_station/09471300,Upper San Pedro (AZ),6,1382,1382,11,0,0,0,0,0,1371,1371,152,0,152,1371,1371,12,11,0,0,11,ok,2026-05-31T18:55:40Z
 benchmark,L,03100101,0310/huc8/03100101,Peace River HUC-8,63,9739,9705,194,0,0,34,81,0,9430,9430,21570,,,,,,275,9430,0,194,ok,2026-05-31T18:55:45Z
-benchmark,X20,03152000,0503/huc12/03152000,Little Kanawaha (WV),11,1659,1659,2,0,0,0,0,0,1657,1657,311,1,310,1657,1615,10,2,0,42,2,ok,2026-05-31T18:55:51Z
-benchmark,X40,07174000,1107/huc12/07174000,Verdigris River (KS),9,2473,2473,12,0,0,0,2,0,2459,2459,2751,15,2736,2418,2329,9,14,41,89,12,ok,2026-05-31T18:56:03Z
+benchmark,X20,03152000,0503/usgs_station/03152000,Little Kanawaha (WV),11,1659,1659,2,0,0,0,0,0,1657,1657,311,1,310,1657,1615,10,2,0,42,2,ok,2026-05-31T18:55:51Z
+benchmark,X40,07174000,1107/usgs_station/07174000,Verdigris River (KS),9,2473,2473,12,0,0,0,2,0,2459,2459,2751,15,2736,2418,2329,9,14,41,89,12,ok,2026-05-31T18:56:03Z
 benchmark,X60,15060105,1506/huc8/15060105,Upper Gila HUC-8 (AZ),37,17469,17469,173,0,0,0,0,0,17296,17296,431,0,431,17296,17296,28,173,0,0,173,ok,2026-05-31T18:56:12Z
-calibration,,02297600,0310/huc12/02297600,Florida controlled basin,2,41,41,0,0,0,0,4,0,37,37,494,0,494,37,37,4,4,0,0,0,ok,2026-05-31T18:56:17Z
-calibration,,05536265,0712/huc12/05536265,Illinois controlled basin,1,224,224,6,0,0,0,12,0,206,206,73,0,73,206,206,8,18,0,0,6,ok,2026-05-31T18:56:26Z
+calibration,,02297600,0310/usgs_station/02297600,Florida controlled basin,2,41,41,0,0,0,0,4,0,37,37,494,0,494,37,37,4,4,0,0,0,ok,2026-05-31T18:56:17Z
+calibration,,05536265,0712/usgs_station/05536265,Illinois controlled basin,1,224,224,6,0,0,0,12,0,206,206,73,0,73,206,206,8,18,0,0,6,ok,2026-05-31T18:56:26Z

@@ -37,7 +37,7 @@ Manuscript tables display **catalog Model ID** (benchmark page convention), not 
 | **Hydrologic calibration / validation / sensitivity** | **Controlled** — gages `02297600` (FL) and `05536265` (IL); **not** benchmark S/M/L | Objective 4 only; supersedes legacy proof basin `01567500` |
 | **SWAT+ simulation runtime benchmark** | **Objective 5** — public page `/swat-plus-runtime-benchmark` (see `runtime-benchmark-objective.md`) | **Tab-RuntimeBenchmark** (planned); distinct from **Tab-Runtime** (generation wall time) |
 | **Runtime environment** | **Pilot logged (2026-05-14):** single Linux host (`vmi2525606.contaboserver.net`), 10 vCPU, approximately 31.35 GB RAM; instrumented single-process runs merged into `publication/tables/tab-runtime-phases.csv` with summaries in `tab-runtime.csv`. JSONL pilots omitted `git_sha`; the committed `tab-runtime.csv` rows carry the repository short SHA that contains the merged phase table. A **full** frozen runbook entry (conda or container digest, `USER_PATH`, worker/queue parity with production) remains **TBD** for stricter reproducibility claims. Disk-derived `generation_wall_min` in the inventory is **not** authoritative. | Reproducibility of **Tab-Runtime** |
-| **Official outputs** | **(1)** Existing **admin** showcase SWAT+ web-application workspaces under `…/admin/SWATplus_by_VPUID/<vpuid>/huc12/<site_no>/…` for the three `model_id` rows (structural counts, maps, **Tab-ModelComplexity**, **Fig-ExampleBasinMaps**, **Fig-NHDWorkflow** inputs). **(2)** **Fresh scripted timed reruns** (same recipe, frozen env) **only** for values that appear in **Tab-Runtime** / runtime figures. | Prevents swapping numbers between ad hoc disk mtimes and paper-ready timing |
+| **Official outputs** | **(1)** Existing **admin** showcase SWAT+ web-application workspaces under `…/admin/SWATplus_by_VPUID/<vpuid>/<level>/<site_no>/…` (`level` = `usgs_station` | `huc12_outlet` | `huc8`) for the three `model_id` rows (structural counts, maps, **Tab-ModelComplexity**, **Fig-ExampleBasinMaps**, **Fig-NHDWorkflow** inputs). **(2)** **Fresh scripted timed reruns** (same recipe, frozen env) **only** for values that appear in **Tab-Runtime** / runtime figures. | Prevents swapping numbers between ad hoc disk mtimes and paper-ready timing |
 
 ### Runtime values (explicit)
 
@@ -50,8 +50,8 @@ Structural fields below are measured from admin showcase workspaces (2026-05-31 
 
 | Tier | Catalog ID | Workspace `model_id` | Level | State | Basin area (km²) | HRUs | Channels | Subbasins | Lakes | Role |
 |------|------------|---------------------|-------|-------|------------------|------|----------|-----------|-------|------|
-| **S** | `03080102` | `0308/huc12/030801020804` | huc12 | FL | 52.61 | 473 | 45 | 4 | 4 | Obj 3 + 5 |
-| **M** | `09471300` | `1505/huc12/09471300` | huc12 | AZ | 579.83 | 11,284 | 1,371 | 12 | — | Obj 3 + 5 |
+| **S** | `03080102` | `0308/huc12_outlet/030801020804` | huc12 | FL | 52.61 | 473 | 45 | 4 | 4 | Obj 3 + 5 |
+| **M** | `09471300` | `1505/usgs_station/09471300` | huc12 | AZ | 579.83 | 11,284 | 1,371 | 12 | — | Obj 3 + 5 |
 | **L** | `03100101` | `0310/huc8/03100101` | huc8 | FL | 5,982.53 | 94,303 | 8,181 | 162 | — | Obj 3 + 5 |
 
 **Outlet / extent:** S and M are HUC12-scale packages; L is whole-HUC8. Objective 4 uses gages `02297600` and `05536265` only (see `tab-model-roster.csv`).
@@ -68,8 +68,8 @@ Structural fields below are measured from admin showcase workspaces (2026-05-31 
 
 | Item | Value |
 |------|-------|
-| Calibrate / validate / Morris sensitivity | **Yes** for `0310/huc12/02297600` (exported) and `0712/huc12/05536265` (Illinois; export pending Morris); see basin protocol docs |
-| Supersedes | `0205/huc12/01567500` proof basin (2026-05-19 amendment **withdrawn** for manuscript purposes; artifacts retained in repo for audit) |
+| Calibrate / validate / Morris sensitivity | **Yes** for `0310/usgs_station/02297600` (exported) and `0712/usgs_station/05536265` (Illinois; export pending Morris); see basin protocol docs |
+| Supersedes | `0205/usgs_station/01567500` proof basin (2026-05-19 amendment **withdrawn** for manuscript purposes; artifacts retained in repo for audit) |
 | Three locked showcase basins (FL / PA / KS) | **No** hydrologic or sensitivity metrics in manuscript |
 | **Tab-Metrics** | To be frozen in `publication/tables/tab-metrics.csv` for 02297600 (replaces 01567500 rows) |
 | **Tab-Sensitivity-Morris** | Planned CSV from `morris_Si_*.csv` |
@@ -128,7 +128,7 @@ Document basins or conditions **excluded** after protocol lock (with reason).
 |------|--------|--------|
 | 2026-05-13 | Phase 1 lock: three basin `model_id` rows from `example-models-inventory.csv`; hydrologic evaluation **No**; **Tab-Metrics** / **Fig-Hydrograph** out of scope; official outputs = admin workspaces + fresh timed reruns for **Tab-Runtime** only; runtime from inventory provisional until rerun. | Publication workflow |
 | 2026-05-14 | Instrumented single-process pilot timing completed for all three locked basins; `tab-runtime.csv` and `tab-runtime-phases.csv` populated from merged JSONL (Small run excluded an abandoned same-`run_id` prefix before restart). Full conda/container runbook row remains TBD. | Publication workflow |
-| 2026-05-19 | Hydrologic block **limited Yes**: completed `init_cal_val` for proof basin `0205/huc12/01567500`; `tab-metrics.csv`, Fig-CalProofHydrograph, Results subsection added. Showcase trio unchanged (structural-only). | Publication workflow |
-| 2026-05-31 | **Objective 4/5 realignment:** Controlled cal/val/sensitivity basin changed to `0310/huc12/02297600` (supersedes 01567500 for manuscript). **Objective 5** added: SWAT+ simulation runtime benchmark from public page `/swat-plus-runtime-benchmark`. | Publication workflow |
+| 2026-05-19 | Hydrologic block **limited Yes**: completed `init_cal_val` for proof basin `0205/usgs_station/01567500`; `tab-metrics.csv`, Fig-CalProofHydrograph, Results subsection added. Showcase trio unchanged (structural-only). | Publication workflow |
+| 2026-05-31 | **Objective 4/5 realignment:** Controlled cal/val/sensitivity basin changed to `0310/usgs_station/02297600` (supersedes 01567500 for manuscript). **Objective 5** added: SWAT+ simulation runtime benchmark from public page `/swat-plus-runtime-benchmark`. | Publication workflow |
 | 2026-05-31 | **Structural showcase realignment:** locked tiers changed to benchmark S/M/L models (`030801020804`, `09471300`, `03100101`); Tab-Runtime fresh reruns **deferred** (prior pilot used superseded basins). | Publication workflow |
 | 2026-06-01 | **Model roster clarity:** three non-overlapping sets (benchmark S/M/L, scaling X20/X40/X60, cal gages 02297600/05536265); manuscript tables use catalog Model IDs; legacy pilots excluded from prose. | Publication workflow |

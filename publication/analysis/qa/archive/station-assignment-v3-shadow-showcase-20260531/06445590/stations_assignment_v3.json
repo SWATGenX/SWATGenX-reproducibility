@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "06445590",
-    "workspace_model_id": "1014/huc12/06445590",
-    "label": "1014/huc12/06445590 (NE)",
+    "workspace_model_id": "1014/usgs_station/06445590",
+    "label": "1014/usgs_station/06445590 (NE)",
     "vpuid": "1014",
     "n_stations": 1,
     "n_production_assigned": 1,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "06445590",
-      "workspace_model_id": "1014/huc12/06445590",
-      "label": "1014/huc12/06445590 (NE)",
+      "workspace_model_id": "1014/usgs_station/06445590",
+      "label": "1014/usgs_station/06445590 (NE)",
       "site_no": "06445590",
       "station_name": "BIG BORDEAUX CREEK NEAR CHADRON NEBR",
       "usgs_da_km2": 24.3458882371584,

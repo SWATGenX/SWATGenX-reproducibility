@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "08380400",
-    "workspace_model_id": "1306/huc12/08380400",
-    "label": "1306/huc12/08380400 (NM)",
+    "workspace_model_id": "1306/usgs_station/08380400",
+    "label": "1306/usgs_station/08380400 (NM)",
     "vpuid": "1306",
     "n_stations": 7,
     "n_production_assigned": 7,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "08380400",
-      "workspace_model_id": "1306/huc12/08380400",
-      "label": "1306/huc12/08380400 (NM)",
+      "workspace_model_id": "1306/usgs_station/08380400",
+      "label": "1306/usgs_station/08380400 (NM)",
       "site_no": "08379990",
       "station_name": "GALLINAS CREEK AT BIG PINES NR GALLINAS, NM",
       "usgs_da_km2": 138.00685449829226,
@@ -55,8 +55,8 @@
     },
     {
       "catalog_model_id": "08380400",
-      "workspace_model_id": "1306/huc12/08380400",
-      "label": "1306/huc12/08380400 (NM)",
+      "workspace_model_id": "1306/usgs_station/08380400",
+      "label": "1306/usgs_station/08380400 (NM)",
       "site_no": "08380040",
       "station_name": "GALLINAS CREEK AT OAK FLAT NR GALLINAS, NM",
       "usgs_da_km2": 138.00685449829226,
@@ -84,8 +84,8 @@
     },
     {
       "catalog_model_id": "08380400",
-      "workspace_model_id": "1306/huc12/08380400",
-      "label": "1306/huc12/08380400 (NM)",
+      "workspace_model_id": "1306/usgs_station/08380400",
+      "label": "1306/usgs_station/08380400 (NM)",
       "site_no": "08380070",
       "station_name": "BEAVER CREEK NEAR EL PORVENIR, NM",
       "usgs_da_km2": 72.95979384549226,
@@ -113,8 +113,8 @@
     },
     {
       "catalog_model_id": "08380400",
-      "workspace_model_id": "1306/huc12/08380400",
-      "label": "1306/huc12/08380400 (NM)",
+      "workspace_model_id": "1306/usgs_station/08380400",
+      "label": "1306/usgs_station/08380400 (NM)",
       "site_no": "08380088",
       "station_name": "BEAVER CREEK NEAR GALLINAS, NM",
       "usgs_da_km2": 72.95979384549226,
@@ -142,8 +142,8 @@
     },
     {
       "catalog_model_id": "08380400",
-      "workspace_model_id": "1306/huc12/08380400",
-      "label": "1306/huc12/08380400 (NM)",
+      "workspace_model_id": "1306/usgs_station/08380400",
+      "label": "1306/usgs_station/08380400 (NM)",
       "site_no": "08380400",
       "station_name": "GALLINAS CREEK AT GALLINAS, NM",
       "usgs_da_km2": 255.1254072335966,
@@ -171,8 +171,8 @@
     },
     {
       "catalog_model_id": "08380400",
-      "workspace_model_id": "1306/huc12/08380400",
-      "label": "1306/huc12/08380400 (NM)",
+      "workspace_model_id": "1306/usgs_station/08380400",
+      "label": "1306/usgs_station/08380400 (NM)",
       "site_no": "08380500",
       "station_name": "GALLINAS CREEK NEAR MONTEZUMA, NM",
       "usgs_da_km2": 217.559001268224,
@@ -200,8 +200,8 @@
     },
     {
       "catalog_model_id": "08380400",
-      "workspace_model_id": "1306/huc12/08380400",
-      "label": "1306/huc12/08380400 (NM)",
+      "workspace_model_id": "1306/usgs_station/08380400",
+      "label": "1306/usgs_station/08380400 (NM)",
       "site_no": "08381000",
       "station_name": "GALLINAS CREEK AT MONTEZUMA, NM",
       "usgs_da_km2": 225.328965599232,

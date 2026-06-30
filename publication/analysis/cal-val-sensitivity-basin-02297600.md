@@ -47,13 +47,13 @@ Verification in the 2026-05-31 export: **2012-01-01**–**2015-12-31** — **ove
 
 | Field | Value |
 |-------|--------|
-| **model_id** | `0310/huc12/02297600` |
+| **model_id** | `0310/usgs_station/02297600` |
 | **USGS site** | `02297600` |
 | **VPUID** | `0310` |
 | **LEVEL** | `huc12` |
 | **NAME** | `02297600` |
 | **MODEL_NAME** | `SWAT_MODEL_Web_Application` |
-| **User tree** | `${SWATGENX_USER_PATH}/SWATplus_by_VPUID/0310/huc12/02297600/` |
+| **User tree** | `${SWATGENX_USER_PATH}/SWATplus_by_VPUID/0310/usgs_station/02297600/` |
 | **Calibration scenario** | `Default_calval_split202606` (rerun); Morris on `Default_initialized` |
 | **Gage channel (GIS)** | **2** (`streamflow_data/2_02297600.csv`) |
 

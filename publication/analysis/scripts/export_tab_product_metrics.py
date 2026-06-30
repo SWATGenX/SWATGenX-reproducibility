@@ -13,8 +13,8 @@ CSV_OUT = REPO / "publication/tables/tab-product-metrics.csv"
 TEX_OUT = REPO / "publication/tables/generated/tab-product-metrics.tex"
 
 MODELS = [
-    ("S", "03080102", "0308/huc12/030801020804", "Oklawaha (FL)"),
-    ("M", "09471300", "1505/huc12/09471300", "Upper San Pedro (AZ)"),
+    ("S", "03080102", "0308/huc12_outlet/030801020804", "Oklawaha (FL)"),
+    ("M", "09471300", "1505/usgs_station/09471300", "Upper San Pedro (AZ)"),
     ("L", "03100101", "0310/huc8/03100101", "Peace River HUC-8"),
 ]
 

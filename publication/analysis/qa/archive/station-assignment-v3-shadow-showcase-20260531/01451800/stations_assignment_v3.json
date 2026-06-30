@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "01451800",
-    "workspace_model_id": "0204/huc12/01451800",
-    "label": "0204/huc12/01451800 (PA)",
+    "workspace_model_id": "0204/usgs_station/01451800",
+    "label": "0204/usgs_station/01451800 (PA)",
     "vpuid": "0204",
     "n_stations": 2,
     "n_production_assigned": 2,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "01451800",
-      "workspace_model_id": "0204/huc12/01451800",
-      "label": "0204/huc12/01451800 (PA)",
+      "workspace_model_id": "0204/usgs_station/01451800",
+      "label": "0204/usgs_station/01451800 (PA)",
       "site_no": "01451800",
       "station_name": "Jordan Creek near Schnecksville, PA",
       "usgs_da_km2": 137.26936984780798,
@@ -55,8 +55,8 @@
     },
     {
       "catalog_model_id": "01451800",
-      "workspace_model_id": "0204/huc12/01451800",
-      "label": "0204/huc12/01451800 (PA)",
+      "workspace_model_id": "0204/usgs_station/01451800",
+      "label": "0204/usgs_station/01451800 (PA)",
       "site_no": "01452000",
       "station_name": "Jordan Creek at Allentown, PA",
       "usgs_da_km2": 196.3210987634688,

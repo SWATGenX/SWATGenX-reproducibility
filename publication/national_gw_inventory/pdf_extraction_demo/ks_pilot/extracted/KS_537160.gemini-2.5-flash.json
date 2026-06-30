@@ -1,0 +1,69 @@
+{
+  "pdf": "KS_537160",
+  "model": "gemini-2.5-flash",
+  "usage": {
+    "prompt_tokens": 491,
+    "output_tokens": 457,
+    "usd": 0.0012898,
+    "seconds": 8.3
+  },
+  "extracted": {
+    "lithology": [
+      {
+        "top_ft": 0,
+        "bottom_ft": 3,
+        "description": "Soil",
+        "normalized": "topsoil"
+      },
+      {
+        "top_ft": 3,
+        "bottom_ft": 31,
+        "description": "Course sand",
+        "normalized": "sand"
+      },
+      {
+        "top_ft": 31,
+        "bottom_ft": 85,
+        "description": "Large sand & gravel",
+        "normalized": "sand_and_gravel"
+      },
+      {
+        "top_ft": 85,
+        "bottom_ft": 112,
+        "description": "Fine sand",
+        "normalized": "sand"
+      },
+      {
+        "top_ft": 112,
+        "bottom_ft": 123,
+        "description": "Caliche",
+        "normalized": "other"
+      },
+      {
+        "top_ft": 123,
+        "bottom_ft": 190,
+        "description": "Fine & medium sand",
+        "normalized": "sand"
+      },
+      {
+        "top_ft": 190,
+        "bottom_ft": 210,
+        "description": "Med sand",
+        "normalized": "sand"
+      },
+      {
+        "top_ft": 210,
+        "bottom_ft": 242,
+        "description": "Fine sand",
+        "normalized": "sand"
+      }
+    ],
+    "legibility": "clear",
+    "extraction_confidence": 1,
+    "static_water_level_ft": 107,
+    "total_depth_ft": 242,
+    "water_bearing_zones_ft": [
+      110
+    ]
+  }
+}

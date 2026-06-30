@@ -85,7 +85,7 @@
 | Field | Content |
 |-------|--------|
 | **Figure ID** | Fig-CalProofHydrograph |
-| **Purpose** | Daily observed vs simulated discharge for proof basin `0205/huc12/01567500` across initialization (best initial pool), calibration, and verification stages. |
+| **Purpose** | Daily observed vs simulated discharge for proof basin `0205/usgs_station/01567500` across initialization (best initial pool), calibration, and verification stages. |
 | **Manuscript claims supported** | Hydrologic plausibility (not national validation); complements **Tab-Metrics**. |
 | **Inputs** | Admin model tree hydrograph PNGs under `calibration_artifacts/Default_initialized/figures_.../SF/`. |
 | **Generation workflow** | `python3 publication/analysis/scripts/assemble_cal_proof_hydrographs.py` |

@@ -56,7 +56,7 @@ read by `read_observed_data`; dates filtered to `[START_YEAR+nyskip, END_YEAR]` 
 
 **SWAT+ binary:** `codes/bin/swatplus` (fork with NetCDF + `print_filter`; see `swatplus_perf/` parity harness). `SWATPLUS_EXE` in `ModelProcessing/ModelProcessing/paths.py`.
 
-**Pilot evidence (2026-05-28):** `0310/huc12/02295013` — PSO calibration + holdout verification completed with NC + filter (channel **21**); verification objective ≈ **−0.74** (daily NSE ≈ 0.40, monthly ≈ 0.34 on holdout window).
+**Pilot evidence (2026-05-28):** `0310/usgs_station/02295013` — PSO calibration + holdout verification completed with NC + filter (channel **21**); verification objective ≈ **−0.74** (daily NSE ≈ 0.40, monthly ≈ 0.34 on holdout window).
 
 **Legacy TXT:** `channel_sd_day.txt` is no longer read by `model_evaluation`. Parity tooling may still compare TXT vs NC (`swatplus_perf/scripts/compare_channel5_streamflow.py`, `verify_nc_vs_txt.py`).
 
@@ -129,7 +129,7 @@ Publication intent (**10** CPU cores available, **6** concurrent SWAT+ processes
 
 ## Quick start — Small Florida pilot (after execution branch)
 
-1. Confirm model tree exists for `0308/huc12/02239501` + `SWAT_MODEL_Web_Application`.  
+1. Confirm model tree exists for `0308/usgs_station/02239501` + `SWAT_MODEL_Web_Application`.  
 2. Confirm `streamflow_data/{site_no}.csv` (daily) for audited windows.  
 3. Run `ModelProcessing/main.py` with publication settings from `tab-calibration-run-settings.csv`.  
 4. Archive `CentralPerformance.txt`, `best_solution_*.txt`, and selected plots for supplement evidence.

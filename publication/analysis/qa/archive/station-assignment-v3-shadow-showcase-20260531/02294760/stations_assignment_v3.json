@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "02294760",
-    "workspace_model_id": "0310/huc12/02294760",
-    "label": "0310/huc12/02294760 (FL)",
+    "workspace_model_id": "0310/usgs_station/02294760",
+    "label": "0310/usgs_station/02294760 (FL)",
     "vpuid": "0310",
     "n_stations": 2,
     "n_production_assigned": 2,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "02294760",
-      "workspace_model_id": "0310/huc12/02294760",
-      "label": "0310/huc12/02294760 (FL)",
+      "workspace_model_id": "0310/usgs_station/02294760",
+      "label": "0310/usgs_station/02294760 (FL)",
       "site_no": "02294747",
       "station_name": "SIXMILE CREEK AT BARTOW FL",
       "usgs_da_km2": 1448.2658499695908,
@@ -55,8 +55,8 @@
     },
     {
       "catalog_model_id": "02294760",
-      "workspace_model_id": "0310/huc12/02294760",
-      "label": "0310/huc12/02294760 (FL)",
+      "workspace_model_id": "0310/usgs_station/02294760",
+      "label": "0310/usgs_station/02294760 (FL)",
       "site_no": "02294760",
       "station_name": "BARBER BRANCH NEAR HOMELAND FL",
       "usgs_da_km2": 83.81896744390077,

@@ -1,0 +1,39 @@
+{
+  "pdf": "OR_9938_BENT",
+  "model": "gemini-2.5-flash",
+  "usage": {
+    "prompt_tokens": 491,
+    "output_tokens": 222,
+    "usd": 0.0007023000000000001,
+    "seconds": 8.7
+  },
+  "extracted": {
+    "lithology": [
+      {
+        "top_ft": 0,
+        "bottom_ft": 17,
+        "description": "Top soil & yellow clay",
+        "normalized": "topsoil"
+      },
+      {
+        "top_ft": 17,
+        "bottom_ft": 32,
+        "description": "Grey Clay stone",
+        "normalized": "clay"
+      },
+      {
+        "top_ft": 32,
+        "bottom_ft": 40,
+        "description": "Grey Shail",
+        "normalized": "shale"
+      }
+    ],
+    "legibility": "clear",
+    "extraction_confidence": 0.9,
+    "static_water_level_ft": 32,
+    "total_depth_ft": 40,
+    "water_bearing_zones_ft": [
+      32
+    ]
+  }
+}

@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "09312500",
-    "workspace_model_id": "1406/huc12/09312500",
-    "label": "1406/huc12/09312500 (UT)",
+    "workspace_model_id": "1406/usgs_station/09312500",
+    "label": "1406/usgs_station/09312500 (UT)",
     "vpuid": "1406",
     "n_stations": 3,
     "n_production_assigned": 3,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "09312500",
-      "workspace_model_id": "1406/huc12/09312500",
-      "label": "1406/huc12/09312500 (UT)",
+      "workspace_model_id": "1406/usgs_station/09312500",
+      "label": "1406/usgs_station/09312500 (UT)",
       "site_no": "09312000",
       "station_name": "NORTH FORK WHITE RIVER NEAR SOLDIER SUMMIT, UTAH",
       "usgs_da_km2": 60.3467229708288,
@@ -55,8 +55,8 @@
     },
     {
       "catalog_model_id": "09312500",
-      "workspace_model_id": "1406/huc12/09312500",
-      "label": "1406/huc12/09312500 (UT)",
+      "workspace_model_id": "1406/usgs_station/09312500",
+      "label": "1406/usgs_station/09312500 (UT)",
       "site_no": "09312500",
       "station_name": "WHITE RIVER NEAR SOLDIER SUMMIT, UTAH",
       "usgs_da_km2": 136.7513722257408,
@@ -84,8 +84,8 @@
     },
     {
       "catalog_model_id": "09312500",
-      "workspace_model_id": "1406/huc12/09312500",
-      "label": "1406/huc12/09312500 (UT)",
+      "workspace_model_id": "1406/usgs_station/09312500",
+      "label": "1406/usgs_station/09312500 (UT)",
       "site_no": "09312600",
       "station_name": "WHITE R BL TABBYUNE CRK NR SOLDIER SUMMIT, UT",
       "usgs_da_km2": 195.8031011414016,

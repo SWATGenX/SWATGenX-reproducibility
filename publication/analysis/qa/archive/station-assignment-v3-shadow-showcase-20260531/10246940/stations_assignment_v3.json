@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "10246940",
-    "workspace_model_id": "1606/huc12/10246940",
-    "label": "1606/huc12/10246940 (NV)",
+    "workspace_model_id": "1606/usgs_station/10246940",
+    "label": "1606/usgs_station/10246940 (NV)",
     "vpuid": "1606",
     "n_stations": 1,
     "n_production_assigned": 1,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "10246940",
-      "workspace_model_id": "1606/huc12/10246940",
-      "label": "1606/huc12/10246940 (NV)",
+      "workspace_model_id": "1606/usgs_station/10246940",
+      "label": "1606/usgs_station/10246940 (NV)",
       "site_no": "10246940",
       "station_name": "MOORES STATION SPGS AT MOORES STATION, NV",
       "usgs_da_km2": 352.238383005696,

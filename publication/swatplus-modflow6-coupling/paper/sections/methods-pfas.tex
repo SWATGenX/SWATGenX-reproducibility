@@ -1,0 +1,59 @@
+\subsection{Groundwater PFAS transport and integration}
+\label{sec:pfas}
+
+PFAS groundwater transport is simulated with a MODFLOW~6 groundwater-transport (GWT) model run on the
+calibrated flow field through the GWF6--GWT6 exchange, so the transport uses the exact flow solution.
+The model solves advection (total-variation-diminishing), dispersion ($\alpha_L=10$~m, $\alpha_T=1$~m
+at the 250~m grid), and \emph{Freundlich} sorption (MODFLOW~6 MST package; $K_f=0.005$, exponent
+$n=0.8$), the standard PFAS isotherm, giving a concentration-dependent retardation factor. This first
+implementation simulates PFOS groundwater transport; the multi-analyte source fingerprinting reported in
+Section~\ref{sec:results} is an observation-based decomposition independent of the transport model, and
+compound-specific groundwater transport with per-analyte sorption isotherms is a priority for future work.
+
+\paragraph{Prescribed source.} The PFAS source is set from measurements rather than fitted: there is
+no calibrated groundwater concentration multiplier. Constant-concentration cells are placed at the
+source-zone grid cells whose measured groundwater PFOS exceeds $10^4$~ng~L\textsuperscript{-1}, at
+their observed concentration. The single peak sample reaches $1.5\times10^6$~ng~L\textsuperscript{-1};
+the source is capped at $10^5$~ng~L\textsuperscript{-1}, because that one peak makes the
+six-order-of-magnitude front numerically intractable and because the log-space validation tests the
+plume \emph{shape} rather than the absolute peak (the source magnitude carries the single-sample
+uncertainty). A small ambient background ($10$~ng~L\textsuperscript{-1}, near the observed median)
+both removes the Freundlich $C^{n-1}$ singularity at $C\to0$ and compresses the dynamic range;
+adaptive time stepping carries the stiff transient over a 40-year horizon (the tannery legacy). The
+transport runs as a transient on the calibrated \emph{steady} flow field, a simplification justified
+by the multi-decadal source history being long relative to seasonal flow variation but which omits
+non-stationary pumping and recharge over that period --- a limitation for the transient plume timing,
+though the validation compares time-aggregated plume concentrations. The field is thus a constrained
+prediction: bounded by the prescribed source, the cap, and the background, but with no fitted
+concentration term. The groundwater source magnitude and location are therefore fixed by measurement;
+the only quantity fitted to in-stream observations is the fraction of the discharged load that reaches
+the stream --- the joint-calibration scalar $g$ (Section~\ref{sec:results}) --- not the source itself.
+
+\paragraph{Validation.} The modeled groundwater plume is validated against the $846$ measured
+groundwater PFOS observations in the watershed --- assigned to grid cells by our extraction pipeline,
+which snaps the inventory to the MODFLOW~6 grid built in Section~\ref{sec:pfas} --- excluding the
+source-zone cells (Table~\ref{tab:validation}).
+Skill is reported in log space (root-mean-square error, bias, fraction within a factor of ten), the
+appropriate metric for concentrations spanning many orders of magnitude, and is \emph{stratified by
+concentration band}: a factor-of-ten miss near the $\sim$2~ng~L\textsuperscript{-1} detection limit is
+measurement noise, whereas the same miss at tens of ng~L\textsuperscript{-1} is a model error, and a
+single pooled statistic conflates the two.
+
+\paragraph{Porewater discharge validation.} A second, more direct test validates the groundwater
+contribution at the discharge interface itself, rather than only in the far-field plume: streambed
+\emph{pore water} sampled along the lower mainstem (EGLE North Kent inventory; $43$ sites, all within
+$100$~m of a channel and concentrated on the source-bearing reaches) measures the PFAS concentration of
+groundwater as it enters the stream. The modeled aquifer concentration at each pore-water cell is
+compared to the measurement in log space by concentration band. This is the most direct available
+check of the modeled pathway, since pore water samples the discharging groundwater in place rather than
+the plume upgradient of it.
+
+\paragraph{Integration with the surface-water pathway.} The groundwater-discharged PFAS reaches the
+stream through the MODFLOW~6 streamflow-transport (SFT) package, which routes it downstream along the
+SFR channel network. The groundwater PFAS \emph{load} delivered to each reach is the reach gaining
+flux (the SFR groundwater-exchange budget term, m\textsuperscript{3}~d\textsuperscript{-1}) times the
+aquifer PFAS concentration at that cell (ng~L\textsuperscript{-1}), excluding the artificial
+constant-concentration source cells. Summed over the network and combined with the
+SWAT\textsuperscript{+} surface streamflow, this groundwater contribution to in-stream PFOS adds to
+the land-derived load from the surface-water engine, closing the continuous
+surface-water-plus-groundwater PFAS mass balance.

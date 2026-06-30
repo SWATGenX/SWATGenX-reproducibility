@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "14013500",
-    "workspace_model_id": "1707/huc12/14013500",
-    "label": "1707/huc12/14013500 (WA)",
+    "workspace_model_id": "1707/usgs_station/14013500",
+    "label": "1707/usgs_station/14013500 (WA)",
     "vpuid": "1707",
     "n_stations": 1,
     "n_production_assigned": 1,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "14013500",
-      "workspace_model_id": "1707/huc12/14013500",
-      "label": "1707/huc12/14013500 (WA)",
+      "workspace_model_id": "1707/usgs_station/14013500",
+      "label": "1707/usgs_station/14013500 (WA)",
       "site_no": "14013500",
       "station_name": "BLUE CREEK NEAR WALLA WALLA, WA",
       "usgs_da_km2": 44.029797875712,

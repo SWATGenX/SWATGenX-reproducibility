@@ -1,0 +1,14 @@
+# LaTeX build litter
+manuscript/*.aux
+manuscript/*.log
+manuscript/*.bbl
+manuscript/*.blg
+manuscript/*.out
+manuscript/*.toc
+
+# Engine binaries + build logs (regenerable; never commit binaries)
+analysis/ladder-bins/
+analysis/orgn-isolate/
+analysis/byteid-*/
+*.pyc
+__pycache__/

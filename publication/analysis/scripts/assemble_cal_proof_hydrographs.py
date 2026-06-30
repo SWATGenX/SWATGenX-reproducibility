@@ -20,7 +20,7 @@ REPO_ROOT = Path(__file__).resolve().parents[3]
 USER_ROOT = Path("${SWATGENX_USER_PATH}")
 FIG_ROOT = (
     USER_ROOT
-    / "admin/SWATplus_by_VPUID/0205/huc12/01567500/calibration_artifacts/Default_initialized"
+    / "admin/SWATplus_by_VPUID/0205/usgs_station/01567500/calibration_artifacts/Default_initialized"
     / "figures_SWAT_MODEL_Web_Application/SF"
 )
 SOURCES = {
@@ -85,7 +85,7 @@ def assemble() -> None:
 
     meta = {
         "figure_id": "Fig-CalProofHydrograph",
-        "model_id": "0205/huc12/01567500",
+        "model_id": "0205/usgs_station/01567500",
         "site_no": "01567500",
         "generated_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "output_png": str(OUT_PNG.relative_to(REPO_ROOT)),

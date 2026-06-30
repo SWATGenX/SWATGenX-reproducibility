@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "01625900",
-    "workspace_model_id": "0207/huc12/01625900",
-    "label": "0207/huc12/01625900 (VA)",
+    "workspace_model_id": "0207/usgs_station/01625900",
+    "label": "0207/usgs_station/01625900 (VA)",
     "vpuid": "0207",
     "n_stations": 1,
     "n_production_assigned": 1,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "01625900",
-      "workspace_model_id": "0207/huc12/01625900",
-      "label": "0207/huc12/01625900 (VA)",
+      "workspace_model_id": "0207/usgs_station/01625900",
+      "label": "0207/usgs_station/01625900 (VA)",
       "site_no": "01625900",
       "station_name": "BACK CREEK AT LYNDHURST, VA",
       "usgs_da_km2": 105.6715149017088,

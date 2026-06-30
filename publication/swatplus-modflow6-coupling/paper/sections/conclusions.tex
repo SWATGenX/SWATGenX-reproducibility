@@ -1,0 +1,39 @@
+\section{Conclusions}
+
+We have ported and verified the process-based PFAS surface-water fate-and-transport model of
+\citet{rafiei2023pfas} --- developed for legacy SWAT --- into modern SWAT\textsuperscript{+}, where no
+PFAS capability existed: a soil three-phase equilibrium solver (aqueous, Freundlich solid, and Langmuir
+air--water interface), land-phase mobilization through runoff, lateral flow, leaching, and sediment, and
+an in-stream routine. The port is anchored to two field-independent correctness checks: a
+$1.7\times10^{-7}$ agreement of the equilibrium solver with a 40-digit reference, and numerical identity
+of the in-stream routine with the established SWAT\textsuperscript{+} pesticide channel solver on its
+linear-partition subset, so the ported physics is provably confined to the soil column. An automated, public-data framework then couples this
+engine to a MODFLOW~6 groundwater flow-and-transport model through the first two-way
+SWAT\textsuperscript{+}/MODFLOW~6 coupling, carrying PFAS through a continuous surface-water and
+groundwater watershed mass balance --- to our knowledge the first coupling to carry PFAS in both
+directions between a watershed's surface water and groundwater, with observation validation in each
+compartment, advancing the one-way SWAT--MODFLOW--RT3D of \citet{rafiei2023pfas}. On the
+Rogue River, the groundwater model ---
+generated on the fly from public data (SWAT\textsuperscript{+} DEM as land surface, aquifer
+properties kriged from a raw well database, recharge from the water balance) --- matches $5{,}383$
+water-table observations at a head Nash--Sutcliffe efficiency of $0.91$ under a baseflow constraint
+while reproducing the observed gaining baseflow. A Freundlich transport model, its source
+\emph{prescribed} to the measured Wolverine/House Street plume rather than fitted, reproduces the
+groundwater PFOS field at $1.1$~dex across $65$ predicted cells (from $846$ observations; $71\%$
+within a factor of ten), and SFT routes the
+discharged PFAS through the channel network; the surface-water engine reproduces the source-bearing
+mainstem PFOS gradient at $0.15$~dex. The groundwater-to-stream pathway is established first by
+model-free observational evidence --- measured streambed pore water at the discharge interface carries
+the source plume's multi-analyte fingerprint --- and corroborated by a \emph{joint} calibration that
+fits the surface and groundwater scale factors together, avoiding the double-counting a naive additive
+sum incurs. That joint fit (effective $n\approx2$) is observation-consistent with a plausibly
+first-order groundwater contribution concentrated at the lower mainstem near the Wolverine source,
+while \emph{reducing} the surface soil-loading --- the signature of resolved double-counting; its
+magnitude is poorly constrained at seven reaches, and the attribution rests on the independent
+aquifer-side and fingerprint evidence rather than on the calibration alone. By reproducing established
+loose-coupling physics inside the open MODFLOW~6 transport framework, anchoring the contaminant
+pathway to measurements, automating the build from public data, and integrating the two compartments
+through a joint calibration that survives a spatially explicit test, the framework delivers a
+continuous surface-water/groundwater PFAS mass balance reproducible at the scale of a national
+archive. Sharpening the groundwater effectiveness toward a physical interception fraction through
+local grid refinement at the source, and generalizing across basins, are the natural next steps.

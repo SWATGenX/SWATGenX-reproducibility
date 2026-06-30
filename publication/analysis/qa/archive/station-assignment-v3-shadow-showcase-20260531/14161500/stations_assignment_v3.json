@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "14161500",
-    "workspace_model_id": "1709/huc12/14161500",
-    "label": "1709/huc12/14161500 (OR)",
+    "workspace_model_id": "1709/usgs_station/14161500",
+    "label": "1709/usgs_station/14161500 (OR)",
     "vpuid": "1709",
     "n_stations": 4,
     "n_production_assigned": 4,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "14161500",
-      "workspace_model_id": "1709/huc12/14161500",
-      "label": "1709/huc12/14161500 (OR)",
+      "workspace_model_id": "1709/usgs_station/14161500",
+      "label": "1709/usgs_station/14161500 (OR)",
       "site_no": "14161500",
       "station_name": "LOOKOUT CREEK NEAR BLUE RIVER, OR",
       "usgs_da_km2": 62.4187134590976,
@@ -55,8 +55,8 @@
     },
     {
       "catalog_model_id": "14161500",
-      "workspace_model_id": "1709/huc12/14161500",
-      "label": "1709/huc12/14161500 (OR)",
+      "workspace_model_id": "1709/usgs_station/14161500",
+      "label": "1709/usgs_station/14161500 (OR)",
       "site_no": "441344122095400",
       "station_name": "LOOKOUT CREEK ABOVE MACK CREEK, NR BLUE RIVER, OR",
       "usgs_da_km2": 16.99032200380416,
@@ -84,8 +84,8 @@
     },
     {
       "catalog_model_id": "14161500",
-      "workspace_model_id": "1709/huc12/14161500",
-      "label": "1709/huc12/14161500 (OR)",
+      "workspace_model_id": "1709/usgs_station/14161500",
+      "label": "1709/usgs_station/14161500 (OR)",
       "site_no": "441400122123000",
       "station_name": "MCRAE CREEK NEAR BLUE RIVER, OR",
       "usgs_da_km2": 15.539928662016,
@@ -113,8 +113,8 @@
     },
     {
       "catalog_model_id": "14161500",
-      "workspace_model_id": "1709/huc12/14161500",
-      "label": "1709/huc12/14161500 (OR)",
+      "workspace_model_id": "1709/usgs_station/14161500",
+      "label": "1709/usgs_station/14161500 (OR)",
       "site_no": "441504122105500",
       "station_name": "UNNAMED TRIB TO MCRAE CREEK NEAR BLUE RIVER, OR",
       "usgs_da_km2": 2.9784863268863995,

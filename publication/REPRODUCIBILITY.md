@@ -59,8 +59,8 @@ bash publication/manuscript/build_pdfs.sh    # -> main.pdf, supplement.pdf
      ```
      $SWATGENX_USER_PATH/$SWATGENX_EXAMPLE_USER/SWATplus_by_VPUID/<vpuid>/<level>/<name>/
      ```
-     e.g. tier-S Oklawaha `0308/huc12/030801020804` unzips to
-     `…/SWATplus_by_VPUID/0308/huc12/030801020804/`.
+     e.g. tier-S Oklawaha `0308/huc12_outlet/030801020804` unzips to
+     `…/SWATplus_by_VPUID/0308/huc12_outlet/030801020804/`.
   4. Re-run the layer-C scripts (drainage audit, metrics, runtime); they resolve the model
      from `$SWATGENX_USER_PATH` (Section 2).
 

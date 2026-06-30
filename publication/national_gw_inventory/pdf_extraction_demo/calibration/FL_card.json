@@ -1,0 +1,900 @@
+{
+  "card": {
+    "state": "FL",
+    "model": "gemini-2.5-flash-lite",
+    "sampled": 100,
+    "has_pdf_pct": 89.0,
+    "extracted_ok": 89,
+    "text_layer_pct_LLM": 67.4,
+    "raster_pct_VLM": 32.6,
+    "avg_intervals": 15.0,
+    "legibility_mix": {
+      "clear": 50,
+      "partial": 19,
+      "poor": 20
+    },
+    "per_pdf_usd": 0.000466,
+    "proj_usd_per_1k": 0.47,
+    "note": "blended over text+raster sample; raster carries the cost, text-layer ~free-ish"
+  },
+  "rows": [
+    {
+      "well": "529879",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "clear",
+      "usd": 0.00034310000000000005
+    },
+    {
+      "well": "399070",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 5,
+      "legibility": "clear",
+      "usd": 0.0001731
+    },
+    {
+      "well": "154394",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "partial",
+      "usd": 0.00013570000000000002
+    },
+    {
+      "well": "399679",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.0001111
+    },
+    {
+      "well": "577236",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "clear",
+      "usd": 0.0003528
+    },
+    {
+      "well": "342809",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.0001599
+    },
+    {
+      "well": "83633",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1001,
+      "legibility": "clear",
+      "usd": 0.021747500000000003
+    },
+    {
+      "well": "558624",
+      "has_pdf": false,
+      "status": "no_pdf",
+      "route": "-",
+      "intervals": 0
+    },
+    {
+      "well": "115507",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "poor",
+      "usd": 0.0001225
+    },
+    {
+      "well": "528018",
+      "has_pdf": false,
+      "status": "no_pdf",
+      "route": "-",
+      "intervals": 0
+    },
+    {
+      "well": "519862",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 0,
+      "legibility": "poor",
+      "usd": 0.00031120000000000003
+    },
+    {
+      "well": "518710",
+      "has_pdf": false,
+      "status": "no_pdf",
+      "route": "-",
+      "intervals": 0
+    },
+    {
+      "well": "451198",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 20,
+      "legibility": "clear",
+      "usd": 0.0008002
+    },
+    {
+      "well": "433414",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 8,
+      "legibility": "clear",
+      "usd": 0.00024629999999999997
+    },
+    {
+      "well": "569364",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 5,
+      "legibility": "clear",
+      "usd": 0.0004327
+    },
+    {
+      "well": "509573",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 6,
+      "legibility": "clear",
+      "usd": 0.00045010000000000004
+    },
+    {
+      "well": "388506",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 1,
+      "legibility": "clear",
+      "usd": 9.59e-05
+    },
+    {
+      "well": "552202",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 0,
+      "legibility": "poor",
+      "usd": 0.00031230000000000006
+    },
+    {
+      "well": "327014",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.00011910000000000001
+    },
+    {
+      "well": "90665",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "poor",
+      "usd": 0.00011640000000000001
+    },
+    {
+      "well": "493100",
+      "has_pdf": false,
+      "status": "no_pdf",
+      "route": "-",
+      "intervals": 0
+    },
+    {
+      "well": "512436",
+      "has_pdf": false,
+      "status": "no_pdf",
+      "route": "-",
+      "intervals": 0
+    },
+    {
+      "well": "313584",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 7,
+      "legibility": "clear",
+      "usd": 0.0002447
+    },
+    {
+      "well": "441122",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 0,
+      "legibility": "poor",
+      "usd": 0.0002739
+    },
+    {
+      "well": "304573",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 0,
+      "legibility": "poor",
+      "usd": 7.970000000000001e-05
+    },
+    {
+      "well": "379635",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.0001195
+    },
+    {
+      "well": "339186",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 5,
+      "legibility": "clear",
+      "usd": 0.0001783
+    },
+    {
+      "well": "577584",
+      "has_pdf": false,
+      "status": "no_pdf",
+      "route": "-",
+      "intervals": 0
+    },
+    {
+      "well": "110167",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "partial",
+      "usd": 0.0001334
+    },
+    {
+      "well": "156923",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "poor",
+      "usd": 0.00011410000000000001
+    },
+    {
+      "well": "444226",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.00041070000000000006
+    },
+    {
+      "well": "266888",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "partial",
+      "usd": 9.910000000000001e-05
+    },
+    {
+      "well": "277766",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 0,
+      "legibility": "poor",
+      "usd": 7.04e-05
+    },
+    {
+      "well": "552651",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 0,
+      "legibility": "poor",
+      "usd": 0.0003106
+    },
+    {
+      "well": "170188",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 4,
+      "legibility": "partial",
+      "usd": 0.00018640000000000003
+    },
+    {
+      "well": "433549",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 7,
+      "legibility": "clear",
+      "usd": 0.0002267
+    },
+    {
+      "well": "137748",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "poor",
+      "usd": 0.00011790000000000002
+    },
+    {
+      "well": "131986",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "partial",
+      "usd": 0.00011449999999999999
+    },
+    {
+      "well": "434779",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 0,
+      "legibility": "poor",
+      "usd": 7.91e-05
+    },
+    {
+      "well": "551301",
+      "has_pdf": false,
+      "status": "no_pdf",
+      "route": "-",
+      "intervals": 0
+    },
+    {
+      "well": "151492",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "partial",
+      "usd": 0.00011870000000000001
+    },
+    {
+      "well": "413907",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 1,
+      "legibility": "clear",
+      "usd": 0.0001309
+    },
+    {
+      "well": "112596",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "partial",
+      "usd": 0.0001654
+    },
+    {
+      "well": "433711",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 33,
+      "legibility": "clear",
+      "usd": 0.0010041000000000002
+    },
+    {
+      "well": "502695",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.00041150000000000003
+    },
+    {
+      "well": "228820",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.0001498
+    },
+    {
+      "well": "84868",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "partial",
+      "usd": 0.00017270000000000002
+    },
+    {
+      "well": "108815",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 5,
+      "legibility": "clear",
+      "usd": 0.0002025
+    },
+    {
+      "well": "433554",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 10,
+      "legibility": "clear",
+      "usd": 0.0002883
+    },
+    {
+      "well": "433530",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.00015470000000000002
+    },
+    {
+      "well": "299264",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.00014130000000000002
+    },
+    {
+      "well": "109336",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 0,
+      "legibility": "poor",
+      "usd": 9.82e-05
+    },
+    {
+      "well": "179802",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.00016590000000000002
+    },
+    {
+      "well": "423266",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 26,
+      "legibility": "partial",
+      "usd": 0.0009377000000000001
+    },
+    {
+      "well": "433578",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.0001471
+    },
+    {
+      "well": "368177",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 1,
+      "legibility": "clear",
+      "usd": 0.00010190000000000001
+    },
+    {
+      "well": "251865",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "partial",
+      "usd": 0.00016820000000000002
+    },
+    {
+      "well": "534746",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.0003643
+    },
+    {
+      "well": "453495",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.00016250000000000002
+    },
+    {
+      "well": "429137",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 5,
+      "legibility": "clear",
+      "usd": 0.00022510000000000002
+    },
+    {
+      "well": "124942",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "poor",
+      "usd": 0.0001307
+    },
+    {
+      "well": "589162",
+      "has_pdf": false,
+      "status": "no_pdf",
+      "route": "-",
+      "intervals": 0
+    },
+    {
+      "well": "453866",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 8,
+      "legibility": "clear",
+      "usd": 0.0006112
+    },
+    {
+      "well": "460474",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 12,
+      "legibility": "clear",
+      "usd": 0.0003861
+    },
+    {
+      "well": "451709",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 0,
+      "legibility": "poor",
+      "usd": 6.26e-05
+    },
+    {
+      "well": "433182",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "partial",
+      "usd": 0.00018659999999999998
+    },
+    {
+      "well": "585536",
+      "has_pdf": false,
+      "status": "no_pdf",
+      "route": "-",
+      "intervals": 0
+    },
+    {
+      "well": "210024",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "partial",
+      "usd": 0.0001471
+    },
+    {
+      "well": "131065",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 0,
+      "legibility": "poor",
+      "usd": 9.770000000000002e-05
+    },
+    {
+      "well": "398686",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 9,
+      "legibility": "clear",
+      "usd": 0.0002695
+    },
+    {
+      "well": "164446",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "partial",
+      "usd": 0.000154
+    },
+    {
+      "well": "327294",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 6,
+      "legibility": "clear",
+      "usd": 0.0001967
+    },
+    {
+      "well": "433607",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 5,
+      "legibility": "clear",
+      "usd": 0.00016669999999999999
+    },
+    {
+      "well": "116409",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "partial",
+      "usd": 0.0001296
+    },
+    {
+      "well": "381361",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 7,
+      "legibility": "clear",
+      "usd": 0.0002319
+    },
+    {
+      "well": "433008",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.00016370000000000002
+    },
+    {
+      "well": "395775",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.00012590000000000002
+    },
+    {
+      "well": "228859",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "poor",
+      "usd": 0.00011329999999999999
+    },
+    {
+      "well": "246123",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 5,
+      "legibility": "clear",
+      "usd": 0.0001929
+    },
+    {
+      "well": "555051",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "clear",
+      "usd": 0.0003445
+    },
+    {
+      "well": "434730",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 7,
+      "legibility": "partial",
+      "usd": 0.00026210000000000003
+    },
+    {
+      "well": "189047",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "poor",
+      "usd": 0.0001336
+    },
+    {
+      "well": "111936",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 5,
+      "legibility": "partial",
+      "usd": 0.00019770000000000003
+    },
+    {
+      "well": "370417",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 8,
+      "legibility": "clear",
+      "usd": 0.00023390000000000002
+    },
+    {
+      "well": "379695",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.00015230000000000002
+    },
+    {
+      "well": "374167",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.00014110000000000001
+    },
+    {
+      "well": "282630",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "partial",
+      "usd": 0.00011700000000000001
+    },
+    {
+      "well": "549166",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "clear",
+      "usd": 0.00034910000000000003
+    },
+    {
+      "well": "224406",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 0,
+      "legibility": "poor",
+      "usd": 7.59e-05
+    },
+    {
+      "well": "112344",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "partial",
+      "usd": 0.0001362
+    },
+    {
+      "well": "364705",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 6,
+      "legibility": "clear",
+      "usd": 0.00019390000000000002
+    },
+    {
+      "well": "328690",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 6,
+      "legibility": "clear",
+      "usd": 0.0001899
+    },
+    {
+      "well": "535464",
+      "has_pdf": false,
+      "status": "no_pdf",
+      "route": "-",
+      "intervals": 0
+    },
+    {
+      "well": "583786",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 0,
+      "legibility": "poor",
+      "usd": 0.0003106
+    },
+    {
+      "well": "459028",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.0001789
+    },
+    {
+      "well": "583028",
+      "has_pdf": false,
+      "status": "no_pdf",
+      "route": "-",
+      "intervals": 0
+    },
+    {
+      "well": "565192",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.00036920000000000003
+    },
+    {
+      "well": "361140",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.0001611
+    },
+    {
+      "well": "565936",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 0,
+      "legibility": "poor",
+      "usd": 0.00031230000000000006
+    },
+    {
+      "well": "294917",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "partial",
+      "usd": 0.0001537
+    }
+  ]
+}

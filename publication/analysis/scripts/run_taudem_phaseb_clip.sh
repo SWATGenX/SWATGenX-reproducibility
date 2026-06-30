@@ -3,7 +3,7 @@ set -u
 PY="sudo -n -u www-data /data/SWATGenXApp/codes/.venv/bin/python"
 RUN=/data/SWATGenXApp/codes/publication/analysis/scripts/run_taudem_variant_model.py
 QA=/data/SWATGenXApp/codes/publication/analysis/qa
-COMMON="--model-id 0308/huc12/030801020804 --delineation taudem --snap 900 --ls-resolution 250 --force-rebuild --clip-dem --burn-flowline-types major_rivers"
+COMMON="--model-id 0308/huc12_outlet/030801020804 --delineation taudem --snap 900 --ls-resolution 250 --force-rebuild --clip-dem --burn-flowline-types major_rivers"
 run () { local n="$1"; shift; echo "=== [$(date +%H:%M:%S)] $n ===" | tee -a "$QA/phaseb_clip_driver.log"
   timeout -s KILL 1200 $PY "$RUN" $COMMON --model-name "SWAT_MODEL_$n" "$@" > "$QA/phaseb_${n}.log" 2>&1
   echo "    [$(date +%H:%M:%S)] $n exit=$? " | tee -a "$QA/phaseb_clip_driver.log"; }

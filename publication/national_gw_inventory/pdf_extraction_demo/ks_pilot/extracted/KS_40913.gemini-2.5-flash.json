@@ -1,0 +1,81 @@
+{
+  "pdf": "KS_40913",
+  "model": "gemini-2.5-flash",
+  "usage": {
+    "prompt_tokens": 491,
+    "output_tokens": 392,
+    "usd": 0.0011273,
+    "seconds": 8.7
+  },
+  "extracted": {
+    "lithology": [
+      {
+        "top_ft": 0,
+        "bottom_ft": 2,
+        "description": "top soil",
+        "normalized": "topsoil"
+      },
+      {
+        "top_ft": 2,
+        "bottom_ft": 7,
+        "description": "Clay, red",
+        "normalized": "clay"
+      },
+      {
+        "top_ft": 7,
+        "bottom_ft": 30,
+        "description": "Rock, lime yellow",
+        "normalized": "limestone"
+      },
+      {
+        "top_ft": 30,
+        "bottom_ft": 50,
+        "description": "Shale, Blue",
+        "normalized": "shale"
+      },
+      {
+        "top_ft": 50,
+        "bottom_ft": 60,
+        "description": "Shale, Red",
+        "normalized": "shale"
+      },
+      {
+        "top_ft": 60,
+        "bottom_ft": 80,
+        "description": "Shale Bank",
+        "normalized": "shale"
+      },
+      {
+        "top_ft": 80,
+        "bottom_ft": 88,
+        "description": "Shade Red",
+        "normalized": "shale"
+      },
+      {
+        "top_ft": 88,
+        "bottom_ft": 105,
+        "description": "Shale Blue",
+        "normalized": "shale"
+      },
+      {
+        "top_ft": 105,
+        "bottom_ft": 109,
+        "description": "Rock white lime",
+        "normalized": "limestone"
+      },
+      {
+        "top_ft": 109,
+        "bottom_ft": 132,
+        "description": "Shale Blue",
+        "normalized": "shale"
+      }
+    ],
+    "legibility": "clear",
+    "extraction_confidence": 0.9,
+    "static_water_level_ft": 84,
+    "total_depth_ft": 132,
+    "water_bearing_zones_ft": [
+      108
+    ]
+  }
+}

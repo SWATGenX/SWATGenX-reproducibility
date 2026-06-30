@@ -1,0 +1,73 @@
+{
+  "pdf": "KS_39041",
+  "model": "gemini-2.5-flash",
+  "usage": {
+    "prompt_tokens": 491,
+    "output_tokens": 271,
+    "usd": 0.0008247999999999999,
+    "seconds": 240.5
+  },
+  "extracted": {
+    "lithology": [
+      {
+        "top_ft": 0,
+        "bottom_ft": 5,
+        "description": "LOAM",
+        "normalized": "topsoil"
+      },
+      {
+        "top_ft": 5,
+        "bottom_ft": 10,
+        "description": "LIGHT BROWN CLAY",
+        "normalized": "clay"
+      },
+      {
+        "top_ft": 10,
+        "bottom_ft": 14,
+        "description": "\" to SANDY",
+        "normalized": "sand"
+      },
+      {
+        "top_ft": 14,
+        "bottom_ft": 15,
+        "description": "SAND",
+        "normalized": "sand"
+      },
+      {
+        "top_ft": 15,
+        "bottom_ft": 24,
+        "description": "SANOY BROWN CLAY",
+        "normalized": "clay"
+      },
+      {
+        "top_ft": 24,
+        "bottom_ft": 25,
+        "description": "SAND",
+        "normalized": "sand"
+      },
+      {
+        "top_ft": 25,
+        "bottom_ft": 41,
+        "description": "GREEN GREBY SHALE",
+        "normalized": "shale"
+      },
+      {
+        "top_ft": 41,
+        "bottom_ft": 45,
+        "description": "DARK GREY SHOLE",
+        "normalized": "shale"
+      },
+      {
+        "top_ft": 45,
+        "bottom_ft": 63,
+        "description": "WELLINGTON SHALE",
+        "normalized": "shale"
+      }
+    ],
+    "legibility": "clear",
+    "extraction_confidence": 0.95,
+    "static_water_level_ft": 8.5,
+    "total_depth_ft": 63,
+    "water_bearing_zones_ft": []
+  }
+}

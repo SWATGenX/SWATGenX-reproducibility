@@ -1,7 +1,7 @@
 {
   "summary": {
     "catalog_model_id": "07174000",
-    "workspace_model_id": "1107/huc12/07174000",
+    "workspace_model_id": "1107/usgs_station/07174000",
     "label": "Verdigris River (KS)",
     "vpuid": "1107",
     "n_stations": 3,
@@ -26,7 +26,7 @@
   "stations": [
     {
       "catalog_model_id": "07174000",
-      "workspace_model_id": "1107/huc12/07174000",
+      "workspace_model_id": "1107/usgs_station/07174000",
       "label": "Verdigris River (KS)",
       "site_no": "07173300",
       "station_name": "M CANEY C AT SEDAN, KS",
@@ -55,7 +55,7 @@
     },
     {
       "catalog_model_id": "07174000",
-      "workspace_model_id": "1107/huc12/07174000",
+      "workspace_model_id": "1107/usgs_station/07174000",
       "label": "Verdigris River (KS)",
       "site_no": "07173500",
       "station_name": "BEE C NR HAVANA, KS",
@@ -84,7 +84,7 @@
     },
     {
       "catalog_model_id": "07174000",
-      "workspace_model_id": "1107/huc12/07174000",
+      "workspace_model_id": "1107/usgs_station/07174000",
       "label": "Verdigris River (KS)",
       "site_no": "07174000",
       "station_name": "Little Caney River near Copan, OK",

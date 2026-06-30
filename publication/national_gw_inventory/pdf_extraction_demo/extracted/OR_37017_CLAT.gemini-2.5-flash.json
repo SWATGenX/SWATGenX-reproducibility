@@ -1,0 +1,46 @@
+{
+  "pdf": "OR_37017_CLAT",
+  "model": "gemini-2.5-flash",
+  "usage": {
+    "prompt_tokens": 491,
+    "output_tokens": 268,
+    "usd": 0.0008173,
+    "seconds": 246.5
+  },
+  "extracted": {
+    "lithology": [
+      {
+        "top_ft": 0,
+        "bottom_ft": 2,
+        "description": "top soil",
+        "normalized": "topsoil"
+      },
+      {
+        "top_ft": 2,
+        "bottom_ft": 22,
+        "description": "Brown Clay",
+        "normalized": "clay"
+      },
+      {
+        "top_ft": 22,
+        "bottom_ft": 26,
+        "description": "Brown Clay & Mud",
+        "normalized": "mudstone"
+      },
+      {
+        "top_ft": 26,
+        "bottom_ft": 48,
+        "description": "Blue Clay stone",
+        "normalized": "mudstone"
+      }
+    ],
+    "legibility": "clear",
+    "extraction_confidence": 0.9,
+    "static_water_level_ft": 7,
+    "total_depth_ft": 48,
+    "water_bearing_zones_ft": [
+      22,
+      26
+    ]
+  }
+}

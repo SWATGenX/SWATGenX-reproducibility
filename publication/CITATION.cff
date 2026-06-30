@@ -27,4 +27,9 @@ preferred-citation:
       orcid: "https://orcid.org/0009-0009-8309-1895"
       affiliation: "Independent Researcher"
   year: 2026
-  notes: "Journal, volume, and DOI to be added on acceptance."
+  url: "https://ssrn.com/abstract=7022809"
+  identifiers:
+    - type: other
+      value: "SSRN:7022809"
+      description: "SSRN preprint abstract ID"
+  notes: "Preprint available on SSRN (http://ssrn.com/abstract=7022809). Journal, volume, and DOI to be added on acceptance."

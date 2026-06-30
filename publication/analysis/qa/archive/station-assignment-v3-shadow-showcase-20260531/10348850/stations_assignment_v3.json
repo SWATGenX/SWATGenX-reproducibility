@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "10348850",
-    "workspace_model_id": "1605/huc12/10348850",
-    "label": "1605/huc12/10348850 (NV)",
+    "workspace_model_id": "1605/usgs_station/10348850",
+    "label": "1605/usgs_station/10348850 (NV)",
     "vpuid": "1605",
     "n_stations": 2,
     "n_production_assigned": 2,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "10348850",
-      "workspace_model_id": "1605/huc12/10348850",
-      "label": "1605/huc12/10348850 (NV)",
+      "workspace_model_id": "1605/usgs_station/10348850",
+      "label": "1605/usgs_station/10348850 (NV)",
       "site_no": "10348850",
       "station_name": "GALENA CK AT GALENA CK STATE PARK, NV",
       "usgs_da_km2": 19.91700856848384,
@@ -55,8 +55,8 @@
     },
     {
       "catalog_model_id": "10348850",
-      "workspace_model_id": "1605/huc12/10348850",
-      "label": "1605/huc12/10348850 (NV)",
+      "workspace_model_id": "1605/usgs_station/10348850",
+      "label": "1605/usgs_station/10348850 (NV)",
       "site_no": "10348900",
       "station_name": "GALENA CK NR STEAMBOAT, NV",
       "usgs_da_km2": 22.014898937856,

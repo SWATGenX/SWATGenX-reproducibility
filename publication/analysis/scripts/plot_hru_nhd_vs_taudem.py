@@ -2,7 +2,7 @@
 """Internal test: side-by-side HRU map (hrus2.shp) for NHDPlus-HR vs TauDEM delineation
 of the same watershed. Usage:
   .venv/bin/python publication/analysis/scripts/plot_hru_nhd_vs_taudem.py \
-    --site-dir ${SWATGENX_USER_PATH}/SWATplus_by_VPUID/0308/huc12/030801020804 \
+    --site-dir ${SWATGENX_USER_PATH}/SWATplus_by_VPUID/0308/huc12_outlet/030801020804 \
     --nhd SWAT_MODEL_Web_Application --taudem SWAT_MODEL_TauDEM_auto --out /tmp/hru_nhd_vs_taudem_S.png
 """
 import argparse

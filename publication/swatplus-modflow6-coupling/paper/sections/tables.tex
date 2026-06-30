@@ -1,0 +1,169 @@
+% ============================================================================
+%  Tables for the coupled SWAT+ <-> MODFLOW 6 PFAS manuscript (Rogue River, MI)
+%  Requires: \usepackage{booktabs}  (no siunitx; plain formatting for portability)
+%  Every numeric value is grounded in the model artifacts / results.tex.
+% ============================================================================
+
+% ---------------------------------------------------------------------------
+% Table 1 -- Study area and model configuration
+% ---------------------------------------------------------------------------
+\begin{table}[t]
+  \centering
+  \footnotesize
+  \caption{Study area and coupled-model configuration. The surface-water
+  (SWAT\textsuperscript{+}) and groundwater (MODFLOW~6) models are generated
+  automatically from public data on the Rogue River watershed, Michigan.}
+  \label{tab:studyarea}
+  \begin{tabular}{@{}ll@{}}
+    \toprule
+    Quantity & Value \\
+    \midrule
+    \multicolumn{2}{@{}l}{\emph{Watershed and observations}}\\
+    Watershed                         & Rogue River, Michigan \\
+    USGS streamflow gauge             & 04118500 \\
+    PFAS contamination source         & Wolverine World Wide / House Street site \\
+    Source-zone anchor (measured GW PFOS) & cells $>10^{4}$~ng~L\textsuperscript{-1}; peak $1.5\times10^{6}$ \\
+    Groundwater head observations     & 5{,}383 per-cell static water-table heads \\
+    Groundwater PFOS observations     & 846 (downgradient + background) \\
+    \addlinespace
+    \multicolumn{2}{@{}l}{\emph{Surface-water model (SWAT\textsuperscript{+})}}\\
+    Hydrography source                & NHDPlus High Resolution \\
+    HRUs                              & 17{,}771 \\
+    Channels (SWAT\textsuperscript{+} graph) & 590 \\
+    \addlinespace
+    \multicolumn{2}{@{}l}{\emph{Groundwater model (MODFLOW~6)}}\\
+    Active cells                       & $\approx\!24{,}900$ \\
+    Layers                             & 3 \\
+    Cell size (uniform grid)           & 250~m \\
+    Grid P\'eclet number               & $\sim$25 ($\Delta x/\alpha_L = 250/10$) \\
+    SFR reaches                        & 1{,}506 \\
+    SFR channels (order $\geq 2$)      & 273 \\
+    Porosity                           & 0.30 \\
+    Bulk density                       & 1800~kg~m\textsuperscript{-3} \\
+    \addlinespace
+    \multicolumn{2}{@{}l}{\emph{Transport simulation}}\\
+    Flow field                         & calibrated steady state \\
+    PFAS transport horizon             & 40-yr transient (adaptive time stepping) \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+% ---------------------------------------------------------------------------
+% Table 2 -- Calibration parameters (priors and posteriors)
+% ---------------------------------------------------------------------------
+\begin{table}[t]
+  \centering
+  \footnotesize
+  \caption{Calibration parameters. Flow parameters are \emph{calibrated} by the
+  PEST\texttt{++} iterative ensemble smoother (\textsc{ies}) against 5{,}383
+  water-table heads with a baseflow constraint; values are the deployed
+  posterior realization's global $\log_{10}$ multipliers on the prior field.
+  Transport parameters are \emph{prescribed} from the PFAS literature, and the
+  groundwater source is anchored to measurements rather than fitted.}
+  \label{tab:calparams}
+  \begin{tabular}{@{}llcc@{}}
+    \toprule
+    Parameter & Symbol / units & Prior range & Posterior / used value \\
+    \midrule
+    \multicolumn{4}{@{}l}{\emph{Flow (calibrated, PEST\texttt{++} \textsc{ies})}}\\
+    Recharge multiplier            & $\log_{10}$ mult.            & $[-0.30,0.48]$  & $+0.188$ \\
+    Vertical conductivity (anisotropy) & $k_v$, $\log_{10}$ mult.  & $[-0.8,0.8]$  & $+0.023$ \\
+    GHB (divide) conductance       & $\log_{10}$ mult.            & $[-2.0,0.5]$  & $-1.169$ \\
+    Drain conductance              & $\log_{10}$ mult.            & $[-2.0,0.5]$  & $+0.500$\textsuperscript{a} \\
+    Well pumping / withdrawal       & $\log_{10}$ mult.            & $[-1.70,0.0]$  & $-1.264$ \\
+    SFR streambed conductance      & $\log_{10}$ mult.           & $[-1.5,1.0]$  & $+0.693$ \\
+    Hydraulic conductivity field    & 243 pilot points, $\log_{10}$ mult. & $[-0.8,0.8]$ & spatially variable \\
+    \addlinespace
+    \multicolumn{4}{@{}l}{\emph{Transport (prescribed, literature)}}\\
+    Freundlich sorption coefficient & $K_f$                       & ---\textsuperscript{b} & 0.005 \\
+    Freundlich exponent             & $n$                         & ---\textsuperscript{b} & 0.8 \\
+    Longitudinal dispersivity       & $\alpha_L$ (m)              & ---\textsuperscript{b} & 10 \\
+    Transverse dispersivity         & $\alpha_T$ (m)              & ---\textsuperscript{b} & 1 \\
+    Molecular diffusion             & $D$ (m\textsuperscript{2}~s\textsuperscript{-1}) & ---\textsuperscript{b} & $1\times10^{-10}$ \\
+    Source cap                      & ng~L\textsuperscript{-1}    & ---\textsuperscript{b} & $1\times10^{5}$ \\
+    Source threshold                & ng~L\textsuperscript{-1}    & ---\textsuperscript{b} & $1\times10^{4}$ \\
+    Ambient background              & ng~L\textsuperscript{-1}    & ---\textsuperscript{b} & 10 \\
+    \bottomrule
+  \end{tabular}
+
+  \vspace{2pt}
+  \begin{minipage}{\linewidth}\footnotesize
+  \textsuperscript{a}The drain-conductance multiplier reaches its upper prior
+  bound ($+0.5$), indicating the calibration favours stronger drainage than the
+  prior centre; the remaining flow multipliers are interior.\quad
+  \textsuperscript{b}Prescribed PFAS-transport literature value; not calibrated,
+  so no prior range applies.
+  \end{minipage}
+\end{table}
+
+% ---------------------------------------------------------------------------
+% Table 3 -- Validation metrics (consolidated)
+% ---------------------------------------------------------------------------
+\begin{table}[t]
+  \centering
+  \footnotesize
+  \caption{Consolidated validation metrics for the coupled system across the
+  groundwater-flow, groundwater-transport, surface-water-transport, and joint
+  compartments. Concentration skill is reported in $\log_{10}$ space (dex), the
+  appropriate metric for values spanning orders of magnitude.}
+  \label{tab:validation}
+  \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{3.0cm}llcX@{}}
+    \toprule
+    Compartment / quantity & Metric & Value & $n$ & Method / notes \\
+    \midrule
+    Groundwater heads
+      & Nash--Sutcliffe / RMSE & 0.91 / 5.6~m & 5{,}383
+      & PEST\texttt{++} \textsc{ies}, baseflow-constrained \\
+    Baseflow
+      & gaining discharge & $+5.46$ vs 5.56 & ---
+      & m\textsuperscript{3}~s\textsuperscript{-1}; observed gaining baseflow \\
+    Groundwater PFOS (all predicted cells)
+      & log-RMSE / within $\times10$ & 1.1~dex / 71\% & 65
+      & 846 obs $\to$ 73 cells; 8 prescribed, 65 predicted \\
+    Groundwater PFOS (above background)
+      & log-RMSE / within $\times10$ & 1.4~dex / 46\% & 26
+      & observed $>50$~ng~L\textsuperscript{-1}; 12/26 within $\times10$ \\
+    Surface-water PFOS (source-bearing mainstem)
+      & log-RMSE & 0.15~dex & 7
+      & calibrated mainstem reaches \\
+    Surface-water PFOS (all gauged reaches)
+      & log-RMSE & 0.74~dex & 20
+      & negative log Nash--Sutcliffe; tributary heterogeneity \\
+    Joint SW+GW mainstem fit
+      & log-RMSE; held-out RMSE & 0.07~dex; $6.2\!\to\!4.5$ & 7
+      & NNLS $(L,g)$; held-out RMSE in ng~L\textsuperscript{-1} (Fig.~S14 reports MAE) \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+% ---------------------------------------------------------------------------
+% Table 4 -- Joint SW + GW calibration, per mainstem reach
+% ---------------------------------------------------------------------------
+\begin{table}[t]
+  \centering
+  \footnotesize
+  \caption{Joint surface-water + groundwater calibration along the Rogue
+  mainstem (upstream $\to$ downstream). In-stream PFOS is linear in both the
+  surface soil-loading $L$ and the groundwater source effectiveness $g$;
+  fitting $(L,g)$ jointly by non-negative least squares gives $L=0.077$ (from a
+  surface-only $L_0=0.11$) and $g=0.061$ (95\% CI $[0.022,0.100]$). The added
+  groundwater term is significant against the surface-only ($g=0$) model
+  ($F_{1,5}=16.2$, $p=0.01$) and survives leave-one-out cross-validation, and
+  the groundwater fraction rises from $\sim$13\% in the headwaters to $\sim$53\%
+  at the lower mainstem near the Wolverine source. Concentrations in
+  ng~L\textsuperscript{-1}.}
+  \label{tab:jointreach}
+  \begin{tabular}{@{}rrrrrrr@{}}
+    \toprule
+    Channel & Observed & SW-only & Joint & SW part & GW part & GW frac.\ (\%) \\
+    \midrule
+    26 &  6.3 &  6.2 &  5.0 &  4.3 &  0.6 & 13 \\
+    18 &  6.8 &  7.7 &  6.1 &  5.4 &  0.7 & 11 \\
+    15 &  7.2 &  9.2 &  7.2 &  6.4 &  0.7 & 10 \\
+    11 &  6.7 & 11.2 &  8.6 &  7.8 &  0.8 &  9 \\
+    10 &  9.6 & 12.4 &  9.5 &  8.7 &  0.8 &  8 \\
+     1 & 19.0 & 14.7 & 23.0 & 10.3 & 12.7 & 55 \\
+     2 & 27.0 & 15.4 & 22.8 & 10.8 & 12.0 & 53 \\
+    \bottomrule
+  \end{tabular}
+\end{table}

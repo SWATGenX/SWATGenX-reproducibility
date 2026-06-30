@@ -1,7 +1,7 @@
 {
   "summary": {
     "catalog_model_id": "03152000",
-    "workspace_model_id": "0503/huc12/03152000",
+    "workspace_model_id": "0503/usgs_station/03152000",
     "label": "Little Kanawaha (WV)",
     "vpuid": "0503",
     "n_stations": 6,
@@ -26,7 +26,7 @@
   "stations": [
     {
       "catalog_model_id": "03152000",
-      "workspace_model_id": "0503/huc12/03152000",
+      "workspace_model_id": "0503/usgs_station/03152000",
       "label": "Little Kanawaha (WV)",
       "site_no": "03151400",
       "station_name": "LITTLE KANAWHA RIVER NR WILDCAT, WV",
@@ -55,7 +55,7 @@
     },
     {
       "catalog_model_id": "03152000",
-      "workspace_model_id": "0503/huc12/03152000",
+      "workspace_model_id": "0503/usgs_station/03152000",
       "label": "Little Kanawaha (WV)",
       "site_no": "03151500",
       "station_name": "L KANAWHA R NR BURNSVILLE, WV",
@@ -84,7 +84,7 @@
     },
     {
       "catalog_model_id": "03152000",
-      "workspace_model_id": "0503/huc12/03152000",
+      "workspace_model_id": "0503/usgs_station/03152000",
       "label": "Little Kanawaha (WV)",
       "site_no": "03151520",
       "station_name": "LITTLE KANAWHA RIVER BELOW BURNSVILLE DAM, WV",
@@ -113,7 +113,7 @@
     },
     {
       "catalog_model_id": "03152000",
-      "workspace_model_id": "0503/huc12/03152000",
+      "workspace_model_id": "0503/usgs_station/03152000",
       "label": "Little Kanawaha (WV)",
       "site_no": "03151600",
       "station_name": "LITTLE KANAWHA RIVER AT BURNSVILLE, WV",
@@ -142,7 +142,7 @@
     },
     {
       "catalog_model_id": "03152000",
-      "workspace_model_id": "0503/huc12/03152000",
+      "workspace_model_id": "0503/usgs_station/03152000",
       "label": "Little Kanawaha (WV)",
       "site_no": "03151915",
       "station_name": "SAND FORK NEAR GLENVILLE, WV",
@@ -171,7 +171,7 @@
     },
     {
       "catalog_model_id": "03152000",
-      "workspace_model_id": "0503/huc12/03152000",
+      "workspace_model_id": "0503/usgs_station/03152000",
       "label": "Little Kanawaha (WV)",
       "site_no": "03152000",
       "station_name": "LITTLE KANAWHA RIVER AT GLENVILLE, WV",

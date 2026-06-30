@@ -1,0 +1,46 @@
+{
+  "pdf": "OR_306910_BAKE",
+  "model": "gemini-2.5-flash-lite",
+  "usage": {
+    "prompt_tokens": 749,
+    "output_tokens": 309,
+    "usd": 0.0001985,
+    "seconds": 8.3
+  },
+  "extracted": {
+    "lithology": [
+      {
+        "top_ft": 0.0,
+        "bottom_ft": 6.0,
+        "description": "Top Soil",
+        "normalized": "topsoil"
+      },
+      {
+        "top_ft": 6.0,
+        "bottom_ft": 20.0,
+        "description": "Clay Sand+gravel",
+        "normalized": "sand_and_gravel"
+      },
+      {
+        "top_ft": 20.0,
+        "bottom_ft": 45.0,
+        "description": "Clay, Sand+gravel W/B",
+        "normalized": "sand_and_gravel"
+      },
+      {
+        "top_ft": 45.0,
+        "bottom_ft": 48.0,
+        "description": "Bentonite",
+        "normalized": "clay"
+      }
+    ],
+    "legibility": "clear",
+    "extraction_confidence": 0.9,
+    "static_water_level_ft": 10.0,
+    "total_depth_ft": 48.0,
+    "water_bearing_zones_ft": [
+      20.0,
+      45.0
+    ]
+  }
+}

@@ -1,7 +1,7 @@
 {
   "summary": {
     "catalog_model_id": "05536265",
-    "workspace_model_id": "0712/huc12/05536265",
+    "workspace_model_id": "0712/usgs_station/05536265",
     "label": "Illinois controlled basin",
     "vpuid": "0712",
     "n_stations": 2,
@@ -26,7 +26,7 @@
   "stations": [
     {
       "catalog_model_id": "05536265",
-      "workspace_model_id": "0712/huc12/05536265",
+      "workspace_model_id": "0712/usgs_station/05536265",
       "label": "Illinois controlled basin",
       "site_no": "05536265",
       "station_name": "LANSING DITCH NEAR LANSING, IL",
@@ -55,7 +55,7 @@
     },
     {
       "catalog_model_id": "05536265",
-      "workspace_model_id": "0712/huc12/05536265",
+      "workspace_model_id": "0712/usgs_station/05536265",
       "label": "Illinois controlled basin",
       "site_no": "05536270",
       "station_name": "NORTH CREEK NEAR LANSING, IL",

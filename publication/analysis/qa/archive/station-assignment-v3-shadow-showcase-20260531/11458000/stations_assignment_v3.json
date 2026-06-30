@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "11458000",
-    "workspace_model_id": "1805/huc12/11458000",
-    "label": "1805/huc12/11458000 (CA)",
+    "workspace_model_id": "1805/usgs_station/11458000",
+    "label": "1805/usgs_station/11458000 (CA)",
     "vpuid": "1805",
     "n_stations": 10,
     "n_production_assigned": 10,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "11458000",
-      "workspace_model_id": "1805/huc12/11458000",
-      "label": "1805/huc12/11458000 (CA)",
+      "workspace_model_id": "1805/usgs_station/11458000",
+      "label": "1805/usgs_station/11458000 (CA)",
       "site_no": "11455900",
       "station_name": "NAPA R AT CALISTOGA CA",
       "usgs_da_km2": 56.7207396163584,
@@ -55,8 +55,8 @@
     },
     {
       "catalog_model_id": "11458000",
-      "workspace_model_id": "1805/huc12/11458000",
-      "label": "1805/huc12/11458000 (CA)",
+      "workspace_model_id": "1805/usgs_station/11458000",
+      "label": "1805/usgs_station/11458000 (CA)",
       "site_no": "11455950",
       "station_name": "SULPHUR C NR ST HELENA CA",
       "usgs_da_km2": 11.654946496512,
@@ -84,8 +84,8 @@
     },
     {
       "catalog_model_id": "11458000",
-      "workspace_model_id": "1805/huc12/11458000",
-      "label": "1805/huc12/11458000 (CA)",
+      "workspace_model_id": "1805/usgs_station/11458000",
+      "label": "1805/usgs_station/11458000 (CA)",
       "site_no": "11456000",
       "station_name": "NAPA R NR ST HELENA CA",
       "usgs_da_km2": 204.0910630944768,
@@ -113,8 +113,8 @@
     },
     {
       "catalog_model_id": "11458000",
-      "workspace_model_id": "1805/huc12/11458000",
-      "label": "1805/huc12/11458000 (CA)",
+      "workspace_model_id": "1805/usgs_station/11458000",
+      "label": "1805/usgs_station/11458000 (CA)",
       "site_no": "11456500",
       "station_name": "CONN C NR OAKVILLE CA",
       "usgs_da_km2": 143.4853413126144,
@@ -142,8 +142,8 @@
     },
     {
       "catalog_model_id": "11458000",
-      "workspace_model_id": "1805/huc12/11458000",
-      "label": "1805/huc12/11458000 (CA)",
+      "workspace_model_id": "1805/usgs_station/11458000",
+      "label": "1805/usgs_station/11458000 (CA)",
       "site_no": "11457000",
       "station_name": "DRY C NR NAPA CA",
       "usgs_da_km2": 45.0657931198464,
@@ -171,8 +171,8 @@
     },
     {
       "catalog_model_id": "11458000",
-      "workspace_model_id": "1805/huc12/11458000",
-      "label": "1805/huc12/11458000 (CA)",
+      "workspace_model_id": "1805/usgs_station/11458000",
+      "label": "1805/usgs_station/11458000 (CA)",
       "site_no": "11457500",
       "station_name": "DRY C NR YOUNTVILLE CA",
       "usgs_da_km2": 48.4327776632832,
@@ -200,8 +200,8 @@
     },
     {
       "catalog_model_id": "11458000",
-      "workspace_model_id": "1805/huc12/11458000",
-      "label": "1805/huc12/11458000 (CA)",
+      "workspace_model_id": "1805/usgs_station/11458000",
+      "label": "1805/usgs_station/11458000 (CA)",
       "site_no": "11458000",
       "station_name": "NAPA R NR NAPA CA",
       "usgs_da_km2": 564.6174080532479,
@@ -229,8 +229,8 @@
     },
     {
       "catalog_model_id": "11458000",
-      "workspace_model_id": "1805/huc12/11458000",
-      "label": "1805/huc12/11458000 (CA)",
+      "workspace_model_id": "1805/usgs_station/11458000",
+      "label": "1805/usgs_station/11458000 (CA)",
       "site_no": "11458100",
       "station_name": "MILLIKEN C NR NAPA",
       "usgs_da_km2": 44.8067943088128,
@@ -258,8 +258,8 @@
     },
     {
       "catalog_model_id": "11458000",
-      "workspace_model_id": "1805/huc12/11458000",
-      "label": "1805/huc12/11458000 (CA)",
+      "workspace_model_id": "1805/usgs_station/11458000",
+      "label": "1805/usgs_station/11458000 (CA)",
       "site_no": "11458200",
       "station_name": "REDWOOD C NR NAPA CA",
       "usgs_da_km2": 25.35598360018944,
@@ -287,8 +287,8 @@
     },
     {
       "catalog_model_id": "11458000",
-      "workspace_model_id": "1805/huc12/11458000",
-      "label": "1805/huc12/11458000 (CA)",
+      "workspace_model_id": "1805/usgs_station/11458000",
+      "label": "1805/usgs_station/11458000 (CA)",
       "site_no": "11458300",
       "station_name": "NAPA C A NAPA",
       "usgs_da_km2": 38.5908228440064,

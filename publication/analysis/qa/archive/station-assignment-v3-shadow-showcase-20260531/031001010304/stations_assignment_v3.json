@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "031001010304",
-    "workspace_model_id": "0310/huc12/031001010304",
-    "label": "0310/huc12/031001010304 (nan)",
+    "workspace_model_id": "0310/huc12_outlet/031001010304",
+    "label": "0310/huc12_outlet/031001010304 (nan)",
     "vpuid": "0310",
     "n_stations": 1,
     "n_production_assigned": 1,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "031001010304",
-      "workspace_model_id": "0310/huc12/031001010304",
-      "label": "0310/huc12/031001010304 (nan)",
+      "workspace_model_id": "0310/huc12_outlet/031001010304",
+      "label": "0310/huc12_outlet/031001010304 (nan)",
       "site_no": "02295013",
       "station_name": "BOWLEGS CREEK NEAR FORT MEADE FL",
       "usgs_da_km2": 122.2474388078592,

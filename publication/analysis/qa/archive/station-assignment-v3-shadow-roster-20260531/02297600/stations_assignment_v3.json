@@ -1,7 +1,7 @@
 {
   "summary": {
     "catalog_model_id": "02297600",
-    "workspace_model_id": "0310/huc12/02297600",
+    "workspace_model_id": "0310/usgs_station/02297600",
     "label": "Florida controlled basin",
     "vpuid": "0310",
     "n_stations": 1,
@@ -26,7 +26,7 @@
   "stations": [
     {
       "catalog_model_id": "02297600",
-      "workspace_model_id": "0310/huc12/02297600",
+      "workspace_model_id": "0310/usgs_station/02297600",
       "label": "Florida controlled basin",
       "site_no": "02297600",
       "station_name": "SHELL CREEK AT CIRCLE K GROVES NEAR FT OGDEN FL",

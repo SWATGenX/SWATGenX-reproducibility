@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "03262001",
-    "workspace_model_id": "0509/huc12/03262001",
-    "label": "0509/huc12/03262001 (KY)",
+    "workspace_model_id": "0509/usgs_station/03262001",
+    "label": "0509/usgs_station/03262001 (KY)",
     "vpuid": "0509",
     "n_stations": 1,
     "n_production_assigned": 1,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "03262001",
-      "workspace_model_id": "0509/huc12/03262001",
-      "label": "0509/huc12/03262001 (KY)",
+      "workspace_model_id": "0509/usgs_station/03262001",
+      "label": "0509/usgs_station/03262001 (KY)",
       "site_no": "03262001",
       "station_name": "WOOLPER CREEK AT WOOLPER ROAD NEAR BURLINGTON, KY",
       "usgs_da_km2": 62.6777122701312,

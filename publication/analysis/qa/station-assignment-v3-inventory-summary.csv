@@ -1,9 +1,9 @@
 catalog_model_id,workspace_model_id,label,vpuid,n_stations,n_production_assigned,n_v3_assigned,n_same_gis,n_changed_gis,pct_unchanged,n_exact_crosswalk,n_downstream_replacement,n_lake_outlet_replacement,n_canal_or_artificial_review,n_lake_outlet_review,n_missing_output_channel,n_calibration_ready,n_review,n_exclude,median_swat_nhd_ratio_cal_ready,n_cal_outside_half_to_double,n_cal_outside_0_8_1_25
-02297600,0310/huc12/02297600,Florida controlled basin,0310,1,1,1,1,0,100.0,1,0,0,0,0,0,1,0,0,1.0773558562868886,0,0
-03080102,0308/huc12/030801020804,Oklawaha (FL),0308,4,4,3,0,4,0.0,3,0,0,0,0,1,3,0,1,1.010656631508087,0,0
+02297600,0310/usgs_station/02297600,Florida controlled basin,0310,1,1,1,1,0,100.0,1,0,0,0,0,0,1,0,0,1.0773558562868886,0,0
+03080102,0308/huc12_outlet/030801020804,Oklawaha (FL),0308,4,4,3,0,4,0.0,3,0,0,0,0,1,3,0,1,1.010656631508087,0,0
 03100101,0310/huc8/03100101,0310/huc8/03100101 (nan),0310,76,76,76,38,38,50.0,61,5,10,9,13,0,54,22,0,1.1015413334762671,2,5
-03152000,0503/huc12/03152000,Little Kanawaha (WV),0503,6,6,6,2,4,33.3,3,0,3,0,3,0,3,3,0,0.8728107204024377,1,1
-05536265,0712/huc12/05536265,Illinois controlled basin,0712,2,2,2,1,1,50.0,2,0,0,1,0,0,1,1,0,1.0264157199153163,0,0
-07174000,1107/huc12/07174000,Verdigris River (KS),1107,3,3,2,1,2,33.3,1,1,0,0,0,1,1,1,1,1.001232819819498,0,0
-09471300,1505/huc12/09471300,Upper San Pedro (AZ),1505,3,3,3,1,2,33.3,3,0,0,0,0,0,3,0,0,0.9990752461645556,0,1
+03152000,0503/usgs_station/03152000,Little Kanawaha (WV),0503,6,6,6,2,4,33.3,3,0,3,0,3,0,3,3,0,0.8728107204024377,1,1
+05536265,0712/usgs_station/05536265,Illinois controlled basin,0712,2,2,2,1,1,50.0,2,0,0,1,0,0,1,1,0,1.0264157199153163,0,0
+07174000,1107/usgs_station/07174000,Verdigris River (KS),1107,3,3,2,1,2,33.3,1,1,0,0,0,1,1,1,1,1.001232819819498,0,0
+09471300,1505/usgs_station/09471300,Upper San Pedro (AZ),1505,3,3,3,1,2,33.3,3,0,0,0,0,0,3,0,0,0.9990752461645556,0,1
 15060105,1506/huc8/15060105,Upper Gila HUC-8 (AZ),1506,4,4,4,1,3,25.0,3,1,0,0,0,0,3,1,0,0.9992624283908144,0,0

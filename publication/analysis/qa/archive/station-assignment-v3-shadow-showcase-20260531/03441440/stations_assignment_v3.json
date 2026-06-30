@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "03441440",
-    "workspace_model_id": "0601/huc12/03441440",
-    "label": "0601/huc12/03441440 (NC)",
+    "workspace_model_id": "0601/usgs_station/03441440",
+    "label": "0601/usgs_station/03441440 (NC)",
     "vpuid": "0601",
     "n_stations": 1,
     "n_production_assigned": 1,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "03441440",
-      "workspace_model_id": "0601/huc12/03441440",
-      "label": "0601/huc12/03441440 (NC)",
+      "workspace_model_id": "0601/usgs_station/03441440",
+      "label": "0601/usgs_station/03441440 (NC)",
       "site_no": "03441440",
       "station_name": "LITTLE RIVER AB HIGH FALLS NEAR CEDAR MT, NC",
       "usgs_da_km2": 69.4116813570048,

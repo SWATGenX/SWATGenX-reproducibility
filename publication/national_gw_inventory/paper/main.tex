@@ -1,0 +1,700 @@
+% National groundwater well & lithology inventory --- resource + method paper.
+% Target: Geodata and AI (Elsevier), Research article. Gold OA, APC waived if submitted before 31 Aug 2026.
+%   LaTeX accepted; preprints allowed; "Your Paper Your Way" formatting at initial submission.
+% Build: bash build_pdfs.sh  (see paper/README). Figures: paper/make_figures.py.
+\documentclass[12pt]{article}
+\input{preamble-common.tex}
+\usepackage{lineno}
+\usepackage{xr}
+\externaldocument{supplement}
+
+\doublespacing
+\linenumbers
+
+\title{A national inventory of well lithology and hydraulics for the conterminous United States,
+with a vision-language method for reading scanned driller's logs}
+
+\author{%
+  Vahid Rafiei\\
+  Independent Researcher\\
+  \texttt{vahidr32@gmail.com}\\
+  ORCID: \href{https://orcid.org/0009-0009-8309-1895}{0009-0009-8309-1895}
+}
+\date{}
+
+\begin{document}
+\maketitle
+
+% =====================================================================
+\begin{abstract}
+\noindent
+Sustainable groundwater management requires a three-dimensional picture of the subsurface, yet across
+much of the world that information exists only as water-well driller's logs in fragmented,
+partly-digitized government archives --- a barrier most acute where agency-scale digitization is
+unaffordable. Using the United States as a
+demonstration, we (i)~compile an availability census of the $\sim$13.4~million wells in the 48
+conterminous states, classifying each by how its lithology is published: a first-pass audit finds
+machine-readable lithology in 8 states ($\sim$3.2M wells), but systematic probing raises this to 17 states
+($\sim$7.0M); 13 states ($\sim$4M) publish it only as scanned images, and 18 ($\sim$2.4M) publish no digital
+lithology (the wells are registered, the logs are not); (ii)~from the machine-readable states we harmonize
+the $\sim$3.4~million wells carrying a log into an open inventory of nearly 24~million depth-resolved
+intervals, plus structured hydraulics for $\sim$2.8~million wells, all from public endpoints, no
+privileged access; and (iii)~introduce a reproducible, cost-bounded method that recovers lithology from scanned logs
+using vision-language models. Validated against a state agency's hand-transcriptions, the method
+reproduces material class at 91.5\% accuracy (Cohen's $\kappa=0.90$) and the coarse/fine texture that
+groundwater models consume at 96.0\% ($\kappa=0.92$), at roughly 1{,}000 tokens per log. We report cost in
+tokens, a provider-independent unit, and quantify what each state does and does not expose. Because the
+method transfers to any jurisdiction with scanned well records, it offers a low-cost path to the subsurface
+data groundwater management needs; data and method are released openly.
+\end{abstract}
+
+\medskip\noindent\textbf{Keywords:} groundwater; driller's logs; lithology; vision-language models;
+subsurface characterization; data harmonization; hydrogeology
+
+\medskip\noindent\textbf{Highlights}
+\begin{itemize}\setlength{\itemsep}{0pt}
+\item Much U.S. well lithology is in scanned driller's logs, not machine-readable data
+\item We harmonize ~24M lithology intervals from public sources into one open inventory
+\item Vision-language models recover lithology from scans at 96.0\% coarse/fine accuracy
+\item Cost is about 1,000 tokens per log, using only public, no-privilege access
+\item The method transfers to any region that holds scanned water-well records
+\end{itemize}
+
+% =====================================================================
+\section{Introduction}
+Continental and coupled groundwater models require the subsurface's vertical structure --- the sequence of
+geologic materials and their hydraulic properties with depth. In the United States that information is
+generated as a regulatory byproduct: when a well is drilled, the driller records a log of the
+materials encountered. Hundreds of millions of such logs exist, but they are held by individual state
+agencies in heterogeneous, often non-machine-readable forms. Interoperability standards such as
+GroundWaterML2 exist to bridge these schema differences \citep{brodaric2018gwml2}, but a standard cannot
+substitute for the data itself: no harmonized national compilation of their lithology exists. Every regional model therefore re-digitizes its basin's driller's logs by
+hand. Our contributions are: an availability census; a harmonized digital lithology inventory from
+primary state sources; and a reproducible, cost-bounded method to recover the scanned remainder, with
+per-state coverage, accuracy, and cost.
+
+This inventory is complementary to the United States Groundwater Well Database
+\citep[USGWD;][]{lin2024usgwd}, which harmonizes 14.26M well records to a data standard of location,
+purpose, status, well depth, screen depth/length, and well capacity --- but, by design, carries
+no lithology and no water levels. USGWD is the national well-location layer; this
+inventory is the subsurface-structure-and-hydraulics layer that USGWD omits. The two compose. Likewise,
+national hydrogeologic frameworks such as the USGS Secondary Hydrogeologic Regions partition the
+conterminous US into terrane units at the land surface \citep{belitz2019regions}; our depth-resolved
+lithology populates the third dimension those map-based frameworks leave empty.
+
+\subsection{Who needs this, and the cost of not having it}
+\label{sec:demand}
+Three independent lines of evidence establish demand. First, the continental-modeling community
+states the lack explicitly. A flagship review notes that ``groundwater models require spatially continuous
+and consistent datasets of the hydrogeologic properties that control the movement of water through the
+subsurface,'' yet ``the identification of hydrogeologic heterogeneity structure and physical properties is
+difficult because it requires subsurface borehole \ldots data that are often scarce''
+\citep{condon2021}; \citet{degraaf2020} state that ``no consistent 3D lithologic, hydrogeologic or
+hydrofacies data set exists'' at continental scale; and ParFlow-CONUS is described by its own developers as
+data-limited \citep{oneill2021conus1}. Even USGWD---the harmonized national well-location
+database---explicitly excludes lithology ``due to [its] limited availability'' \citep{lin2024usgwd},
+naming the precise gap this inventory fills. Second, agencies act on the need: the USGS mined
+$\sim$458{,}000 driller's logs for a single regional flow model \citep{arihood2009} and standardized
+$\sim$14M state records across the 24 glaciated (northern-tier) states \citep{bayless2017}, and a federal land
+manager (USDA Forest Service) grounds its Groundwater Inventory, Monitoring \& Assessment guide in
+hydrogeologic-unit characterization while acknowledging that map-unit lithology ``can change laterally''
+below mappable resolution. Third, and most telling, is duplicated effort: because no harmonized
+layer exists, every team that needs subsurface lithology re-compiles raw driller's logs from scratch
+(Table~\ref{tab:demand})---thousands to hundreds of thousands of logs per study, each in a bespoke
+workflow. That recurring, state-by-state re-compilation is the cost of the missing layer, and the demand
+this inventory answers.
+
+\begin{table}[t]\centering\small
+\caption{Demand by duplicated effort: representative studies that each manually re-compiled water-well
+driller's logs because no harmonized national lithology layer existed.}
+\label{tab:demand}
+\begin{tabularx}{\textwidth}{l l r Y}
+\toprule
+Study & Region & Logs compiled & Purpose \\
+\midrule
+\citet{faunt2010} & Central Valley, CA & $\sim$8{,}500 & 3-D sedimentary-texture framework (CVHM) \\
+\citet{arihood2009} & Lake Michigan Basin & $\sim$458{,}000 & glacial groundwater flow model \\
+\citet{vahdat2021} & SW Louisiana & $\sim$30{,}000 & 56-layer aquifer conductivity framework \\
+\citet{riddle2025} & MI/IN/OH glacial & $\sim$60{,}500 & volumetric hydrogeologic framework \\
+\citet{herzog2003} & Central Illinois & $>$2{,}200 & hydrostratigraphic model for MODFLOW \\
+\citet{bayless2017} & glaciated US (24 states) & $\sim$14{,}000{,}000 & cross-state hydrogeologic grids \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{How continental models represent the subsurface today --- and why it is a gap}
+If primary driller-log lithology is so sparse, how are CONUS-scale subsurface models built? Not from it.
+Continental hydrologic platforms take one of two routes, neither using harmonized well logs.
+(1) Conceptual collapse: operational water-balance models---the NOAA National Water Model
+(WRF-Hydro) and the USGS National Hydrologic Model (PRMS)---resolve only a $\sim$2~m soil column and
+abstract everything beneath into lumped, calibrated reservoirs with no geologic structure.
+(2) Generalized, map-derived inputs: physically based models parameterize the subsurface from a
+small, shared set of products derived from geologic maps, not boreholes. The flagship integrated
+model, ParFlow-CONUS, resolves the entire deep subsurface as one \citep[CONUS1: 5 layers,
+102~m;][]{maxwell2015parflow} to six \citep[CONUS2: 10 layers, 392~m;][]{yang2023conus2} broad units, with
+conductivity assigned from the global GLHYMPS permeability map \citep[itself derived from the GLiM
+lithology map,][]{gleeson2014glhymps,hartmann2012glim}, soils from SSURGO, and depth-to-bedrock from
+\citet{shangguan2017}. Its developers state plainly that the model is ``limited not by computational
+expense but by data availability, with a lack of detailed depth-to-bedrock and aquifer thickness estimates
+at meaningful resolution,'' and is better viewed as a ``shallow aquifer storage model''
+\citep{oneill2021conus1}. The lithology underneath these permeability products is itself a coarse, surface,
+polygon map: the GLiM lineage descends from continental compilations such as the 262{,}111-polygon North
+American lithological map of \citet{moosdorf2010}, whose authors showed that map \emph{resolution and
+source alone} shift modeled fluxes by roughly $-59\%$ to $+38\%$ --- generalization with a measured cost.
+The same few products recur field-wide \citep{fan2013watertable,degraaf2017,pelletier2016,hengl2017soilgrids};
+the modelling community has itself begun cataloguing this shared-input homogeneity and its biases through
+community model portals \citep{zamrsky2025gromopo}.
+
+National geologic products are no better as a three-dimensional lithology source. The seamless USGS State
+Geologic Map Compilation \citep{horton2017sgmc} is a surface polygon geodatabase. USGS
+three-dimensional geologic framework models resolve depth but are regional: an inventory found 38 models
+covering $\sim$49\% of the CONUS at a $\sim$4{,}170~km$^2$ median footprint \citep{usgs2023inventory}. The
+one effort to mine bulk driller's records at scale \citep[$\sim$14M logs;][]{bayless2017} is confined to
+the glaciated 24 states and outputs derived hydrogeologic-property grids, not a lithology layer. At the
+opposite extreme, research effort yields exquisite per-borehole records --- full geophysical and lithologic
+logs, even NMR-measured hydraulic conductivity --- but only at a handful of wells
+\citep[e.g.,][n$=$2 and n$=$4]{twining2017ds1058,uhlemann2019eastriver}. Continental subsurface data thus
+splits between coarse-everywhere maps and exquisite-nowhere research holes (Figure~\ref{fig:spectrum}); the
+scalable middle --- millions of driller's logs --- is what remains unharmonized. That absence, not a
+computational or feasibility barrier, is the gap this inventory fills.
+
+A second, less-remarked barrier is one of access position rather than data existence. The
+comprehensive prior compilations were assembled by or with the agencies that hold the records: Bayless
+et~al.\ drew on full ``State-managed collections'' obtained as an inter-agency data request, not a public
+download. For anyone outside those walls --- the modeling and broader science community --- the same
+records are scattered across dozens of independent state portals with no common index, each demanding
+bespoke reverse-engineering; what is a phone call between agency offices becomes, for the public, a
+fragmented data-mining problem. We therefore frame this inventory deliberately around the public
+pathway --- every record reachable through a public endpoint with no privileged access --- which is both why
+our per-state point counts can trail an agency's internal totals and why a reproducible, outside-the-firewall
+assembly is itself part of the contribution.
+
+The lock is as often legal-institutional as it is technical, and California is the sharpest
+exemplar. Its driller's logs were statutorily confidential under California Water Code \S~13752
+\citep{ca_watercode_13752} --- releasable only to authorized agencies or with the owner's consent --- and a
+UC~Davis analysis notes that until $\sim$2017 essentially all California well logs were privately held data
+(well-attributed but secondary). They became broadly public only after the Sustainable Groundwater
+Management Act (2014) and the Open and Transparent Water Data Act (AB~1755, 2016)
+\citep{ca_ab1755}, once owner personally identifying information was redacted and the reports posted, so the
+bulk dataset is only $\sim$8 years old. The same statutory, not physical, barrier recurs across states; the
+data exists and is increasingly public, but it stayed locked for institutional reasons that newly
+machine-readable methods (\S\ref{sec:triage}) are only now able to unlock.
+
+\begin{figure}[t]\centering
+\includegraphics[width=\textwidth]{Fig1_spectrum.pdf}
+\caption{How the CONUS subsurface is represented today, on two axes the existing sources trade off against
+each other: spatial availability (horizontal) and depth detail (vertical). Surface lithology and
+permeability maps are coarse but everywhere (lower right); research boreholes are exquisite but almost
+nowhere (upper left, $n$ of order single digits). Only state driller's logs --- millions of them, and
+depth-resolved --- occupy the abundant-and-detailed quadrant (upper right); they are the sole scalable
+source of three-dimensional subsurface information, and the contribution of this work is to harmonize them.
+Marker size is schematic, scaled to relative abundance.}
+\label{fig:spectrum}
+\end{figure}
+
+% =====================================================================
+\section{Methods}
+\subsection{Harvest --- and the heterogeneity it exposes}
+State sources are ArcGIS REST (most), bulk file, or by-request. A registry-driven harvester paginates each
+REST layer to FlatGeobuf. We encountered, and the supplement catalogues (Table~\ref{tab:modes}), about ten
+distinct access modes. The central methodological finding is that the access mode is not
+predictable from the portal type: an HTML viewer resolved to a structured server-side lithology table for
+some states (OK, IA) and to scanned PDFs for others (UT, ID); a structured-looking column was 100\%
+empty (KS); and a state booked as carrying one interval per well (IL) in fact exposed the full multi-interval
+log through a hidden, born-digital text-layer PDF endpoint. Every source must be dereferenced and probed
+before it is classified.
+
+\subsection{Harmonization to the Wellogic schema}
+Each state's native lithology is mapped to one canonical interval schema (\code{source\_id | state |
+well\_id | seq | top\_ft | bottom\_ft | thickness\_ft | description | normalized}). Depths are retained
+in feet (1~ft~$=$~0.3048~m), the unit of the source driller's logs. Adapters handle
+separate interval tables, wide inline columns (un-pivoted to long), and multi-file bulk sources. Verbatim
+driller text is always retained; a rule-based keyword map provides the controlled vocabulary
+(refinable post hoc). The downstream goal is parity with the per-well hydraulic attributes that
+MODFLOW-style groundwater-model construction consumes (horizontal and vertical hydraulic conductivity,
+aquifer thickness, and static water level); §\ref{sec:gaps} reports what raw ingredients exist for that
+derivation.
+
+\subsection{PDF triage and extraction --- a full-population, cost-definitive design}
+\label{sec:triage}
+For the PDF-only states we do not run a blind full mine, nor rely only on sampling. The
+classification step---does a log have a text layer?---is free (\code{pdftotext}) and needs no vision model,
+so it can be run over the whole state. For each well's log we stream-and-discard: fetch, run
+\code{pdftotext}; if a text layer is present, extract the lithology now via a free state rule-parser
+(where the layout is a clean table) or a cheap text-only large language model; if the page is a raster
+scan, the well is recorded to an exact ``needs-vision'' worklist and deferred. No PDF is retained.
+This yields, per state, the harvested digital intervals, an exact count of vision-required logs, and
+therefore a definitive cost (digital cost incurred $+$ vision count $\times$ measured per-log vision
+cost) rather than an extrapolated estimate. Raster logs are read with a vision-language model (Gemini~2.5,
+native PDF input, forced JSON schema), an approach grounded in a method base that matured only recently:
+multimodal models now read text-rich and handwritten documents \citep{gemini15,gpt4o,qwen25vl,internvl,
+liu2023ocrbench,humphries2024archives,crosilla2025htr}, and the ``documents$\rightarrow$structured
+database'' paradigm is established in adjacent domains \citep{dagdelen2024}. Within hydrogeology, machine
+learning has been used to predict lithofacies from borehole geophysics \citep{hammond2024lithofacies}, and
+natural-language processing is only now being introduced to groundwater archives \citep{christenson2026nlp};
+within geoscience more broadly, prior LLM work classifies already-transcribed borehole text
+\citep{ghorbanfekr2025geobertje}. None recovers structured lithology from scanned driller's logs at scale. The shift that makes this tractable is recent: vision-language
+models from 2023 onward collapse OCR, handwriting recognition, layout parsing, and semantic typing into a
+single prompt-and-validate step, changing the extraction economics from per-log hand-transcription to metered
+inference. The closest scanned-record prior art quantifies the pre-VLM barrier and clarifies our methodological
+departure. \citet{ma2024lanl} extract well location and depth from 160 historical oil-and-gas records via an
+OCR-to-text conversion feeding a text LLM (Llama~2): accuracy holds at $\sim$100\% on clean digital PDFs
+but falls to $\sim$70\% on image-based scans, precisely where OCR breaks down. \citet{ghorbanfekr2025geobertje}'s
+domain-adapted model (GEOBERTje) classifies already-transcribed borehole descriptions into lithology
+classes, outperforming a GPT-4 prompt by 11\%, but never touches a scan. We differ on all three axes: a
+vision-language model reads the scanned form directly (no OCR stage to fail), the target is the harder
+material-by-depth lithology log rather than point attributes, and it runs over a multi-state corpus rather than
+hundreds of documents.
+
+% =====================================================================
+\section{Results}
+\subsection{Availability census}
+Of $\sim$13.4M wells across 48 CONUS states, after systematic probing lithology is machine-readable
+(free, no vision model) for 17 states ($\sim$7.0M wells), available only as scanned PDF logs for
+13 states ($\sim$4.0M), and without public digital lithology for 18 ($\sim$2.4M)
+(Table~\ref{tab:census}, Figure~\ref{fig:census}). A central finding is that the machine-readable category
+is roughly twice what a surface audit suggests: an initial classification placed only 8 states in
+category~A, but deeper probing revealed structured sources --- server-rendered HTML lithology tables (e.g.\
+Tennessee, New Mexico, Vermont), bulk strata files (Texas), and born-digital report PDFs (Ohio,
+Massachusetts) --- for many states first taken to be PDF-only, moving $\sim$3.7M wells from the vision-model
+column to the free column. Classification is evidence-based and bidirectional: Oklahoma reclassified
+PDF$\rightarrow$digital once its viewer was found to render a server-side HTML lithology table
+(243{,}801 wells), whereas Kansas reclassified digital$\rightarrow$PDF once its \code{GEOLOGICAL\_FORMATION}
+column proved 100\% empty. Category~C is
+``no harmonized digital lithology,'' not ``no data'': a state-by-state regulatory audit
+(§\ref{sec:scattered}) found that records in these states are public and almost always merely undigitized
+(paper/county-health custody) or held behind an unwired portal, rather than legally sealed today. Outright
+sealing of the report itself is now rare and was largely historical: California's reports were
+statutorily confidential until their $\sim$2017 release (§\ref{sec:california}), and the main current
+restriction we found is Delaware's withholding of public-supply well locations.
+
+\begin{table}[t]\centering\small
+\caption{Availability census of depth-resolved lithology, 48 CONUS states.}
+\label{tab:census}
+\begin{tabularx}{\textwidth}{l c r Y}
+\toprule
+Category & States & Wells & Access \\
+\midrule
+A --- machine-readable lithology (free) & 17 & $\sim$7.0M & REST / inline / bulk / structured-HTML / text PDF \\
+B --- scanned-PDF lithology (vision model) & 13 & $\sim$4.0M & raster scan (this method) \\
+C --- no public digital lithology / no DB & 18 & $\sim$2.4M & none / by-request / access-blocked \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{figure}[t]\centering
+\includegraphics[width=\textwidth]{Fig2_census.pdf}
+\caption{Lithology availability across 48 CONUS states by (a) number of states and (b) number of wells,
+shown before and after systematic per-state probing (\S\ref{sec:triage}). The initial surface
+audit (grey) is what a casual inspection of state portals suggests; systematic probing (blue) is the
+classification carried forward everywhere else in this paper (Table~\ref{tab:census}). Probing reclassifies
+nine states and $\sim$3.7M wells from the vision-model category B into the free, machine-readable category
+A --- the central availability finding. Totals are conserved: 48 states and $\sim$13.4M wells in both columns.}
+\label{fig:census}
+\end{figure}
+
+\subsection{Harmonized digital inventory}
+The harmonized v1 release spans 17 states (Table~\ref{tab:inventory}): $\approx$24~million depth-resolved
+lithology intervals across $\approx$3.4~million wells, with Michigan and Texas dominant.
+
+\begin{table}[t]\centering\small
+\caption{Harmonized digital lithology inventory, v1 release (frozen snapshot, all 17 states).}
+\label{tab:inventory}
+\begin{tabularx}{\textwidth}{l l r Y}
+\toprule
+State & Source & Intervals & Notes \\
+\midrule
+MI & Wellogic & 5{,}473{,}000 & canonical schema (ships H\_COND/V\_COND/AQ\_THK) \\
+TX & SDR & 5{,}289{,}458 & bulk lithology/strata files \\
+MN & CWI C5ST & 2{,}837{,}410 & GeoPackage stratigraphy table \\
+IL & ISGS & 2{,}198{,}466 & text-layer PDF, free \\
+MT & GWIC & 1{,}539{,}985 & 100\% non-null \\
+CA & OSWCR & 1{,}334{,}875 & 4-CSV union; PLSS section-center geometry \\
+WI & WCR & 1{,}261{,}058 & born-digital triage \\
+OK & OWRB & 1{,}099{,}839 & viewer-resolved HTML table \\
+MO & DNR / MSDIS & 946{,}651 & wide-column un-pivot \\
+MA & MassDEP & 742{,}424 & born-digital report PDFs \\
+VT & ANR & 376{,}867 & structured grid \\
+TN & TDEC & 309{,}078 & viewer-resolved table \\
+KY & KGS & 167{,}906 & structured source \\
+OH & ODNR & 162{,}433 & viewer-resolved table \\
+IA & GeoSam & 118{,}503 & HTML-table scrape \\
+NM & OSE & 52{,}490 & structured API (WAF-limited; partial) \\
+AL & NGWMN & 40{,}710 & sparse source (1.7\% non-null) \\
+\midrule
+\textbf{17 states} & --- & \textbf{23{,}951{,}153} & $\approx$3.39M wells total \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Coverage is far from uniform across states and data elements (Figure~\ref{fig:coverage}): lithology
+dominates the structured states, while the hydraulic and derivation-readiness fields (static water level,
+depth, yield, surface elevation, completion date) are present in widely varying fractions, and the
+scanned-only states remain to be extracted.
+
+\begin{figure}[tbp]\centering
+\includegraphics[width=\textwidth]{Fig3_coverage.pdf}
+\caption{Per-state coverage of the harmonized inventory across the conterminous United States, ranked by
+estimated count of fully-attributed records. The five count columns are: \emph{records} (wells held);
+\emph{litho.\ harvestable} (wells whose lithology is obtainable); \emph{litho.\ harvested} (wells with
+lithology now in the inventory); \emph{hydraulics held} (wells with any structured hydraulic value); and
+\emph{needs VLM} (scanned lithology still to extract). The heatmap reports, for each element, the percentage
+of a state's records that actually hold that element --- harvested lithology plus the structured hydraulics
+and derivation-readiness fields (static water level, depth, yield, drawdown, specific capacity, screen,
+aquifer, completion date, surface elevation, measured transmissivity/conductivity, and pump-test duration).
+Blank cells are not-yet-harvested or not held, not a prediction; Michigan is drawn from the full Wellogic
+source.}
+\label{fig:coverage}
+\end{figure}
+
+\subsection{Extraction triage: the LLM/VLM split and its cost}
+An initial per-state calibration (n$=$100; Table~\ref{tab:calib}, Figure~\ref{fig:calib}) establishes the
+routing split the rest of the evaluation builds on. A retrievable log is present for 87--100\% of wells
+everywhere; what varies sharply is the vision-required fraction --- the share of logs that are
+raster scans needing a vision model rather than born-digital text --- which spans 0--100\% and is
+anti-correlated with e-permitting era: recent e-permitting states (IL, WI, FL) are mostly born-digital (the
+free/cheap text route), while legacy paper-archive states (OR, NV, SD, ID) are almost all scans. Extraction
+is faithful across all states --- driller shorthand transcribed verbatim, legibility flagged, and empty
+arrays returned (rather than fabricated intervals) on blank logs. The definitive large-sample yield and the
+token-metered cost follow in Section~\ref{sec:yield}, and per-well validation against agency transcriptions
+in Section~\ref{sec:accuracy}.
+
+\begin{table}[t]\centering\small
+\caption{Initial per-state PDF triage calibration (n$=$100, Gemini~2.5 flash-lite, sorted by vision share):
+the born-digital (text-LLM) versus raster (vision-model) routing split. Dollar figures are illustrative;
+Table~\ref{tab:yield} gives the definitive large-sample yield and token-metered cost.}
+\label{tab:calib}
+\begin{tabular}{l r r r r r}
+\toprule
+State & has-PDF \% & text-LLM \% & raster-VLM \% & intervals/log & \$/1k \\
+\midrule
+SD & 100 & 0 & 100 & 10.9 & 0.37 \\
+ID & 96 & 4 & 96 & 10.6 & 0.32 \\
+NV & 93 & 5 & 95 & 7.2 & 0.25 \\
+OR & 100 & 15 & 85 & 4.1 & 0.19 \\
+KS & 90 & 29 & 71 & 9.8 & 0.30 \\
+FL & 89 & 67 & 33 & 15.0 & 0.47 \\
+WI & 98 & 78 & 22 & 3.2 & 0.20 \\
+IL & 87 & 100 & 0 & 5.0 & 0.19 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[t]\centering
+\includegraphics[width=0.95\textwidth]{Fig4_calibration.pdf}
+\caption{Per-state PDF triage (n$=$100): the share of well logs that are born-digital (cheap LLM route)
+versus raster scans (vision model), with the blended token cost per log (text-layer $\approx$1{,}800
+tokens/log; vision-model raster $\approx$1{,}000). The vision-required fraction spans 0--100\%,
+anti-correlated with e-permitting adoption.}
+\label{fig:calib}
+\end{figure}
+
+\paragraph{Definitive cost via full triage.} Because classification is free, the full-population triage
+(§\ref{sec:triage}) converts the sampled estimate into a definitive per-state figure while harvesting the
+digital share for free. Illinois is the first completed case: triaging all 390{,}443 Illinois wells confirmed 0\% vision-required
+(born-digital text layers), harvesting 2{,}198{,}466 lithology intervals from 382{,}245 wells
+($\approx$5.8 intervals/well) at zero vision-model cost. A national projection over the $\sim$4.0M
+scanned-PDF (category~B) wells routed to the vision model --- the raster remainder once probing has moved
+the born-digital share into the free category~A --- is on the order of 4~billion tokens ($\approx$\$2k at
+flash-lite); the binding constraints are wall-clock and normalization-vocabulary QA, not
+dollars or storage (stream-and-discard avoids a $\sim$700~GB archive).
+
+\subsection{Large-$n$ yield and hydraulic-field coverage}
+\label{sec:yield}
+We evaluated eleven scanned-PDF states (1{,}000--1{,}500 logs each; Table~\ref{tab:yield},
+Figures~\ref{fig:yield} and~\ref{fig:hydraulic}). A single ``success rate'' conflates three distinct
+outcomes, so we report them separately. Extraction yield --- the fraction of documents the model
+actually read that yielded a log --- is 94.6\% pooled (11{,}806 documents) and 99--100\% for
+most states: once a scan is legible, the model recovers a log essentially always, and it returns an empty
+array rather than fabricating intervals when none is present. The recovery gaps lie on two other axes.
+Document availability varies widely: 28\% of Mississippi and 63\% of Utah wells simply have no scan on
+file (``no-PDF''). And one state is a genuine extraction outlier --- Nebraska (65.5\%) --- because
+its modern registrations increasingly omit the lithology log (the temporal heterogeneity of
+Section~\ref{sec:accuracy}); New York's apparent shortfall is instead transient server flakiness ($\sim$24\%
+retryable fetch failures), not extraction. For the spatially/temporally heterogeneous states (MS, NE, NV) the
+reported figure is from the dual-stratified run. We report cost in tokens, the reproducible unit,
+since per-token prices drift and vary by provider: the VLM (raster) route uses $\approx$1{,}000 tokens per log
+($\approx$600 input --- which includes the rendered-page image tokens --- plus $\approx$410 output),
+while the born-digital text route is higher at $\approx$1{,}800 tokens/log because the extracted text exceeds
+a single page image in token count. Across all evaluation logs the spend was $\approx$13~million tokens
+($\approx$\$3 derived at the Gemini~2.5 flash-lite list price).
+
+\begin{table}[t]\centering\small
+\caption{VLM evaluation, eleven scanned-PDF states, reported on three separate axes. Extraction yield
+$=$ documents-with-a-log $/$ documents-read (Wilson 95\% CI); no-PDF $=$ wells with no scan on file;
+design $=$ age-stratified or dual spatial$\times$temporal. $n_{\mathrm{read}}$ is documents the model read.}
+\label{tab:yield}
+\begin{tabular}{l c r r r r}
+\toprule
+State & design & $n_{\mathrm{read}}$ & extraction yield \% (95\% CI) & no-PDF \% & int/log \\
+\midrule
+WA & both & 1{,}497 & 100.0\ \,(99.7--100) & 0.1 & 5.8 \\
+SD & age & 970 & 99.9\ \,(99.4--100) & 0.1 & 7.2 \\
+ID & age & 928 & 99.9\ \,(99.4--100) & 5.0 & 9.8 \\
+NV & both & 1{,}421 & 99.7\ \,(99.3--99.9) & 4.8 & 9.6 \\
+KS & age & 872 & 99.7\ \,(99.0--99.9) & 9.1 & 7.5 \\
+UT & both & 559 & 99.6\ \,(98.7--99.9) & 62.7 & 10.1 \\
+OR & both & 1{,}491 & 99.2\ \,(98.6--99.5) & 0.3 & 6.8 \\
+MS & both & 1{,}055 & 100.0\ \,(99.6--100) & 28.5 & 9.0 \\
+NY & age & 722 & 94.7\ \,(92.9--96.1) & 3.4 & 9.9 \\
+FL & age & 861 & 90.2\ \,(88.1--92.1) & 10.3 & 7.1 \\
+NE & both & 1{,}430 & 65.5\ \,(63.0--67.9) & 3.6 & 8.9 \\
+\midrule
+\textbf{pooled} & --- & \textbf{11{,}806} & \textbf{94.6} & --- & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Critically, recording every hydraulic field---returning null when absent---turns the evaluation
+into a coverage map of what the documents contain (Figure~\ref{fig:hydraulic}). Static water level is
+present on roughly half of documents (23--61\%) and yield on 15--43\%, giving a usable hydraulic backbone.
+But the pump-test fields are sparse---drawdown and pump rate are mostly below 20\%---and specific
+capacity is essentially never written on the forms (0.1--0.5\% across all 6{,}000 documents). This
+confirms, at scale, that the specific-capacity$\rightarrow$transmissivity$\rightarrow$conductivity pathway
+--- the standard route for estimating aquifer hydraulics from well records \citep{rotzoll2008} ---
+is not broadly recoverable from driller's logs; derived conductivity is feasible only where yield
+and drawdown co-occur (here, OR and ID). The zeros are themselves a result: each field was searched in
+every document, and its absence is now quantified rather than assumed.
+
+\begin{figure}[t]\centering
+\includegraphics[width=0.62\textwidth]{Fig5_yield.pdf}
+\caption{Per-state lithology extraction yield (illustrative; Table~\ref{tab:yield} gives the
+authoritative eleven-state values, confidence intervals, and the no-PDF availability axis).}
+\label{fig:yield}
+\end{figure}
+
+\begin{figure}[t]\centering
+\includegraphics[width=0.72\textwidth]{Fig6_hydraulic.pdf}
+\caption{Hydraulic-field coverage: \% of documents on which each field is present (n$=$1{,}000 per state).
+Static water level and yield form a backbone; specific capacity is essentially never reported.}
+\label{fig:hydraulic}
+\end{figure}
+
+\subsection{Extraction accuracy: validation against agency transcriptions}
+\label{sec:accuracy}
+Yield (Section~\ref{sec:yield}) measures whether a scanned log is readable, not whether the model
+reads it correctly. California permits a direct accuracy test: 86{,}653 wells carry both a DWR
+hand-transcribed FreeForm geologic log and the original scanned report. We sampled 1{,}499 such wells, passed
+each scan through the same flash-lite pipeline, and scored its output against the agency transcription as
+ground truth (Table~\ref{tab:accuracy}). Agreement is high on every axis that matters: interval count
+Pearson $r=0.94$ (means 12.9 vs.\ 13.1; MAE 0.91~intervals), depth-boundary $F_1=0.97$ ($\pm$5~ft; recall
+0.98, precision 0.97), and 12-class material accuracy 91.5\% (Cohen's $\kappa=0.90$) over 516{,}317 compared
+feet. On the coarse/fine binary that texture and conductivity models actually consume, agreement is
+96.0\% ($\kappa=0.92$). Per-class recall is highest for rock/bedrock (0.96), shale (0.95), sand (0.92) and
+gravel (0.90), and lowest for the rare silt (0.79) and boulders (0.77). Two residual error sources are
+reported rather than hidden: ($i$) $\sim$6\% of wells split their log across multiple scanned-page files, and
+our single-page comparison understates recall for those (a fixable stitching gap that produces the long tail
+in depth-extent error); and ($ii$) part of the material ``disagreement'' is wording granularity --- terse
+human entries (``Soil \& Rock'', color-only lines) versus the fuller scan --- rather than model error, making
+91.5\% a conservative floor. Against the agency's own labels, the model matches coarse/fine texture
+essentially perfectly and material class to $\kappa\approx0.90$, validating the recovered layer for
+hydrogeologic use.
+
+\begin{table}[t]\centering\small
+\caption{VLM extraction accuracy versus DWR hand-transcribed geologic logs, California
+(n$=$1{,}499 wells; 516{,}317~ft of section compared; ground truth $=$ DWR FreeForm transcription).}
+\label{tab:accuracy}
+\begin{tabular}{l r}
+\toprule
+Metric & Value \\
+\midrule
+Interval count --- Pearson $r$ / MAE & 0.94 / 0.91 \\
+Depth-boundary $F_1$ ($\pm$5~ft) & 0.97 \\
+\quad recall / precision & 0.98 / 0.97 \\
+Logged-depth extent --- $r$ & 0.95 \\
+Material class accuracy (12-class) & 91.5\% \\
+\quad Cohen's $\kappa$ & 0.90 \\
+Coarse/fine accuracy & 96.0\% \\
+\quad Cohen's $\kappa$ & 0.92 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Sampling representativeness.} A 1{,}000-log estimate is only as good as its sample, so we
+re-evaluated six states (n$=$1{,}500) under a combined spatial$\times$temporal stratification (a
+$\sim$1$^{\circ}$ latitude/longitude grid crossed with completion decade) and tested whether yield is
+homogeneous across strata. For a proportion, precision depends on the sample size, not the population: at
+n$=$1{,}000 the worst-case 95\% margin is $\pm$3.1\% and the finite-population correction is $\approx$1.000,
+so sampling 1{,}000 of $\sim$10$^6$ scans is statistically tight provided the sample is unbiased.
+Three states (WA, OR, UT) are design-robust --- per-stratum yield spreads $\le$9~percentage points with all
+strata mutually inside Wilson 95\% intervals. Two are not: Mississippi varies by geography
+(north-west counties $\sim$50\% versus $\sim$86--89\% in the south, tracking per-county scan coverage), and
+Nebraska and Nevada vary by age --- Nebraska's modern registrations increasingly omit the lithology
+log (76\% recovery in the 1960s falling to 23\% in the 2020s). These heterogeneities, invisible to an
+age-only or spatially-clustered sample, both justify the dual stratification and are themselves findings
+about how within-state completeness varies. The stratified runs also separate extraction yield from
+fetch reliability: success as a fraction of documents the model actually read is the design-robust
+quantity, whereas success as a fraction of attempts also absorbs transient server failures (Washington's
+apparent 77\% rises to $\sim$99.9\% of fetched documents once download flakiness is excluded).
+
+% =====================================================================
+\section{Discussion}
+The contribution is the harmonized framework plus a reproducible, cost-bounded method --- not a finished
+national mine. We need not download and process every log to deliver value: we provide the method, the
+per-state cost/accuracy/coverage estimates, and the harmonized data we can already release. The same
+harmonized lithology, paired with the pump-test ingredients that often accompany it, is the input
+continental models currently approximate with GLHYMPS-class generalized geology (§1.1), offering a path to
+replace coarse deep-conductivity units with observation-based stratigraphy where log density allows.
+
+\subsection{California: a case study in locked-but-recoverable data}
+\label{sec:california}
+California concentrates both themes of this paper --- the data exists but is locked, and vision-language
+methods newly unlock it --- and we treat it as a worked example. The California Department of Water Resources
+hosts on the order of $\sim$1~million scanned Well Completion Reports (our enumeration of the CKAN
+``WCR PDF Links'' resource returns 1{,}012{,}784; DWR itself typically states ``\,$\sim$800{,}000--1{,}000{,}000\,'',
+so we treat the figure as approximate), each carrying the driller's lithology log. Yet only
+$\sim$104{,}000 unique wells' lithology has been transcribed into DWR's structured geologic-log tables
+(across overlapping format categories, not additive: FreeForm $\approx$87{,}633, Generalized
+$\approx$22{,}260, QuickPick $\approx$6{,}800, USCS $\approx$3{,}071), leaving roughly 90\% of California's
+per-well lithology locked inside un-transcribed scans.
+
+Three compounding reasons kept it locked. (i) Legal confidentiality: the logs were sealed under
+California Water Code \S~13752 \citep{ca_watercode_13752} and became broadly public only after SGMA (2014) and
+AB~1755 (2016) \citep{ca_ab1755}, so the public bulk dataset is only $\sim$8 years old (\S1.2).
+(ii) Manual-transcription cost: even the USGS GAMA program has hand-transcribed only $\sim$19{,}247
+reports verbatim ($<$3\% of the corpus), basin-by-basin \citep{haugen2023_gama}, the barrier being handwriting
+and heterogeneous historical forms that classic OCR cannot read. (iii) Aggregate-not-per-well, low ROI:
+every major use collapsed lithology into smoothed percent-coarse or texture fields rather than per-well logs.
+The USGS Central Valley Hydrologic Model obtained $>$150{,}000 scanned logs from DWR but used only $\sim$8{,}500,
+as binary coarse/fine percent-coarse on a $\sim$1-mile grid \citep{cvhm_faunt2009,faunt2010}, following the
+foundational drillers'-log texture method of \citet{laudon_belitz1991}; CVHM2 continued this lineage
+\citep{cvhm2_marcelli2022}; the attributed-WCR releases carry $\sim$260--290k construction attributes but not
+lithology \citep{borkovich2023_wcr}; and Stanford's airborne-electromagnetic work used $\sim$11{,}645 drillers'-log
+sediment profiles only to calibrate airborne EM \citep{knight2018aem,kang2025aem}. To our knowledge, no
+published work performs statewide, per-well lithology extraction from the scanned California WCR corpus, and
+none applies vision-language models to it --- the per-well, full-corpus extraction our triage pipeline
+(\S\ref{sec:triage}) is designed to make routine. As a direct test we streamed 1{,}000 randomly sampled
+un-transcribed California WCRs through the pipeline: every report fetched as a scanned (raster) PDF,
+97.2\% yielded at least one lithology interval (mean 7.85 intervals per log), at \$0.29 per thousand logs.
+At that yield the entire $\sim$908{,}000-well un-transcribed remainder is recoverable for
+$\approx$0.9~billion tokens ($\approx$\$260 derived at the current flash-lite list price) --- turning a
+90\%-locked statewide corpus into a structured per-well lithology layer for the token-equivalent of a single
+field day.
+
+\subsection{Why the data is scattered --- a governance outcome, not absence}
+\label{sec:scattered}
+The fragmentation has a specific, documentable cause, and it is not that the data is missing or
+withheld. Surface-water data is federally unified because one agency both collects and houses it: the USGS
+National Water Information System, populated through the federal--state Cooperative Water Program, which
+imposes a single measurement method and schema. Groundwater never
+acquired such a home. Water wells are regulated by state law---there is no federal well-construction
+or well-log-reporting standard---because well permitting rides on state primacy over water allocation,
+itself split between riparian (humid East) and prior-appropriation (arid West) doctrines. The result is
+fifty schemas at the point of record creation and, within many states, custody divided by agency mission
+(geological survey vs.\ water resources vs.\ environment vs.\ health). Every federal attempt to unify the
+records was structurally limited: the National Ground-Water Monitoring Network (SECURE Water Act) is a
+voluntary aggregator that cannot compel reporting; the Safe Drinking Water Act regulates only public
+water systems, leaving the tens of millions of domestic wells---where the lithology lives---outside any
+federal frame; and the National Geothermal Data System (DOE/ARRA, 2009--2014) federated the already-digitized,
+geothermal- and petroleum-oriented borehole holdings of dozens of participating state geological surveys into a
+common schema---each survey publishing only its own pre-existing digital subset, of uneven completeness, not a
+fresh digitization of all wells---proving the integration concept feasible before losing funding and going
+dark \citep{ngds_sustain}. Crucially, none of these reached the shallow domestic water-well driller's logs that carry
+the lithology: NGDS drew on state geological-survey archives rather than the water-agency well-completion
+systems, ingested existing digital records rather than extracting the scanned backlog, and ran entirely
+before the largest water-well report corpora were even released to the public (e.g.\ California's
+$\sim$2017 unsealing, \S\ref{sec:california}). The barrier is therefore sustainability and scope, not
+capability---prior efforts showed national harmonization works, but none targeted, reached, or outlived the
+water-well lithology problem this inventory addresses.
+
+Privacy is real but narrow today, and was historically broader. Modern state public-records law is
+public-by-default; where records remain restricted it is the owner's identity (California Water Code
+\S13752 now releases construction and geology while withholding owner name and address) or the well's
+exact location (PLSS-grid or landowner-supplied coordinates; Delaware withholds public-supply well
+locations for source-water security)---not the lithology. The important caveat is temporal: several states'
+reports were fully confidential until recently---California's were statutorily sealed until their
+$\sim$2017 public release (§\ref{sec:california})---so confidentiality was a genuine historical brake
+on bulk extraction, now largely lifted, even though it does not explain the cross-state scatter
+(which is federalism, above). Domestic-well permitting exemptions explain why some logs are never collected at all
+\citep{maxwell2019}. Crucially, a state-by-state audit of the apparent ``no-data'' states found most to be a
+harvesting miss rather than an absence: of eleven states initially flagged, seven expose completion reports
+through a named public portal, and the genuine gaps (Georgia, Maryland, Rhode Island, West Virginia) are
+paper/county-health records never digitized---public records obtainable by request, not confidential.
+``No digital lithology'' therefore means not yet harmonized or digitized, essentially never
+absent or legally sealed.
+
+\subsection{Known gaps and shortcomings --- a living inventory, not a closed product}
+\label{sec:gaps}
+We catalogue current holes so users can judge fitness and later versions can close them.
+Lithology coverage is partial: the open v1.0 release harmonizes $\sim$3.4~million wells into
+$\sim$24~million depth-resolved intervals (Table~\ref{tab:inventory}) --- the harvested-to-date subset of
+the $\sim$7~million wells the census finds carry machine-readable lithology. The remainder is recoverable by
+the same pipeline; the scanned-only states are characterized by validated sampling (yield, accuracy, cost)
+rather than fully harvested, and a few states publish no public log at all. \emph{Hydraulic ingredients are present but
+uneven}: static water level and total depth form a broad backbone, but the pump-test fields needed to
+derive conductivity are scarce --- specific capacity is recoverable mainly where yield and drawdown
+co-occur (e.g.\ Texas, Arizona, Wisconsin). We separately audited the three derivation-readiness
+inputs that govern whether transmissivity can be reconstructed downstream: land-surface elevation (to place
+depth-referenced contacts and water levels on a common datum), measured aquifer-test transmissivity
+or conductivity, and pump-test duration. The asymmetry is stark. Surveyed land-surface elevation --- reported
+as-is, never substituted with a modeled DEM fill --- is bulk-available for eleven states, often complete
+(Alabama, Iowa, New~Mexico at 100\%; Ohio~97\%, Kentucky~94\%, Illinois~86\%) but absent from most records
+elsewhere because elevation, unlike the driller-observed depths and water levels, is not measured at the
+wellhead. A well completion or construction date fares far better: twenty-two states report it, most
+at 90--100\%, giving the inventory a temporal axis (record vintage) for age-stratified analysis. Pump-test duration --- the input that lets specific capacity be promoted to transmissivity
+via the Theis/Logan relations --- is harvestable for Texas ($\sim$156{,}000 wells), Kansas, and Nevada.
+But measured transmissivity exists in public bulk form for essentially a single state (Nevada,
+$\sim$25{,}000 wells) and nowhere else at scale --- the strongest evidence that a national conductivity
+layer must be derived from the yield/drawdown/duration ingredients rather than read off the records,
+and feasible only where those ingredients co-occur. Normalization leaves a
+minority of intervals as ``other'' (regional vocabulary); geometry is PLSS section-center for some
+states; and the scanned extraction, although validated against agency transcriptions for $\sim$1{,}500
+wells (Section~\ref{sec:accuracy}), is not yet run over every state's full corpus. Some states resist the
+driller's-log model entirely: Colorado's subsurface data is geophysical (gamma/resistivity logs) and
+aquifer-framework based, not depth-to-material logs. None of these is fatal; each is a documented,
+improvable hole.
+
+\subsection{Transferability beyond the United States}
+The United States is a demonstration, not the limit of the method. The conditions that make U.S. well
+lithology hard to assemble --- records created under dozens of independent jurisdictions, partially
+digitized, sometimes behind document portals or legal restriction, and never unified --- describe the
+global state of water-well data, and are typically more severe in regions with the least monitoring
+capacity. The pipeline depends only on (i)~a public list of wells carrying a document link and (ii)~a
+vision-language model; it needs no privileged agency access, no per-form templates, and no
+country-specific training. The same triage --- born-digital text versus raster scan --- and the same
+token-metered extraction apply wherever driller's or borehole logs are scanned, which includes much of
+Europe, South Asia, Africa, and Latin America where national well records remain image archives. For
+data-poor regions, where agency-scale manual transcription is unaffordable, a method whose marginal cost is
+a few hundred tokens of inference per well lowers the barrier to the subsurface-data foundation that
+sustainable groundwater management requires. We therefore frame the contribution as a transferable
+instrument for groundwater-data democratization, validated at scale in one country.
+
+% =====================================================================
+\section*{Data availability}
+A frozen snapshot of the harmonized inventory --- the depth-resolved lithology table and the structured
+hydraulics table --- is archived in a public repository (Zenodo) with a citable DOI and is cited in the
+reference list \citep{rafiei2026data}. Because the upstream public sources
+mutate and disappear, this frozen version is the authoritative record. The essential method code --- the
+vision-language extraction prompt and output schema, the validation harness, and the harmonization
+routines --- is archived in the same deposit; the live per-state access resolvers are documented in the
+provenance supplement but are deliberately not distributed as a runnable pipeline, because state endpoints
+change. An interactive viewer of the inventory is additionally maintained at the project website
+(\url{https://swatgenx.com}); the archived DOI, not the website, is the citable source.
+
+\section*{Declaration of competing interests}
+The author develops and maintains SWATGenX (\url{https://swatgenx.com}), which hosts the optional
+interactive viewer referenced above; this presents no financial conflict with the findings reported here.
+The author otherwise declares no competing interests.
+
+\section*{Funding}
+This research did not receive any specific grant from funding agencies in the public, commercial, or
+not-for-profit sectors.
+
+\section*{Declaration of generative AI and AI-assisted technologies in the manuscript preparation process}
+During the preparation of this work the author used a large language model (Anthropic Claude) to assist
+with drafting and editing text and code. The author reviewed and edited all content and takes full
+responsibility for it. Separately, generative vision-language models are employed as a core \emph{research
+method} for lithology extraction; that use is described in full in the Methods and is distinct from this
+manuscript-preparation declaration.
+
+\section*{CRediT authorship contribution statement}
+\textbf{Vahid Rafiei:} Conceptualization, Methodology, Software, Validation, Formal analysis, Data
+curation, Visualization, Writing --- original draft, Writing --- review \& editing.
+
+\section*{Acknowledgments}
+We thank the many state agency staff whose public well-record systems make this inventory possible.
+
+\bibliographystyle{apalike}
+\bibliography{references}
+
+\end{document}

@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "09513860",
-    "workspace_model_id": "1507/huc12/09513860",
-    "label": "1507/huc12/09513860 (AZ)",
+    "workspace_model_id": "1507/usgs_station/09513860",
+    "label": "1507/usgs_station/09513860 (AZ)",
     "vpuid": "1507",
     "n_stations": 1,
     "n_production_assigned": 1,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "09513860",
-      "workspace_model_id": "1507/huc12/09513860",
-      "label": "1507/huc12/09513860 (AZ)",
+      "workspace_model_id": "1507/usgs_station/09513860",
+      "label": "1507/usgs_station/09513860 (AZ)",
       "site_no": "09513860",
       "station_name": "SKUNK CREEK NEAR PHOENIX, AZ",
       "usgs_da_km2": 168.0902283608064,

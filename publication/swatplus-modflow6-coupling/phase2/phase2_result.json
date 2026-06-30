@@ -1,0 +1,10 @@
+{
+  "model": "04124500_calibrated",
+  "n_riv_cells": 439,
+  "n_reaches": 171,
+  "basin_gw_to_stream_m3d": 4.8,
+  "basin_stream_to_gw_m3d": 249.4,
+  "net_baseflow_m3d": -244.6,
+  "net_baseflow_m3s": -0.0028,
+  "gaining_reach_frac": 0.006
+}

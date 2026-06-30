@@ -4,12 +4,12 @@
 
 ## Conventions
 
-- **Locked basins** — `0308/huc12/030801020804` (Small, FL), `1505/huc12/09471300` (Medium, AZ), `0310/huc8/03100101` (Large, FL HUC8). See [`../evaluation-protocol.md`](../evaluation-protocol.md).
+- **Locked basins** — `0308/huc12_outlet/030801020804` (Small, FL), `1505/usgs_station/09471300` (Medium, AZ), `0310/huc8/03100101` (Large, FL HUC8). See [`../evaluation-protocol.md`](../evaluation-protocol.md).
 - **Showcase user** — `admin` (per protocol “official outputs”).
 - **`USER_PATH`** — Default in many installs: `${SWATGENX_USER_PATH}` (override via env when running scripts on another machine).
 - **Workspace root pattern** —  
-  `{USER_PATH}/admin/SWATplus_by_VPUID/<vpuid>/huc12/<site_no>/<MODEL_DIR>/`  
-  where `<vpuid>` and `<site_no>` come from splitting `model_id` (`vpuid/huc12/site_no`), and `<MODEL_DIR>` is typically the web-application SWAT+ workspace folder (e.g. `SWAT_MODEL_Web_Application` — **confirm on disk** before scripting; align with `resolve_swat_model_workspace_base` in `web_application/app/model_utils.py` when wiring a real script).
+  `{USER_PATH}/admin/SWATplus_by_VPUID/<vpuid>/<level>/<site_no>/<MODEL_DIR>/`  
+  where `<vpuid>`, `<level>` (`usgs_station` | `huc12_outlet` | `huc8`), and `<site_no>` come from splitting `model_id` (`vpuid/level/site_no`), and `<MODEL_DIR>` is typically the web-application SWAT+ workspace folder (e.g. `SWAT_MODEL_Web_Application` — **confirm on disk** before scripting; align with `resolve_swat_model_workspace_base` in `web_application/app/model_utils.py` when wiring a real script).
 
 ---
 
@@ -112,7 +112,7 @@ Confirm **`print_locked_basin_paths.py` exits 0** before running the renderer (r
 
 **Spec:** [`../../figures/figure-specifications.md`](../../figures/figure-specifications.md) — **Fig-NHDWorkflow**
 
-**Primary basin:** `0308/huc12/02239501` (Small, FL).
+**Primary basin:** `0308/usgs_station/02239501` (Small, FL).
 
 **Two allowed tracks (pick one per submission art direction):**
 
@@ -136,7 +136,7 @@ Confirm **`print_locked_basin_paths.py` exits 0** before running the renderer (r
 ```bash
 # From repo root; use the project venv if system python lacks rasterio/geopandas:
 /data/SWATGenXApp/codes/.venv/bin/python publication/analysis/scripts/time_locked_model_generation.py \
-  --model-id 0308/huc12/02239501 --run-id 20260514-small-pilot-001
+  --model-id 0308/usgs_station/02239501 --run-id 20260514-small-pilot-001
 
 # If the process user cannot write under the repo (e.g. sudo -u www-data), JSONL + CSV + summary
 # can all go under a writable dir (CSV defaults to .../tab-runtime-phases-append.csv there):
@@ -175,7 +175,7 @@ Requires write access to national data caches (e.g. `GenXAppData` trees) when VP
 
 ## 4. Proof-basin hydrologic metrics and figure
 
-**Spec:** proof basin `0205/huc12/01567500` — see `calibration-proof-basin-01567500.md`
+**Spec:** proof basin `0205/usgs_station/01567500` — see `calibration-proof-basin-01567500.md`
 
 | Script | Output |
 |--------|--------|

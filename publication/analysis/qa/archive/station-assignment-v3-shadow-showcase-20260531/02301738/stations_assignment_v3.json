@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "02301738",
-    "workspace_model_id": "0310/huc12/02301738",
-    "label": "0310/huc12/02301738 (FL)",
+    "workspace_model_id": "0310/usgs_station/02301738",
+    "label": "0310/usgs_station/02301738 (FL)",
     "vpuid": "0310",
     "n_stations": 4,
     "n_production_assigned": 4,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "02301738",
-      "workspace_model_id": "0310/huc12/02301738",
-      "label": "0310/huc12/02301738 (FL)",
+      "workspace_model_id": "0310/usgs_station/02301738",
+      "label": "0310/usgs_station/02301738 (FL)",
       "site_no": "02301738",
       "station_name": "ARCHIE CREEK AT 78TH STREET NEAR TAMPA FL",
       "usgs_da_km2": 7.510965519974399,
@@ -55,8 +55,8 @@
     },
     {
       "catalog_model_id": "02301738",
-      "workspace_model_id": "0310/huc12/02301738",
-      "label": "0310/huc12/02301738 (FL)",
+      "workspace_model_id": "0310/usgs_station/02301738",
+      "label": "0310/usgs_station/02301738 (FL)",
       "site_no": "02301740",
       "station_name": "NORTH ARCHIE CREEK AT PROGRESS BLVD. NEAR TAMPA FL",
       "usgs_da_km2": 15.77302759194624,
@@ -84,8 +84,8 @@
     },
     {
       "catalog_model_id": "02301738",
-      "workspace_model_id": "0310/huc12/02301738",
-      "label": "0310/huc12/02301738 (FL)",
+      "workspace_model_id": "0310/usgs_station/02301738",
+      "label": "0310/usgs_station/02301738 (FL)",
       "site_no": "02301745",
       "station_name": "DELANEY CREEK POPOFF CANAL NEAR TAMPA FL",
       "usgs_da_km2": 5.179976220672,
@@ -113,8 +113,8 @@
     },
     {
       "catalog_model_id": "02301738",
-      "workspace_model_id": "0310/huc12/02301738",
-      "label": "0310/huc12/02301738 (FL)",
+      "workspace_model_id": "0310/usgs_station/02301738",
+      "label": "0310/usgs_station/02301738 (FL)",
       "site_no": "02301750",
       "station_name": "DELANEY CREEK NEAR TAMPA FL",
       "usgs_da_km2": 41.6988085764096,

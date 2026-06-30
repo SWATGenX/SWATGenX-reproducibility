@@ -1,0 +1,922 @@
+{
+  "card": {
+    "state": "SD",
+    "model": "gemini-2.5-flash-lite",
+    "sampled": 100,
+    "has_pdf_pct": 100.0,
+    "extracted_ok": 100,
+    "text_layer_pct_LLM": 0.0,
+    "raster_pct_VLM": 100.0,
+    "avg_intervals": 10.9,
+    "legibility_mix": {
+      "clear": 96,
+      "partial": 3,
+      "poor": 1
+    },
+    "per_pdf_usd": 0.000372,
+    "proj_usd_per_1k": 0.37,
+    "note": "blended over text+raster sample; raster carries the cost, text-layer ~free-ish"
+  },
+  "rows": [
+    {
+      "well": "195.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.0001491
+    },
+    {
+      "well": "94.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 9,
+      "legibility": "clear",
+      "usd": 0.00026910000000000004
+    },
+    {
+      "well": "568.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 15,
+      "legibility": "clear",
+      "usd": 0.00038110000000000005
+    },
+    {
+      "well": "96.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 6,
+      "legibility": "clear",
+      "usd": 0.0001863
+    },
+    {
+      "well": "722.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 6,
+      "legibility": "clear",
+      "usd": 0.00021190000000000003
+    },
+    {
+      "well": "440.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.0001455
+    },
+    {
+      "well": "324.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 5,
+      "legibility": "clear",
+      "usd": 0.00018590000000000002
+    },
+    {
+      "well": "490.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 6,
+      "legibility": "clear",
+      "usd": 0.0002055
+    },
+    {
+      "well": "337.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 8,
+      "legibility": "clear",
+      "usd": 0.00021630000000000003
+    },
+    {
+      "well": "29.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 5,
+      "legibility": "clear",
+      "usd": 0.0002607
+    },
+    {
+      "well": "209.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.0001499
+    },
+    {
+      "well": "810.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 8,
+      "legibility": "clear",
+      "usd": 0.00025990000000000003
+    },
+    {
+      "well": "7.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.0001551
+    },
+    {
+      "well": "29.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.00021070000000000003
+    },
+    {
+      "well": "705.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 5,
+      "legibility": "clear",
+      "usd": 0.00018590000000000002
+    },
+    {
+      "well": "725.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.00015749999999999998
+    },
+    {
+      "well": "197.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.0001111
+    },
+    {
+      "well": "599.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 1,
+      "legibility": "clear",
+      "usd": 0.0002773
+    },
+    {
+      "well": "7.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 5,
+      "legibility": "clear",
+      "usd": 0.00021050000000000002
+    },
+    {
+      "well": "111.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 5,
+      "legibility": "clear",
+      "usd": 0.0001787
+    },
+    {
+      "well": "29.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 5,
+      "legibility": "partial",
+      "usd": 0.00024870000000000003
+    },
+    {
+      "well": "809.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 10,
+      "legibility": "clear",
+      "usd": 0.0002819
+    },
+    {
+      "well": "348.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 11,
+      "legibility": "clear",
+      "usd": 0.0003035
+    },
+    {
+      "well": "442.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 6,
+      "legibility": "clear",
+      "usd": 0.0002023
+    },
+    {
+      "well": "473.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 1,
+      "legibility": "clear",
+      "usd": 9.190000000000001e-05
+    },
+    {
+      "well": "4.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 9,
+      "legibility": "clear",
+      "usd": 0.0003179
+    },
+    {
+      "well": "285.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 9,
+      "legibility": "clear",
+      "usd": 0.00027550000000000003
+    },
+    {
+      "well": "257.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.0001339
+    },
+    {
+      "well": "94.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 80,
+      "legibility": "clear",
+      "usd": 0.0018133000000000001
+    },
+    {
+      "well": "999.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 12,
+      "legibility": "clear",
+      "usd": 0.0005329
+    },
+    {
+      "well": "440.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 15,
+      "legibility": "clear",
+      "usd": 0.00037630000000000004
+    },
+    {
+      "well": "174.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 10,
+      "legibility": "clear",
+      "usd": 0.00033810000000000003
+    },
+    {
+      "well": "174.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.0001395
+    },
+    {
+      "well": "94.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 6,
+      "legibility": "clear",
+      "usd": 0.0002309
+    },
+    {
+      "well": "10.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 5,
+      "legibility": "clear",
+      "usd": 0.0001967
+    },
+    {
+      "well": "21.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 1,
+      "legibility": "clear",
+      "usd": 9.67e-05
+    },
+    {
+      "well": "187.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 12,
+      "legibility": "clear",
+      "usd": 0.0003435
+    },
+    {
+      "well": "617.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 6,
+      "legibility": "clear",
+      "usd": 0.0021837000000000002
+    },
+    {
+      "well": "814.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 6,
+      "legibility": "clear",
+      "usd": 0.0002051
+    },
+    {
+      "well": "653.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 1,
+      "legibility": "clear",
+      "usd": 0.00016490000000000002
+    },
+    {
+      "well": "378.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 12,
+      "legibility": "clear",
+      "usd": 0.00032030000000000003
+    },
+    {
+      "well": "46.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 12,
+      "legibility": "clear",
+      "usd": 0.0003399
+    },
+    {
+      "well": "94.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 132,
+      "legibility": "clear",
+      "usd": 0.0030119000000000005
+    },
+    {
+      "well": "58.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 17,
+      "legibility": "clear",
+      "usd": 0.0005261
+    },
+    {
+      "well": "10.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.0001599
+    },
+    {
+      "well": "0.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 180,
+      "legibility": "clear",
+      "usd": 0.003983100000000001
+    },
+    {
+      "well": "370.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 6,
+      "legibility": "clear",
+      "usd": 0.0001979
+    },
+    {
+      "well": "70.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.00015110000000000001
+    },
+    {
+      "well": "209.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.00015710000000000002
+    },
+    {
+      "well": "999.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 5,
+      "legibility": "clear",
+      "usd": 0.00021930000000000002
+    },
+    {
+      "well": "10.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 0,
+      "legibility": "poor",
+      "usd": 6.11e-05
+    },
+    {
+      "well": "396.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.00014830000000000003
+    },
+    {
+      "well": "29.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 8,
+      "legibility": "clear",
+      "usd": 0.00031650000000000005
+    },
+    {
+      "well": "0.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 85,
+      "legibility": "clear",
+      "usd": 0.0022501
+    },
+    {
+      "well": "603.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.00012190000000000001
+    },
+    {
+      "well": "440.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 7,
+      "legibility": "clear",
+      "usd": 0.0002139
+    },
+    {
+      "well": "96.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.0001143
+    },
+    {
+      "well": "29.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 32,
+      "legibility": "clear",
+      "usd": 0.0010937000000000002
+    },
+    {
+      "well": "324.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 7,
+      "legibility": "clear",
+      "usd": 0.0002291
+    },
+    {
+      "well": "541.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.0003745
+    },
+    {
+      "well": "189.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.0001559
+    },
+    {
+      "well": "565.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 8,
+      "legibility": "clear",
+      "usd": 0.00038810000000000006
+    },
+    {
+      "well": "440.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 12,
+      "legibility": "clear",
+      "usd": 0.0003131
+    },
+    {
+      "well": "530.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 1,
+      "legibility": "clear",
+      "usd": 0.0001575
+    },
+    {
+      "well": "598.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 1,
+      "legibility": "clear",
+      "usd": 9.83e-05
+    },
+    {
+      "well": "584.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 5,
+      "legibility": "clear",
+      "usd": 0.0004379000000000001
+    },
+    {
+      "well": "7.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 8,
+      "legibility": "clear",
+      "usd": 0.00025770000000000003
+    },
+    {
+      "well": "999.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 2,
+      "legibility": "partial",
+      "usd": 0.00011710000000000001
+    },
+    {
+      "well": "nan",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.0001407
+    },
+    {
+      "well": "511.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.0001463
+    },
+    {
+      "well": "999.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.0001425
+    },
+    {
+      "well": "998.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 44,
+      "legibility": "clear",
+      "usd": 0.0012905
+    },
+    {
+      "well": "187.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 11,
+      "legibility": "clear",
+      "usd": 0.0003541
+    },
+    {
+      "well": "722.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.0001455
+    },
+    {
+      "well": "0.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 10,
+      "legibility": "clear",
+      "usd": 0.0005975
+    },
+    {
+      "well": "802.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.0001383
+    },
+    {
+      "well": "285.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 7,
+      "legibility": "clear",
+      "usd": 0.0002075
+    },
+    {
+      "well": "565.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 9,
+      "legibility": "clear",
+      "usd": 0.0008049000000000001
+    },
+    {
+      "well": "324.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 9,
+      "legibility": "clear",
+      "usd": 0.0002631
+    },
+    {
+      "well": "999.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 6,
+      "legibility": "partial",
+      "usd": 0.00020470000000000002
+    },
+    {
+      "well": "999.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 12,
+      "legibility": "clear",
+      "usd": 0.0004947
+    },
+    {
+      "well": "30.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 10,
+      "legibility": "clear",
+      "usd": 0.00028610000000000007
+    },
+    {
+      "well": "0.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 7,
+      "legibility": "clear",
+      "usd": 0.0002789
+    },
+    {
+      "well": "213.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 10,
+      "legibility": "clear",
+      "usd": 0.0003159
+    },
+    {
+      "well": "687.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.0001439
+    },
+    {
+      "well": "475.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 1,
+      "legibility": "clear",
+      "usd": 9.59e-05
+    },
+    {
+      "well": "180.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 5,
+      "legibility": "clear",
+      "usd": 0.00017350000000000002
+    },
+    {
+      "well": "463.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 1,
+      "legibility": "clear",
+      "usd": 8.750000000000001e-05
+    },
+    {
+      "well": "7.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.0001949
+    },
+    {
+      "well": "599.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 1,
+      "legibility": "clear",
+      "usd": 0.00017810000000000002
+    },
+    {
+      "well": "527.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 7,
+      "legibility": "clear",
+      "usd": 0.0002275
+    },
+    {
+      "well": "251.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 5,
+      "legibility": "clear",
+      "usd": 0.0001743
+    },
+    {
+      "well": "492.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.00012790000000000002
+    },
+    {
+      "well": "29.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 6,
+      "legibility": "clear",
+      "usd": 0.0002731
+    },
+    {
+      "well": "391.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.0001695
+    },
+    {
+      "well": "0.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.0001599
+    },
+    {
+      "well": "363.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 1,
+      "legibility": "clear",
+      "usd": 9.27e-05
+    },
+    {
+      "well": "0.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.0006291
+    },
+    {
+      "well": "111.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 1,
+      "legibility": "clear",
+      "usd": 8.59e-05
+    },
+    {
+      "well": "818.0",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 1,
+      "legibility": "clear",
+      "usd": 9.59e-05
+    }
+  ]
+}

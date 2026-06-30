@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "040900010212",
-    "workspace_model_id": "0409/huc12/040900010212",
-    "label": "0409/huc12/040900010212 (nan)",
+    "workspace_model_id": "0409/huc12_outlet/040900010212",
+    "label": "0409/huc12_outlet/040900010212 (nan)",
     "vpuid": "0409",
     "n_stations": 2,
     "n_production_assigned": 2,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "040900010212",
-      "workspace_model_id": "0409/huc12/040900010212",
-      "label": "0409/huc12/040900010212 (nan)",
+      "workspace_model_id": "0409/huc12_outlet/040900010212",
+      "label": "0409/huc12_outlet/040900010212 (nan)",
       "site_no": "04159900",
       "station_name": "MILL CREEK NEAR AVOCA, MI",
       "usgs_da_km2": 437.707990646784,
@@ -55,8 +55,8 @@
     },
     {
       "catalog_model_id": "040900010212",
-      "workspace_model_id": "0409/huc12/040900010212",
-      "label": "0409/huc12/040900010212 (nan)",
+      "workspace_model_id": "0409/huc12_outlet/040900010212",
+      "label": "0409/huc12_outlet/040900010212 (nan)",
       "site_no": "04160000",
       "station_name": "MILL CREEK NEAR ABBOTTSFORD, MI",
       "usgs_da_km2": 538.717526949888,

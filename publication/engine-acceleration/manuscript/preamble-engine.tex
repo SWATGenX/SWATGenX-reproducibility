@@ -1,0 +1,52 @@
+% Shared preamble — SWAT+ engine-acceleration manuscript.
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{ragged2e}
+\usepackage{longtable}
+\usepackage{natbib}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+
+\DeclareRobustCommand{\path}[1]{\nolinkurl{#1}}
+
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
+
+\graphicspath{{../figures/}}
+
+% Lightweight code listing style for the Fortran snippets (threadprivate, wavefront).
+\lstdefinestyle{swxcode}{
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue!60!black},
+  commentstyle=\color{green!40!black}\itshape,
+  breaklines=true,
+  frame=single,
+  framesep=4pt,
+  showstringspaces=false,
+  language=Fortran,
+}
+\lstset{style=swxcode}
+
+% Inline TODO marker for the drafting phase (strip before submission).
+\newcommand{\TODO}[1]{\textcolor{red}{[\textbf{TODO:} #1]}}
+
+% Headline parallel/total numbers (final engine, dedicated c8a AWS instance; consistent re-run).
+\newcommand{\parHead}{5.33}    % peak self-relative thread speedup (c8a, N=24, still climbing)
+\newcommand{\parHeadN}{24}     % thread count at that peak
+\newcommand{\totHead}{7.14}    % combined stock->parallel total on c8a at 24 threads
+\newcommand{\totMinutes}{half a minute} % per-year wall after parallelization (27 s on c8a)
+
+% Figure placeholder: keeps the manuscript compiling before the image files exist.
+% Swap \figplaceholder{...} for \includegraphics{...} once the figure is generated.
+\newcommand{\figplaceholder}[2]{%
+  \fbox{\begin{minipage}[c][3.2cm][c]{0.88\textwidth}\centering
+    \textcolor{red}{\textbf{[FIGURE TO GENERATE: \texttt{#1}]}}\\[4pt]
+    \textcolor{red}{\footnotesize #2}
+  \end{minipage}}%
+}

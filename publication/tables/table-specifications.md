@@ -119,7 +119,7 @@
 
 ## Other table IDs (evidence matrix; CSV specs still deferred)
 
-**Tab-Metrics** — machine-readable stub: [tab-metrics.csv](tab-metrics.csv); LaTeX via `emit_tab_metrics_tex.py`. **Status:** **frozen** for proof basin `0205/huc12/01567500` only (2026-05-19).
+**Tab-Metrics** — machine-readable stub: [tab-metrics.csv](tab-metrics.csv); LaTeX via `emit_tab_metrics_tex.py`. **Status:** **frozen** for proof basin `0205/usgs_station/01567500` only (2026-05-19).
 
 **Tab-ToolContrast** — machine-readable stub: [tab-tool-contrast.csv](tab-tool-contrast.csv); LaTeX via `emit_tab_tool_contrast_tex.py`. **Status:** **documented_qualitative** (2026-05-19); three rows only (HAWQS, BASINS, SWATGenX). QSWAT+/Editor excluded (preparation toolchain). Columns: delivery, SWAT engine, hydrography, preprocessing/aggregation, simulation/outputs. No performance columns.
 

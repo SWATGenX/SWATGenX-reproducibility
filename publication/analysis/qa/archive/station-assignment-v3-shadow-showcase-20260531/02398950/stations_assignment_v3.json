@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "02398950",
-    "workspace_model_id": "0315/huc12/02398950",
-    "label": "0315/huc12/02398950 (AL)",
+    "workspace_model_id": "0315/usgs_station/02398950",
+    "label": "0315/usgs_station/02398950 (AL)",
     "vpuid": "0315",
     "n_stations": 1,
     "n_production_assigned": 1,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "02398950",
-      "workspace_model_id": "0315/huc12/02398950",
-      "label": "0315/huc12/02398950 (AL)",
+      "workspace_model_id": "0315/usgs_station/02398950",
+      "label": "0315/usgs_station/02398950 (AL)",
       "site_no": "02398950",
       "station_name": "WEST FORK LITTLE R AT DESOTO PARK NR FORT PAYNE AL",
       "usgs_da_km2": 110.8514911223808,

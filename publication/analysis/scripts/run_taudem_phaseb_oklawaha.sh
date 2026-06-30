@@ -13,7 +13,7 @@ set -u
 
 PY="sudo -n -u www-data /data/SWATGenXApp/codes/.venv/bin/python"
 RUN=/data/SWATGenXApp/codes/publication/analysis/scripts/run_taudem_variant_model.py
-MODEL_ID=0308/huc12/030801020804
+MODEL_ID=0308/huc12_outlet/030801020804
 QA=/data/SWATGenXApp/codes/publication/analysis/qa
 COMMON="--model-id $MODEL_ID --delineation taudem --snap 900 --ls-resolution 250 --force-rebuild"
 # Per-build wall-clock guard: Oklawaha coarse builds run ~3 min; 20 min is a generous ceiling.

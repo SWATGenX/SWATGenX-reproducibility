@@ -1,0 +1,43 @@
+{
+  "pdf": "OR_37017_CLAT",
+  "model": "gemini-2.5-flash-lite",
+  "usage": {
+    "prompt_tokens": 491,
+    "output_tokens": 279,
+    "usd": 0.0001607,
+    "seconds": 5.6
+  },
+  "extracted": {
+    "lithology": [
+      {
+        "top_ft": 0.0,
+        "bottom_ft": 2.0,
+        "description": "top soif",
+        "normalized": "topsoil"
+      },
+      {
+        "top_ft": 2.0,
+        "bottom_ft": 22.0,
+        "description": "Brown Clay",
+        "normalized": "clay"
+      },
+      {
+        "top_ft": 22.0,
+        "bottom_ft": 26.0,
+        "description": "Brown Clay the",
+        "normalized": "clay"
+      },
+      {
+        "top_ft": 26.0,
+        "bottom_ft": 487.0,
+        "description": "Blue Cthy stone",
+        "normalized": "siltstone"
+      }
+    ],
+    "legibility": "clear",
+    "extraction_confidence": 0.9,
+    "static_water_level_ft": 7.0,
+    "total_depth_ft": 487.0,
+    "water_bearing_zones_ft": []
+  }
+}

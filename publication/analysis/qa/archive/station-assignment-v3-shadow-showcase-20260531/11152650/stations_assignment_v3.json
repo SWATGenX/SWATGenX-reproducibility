@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "11152650",
-    "workspace_model_id": "1806/huc12/11152650",
-    "label": "1806/huc12/11152650 (CA)",
+    "workspace_model_id": "1806/usgs_station/11152650",
+    "label": "1806/usgs_station/11152650 (CA)",
     "vpuid": "1806",
     "n_stations": 2,
     "n_production_assigned": 2,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "11152650",
-      "workspace_model_id": "1806/huc12/11152650",
-      "label": "1806/huc12/11152650 (CA)",
+      "workspace_model_id": "1806/usgs_station/11152650",
+      "label": "1806/usgs_station/11152650 (CA)",
       "site_no": "11152600",
       "station_name": "GABILAN C NR SALINAS CA",
       "usgs_da_km2": 95.0525636493312,
@@ -55,8 +55,8 @@
     },
     {
       "catalog_model_id": "11152650",
-      "workspace_model_id": "1806/huc12/11152650",
-      "label": "1806/huc12/11152650 (CA)",
+      "workspace_model_id": "1806/usgs_station/11152650",
+      "label": "1806/usgs_station/11152650 (CA)",
       "site_no": "11152650",
       "station_name": "RECLAMATION DITCH NR SALINAS CA",
       "usgs_da_km2": 137.7873674698752,

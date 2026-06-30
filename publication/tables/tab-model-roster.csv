@@ -1,9 +1,9 @@
 cohort,tier,catalog_model_id,workspace_model_id,label,state,objectives,status,notes
-benchmark,S,03080102,0308/huc12/030801020804,Oklawaha (FL),FL,"3;5",official,Public runtime benchmark tier S; structural showcase + simulation anchor.
-benchmark,M,09471300,1505/huc12/09471300,Upper San Pedro (AZ),AZ,"3;5",official,Public runtime benchmark tier M.
+benchmark,S,03080102,0308/huc12_outlet/030801020804,Oklawaha (FL),FL,"3;5",official,Public runtime benchmark tier S; structural showcase + simulation anchor.
+benchmark,M,09471300,1505/usgs_station/09471300,Upper San Pedro (AZ),AZ,"3;5",official,Public runtime benchmark tier M.
 benchmark,L,03100101,0310/huc8/03100101,Peace River HUC-8,FL,"3;5",official,Public runtime benchmark tier L (whole HUC8).
-benchmark,X20,03152000,0503/huc12/03152000,Little Kanawaha (WV),WV,5,official,Simulation benchmark scaling ladder only (not structural showcase).
-benchmark,X40,07174000,1107/huc12/07174000,Verdigris River (KS),KS,5,official,Simulation benchmark scaling ladder only.
+benchmark,X20,03152000,0503/usgs_station/03152000,Little Kanawaha (WV),WV,5,official,Simulation benchmark scaling ladder only (not structural showcase).
+benchmark,X40,07174000,1107/usgs_station/07174000,Verdigris River (KS),KS,5,official,Simulation benchmark scaling ladder only.
 benchmark,X60,15060105,1506/huc8/15060105,Upper Gila HUC-8 (AZ),AZ,5,official,Simulation benchmark scaling ladder; routing-density contrast vs tier L.
-calibration,,02297600,0310/huc12/02297600,Florida controlled basin,FL,4,official,Split-sample cal/val + Morris sensitivity (exported).
-calibration,,05536265,0712/huc12/05536265,Illinois controlled basin,IL,4,official,Split-sample cal/val; Morris export pending.
+calibration,,02297600,0310/usgs_station/02297600,Florida controlled basin,FL,4,official,Split-sample cal/val + Morris sensitivity (exported).
+calibration,,05536265,0712/usgs_station/05536265,Illinois controlled basin,IL,4,official,Split-sample cal/val; Morris export pending.

@@ -1,0 +1,7 @@
+rogue/
+_run/
+*.log
+# regenerable PEST scratch: vendored solver binaries, the MF6 input deck, and raw IES iteration CSVs
+bin/
+model/
+aws_results/

@@ -1,0 +1,30 @@
+\begin{abstract}
+\noindent
+Process-based watershed models such as SWAT+ are increasingly applied at regional,
+hyper-resolution scale, where a single simulation becomes the bottleneck: one simulated year of a
+57{,}998-hydrologic-response-unit (HRU) model takes about three minutes on one core,
+and calibration multiplies that by thousands of evaluations. Existing parallel SWAT efforts exploit
+ensemble parallelism (many independent runs) or grid-cell decomposition; the cost of a single
+simulation is left untouched. We present a reproducible methodology for accelerating the SWAT+
+engine itself on shared-memory hardware without altering model results: profile, classify the
+bottleneck, fix by class, validate, re-measure. Profiling shows the dominant costs at scale are
+overhead, not hydrology---per-object array re-zeroing, derived-type copies, $\mathcal{O}(N^2)$
+name-matching, and a serial routing critical path. We remove these and add an OpenMP
+parallelization that respects the routing directed acyclic graph: a topological level wavefront over
+the engine's command order, made reentrant by privatizing current-object state. The result
+separates two products: serial overhead removal accelerates the engine everyone already runs on one
+core ($1.67$--$2.47\times$ across CPUs, no threads), while parallelization adds scaling for
+many-core runs (up to \parHead$\times$ at \parHeadN{} threads, \totHead$\times$ over the stock
+single-core engine). Correctness is enforced by thread-count invariance---identical output across
+thread counts---used as an automatable data-race detector. At one thread the engine is
+byte-identical to the unmodified serial engine; at higher counts, exercising in-stream water quality
+exposed a compiler-induced data race in particulate constituents ($15$--$20\%$ on three
+sediment-associated species), which we resolve by a byte-identical land-parallel, routing-serial
+mode. Strikingly, the single largest speed gain came not from threads but from removing one
+redundant array reset on the serial main stem---a serial fix that also raised the parallel ceiling.
+All code, every optimization as an individually validated commit, and the benchmark harness are
+released.
+\end{abstract}
+
+\noindent\textbf{Keywords:} SWAT+; shared-memory parallelism; OpenMP; river routing;
+reproducibility; model acceleration.

@@ -1,0 +1,273 @@
+% Supplementary Material — PFAS surface-water fate-and-transport engine.
+% Compile: bash build_pdfs.sh  (or pdflatex supplementary.tex x2)
+\documentclass[12pt]{article}
+
+\input{preamble-common.tex}
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true,frame=single,
+        columns=fullflexible,xleftmargin=1em,framexleftmargin=1em}
+
+% number SI floats S1, S2, ...
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\thesection}{S\arabic{section}}
+
+\title{Supplementary Material\\[4pt]
+\large A high-resolution, process-based PFAS surface-water fate-and-transport
+model in SWAT\textsuperscript{+}: engine development, cross-validation, and a
+source-attribution demonstration on the Rogue River, Michigan}
+\author{Vahid Rafiei}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\bigskip
+
+This document provides (i) the variables and parameters used for calibration and
+uncertainty analysis, (ii) the per-reach calibration data, and (iii) the technical
+implementation detail needed to reproduce or extend the engine: source-file
+inventory, governing equations and solver, input/output file formats, build and
+activation procedure, and the cross-validation harness. Section and table numbers
+are prefixed ``S''. It accompanies the main text and uses the same notation.
+
+% =====================================================================
+\section{Parameters and variables}\label{si:params}
+
+\subsection{PFAS physico-chemical and sorption parameters}
+Table~\ref{tab:si-phys} lists the compound and sorption parameters the engine
+reads. The global compound record (\texttt{pfas.dat}) carries the molecular
+weight, aqueous solubility, the Langmuir air--water-interface coefficients, and the
+runoff/percolation partition; the per-HRU initialization (\texttt{pfas\_hru.ini})
+carries the initial soil pool and the Freundlich coefficients, assigned by soil
+class and land use. Values shown are the PFOS defaults used in this study.
+
+\begin{table}[ht]\centering\footnotesize
+\caption{PFAS fate parameters read by the engine, with the PFOS values used here.
+$C_w$ is the aqueous concentration; symbols match Eq.~(1) of the main text.}
+\label{tab:si-phys}
+\begin{tabular}{lllr}
+\hline
+Symbol & Description & Source / file & PFOS value \\
+\hline
+$M_w$            & molecular weight (kg\,mol\textsuperscript{-1})        & \texttt{pfas.dat} & 0.50013 \\
+$S$              & aqueous solubility (mg\,L\textsuperscript{-1})        & \texttt{pfas.dat} & 680 \\
+$K_L$            & Langmuir AWI affinity (L\,$\mu$mol\textsuperscript{-1})& \texttt{pfas.dat} & 0.137 \\
+$\Gamma_{\max}$  & Langmuir AWI max surface excess ($\mu$mol\,m\textsuperscript{-2}) & \texttt{pfas.dat} & 2500 \\
+$f_{\text{perc}}$& runoff/percolation partition (--)                    & \texttt{pfas.dat} & 0.20 \\
+$\text{sol\_pfas}$ & initial soil PFOS pool ($\mu$g\,ha\textsuperscript{-1}) & \texttt{pfas\_hru.ini} & per HRU \\
+$k_f$            & Freundlich coefficient ((nmol\,kg\textsuperscript{-1})/(nM)$^{n}$) & \texttt{pfas\_hru.ini} & 216--450 \\
+$n$              & Freundlich exponent (--)                              & \texttt{pfas\_hru.ini} & 0.33--0.48 \\
+$\text{enr}$     & sediment enrichment ratio (--)                        & \texttt{pfas\_hru.ini} & per HRU \\
+$A_{aw}$         & air--water interfacial area (m\textsuperscript{2}\,m\textsuperscript{-3}) & from $\theta$, $d_{50}$ & derived \\
+$k_d$            & in-stream sediment--water partition (L\,kg\textsuperscript{-1}) & $K_{oc}\cdot f_{oc}$ & derived \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Calibration parameters}
+Calibration adjusts two global multipliers in \texttt{pfas\_calib.dat}: a
+soil-loading scale on every HRU's initial soil pool and a multiplier on the
+in-stream organic-carbon partition. Because in-stream concentration is, to first
+order, linear in the soil-loading scale, the magnitude calibration is nearly
+analytic (one forward evaluation fixes the scale to first order). The calibrated
+values are soil-loading $=0.11$ and $K_{oc}$ multiplier $=1.0$.
+
+\subsection{Uncertainty-analysis design}
+Table~\ref{tab:si-ua} gives the five-parameter Latin-hypercube design (120 members,
+uniform priors), the calibrated value of each parameter, and its Spearman rank
+correlation with the reach-mean in-stream PFOS concentration across the ensemble.
+The soil-loading multiplier dominates the response ($\rho=0.95$); the remaining
+parameters are second-order or negligible, consistent with the near-linear
+structure of the problem.
+
+\begin{table}[ht]\centering\footnotesize
+\caption{Uncertainty-analysis parameter design: prior ranges, calibrated values,
+and Spearman rank correlation with reach-mean in-stream PFOS ($n=120$ members).}
+\label{tab:si-ua}
+\input{si_param_table.tex}
+\end{table}
+
+% =====================================================================
+\section{Per-reach calibration data}\label{si:perreach}
+Table~\ref{tab:si-reach} reports, for each of the 20 gauged reaches, the
+station-maximum observed PFOS, the calibrated modeled concentration
+(soil-loading $=0.11$, no point source), and the $5$th--$95$th-percentile predictive
+envelope from the 120-member ensemble. ``M'' marks the seven Rogue mainstem reaches
+(stream order $\geq4$); ``T'' marks the thirteen tributary reaches. The envelope
+brackets the observation on six of seven mainstem reaches and almost no tributary
+reaches---the basis for the $P$-factor decomposition in the main text.
+
+\begin{table}[ht]\centering\footnotesize
+\caption{Per-reach observed, modeled, and 5--95\% predictive-envelope PFOS
+(ng\,L\textsuperscript{-1}). Class M = mainstem (order $\geq4$), T = tributary.}
+\label{tab:si-reach}
+\input{si_perreach_table.tex}
+\end{table}
+
+% =====================================================================
+\section{Engine implementation}\label{si:impl}
+
+\subsection{Source-file inventory}
+The engine is confined to a small set of new free-form Fortran routines
+(Table~\ref{tab:si-src}) plus minimal hooks in existing SWAT\textsuperscript{+}
+files (\texttt{hru\_hyds}, \texttt{ru\_control}, \texttt{res\_control},
+\texttt{command}, \texttt{sd\_channel\_control3}, \texttt{constituent\_mass\_module},
+\texttt{main}). The stock pesticide initialization is untouched.
+
+\begin{table}[ht]\centering\footnotesize
+\caption{New PFAS engine source files and their roles.}
+\label{tab:si-src}
+\begin{tabular}{ll}
+\hline
+File & Role \\
+\hline
+\texttt{pfas\_module.f90}       & derived types (compound database, soil/channel pools), parameters \\
+\texttt{pfas\_read.f90}         & read \texttt{pfas.dat} (global database) and \texttt{pfas\_hru.ini} (per-HRU init) \\
+\texttt{pfas\_count\_read.f90}  & early constituent count to self-activate the hydrograph infrastructure \\
+\texttt{pfas\_lch.f90}          & land phase: soil three-phase equilibrium + runoff/lateral/leach losses \\
+\texttt{pfas\_sed.f90}          & sediment-bound (enrichment-ratio) loss \\
+\texttt{pfas\_output[\_module].f90} & land-phase per-HRU mass-balance output \\
+\texttt{pfas\_cha[\_module].f90}    & in-stream linear-partition routing + benthic exchange \\
+\texttt{pfas\_cha\_read.f90}    & channel initialization + optional point-source read \\
+\texttt{cha\_pfas\_output.f90}  & daily per-reach channel output (\texttt{channel\_pfas\_day.txt}) \\
+\texttt{pfas\_xval\_selftest.f90} & standalone cross-validation against \texttt{ch\_rtpest} \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Soil three-phase equilibrium solver}
+For each HRU and soil layer the engine partitions the total PFAS mass $M$ among a
+dissolved, a Freundlich solid-sorbed, and a Langmuir air--water-interfacial phase by
+solving, for the aqueous concentration $C_w>0$,
+\begin{equation}
+M = \theta\,V\,C_w + m_s\,k_f\,C_w^{\,n}
+      + \Gamma_{\max}\frac{K_L C_w}{1+K_L C_w}\,A_{aw}.
+\end{equation}
+The right-hand side is strictly increasing in $C_w$, so the root is unique. The
+solver brackets the root, then refines with an Improved-Halley iteration retaining
+the bisection bracket as a guaranteed fallback (Algorithm~\ref{alg:solve}). Against
+a 40-digit decimal reference the double-precision solver holds a worst-case relative
+error of $1.7\times10^{-7}$ over $29{,}160$ stiff parameter combinations.
+
+\begin{lstlisting}[caption={Soil-equilibrium root solve (pseudocode).},label=alg:solve]
+f(Cw) = theta*V*Cw + m_s*kf*Cw^n + Gmax*KL*Cw/(1+KL*Cw)*A_aw - M
+# 1. bracket: lo = 0, hi = M/(theta*V)   (aqueous-only upper bound)
+# 2. bisection until f changes sign within a safe bracket
+# 3. Improved-Halley refinement from the bracket midpoint:
+#      Cw <- Cw - (2 f f') / (2 f'^2 - f f'')
+#    accept only if it stays inside the bracket; else bisect
+# 4. converge on |f|/M < tol; back-substitute dissolved/solid/AWI masses
+\end{lstlisting}
+
+\subsection{Land-phase mobilization}
+Dissolved PFAS leaves the surface layer with surface runoff and percolation through
+the runoff/percolation partition $f_{\text{perc}}$, deeper layers with lateral flow,
+and the solid-sorbed fraction with sediment yield through the enrichment ratio,
+exactly paralleling the SWAT\textsuperscript{+} pesticide land phase. The four daily
+losses are accumulated per HRU and per compound and become the constituent loads
+delivered to the channel network; the soil pool decrements consistently. A
+whole-run land-phase balance closes to a relative residual of order $10^{-5}$.
+
+\subsection{In-stream routing}
+In the channel the dissolved fraction is
+$f_{\text{sol}} = 1/(1+k_d\,c_s)$, with $k_d$ the partition coefficient (scaled by
+the calibrated $K_{oc}$ multiplier and reach bed-carbon fraction) and $c_s$ the
+suspended-sediment concentration. The sorbed fraction settles to the bed; bed PFAS
+resuspends, diffuses across the sediment--water interface, and is permanently lost by
+burial; dissolved and sorbed fractions leave the reach in outflow. These are exactly
+the non-reactive terms of the SWAT\textsuperscript{+} pesticide channel solver
+(\texttt{ch\_rtpest}) with aqueous decay, volatilization, and metabolite production
+removed. Reservoirs are mass-conserving completely mixed cells; point sources are
+per-reach daily loads added to reach inflow before routing.
+
+% =====================================================================
+\section{Input and output formats}\label{si:io}
+
+\paragraph{\texttt{pfas.dat} (global compound database).}
+Two header lines, then one list-directed record per compound and a terminating
+\texttt{0 END} record:
+\begin{lstlisting}
+ id  name   mw       sol     kl      lm      percop
+  1  PFOS   0.50013  680.0   0.137   2500.0  0.20
+  0  END    0.0      0.0     0.0     0.0     0.0
+\end{lstlisting}
+
+\paragraph{\texttt{pfas\_hru.ini} (per-HRU soil initialization).}
+Per HRU: a \texttt{hru <id> nly <n>} header, the constituent count, the per-layer
+$d_{50}$, then, per compound, four list-directed records giving the initial soil
+pool (\texttt{sol\_pfas}, $\mu$g\,ha\textsuperscript{-1}), $k_f$, $n$, and the
+enrichment ratio, one value per layer.
+
+\paragraph{\texttt{pfas\_calib.dat} (calibration multipliers).}
+A single line: \texttt{soil\_scale koc\_scale} (e.g.\ \texttt{0.11 1.0}).
+
+\paragraph{Point-source file (optional).}
+Per-reach daily PFAS load (kg\,d\textsuperscript{-1}) added to reach inflow; the
+injected mass is tracked in the in-stream balance.
+
+\paragraph{\texttt{channel\_pfas\_day.txt} (daily per-reach output).}
+Columns (Table~\ref{tab:si-out}); the final column, \texttt{conc\_ngL}, is the
+quantity compared against ambient observations.
+
+\begin{table}[ht]\centering\footnotesize
+\caption{Daily per-reach PFAS output columns.}
+\label{tab:si-out}
+\begin{tabular}{ll}
+\hline
+Column & Meaning \\
+\hline
+\texttt{jday mon day yr} & date \\
+\texttt{unit}            & channel (reach) number \\
+\texttt{gis\_id name}    & GIS id and reach name \\
+\texttt{pfas}            & compound index \\
+\texttt{tot\_in\_kg}     & total PFAS inflow to the reach \\
+\texttt{sol\_out\_kg}    & dissolved mass leaving in outflow \\
+\texttt{sor\_out\_kg}    & sediment-sorbed mass leaving in outflow \\
+\texttt{settle\_kg}      & mass settled to the bed \\
+\texttt{resus\_kg}       & mass resuspended from the bed \\
+\texttt{diffuse\_kg}     & sediment--water diffusive exchange \\
+\texttt{bury\_kg}        & mass permanently buried \\
+\texttt{water\_kg}       & water-column PFAS storage \\
+\texttt{benthic\_kg}     & benthic (bed) PFAS storage \\
+\texttt{conc\_ngL}       & outflow concentration (ng\,L\textsuperscript{-1}) \\
+\hline
+\end{tabular}
+\end{table}
+
+% =====================================================================
+\section{Build, activation, and cross-validation}\label{si:build}
+
+\paragraph{Build.}
+The engine compiles with the Intel \texttt{ifx} compiler and NetCDF
+(\texttt{ifx -O3 -ipo}; \texttt{build\_pfas\_engine.sh}). New source files require a
+clean build because the build globs source at configure time.
+
+\paragraph{Self-activation.}
+Routing PFAS through a real network needs the constituent-hydrograph
+infrastructure that SWAT\textsuperscript{+} allocates only when a constituent is
+declared. \texttt{pfas\_count\_read} runs early and increments the total constituent
+count (\texttt{cs\_db\%num\_tot}) before \texttt{hyd\_connect}, so the infrastructure
+is allocated whenever \texttt{pfas.dat} is present; a PFAS run therefore needs no
+dummy constituent. Aggregation in \texttt{ru\_control} carries the PFAS pool through
+the HRU$\rightarrow$routing-unit step (mirroring the pesticide pool), and gating on
+the scalar \texttt{cs\_db\%num\_tot} avoids touching unallocated hydrographs.
+
+\paragraph{Cross-validation.}
+\texttt{pfas\_xval\_selftest} sets up one synthetic reach and drives both
+\texttt{pfas\_cha} and the stock \texttt{ch\_rtpest} (configured with unit decay,
+zero volatilization, no metabolites---its linear-partition subset) with identical
+inflow and parameters over a 60-day sweep including a dry-reach day. The two routines
+agree on all nine shared mass terms to a maximum absolute difference of
+$2.4\times10^{-7}$~kg and a maximum relative difference of $2.6\times10^{-7}$,
+establishing that the in-stream mathematics is reused rather than reinvented and is
+not a source of error.
+
+\paragraph{Uncertainty-ensemble execution.}
+The 120-member Latin-hypercube ensemble (Sec.~\ref{si:params}) was run as 120
+independent forward simulations, each in an isolated working directory, in parallel
+on a single 32-vCPU cloud instance (AWS EC2 \texttt{c7i.8xlarge}, spot). The full
+ensemble completed in 14.4~min of compute (15~min~05~s end to end including
+provisioning and result transfer), a mean of 172~s per member.
+
+\end{document}

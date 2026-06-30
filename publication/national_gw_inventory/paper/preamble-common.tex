@@ -1,0 +1,28 @@
+% Shared preamble for main.tex and supplement.tex
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{ragged2e}
+\usepackage{longtable}
+\usepackage{natbib}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+
+\DeclareRobustCommand{\code}[1]{\texttt{\small #1}}
+\newcommand{\todo}[1]{\textcolor{red}{[\textbf{PLACEHOLDER:} #1]}}
+
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+
+\graphicspath{{figures/}}
+
+% absorb small overfulls in justified text + let long \texttt paths break
+\emergencystretch=3em
+\setlength{\emergencystretch}{3em}
+\sloppy

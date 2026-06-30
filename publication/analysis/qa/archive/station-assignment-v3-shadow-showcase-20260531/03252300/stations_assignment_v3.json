@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "03252300",
-    "workspace_model_id": "0510/huc12/03252300",
-    "label": "0510/huc12/03252300 (nan)",
+    "workspace_model_id": "0510/usgs_station/03252300",
+    "label": "0510/usgs_station/03252300 (nan)",
     "vpuid": "0510",
     "n_stations": 1,
     "n_production_assigned": 1,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "03252300",
-      "workspace_model_id": "0510/huc12/03252300",
-      "label": "0510/huc12/03252300 (nan)",
+      "workspace_model_id": "0510/usgs_station/03252300",
+      "label": "0510/usgs_station/03252300 (nan)",
       "site_no": "03252300",
       "station_name": "HINKSTON CREEK NEAR CARLISLE, KY",
       "usgs_da_km2": 398.858168991744,

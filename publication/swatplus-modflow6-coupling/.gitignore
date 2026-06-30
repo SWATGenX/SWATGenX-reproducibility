@@ -1,0 +1,9 @@
+# reproducibility/ is a separate published repo (github.com/SWATGenX/swatplus-mf6-pfas),
+# checked out here for convenience. It carries its own history + release bundle; not vendored.
+reproducibility/
+
+# regenerable figure duplicates (canonical copies live in paper/figures/)
+research/multianalyte_spike/grid_comparison.pdf
+research/multianalyte_spike/grid_comparison.png
+# LaTeX aux
+paper/*.toc

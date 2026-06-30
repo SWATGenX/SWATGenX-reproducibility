@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "11176145",
-    "workspace_model_id": "1805/huc12/11176145",
-    "label": "1805/huc12/11176145 (CA)",
+    "workspace_model_id": "1805/usgs_station/11176145",
+    "label": "1805/usgs_station/11176145 (CA)",
     "vpuid": "1805",
     "n_stations": 4,
     "n_production_assigned": 4,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "11176145",
-      "workspace_model_id": "1805/huc12/11176145",
-      "label": "1805/huc12/11176145 (CA)",
+      "workspace_model_id": "1805/usgs_station/11176145",
+      "label": "1805/usgs_station/11176145 (CA)",
       "site_no": "11176100",
       "station_name": "ARROYO LAS POSITAS AB LIVERMORE CA",
       "usgs_da_km2": 20.25370702282752,
@@ -55,8 +55,8 @@
     },
     {
       "catalog_model_id": "11176145",
-      "workspace_model_id": "1805/huc12/11176145",
-      "label": "1805/huc12/11176145 (CA)",
+      "workspace_model_id": "1805/usgs_station/11176145",
+      "label": "1805/usgs_station/11176145 (CA)",
       "site_no": "11176140",
       "station_name": "ALTAMONT C NR LIVERMORE CA",
       "usgs_da_km2": 34.7058406785024,
@@ -84,8 +84,8 @@
     },
     {
       "catalog_model_id": "11176145",
-      "workspace_model_id": "1805/huc12/11176145",
-      "label": "1805/huc12/11176145 (CA)",
+      "workspace_model_id": "1805/usgs_station/11176145",
+      "label": "1805/usgs_station/11176145 (CA)",
       "site_no": "11176145",
       "station_name": "ARROYO LAS POSITAS A LIVERMORE CA",
       "usgs_da_km2": 138.0463662809088,
@@ -113,8 +113,8 @@
     },
     {
       "catalog_model_id": "11176145",
-      "workspace_model_id": "1805/huc12/11176145",
-      "label": "1805/huc12/11176145 (CA)",
+      "workspace_model_id": "1805/usgs_station/11176145",
+      "label": "1805/usgs_station/11176145 (CA)",
       "site_no": "11176150",
       "station_name": "ARROYO LAS POSITAS NR LIVERMORE CA",
       "usgs_da_km2": 167.31323192770557,

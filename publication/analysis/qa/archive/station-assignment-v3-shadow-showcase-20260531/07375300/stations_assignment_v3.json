@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "07375300",
-    "workspace_model_id": "0807/huc12/07375300",
-    "label": "0807/huc12/07375300 (LA)",
+    "workspace_model_id": "0807/usgs_station/07375300",
+    "label": "0807/usgs_station/07375300 (LA)",
     "vpuid": "0807",
     "n_stations": 2,
     "n_production_assigned": 2,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "07375300",
-      "workspace_model_id": "0807/huc12/07375300",
-      "label": "0807/huc12/07375300 (LA)",
+      "workspace_model_id": "0807/usgs_station/07375300",
+      "label": "0807/usgs_station/07375300 (LA)",
       "site_no": "07375280",
       "station_name": "TANGIPAHOA RIVER AT OSYKA, MS",
       "usgs_da_km2": 409.218121433088,
@@ -55,8 +55,8 @@
     },
     {
       "catalog_model_id": "07375300",
-      "workspace_model_id": "0807/huc12/07375300",
-      "label": "0807/huc12/07375300 (LA)",
+      "workspace_model_id": "0807/usgs_station/07375300",
+      "label": "0807/usgs_station/07375300 (LA)",
       "site_no": "07375300",
       "station_name": "Tangipahoa River near Kentwood, LA",
       "usgs_da_km2": 152.809298509824,

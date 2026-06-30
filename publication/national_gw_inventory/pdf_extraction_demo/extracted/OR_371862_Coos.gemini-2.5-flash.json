@@ -1,0 +1,45 @@
+{
+  "pdf": "OR_371862_Coos",
+  "model": "gemini-2.5-flash",
+  "usage": {
+    "prompt_tokens": 491,
+    "output_tokens": 262,
+    "usd": 0.0008023000000000001,
+    "seconds": 9.4
+  },
+  "extracted": {
+    "lithology": [
+      {
+        "top_ft": 0,
+        "bottom_ft": 1,
+        "description": "Top Soil",
+        "normalized": "topsoil"
+      },
+      {
+        "top_ft": 1,
+        "bottom_ft": 25,
+        "description": "Brown Sand clayma",
+        "normalized": "sand"
+      },
+      {
+        "top_ft": 25,
+        "bottom_ft": 38,
+        "description": "Brown Sand",
+        "normalized": "sand"
+      },
+      {
+        "top_ft": 38,
+        "bottom_ft": 51,
+        "description": "Brown Sand Gray",
+        "normalized": "sand"
+      }
+    ],
+    "legibility": "clear",
+    "extraction_confidence": 0.9,
+    "static_water_level_ft": 27,
+    "total_depth_ft": 51,
+    "water_bearing_zones_ft": [
+      27
+    ]
+  }
+}

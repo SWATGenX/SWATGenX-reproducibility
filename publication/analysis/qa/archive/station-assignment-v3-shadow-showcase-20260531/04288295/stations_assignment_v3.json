@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "04288295",
-    "workspace_model_id": "0430/huc12/04288295",
-    "label": "0430/huc12/04288295 (VT)",
+    "workspace_model_id": "0430/usgs_station/04288295",
+    "label": "0430/usgs_station/04288295 (VT)",
     "vpuid": "0430",
     "n_stations": 4,
     "n_production_assigned": 4,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "04288295",
-      "workspace_model_id": "0430/huc12/04288295",
-      "label": "0430/huc12/04288295 (VT)",
+      "workspace_model_id": "0430/usgs_station/04288295",
+      "label": "0430/usgs_station/04288295 (VT)",
       "site_no": "04288225",
       "station_name": "W BRANCH LITTLE R ABV BINGHAM FALLS NEAR STOWE, VT",
       "usgs_da_km2": 12.09524447526912,
@@ -55,8 +55,8 @@
     },
     {
       "catalog_model_id": "04288295",
-      "workspace_model_id": "0430/huc12/04288295",
-      "label": "0430/huc12/04288295 (VT)",
+      "workspace_model_id": "0430/usgs_station/04288295",
+      "label": "0430/usgs_station/04288295 (VT)",
       "site_no": "04288230",
       "station_name": "RANCH BROOK AT RANCH CAMP, NEAR STOWE, VT",
       "usgs_da_km2": 9.8419548192768,
@@ -84,8 +84,8 @@
     },
     {
       "catalog_model_id": "04288295",
-      "workspace_model_id": "0430/huc12/04288295",
-      "label": "0430/huc12/04288295 (VT)",
+      "workspace_model_id": "0430/usgs_station/04288295",
+      "label": "0430/usgs_station/04288295 (VT)",
       "site_no": "04288295",
       "station_name": "LITTLE RIVER NEAR STOWE, VT",
       "usgs_da_km2": 172.49320814837756,
@@ -113,8 +113,8 @@
     },
     {
       "catalog_model_id": "04288295",
-      "workspace_model_id": "0430/huc12/04288295",
-      "label": "0430/huc12/04288295 (VT)",
+      "workspace_model_id": "0430/usgs_station/04288295",
+      "label": "0430/usgs_station/04288295 (VT)",
       "site_no": "04289000",
       "station_name": "LITTLE RIVER NEAR WATERBURY, VT",
       "usgs_da_km2": 287.488680247296,

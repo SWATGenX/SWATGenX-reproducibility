@@ -1,4 +1,4 @@
 row_id,tier,catalog_model_id,workspace_model_id,label,tree_size_mb,streams_shp,subbasins_shp,sqlite_project,channel_stats_json,n_channels_stats,n_subbasins_stats,status
-PM-03080102,S,03080102,0308/huc12/030801020804,Oklawaha (FL),41.7,no,no,yes,no,,,frozen_from_admin_workspace
-PM-09471300,M,09471300,1505/huc12/09471300,Upper San Pedro (AZ),459.5,no,no,yes,no,,,frozen_from_admin_workspace
+PM-03080102,S,03080102,0308/huc12_outlet/030801020804,Oklawaha (FL),41.7,no,no,yes,no,,,frozen_from_admin_workspace
+PM-09471300,M,09471300,1505/usgs_station/09471300,Upper San Pedro (AZ),459.5,no,no,yes,no,,,frozen_from_admin_workspace
 PM-03100101,L,03100101,0310/huc8/03100101,Peace River HUC-8,1454.8,no,no,yes,no,,,frozen_from_admin_workspace

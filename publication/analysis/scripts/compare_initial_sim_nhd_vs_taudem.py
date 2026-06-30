@@ -33,7 +33,7 @@ from ModelProcessing.print_prt import update_time, nyskip_define, update_print_p
 from ModelProcessing.performance_metrics import nse as calc_nse, kge as calc_kge, pbias as calc_pbias  # noqa: E402
 
 SWATPLUS = REPO / "bin" / "swatplus"
-SITE = Path("${SWATGENX_USER_PATH}/SWATplus_by_VPUID/0308/huc12/030801020804")
+SITE = Path("${SWATGENX_USER_PATH}/SWATplus_by_VPUID/0308/huc12_outlet/030801020804")
 OUT = Path(os.environ.get("CMP_OUT_DIR", "/tmp/taudem_init_sim"))
 GAGE = "02239501"
 CMS_PER_CFS = 1.0 / 35.3147

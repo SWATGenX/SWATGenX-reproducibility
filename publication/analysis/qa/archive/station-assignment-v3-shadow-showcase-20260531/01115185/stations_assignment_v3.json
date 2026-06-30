@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "01115185",
-    "workspace_model_id": "0109/huc12/01115185",
-    "label": "0109/huc12/01115185 (RI)",
+    "workspace_model_id": "0109/usgs_station/01115185",
+    "label": "0109/usgs_station/01115185 (RI)",
     "vpuid": "0109",
     "n_stations": 4,
     "n_production_assigned": 4,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "01115185",
-      "workspace_model_id": "0109/huc12/01115185",
-      "label": "0109/huc12/01115185 (RI)",
+      "workspace_model_id": "0109/usgs_station/01115185",
+      "label": "0109/usgs_station/01115185 (RI)",
       "site_no": "01115185",
       "station_name": "WINSOR BROOK AT WINSOR RD NEAR SOUTH FOSTER, RI",
       "usgs_da_km2": 11.18874863665152,
@@ -55,8 +55,8 @@
     },
     {
       "catalog_model_id": "01115185",
-      "workspace_model_id": "0109/huc12/01115185",
-      "label": "0109/huc12/01115185 (RI)",
+      "workspace_model_id": "0109/usgs_station/01115185",
+      "label": "0109/usgs_station/01115185 (RI)",
       "site_no": "01115187",
       "station_name": "PONAGANSET RIVER AT SOUTH FOSTER, RI",
       "usgs_da_km2": 37.2958287888384,
@@ -84,8 +84,8 @@
     },
     {
       "catalog_model_id": "01115185",
-      "workspace_model_id": "0109/huc12/01115185",
-      "label": "0109/huc12/01115185 (RI)",
+      "workspace_model_id": "0109/usgs_station/01115185",
+      "label": "0109/usgs_station/01115185 (RI)",
       "site_no": "01115190",
       "station_name": "DOLLY COLE BK AT OLD DANIELSON PK AT S FOSTER, RI",
       "usgs_da_km2": 12.6909417406464,
@@ -113,8 +113,8 @@
     },
     {
       "catalog_model_id": "01115185",
-      "workspace_model_id": "0109/huc12/01115185",
-      "label": "0109/huc12/01115185 (RI)",
+      "workspace_model_id": "0109/usgs_station/01115185",
+      "label": "0109/usgs_station/01115185 (RI)",
       "site_no": "01115265",
       "station_name": "HEMLOCK BROOK AT KING ROAD NR FOSTER, RI",
       "usgs_da_km2": 22.58469632212992,

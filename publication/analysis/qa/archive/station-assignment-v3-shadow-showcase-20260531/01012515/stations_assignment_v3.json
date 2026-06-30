@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "01012515",
-    "workspace_model_id": "0101/huc12/01012515",
-    "label": "0101/huc12/01012515 (ME)",
+    "workspace_model_id": "0101/usgs_station/01012515",
+    "label": "0101/usgs_station/01012515 (ME)",
     "vpuid": "0101",
     "n_stations": 3,
     "n_production_assigned": 3,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "01012515",
-      "workspace_model_id": "0101/huc12/01012515",
-      "label": "0101/huc12/01012515 (ME)",
+      "workspace_model_id": "0101/usgs_station/01012515",
+      "label": "0101/usgs_station/01012515 (ME)",
       "site_no": "01012515",
       "station_name": "CLAYTON STREAM AT OUTLET CLAYTON LAKE ME SITE 6",
       "usgs_da_km2": 32.633850190233595,
@@ -55,8 +55,8 @@
     },
     {
       "catalog_model_id": "01012515",
-      "workspace_model_id": "0101/huc12/01012515",
-      "label": "0101/huc12/01012515 (ME)",
+      "workspace_model_id": "0101/usgs_station/01012515",
+      "label": "0101/usgs_station/01012515 (ME)",
       "site_no": "01012520",
       "station_name": "BALD MOUNTAIN BROOK NR BALD MOUNTAIN ME SITE 2",
       "usgs_da_km2": 4.32528014426112,
@@ -84,8 +84,8 @@
     },
     {
       "catalog_model_id": "01012515",
-      "workspace_model_id": "0101/huc12/01012515",
-      "label": "0101/huc12/01012515 (ME)",
+      "workspace_model_id": "0101/usgs_station/01012515",
+      "label": "0101/usgs_station/01012515 (ME)",
       "site_no": "01012525",
       "station_name": "BISHOP MOUNTAIN BROOK NR BISHOP MTN ME  SITE 14",
       "usgs_da_km2": 2.82308704026624,

@@ -1,0 +1,170 @@
+\section{Discussion}
+\label{sec:disc}
+
+\paragraph{Groundwater is a plausibly first-order source at the lower mainstem.} The joint
+surface-water/groundwater calibration credits a significant groundwater term ($F_{1,5}=16.2$,
+$p=0.01$), and that term is not diffuse: the groundwater fraction of the in-stream PFOS rises from
+$\sim$13\% in the headwaters to $\sim$53\% at the lowest reach, in the Wolverine corridor, where it
+closes the sharp climb to $19$--$27$~ng~L\textsuperscript{-1} that the surface-water model alone
+under-predicts and lifts the mainstem fit from $0.15$ to $0.07$~dex
+(Table~\ref{tab:jointreach}). Fitting jointly also \emph{drops} the surface soil-loading
+($0.11\to0.077$), consistent with part of the in-stream signal the surface-only calibration had
+absorbed being reassigned to a groundwater origin. This drop is, however, partly mechanical rather than
+independent corroboration: because the groundwater load $B_i$ and the surface prediction
+$C^{\mathrm{SW}}_i$ both rise toward the lower mainstem they are positively correlated across the seven
+reaches, so once $g$ enters as a positive regressor $L$ is algebraically pulled down to hold the overall
+scale fixed --- the elongated, tilted $(L,g)$ ridge of the objective surface (Supplementary
+Figure~S14b). The drop corroborates the partition only to the degree $B$ is more bottom-heavy than
+$C^{\mathrm{SW}}$ (the decorrelation that makes $g$ identifiable at all), a modest margin; the
+attribution therefore rests on the independent aquifer-side validation, not on the loading drop. The
+fitted effectiveness $g=0.061$ is best read as a calibrated statement that only $\sim$6\% of the modeled
+groundwater PFAS load reaches the stream, the remainder lost to source over-representation, discharge
+geometry the $250$~m grid cannot resolve, and grid-controlled numerical dispersion --- and \emph{not} to
+the engineered Rogue/Rum Creek interceptor, which post-dates the $2019$ validation samples by six years.
+The magnitude is poorly constrained --- seven mainstem reaches, and the linear joint fit
+cannot by itself separate groundwater discharge from any unmodeled term co-located near the source.
+The attribution to groundwater therefore rests on the independent aquifer-side validation: the
+transport model, with its source prescribed (not fitted) to the measured plume, reproduces the
+near-source PFOS shape against $846$ groundwater observations before any in-stream fitting
+(Table~\ref{tab:validation}), to $\sim$$1.1$ log\textsubscript{10} units (dex) with $71\%$ of
+predicted cells within a factor of ten of the measurement. That level of agreement is the accepted
+bar for regional plume models, where routine measurement and sampling error alone propagate to
+order-of-magnitude scatter in plume quantities \citep{jarsjo2008}; the factor-of-2 fits reported in
+the literature are achieved only at heavily instrumented single-source sites with dense, dedicated
+monitoring networks \citep{shin2011}, which the present automated, public-data pipeline does not
+assume.
+
+\paragraph{Why the groundwater source is legacy rather than present-day recharge.} Treating the
+groundwater source as a prescribed, measurement-based plume (Section~\ref{sec:pfas}) rather than a
+flux from current land loading is justified by a vadose-zone travel-time analysis. Applying the
+model's own three-phase retardation --- Freundlich solid sorption plus a Langmuir air--water-interface
+term --- over the kriged depth-to-water (median $31$~m) gives a unsaturated-zone transit of
+\emph{centuries} for PFOS (median $\sim$$10^{3}$~yr; $5$--$95\%$ range $\sim$$440$--$5{,}500$~yr) and
+\emph{decades-to-centuries} for the shorter-chain PFOA ($\sim$$220$~yr median). The $\sim$4.5-fold
+PFOA-precedes-PFOS contrast follows from the carboxylate's lower solid- and air--water-interface
+partitioning --- the same chain-length ordering reported for distributed watershed PFAS transport
+\citep{rafiei2023pfas}. A lumped travel-time estimate and an explicit one-dimensional
+advection--dispersion--retardation solution return identical $50\%$ breakthrough times, and a
+variance-based sensitivity ranks recharge, vadose thickness, and grain size (through the air--water
+interfacial area) above the partition coefficients themselves. The air--water interface alone adds a
+$1.3$--$5\times$ retardation that strengthens as the medium fines, within the range reported for
+unsaturated PFAS transport. Because every transit time is far longer than the simulated period,
+diffuse land-applied PFAS has not yet reached the water table: the observed plume is the historical
+point source (the tannery legacy), which the coupling routes to the stream network. This is also why
+a deep explicit unsaturated-zone (UZF/UZT) treatment, while the natural refinement, would not change
+the legacy-versus-present-day attribution over the simulated window --- although, as set out below, it
+would replace the prescribed source with a mechanistically derived one and is the priority next step.
+
+\paragraph{Why coupling through the MODFLOW~6 interface matters.} The groundwater PFAS pathway, and
+its routing back to the streams, exists \emph{at all} only because the coupling is built on the
+current USGS framework through its model interface: multi-model simulation, the GWT transport model
+with a native Freundlich isotherm, and SFT in-stream transport come for free, without maintaining a
+forked solver. The same coupling makes the flow inversion well-posed. A head-only inversion is
+non-unique; adding the groundwater-to-stream exchange --- a flux observable only because the coupling
+computes it --- pins down a model that is simultaneously head-consistent (NSE $0.91$ over $5{,}383$
+heads) and flux-consistent with the observed gaining baseflow.
+
+\paragraph{Automation from public data makes this reproducible at archive scale.} Every input is
+inherited from the already-automated surface-water model --- the shared DEM as land surface, recharge
+from the land-phase water balance, the channel network, aquifer properties kriged from a raw well
+database --- so the coupled model carries no bespoke, hand-edited groundwater build. Reviews of
+watershed PFAS modeling and the antecedent distributed surface-water model \citep{rafiei2023pfas}
+identified the missing continuous land--stream--aquifer mass balance as the principal gap; closing it
+inside an openly supported transport framework, rather than a frozen one-way reactive-transport
+coupling, is what lets the same pipeline run across the national archive of gauged basins, where
+coupled groundwater contaminant models are otherwise one-off and rarely reproducible. The integrity of
+this automation is itself a result: the joint groundwater term is only credible because it survived a
+spatially explicit test --- an earlier coordinate-referencing error mislocated the discharge and
+produced a spurious null that the aquifer-only validation and a naive additive sum both masked, a
+failure mode a careful coupled integration is precisely what surfaces.
+
+\paragraph{Bounds and next steps.} The result stands on one watershed at $250$~m, a three-layer
+column, a single prescribed source with Freundlich sorption, and a single lumped effectiveness $g$;
+the validation residuals point to additional source areas the model does not yet include. Matching
+\emph{absolute} far-field concentration and mass discharge generally requires processes this
+screening model deliberately omits --- matrix diffusion and legacy back-diffusion from low-permeability
+zones \citep{kulkarni2022}, and air--water-interfacial-area uncertainty that can shift predicted
+groundwater arrival several-fold \citep{brusseau_guo2021}. A trend-captured but magnitude-under-predicted
+outcome is therefore expected, and matches our own prior watershed PFAS result, where PFOS trends
+were reproduced but PFOA magnitude was under-predicted for want of diffuse and historical sources
+\citep{rafiei2023pfas}. Two bounds are numerical: at a grid
+P\'eclet of $\sim$25 the in-stream estimate carries grid-controlled numerical dispersion, and the
+$250$~m cell cannot separate the source from the stream it discharges to. The criterion for
+controlling numerical dispersion is a grid P\'eclet number of order unity ($\mathrm{Pe}\lesssim1$--$2$),
+above which a coarse cell injects an artificial dispersivity of order $\Delta x/2$
+\citep{zheng_bennett2002,anderson2015}; at $\mathrm{Pe}\sim25$ our grid is firmly in this
+numerical-dispersion-dominated regime. Crucially, this spurious mixing can \emph{mask} a real misfit
+rather than merely blur it, so a good fit on a coarse advective grid is not by itself proof of a
+correct transport model \citep{benson2017}. The obvious remedy --- \emph{local grid refinement} (a
+quadtree-refined unstructured DISV grid in MODFLOW~6) through the Wolverine corridor
+(Figure~\ref{fig:gridcompare}) --- we tested directly. Refining the source-to-discharge corridor from
+$250$ to $62.5$~m did \emph{not} reduce the streambed-porewater under-prediction but slightly widened
+it (the $>50$~ng~L\textsuperscript{-1} bias moving from $-1.46$ to $-1.86$~dex across the analytes that
+converged), confirming that the coarse-grid numerical dispersion was \emph{masking} a real
+under-delivery of PFAS to the discharge cells rather than causing it \citep{benson2017}. The residual
+discharge-zone error is therefore \emph{structural} --- the prescribed single source, the steady flow
+field, and the sub-grid focused discharge described below --- not a discretization artifact, and
+$g=0.061$ accordingly remains a lumped scalar rather than a physical interception fraction. (The most
+strongly sorbing analyte, PFOS, would not converge on the refined grid at all, a further indication
+that geometric refinement alone is not the limiting lever here.)
+
+\begin{figure}[ht]\centering
+  \includegraphics[width=\textwidth]{grid_comparison.pdf}
+  \caption{Structured versus quadtree (DISV) groundwater grid used in the refinement test.
+  (a)~The uniform $250$~m structured grid ($11{,}727$ active cells per layer); (b)~the quadtree-refined
+  DISV grid ($26{,}274$ cells per layer), refined to $62.5$~m through the source-to-discharge corridor,
+  with the nested refinement at the Wolverine source shown in the inset. Refining this corridor did not
+  close the streambed-porewater under-prediction, indicating that the coarse-grid numerical dispersion
+  was masking rather than causing it.}
+  \label{fig:gridcompare}
+\end{figure}
+
+A related, partly physical bound shows
+up as the stratified under-prediction in the high-concentration band of the streambed porewater
+discharge cells: groundwater upwelling is fragmented by hyporheic flow into sub-metre ``pinhole''
+stream tubes ($95\%$ of upwelling areas $<1.25$~m\textsuperscript{2}; \citealp{mojarrad2023}), so a
+block-averaged $250$~m discharge cell dilutes the focused peak concentration by construction, and the
+PFAS-specific interface processes documented at this very site --- organic-matter and air--water-interface
+retention as the House Street plume discharges to the Rogue River \citep{lemke2024} --- further
+complicate the porewater signal. Resolving this would benefit from the streambed-versus-stream-water
+flux cross-validation approach of \citet{sun2021}. A coupled Morris screening across all eighteen surface- and groundwater parameters (Section~\ref{sec:results};
+Table~\ref{tab:morris}) already establishes which parameters govern the prediction --- the groundwater
+source and aquifer conductivity at the lower mainstem, the surface soil-loading mid-basin --- and flags
+the strongly interacting groundwater source and transport terms. A variance-based Sobol decomposition,
+computed on a random-forest surrogate fit to the screening ensemble, confirms this split
+quantitatively: the lower-mainstem in-stream PFOS variance is dominated by the groundwater pathway
+--- streambed conductance ($S_T=0.53$), aquifer conductivity ($0.41$) and source magnitude ($0.40$)
+--- whereas the mid-mainstem prediction is almost entirely surface-controlled (soil PFAS loading,
+$S_T=0.93$). The variance decomposition thus reproduces, from global parameter sensitivity, the same
+groundwater-lower / surface-mid attribution that the chemistry and the joint fit independently give.
+The steady flow field is adequate for the time-aggregated concentration match validated here, but not
+for plume arrival times --- the transient extension addressed below. The regulatory thresholds that motivate
+this work ($4$~ng~L\textsuperscript{-1} for PFOS) sit well below the present error bars --- a factor
+of ten in groundwater concentration, an order of magnitude in the integrated in-stream estimate ---
+so the model in its current form is a tool for \emph{source attribution and screening}: it identifies
+which pathways and source areas matter, not whether a numeric limit is met. Closing the gap to
+decision-grade precision is the job of the joint calibration and the grid refinement above. What we
+stand behind now is a coupled, observation-validated surface-water/groundwater PFAS model that resolves
+\emph{which} pathways and source areas govern the in-stream signal --- the first to carry the
+contaminant through both phases and test each against the site's rich public record.
+
+\paragraph{The priority next step: an explicit vadose zone.} The single most consequential extension is
+to resolve the unsaturated zone explicitly. In the present model the groundwater source is
+\emph{prescribed} from measurements and the vadose zone enters only as a recharge water flux and the
+travel-time argument above; yet for PFAS the unsaturated zone is the controlling compartment, because the
+air--water interface (AWI) that retards transport and stores the largest fraction of the contaminant mass
+exists only above the water table \citep{costanza2019, brusseau2018, guo2020}. An explicit unsaturated
+flow-and-transport treatment (MODFLOW~6 UZF coupled to UZT), built on the same kriged depth-to-water that
+already defines the deep ($\sim$$31$~m median) vadose column here, would \emph{derive} the groundwater
+source from the historical land-loading record rather than prescribing it --- converting the lumped
+delivery factor $g$ into a physically interpretable flux and turning the steady screening model into a
+transient one able to address arrival timing and the forward question of whether and when a regulatory
+threshold is met. The rigorous form of this extension must carry the AWI contribution into the
+unsaturated transport: standard UZT represents linear or Freundlich solid-phase sorption but not the
+AWI Langmuir term that dominates PFAS retardation in unsaturated media, so a naive implementation would
+under-retard and overstate arrival. We expect this extension to \emph{confirm and mechanize} the
+legacy-source attribution established here --- the observed plume would remain the historical point source
+--- rather than overturn it, while substantially raising the model's predictive reach. Alongside it,
+generalizing the automated pipeline across a population of gauged basins, extending in-stream transport to
+the full multi-analyte suite, and constraining the plume's exposure history with groundwater age tracers
+(tritium, radiocarbon) at the Wolverine site are the natural complements.

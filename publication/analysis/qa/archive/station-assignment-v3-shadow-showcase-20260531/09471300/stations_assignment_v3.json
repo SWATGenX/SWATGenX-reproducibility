@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "09471300",
-    "workspace_model_id": "1505/huc12/09471300",
-    "label": "1505/huc12/09471300 (AZ)",
+    "workspace_model_id": "1505/usgs_station/09471300",
+    "label": "1505/usgs_station/09471300 (AZ)",
     "vpuid": "1505",
     "n_stations": 3,
     "n_production_assigned": 3,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "09471300",
-      "workspace_model_id": "1505/huc12/09471300",
-      "label": "1505/huc12/09471300 (AZ)",
+      "workspace_model_id": "1505/usgs_station/09471300",
+      "label": "1505/usgs_station/09471300 (AZ)",
       "site_no": "09471300",
       "station_name": "HUACHUCA CAN NR FT HUACHUCA ARIZ",
       "usgs_da_km2": 8.39156147748864,
@@ -55,8 +55,8 @@
     },
     {
       "catalog_model_id": "09471300",
-      "workspace_model_id": "1505/huc12/09471300",
-      "label": "1505/huc12/09471300 (AZ)",
+      "workspace_model_id": "1505/usgs_station/09471300",
+      "label": "1505/usgs_station/09471300 (AZ)",
       "site_no": "09471310",
       "station_name": "HUACHUCA CANYON NEAR FORT HUACHUCA, AZ",
       "usgs_da_km2": 10.54125160906752,
@@ -84,8 +84,8 @@
     },
     {
       "catalog_model_id": "09471300",
-      "workspace_model_id": "1505/huc12/09471300",
-      "label": "1505/huc12/09471300 (AZ)",
+      "workspace_model_id": "1505/usgs_station/09471300",
+      "label": "1505/usgs_station/09471300 (AZ)",
       "site_no": "09471380",
       "station_name": "UPPER BABOCOMARI RIVER NEAR HUACHUCA CITY, AZ",
       "usgs_da_km2": 408.4411249999872,

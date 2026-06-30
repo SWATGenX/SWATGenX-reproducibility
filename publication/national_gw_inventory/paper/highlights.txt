@@ -1,0 +1,7 @@
+Highlights
+
+- Much U.S. well lithology is in scanned driller's logs, not machine-readable data
+- We harmonize ~24M lithology intervals from public sources into one open inventory
+- Vision-language models recover lithology from scans at 96.0% coarse/fine accuracy
+- Cost is about 1,000 tokens per log, using only public, no-privilege access
+- The method transfers to any region that holds scanned water-well records

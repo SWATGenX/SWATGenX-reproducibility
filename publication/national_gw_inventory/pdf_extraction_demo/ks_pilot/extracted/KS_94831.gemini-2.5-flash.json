@@ -1,0 +1,39 @@
+{
+  "pdf": "KS_94831",
+  "model": "gemini-2.5-flash",
+  "usage": {
+    "prompt_tokens": 491,
+    "output_tokens": 222,
+    "usd": 0.0007023000000000001,
+    "seconds": 8.4
+  },
+  "extracted": {
+    "lithology": [
+      {
+        "top_ft": 0,
+        "bottom_ft": 2,
+        "description": "topsoil",
+        "normalized": "topsoil"
+      },
+      {
+        "top_ft": 2,
+        "bottom_ft": 5,
+        "description": "silty sand",
+        "normalized": "sand"
+      },
+      {
+        "top_ft": 5,
+        "bottom_ft": 40,
+        "description": "medium to coarse sand and gravel",
+        "normalized": "sand_and_gravel"
+      }
+    ],
+    "legibility": "clear",
+    "extraction_confidence": 0.95,
+    "static_water_level_ft": 10,
+    "total_depth_ft": 40,
+    "water_bearing_zones_ft": [
+      1
+    ]
+  }
+}

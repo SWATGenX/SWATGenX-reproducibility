@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "03565250",
-    "workspace_model_id": "0602/huc12/03565250",
-    "label": "0602/huc12/03565250 (TN)",
+    "workspace_model_id": "0602/usgs_station/03565250",
+    "label": "0602/usgs_station/03565250 (TN)",
     "vpuid": "0602",
     "n_stations": 4,
     "n_production_assigned": 4,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "03565250",
-      "workspace_model_id": "0602/huc12/03565250",
-      "label": "0602/huc12/03565250 (TN)",
+      "workspace_model_id": "0602/usgs_station/03565250",
+      "label": "0602/usgs_station/03565250 (TN)",
       "site_no": "03565040",
       "station_name": "CHESTUEE CREEK ABOVE ENGLEWOOD, TN",
       "usgs_da_km2": 38.3318240329728,
@@ -55,8 +55,8 @@
     },
     {
       "catalog_model_id": "03565250",
-      "workspace_model_id": "0602/huc12/03565250",
-      "label": "0602/huc12/03565250 (TN)",
+      "workspace_model_id": "0602/usgs_station/03565250",
+      "label": "0602/usgs_station/03565250 (TN)",
       "site_no": "03565120",
       "station_name": "CHESTUEE CREEK AT ZION HILL, TN",
       "usgs_da_km2": 97.9015505707008,
@@ -84,8 +84,8 @@
     },
     {
       "catalog_model_id": "03565250",
-      "workspace_model_id": "0602/huc12/03565250",
-      "label": "0602/huc12/03565250 (TN)",
+      "workspace_model_id": "0602/usgs_station/03565250",
+      "label": "0602/usgs_station/03565250 (TN)",
       "site_no": "03565160",
       "station_name": "MIDDLE CR BELOW HWY 39 NR ENGLEWOOD, TN",
       "usgs_da_km2": 84.6926112079872,
@@ -113,8 +113,8 @@
     },
     {
       "catalog_model_id": "03565250",
-      "workspace_model_id": "0602/huc12/03565250",
-      "label": "0602/huc12/03565250 (TN)",
+      "workspace_model_id": "0602/usgs_station/03565250",
+      "label": "0602/usgs_station/03565250 (TN)",
       "site_no": "03565250",
       "station_name": "CHESTUEE CREEK AT DENTVILLE TENN (TVA)",
       "usgs_da_km2": 295.258644578304,

@@ -1,0 +1,7 @@
+Highlights
+
+- Two-way SWAT+/MODFLOW 6 model carries PFAS across surface water and groundwater
+- Validated on 5,383 heads (NSE 0.91), groundwater PFAS, and streambed porewater
+- Fingerprinting and joint calibration independently flag legacy groundwater PFAS
+- Legacy groundwater discharge is a first-order source of lower-mainstem PFOS
+- Global sensitivity analysis maps the surface-versus-groundwater PFAS partition

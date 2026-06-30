@@ -64,17 +64,23 @@ SENS_ENSEMBLE_COMBINED_DAILY_META = REPO_ROOT / "publication/figures/final/fig-s
 SENS_ENSEMBLE_COMBINED_MONTHLY = REPO_ROOT / "publication/figures/supplement/fig-sensitivity-ensemble-controlled-basins-monthly.png"
 
 
+def _workspace_level(b: BasinExport) -> str:
+    return b.model_id.split("/")[1]
+
+
 def _art_root(b: BasinExport) -> Path:
+    lv = _workspace_level(b)
     return (
         USER_ROOT
-        / f"admin/SWATplus_by_VPUID/{b.vpuid}/huc12/{b.site_no}/calibration_artifacts/{b.calval_scenario}"
+        / f"admin/SWATplus_by_VPUID/{b.vpuid}/{lv}/{b.site_no}/calibration_artifacts/{b.calval_scenario}"
     )
 
 
 def _morris_art_root(b: BasinExport) -> Path:
+    lv = _workspace_level(b)
     return (
         USER_ROOT
-        / f"admin/SWATplus_by_VPUID/{b.vpuid}/huc12/{b.site_no}/calibration_artifacts/{b.morris_scenario}"
+        / f"admin/SWATplus_by_VPUID/{b.vpuid}/{lv}/{b.site_no}/calibration_artifacts/{b.morris_scenario}"
     )
 
 
@@ -107,7 +113,7 @@ MORRIS_SCENARIO = "Default_initialized"
 
 BASINS: tuple[BasinExport, ...] = (
     BasinExport(
-        model_id="0310/huc12/02297600",
+        model_id="0310/usgs_station/02297600",
         site_no="02297600",
         state="FL",
         vpuid="0310",
@@ -119,7 +125,7 @@ BASINS: tuple[BasinExport, ...] = (
         calval_scenario=CALVAL_SCENARIO,
         morris_scenario=MORRIS_SCENARIO,
         cal_settings_row=(
-            "0310/huc12/02297600,02297600,controlled_eval_02297600_split20260601,10,6,36,70,"
+            "0310/usgs_station/02297600,02297600,controlled_eval_02297600_split20260601,10,6,36,70,"
             '"SWAT nyskip=3 after START_YEAR=2010","Scored 2013-01-01 to 2018-12-31",'
             '"Scored 2019-01-01 to 2024-12-31 (Ver 2019-2024 nyskip=0)",'
             '"Minimize negative (daily_NSE + monthly_NSE) sum",'
@@ -141,7 +147,7 @@ BASINS: tuple[BasinExport, ...] = (
         morris_spider_top_n=8,
     ),
     BasinExport(
-        model_id="0712/huc12/05536265",
+        model_id="0712/usgs_station/05536265",
         site_no="05536265",
         state="IL",
         vpuid="0712",
@@ -153,7 +159,7 @@ BASINS: tuple[BasinExport, ...] = (
         calval_scenario=CALVAL_SCENARIO,
         morris_scenario=MORRIS_SCENARIO,
         cal_settings_row=(
-            "0712/huc12/05536265,05536265,controlled_eval_05536265_split20260601,10,6,48,50,"
+            "0712/usgs_station/05536265,05536265,controlled_eval_05536265_split20260601,10,6,48,50,"
             '"SWAT nyskip=2 after START_YEAR=2018","Scored 2020-01-01 to 2024-12-31",'
             '"Scored 2012-01-01 to 2015-12-31 (Ver 2011-2015 nyskip=1)",'
             '"Minimize negative (daily_NSE + monthly_NSE) sum",'
@@ -310,7 +316,8 @@ def _assemble_hydrographs(b: BasinExport) -> None:
 
 
 def _site_root(b: BasinExport) -> Path:
-    return USER_ROOT / EXAMPLE_USER / f"SWATplus_by_VPUID/{b.vpuid}/huc12/{b.site_no}"
+    lv = _workspace_level(b)
+    return USER_ROOT / EXAMPLE_USER / f"SWATplus_by_VPUID/{b.vpuid}/{lv}/{b.site_no}"
 
 
 def _write_tab_sensitivity_ensemble_metrics() -> None:

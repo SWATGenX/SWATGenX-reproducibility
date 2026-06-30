@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "0407809265",
-    "workspace_model_id": "0403/huc12/0407809265",
-    "label": "0403/huc12/0407809265 (WI)",
+    "workspace_model_id": "0403/usgs_station/0407809265",
+    "label": "0403/usgs_station/0407809265 (WI)",
     "vpuid": "0403",
     "n_stations": 1,
     "n_production_assigned": 1,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "0407809265",
-      "workspace_model_id": "0403/huc12/0407809265",
-      "label": "0403/huc12/0407809265 (WI)",
+      "workspace_model_id": "0403/usgs_station/0407809265",
+      "label": "0403/usgs_station/0407809265 (WI)",
       "site_no": "0407809265",
       "station_name": "MIDDLE BRANCH EMBARRASS RIVER NEAR WITTENBERG, WI",
       "usgs_da_km2": 197.6160928186368,

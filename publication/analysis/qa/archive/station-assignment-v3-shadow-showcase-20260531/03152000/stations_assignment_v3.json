@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "03152000",
-    "workspace_model_id": "0503/huc12/03152000",
-    "label": "0503/huc12/03152000 (nan)",
+    "workspace_model_id": "0503/usgs_station/03152000",
+    "label": "0503/usgs_station/03152000 (nan)",
     "vpuid": "0503",
     "n_stations": 6,
     "n_production_assigned": 6,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "03152000",
-      "workspace_model_id": "0503/huc12/03152000",
-      "label": "0503/huc12/03152000 (nan)",
+      "workspace_model_id": "0503/usgs_station/03152000",
+      "label": "0503/usgs_station/03152000 (nan)",
       "site_no": "03151400",
       "station_name": "LITTLE KANAWHA RIVER NR WILDCAT, WV",
       "usgs_da_km2": 290.07866835763195,
@@ -55,8 +55,8 @@
     },
     {
       "catalog_model_id": "03152000",
-      "workspace_model_id": "0503/huc12/03152000",
-      "label": "0503/huc12/03152000 (nan)",
+      "workspace_model_id": "0503/usgs_station/03152000",
+      "label": "0503/usgs_station/03152000 (nan)",
       "site_no": "03151500",
       "station_name": "L KANAWHA R NR BURNSVILLE, WV",
       "usgs_da_km2": 401.44815710208,
@@ -84,8 +84,8 @@
     },
     {
       "catalog_model_id": "03152000",
-      "workspace_model_id": "0503/huc12/03152000",
-      "label": "0503/huc12/03152000 (nan)",
+      "workspace_model_id": "0503/usgs_station/03152000",
+      "label": "0503/usgs_station/03152000 (nan)",
       "site_no": "03151520",
       "station_name": "LITTLE KANAWHA RIVER BELOW BURNSVILLE DAM, WV",
       "usgs_da_km2": 422.168061984768,
@@ -113,8 +113,8 @@
     },
     {
       "catalog_model_id": "03152000",
-      "workspace_model_id": "0503/huc12/03152000",
-      "label": "0503/huc12/03152000 (nan)",
+      "workspace_model_id": "0503/usgs_station/03152000",
+      "label": "0503/usgs_station/03152000 (nan)",
       "site_no": "03151600",
       "station_name": "LITTLE KANAWHA RIVER AT BURNSVILLE, WV",
       "usgs_da_km2": 642.317051363328,
@@ -142,8 +142,8 @@
     },
     {
       "catalog_model_id": "03152000",
-      "workspace_model_id": "0503/huc12/03152000",
-      "label": "0503/huc12/03152000 (nan)",
+      "workspace_model_id": "0503/usgs_station/03152000",
+      "label": "0503/usgs_station/03152000 (nan)",
       "site_no": "03151915",
       "station_name": "SAND FORK NEAR GLENVILLE, WV",
       "usgs_da_km2": 204.8680595275776,
@@ -171,8 +171,8 @@
     },
     {
       "catalog_model_id": "03152000",
-      "workspace_model_id": "0503/huc12/03152000",
-      "label": "0503/huc12/03152000 (nan)",
+      "workspace_model_id": "0503/usgs_station/03152000",
+      "label": "0503/usgs_station/03152000 (nan)",
       "site_no": "03152000",
       "station_name": "LITTLE KANAWHA RIVER AT GLENVILLE, WV",
       "usgs_da_km2": 1002.325398700032,

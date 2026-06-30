@@ -1,0 +1,51 @@
+% Integrated SWAT+ <-> MODFLOW 6 PFAS (surface water + groundwater) manuscript.
+% Merges the SWAT+ PFAS surface-water engine paper with the SWAT+<->MF6 coupling, unified on
+% the Rogue River. Shared preamble. Compile: bash build_pdfs.sh
+\documentclass[12pt]{article}
+
+\input{preamble-common.tex}
+\usepackage{lineno}
+
+\doublespacing
+\linenumbers
+
+\title{Watershed-scale PFAS fate and transport across surface water and groundwater:
+a two-way coupled SWAT\textsuperscript{+}/MODFLOW~6 model quantifies the legacy
+groundwater contribution to in-stream loads}
+
+\author{%
+  Vahid Rafiei\\
+  Independent Researcher\\
+  \texttt{vahidr32@gmail.com}\\
+  ORCID: \href{https://orcid.org/0009-0009-8309-1895}{0009-0009-8309-1895}
+}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\input{sections/highlights}
+\input{sections/abstract}
+\input{sections/keywords}
+
+\input{sections/introduction}
+\input{sections/methods-sw-engine}
+\input{sections/methods-modflow-generation}
+\input{sections/methods-coupling}
+\input{sections/methods-calibration}
+\input{sections/methods-pfas}
+\input{sections/results}
+\input{sections/tables}
+\input{sections/si_morris_table}
+\input{sections/discussion}
+\input{sections/conclusions}
+
+\input{sections/availability}
+\input{sections/declarations}
+
+\bibliographystyle{apalike}
+\bibliography{references}
+
+\end{document}

@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "02197598",
-    "workspace_model_id": "0306/huc12/02197598",
-    "label": "0306/huc12/02197598 (GA)",
+    "workspace_model_id": "0306/usgs_station/02197598",
+    "label": "0306/usgs_station/02197598 (GA)",
     "vpuid": "0306",
     "n_stations": 2,
     "n_production_assigned": 2,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "02197598",
-      "workspace_model_id": "0306/huc12/02197598",
-      "label": "0306/huc12/02197598 (GA)",
+      "workspace_model_id": "0306/usgs_station/02197598",
+      "label": "0306/usgs_station/02197598 (GA)",
       "site_no": "02197598",
       "station_name": "BRUSHY CREEK AT CAMPGROUND ROAD, NEAR WRENS, GA",
       "usgs_da_km2": 56.4617408053248,
@@ -55,8 +55,8 @@
     },
     {
       "catalog_model_id": "02197598",
-      "workspace_model_id": "0306/huc12/02197598",
-      "label": "0306/huc12/02197598 (GA)",
+      "workspace_model_id": "0306/usgs_station/02197598",
+      "label": "0306/usgs_station/02197598 (GA)",
       "site_no": "02197600",
       "station_name": "BRUSHY CREEK NEAR WRENS, GA",
       "usgs_da_km2": 72.51966708940799,

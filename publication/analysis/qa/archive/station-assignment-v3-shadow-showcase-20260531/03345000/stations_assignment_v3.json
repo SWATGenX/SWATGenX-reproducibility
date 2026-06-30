@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "03345000",
-    "workspace_model_id": "0512/huc12/03345000",
-    "label": "0512/huc12/03345000 (IL)",
+    "workspace_model_id": "0512/usgs_station/03345000",
+    "label": "0512/usgs_station/03345000 (IL)",
     "vpuid": "0512",
     "n_stations": 9,
     "n_production_assigned": 9,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "03345000",
-      "workspace_model_id": "0512/huc12/03345000",
-      "label": "0512/huc12/03345000 (IL)",
+      "workspace_model_id": "0512/usgs_station/03345000",
+      "label": "0512/usgs_station/03345000 (IL)",
       "site_no": "03343350",
       "station_name": "BLACK SLOUGH AT CR 500N NR PHILO, IL",
       "usgs_da_km2": 141.7919477414137,
@@ -55,8 +55,8 @@
     },
     {
       "catalog_model_id": "03345000",
-      "workspace_model_id": "0512/huc12/03345000",
-      "label": "0512/huc12/03345000 (IL)",
+      "workspace_model_id": "0512/usgs_station/03345000",
+      "label": "0512/usgs_station/03345000 (IL)",
       "site_no": "03343400",
       "station_name": "EMBARRAS RIVER NEAR CAMARGO, IL",
       "usgs_da_km2": 481.737788522496,
@@ -84,8 +84,8 @@
     },
     {
       "catalog_model_id": "03345000",
-      "workspace_model_id": "0512/huc12/03345000",
-      "label": "0512/huc12/03345000 (IL)",
+      "workspace_model_id": "0512/usgs_station/03345000",
+      "label": "0512/usgs_station/03345000 (IL)",
       "site_no": "03343500",
       "station_name": "EMBARRAS RIVER NEAR OAKLAND, IL",
       "usgs_da_km2": 1341.613841154048,
@@ -113,8 +113,8 @@
     },
     {
       "catalog_model_id": "03345000",
-      "workspace_model_id": "0512/huc12/03345000",
-      "label": "0512/huc12/03345000 (IL)",
+      "workspace_model_id": "0512/usgs_station/03345000",
+      "label": "0512/usgs_station/03345000 (IL)",
       "site_no": "03343550",
       "station_name": "EMBARRAS RIVER AT STATE HWY 133 NR OAKLAND, IL",
       "usgs_da_km2": 1403.773555802112,
@@ -142,8 +142,8 @@
     },
     {
       "catalog_model_id": "03345000",
-      "workspace_model_id": "0512/huc12/03345000",
-      "label": "0512/huc12/03345000 (IL)",
+      "workspace_model_id": "0512/usgs_station/03345000",
+      "label": "0512/usgs_station/03345000 (IL)",
       "site_no": "03343805",
       "station_name": "KICKAPOO CREEK NEAR MATTOON, IL",
       "usgs_da_km2": 23.309892993024,
@@ -171,8 +171,8 @@
     },
     {
       "catalog_model_id": "03345000",
-      "workspace_model_id": "0512/huc12/03345000",
-      "label": "0512/huc12/03345000 (IL)",
+      "workspace_model_id": "0512/usgs_station/03345000",
+      "label": "0512/usgs_station/03345000 (IL)",
       "site_no": "03343820",
       "station_name": "KICKAPOO CREEK AT 1320E ROAD NR CHARLESTON, IL",
       "usgs_da_km2": 71.7426706563072,
@@ -200,8 +200,8 @@
     },
     {
       "catalog_model_id": "03345000",
-      "workspace_model_id": "0512/huc12/03345000",
-      "label": "0512/huc12/03345000 (IL)",
+      "workspace_model_id": "0512/usgs_station/03345000",
+      "label": "0512/usgs_station/03345000 (IL)",
       "site_no": "03344000",
       "station_name": "EMBARRAS RIVER NEAR DIONA, IL",
       "usgs_da_km2": 2380.199073398784,
@@ -229,8 +229,8 @@
     },
     {
       "catalog_model_id": "03345000",
-      "workspace_model_id": "0512/huc12/03345000",
-      "label": "0512/huc12/03345000 (IL)",
+      "workspace_model_id": "0512/usgs_station/03345000",
+      "label": "0512/usgs_station/03345000 (IL)",
       "site_no": "03344500",
       "station_name": "RANGE CREEK NEAR CASEY, IL",
       "usgs_da_km2": 19.70980951965696,
@@ -258,8 +258,8 @@
     },
     {
       "catalog_model_id": "03345000",
-      "workspace_model_id": "0512/huc12/03345000",
-      "label": "0512/huc12/03345000 (IL)",
+      "workspace_model_id": "0512/usgs_station/03345000",
+      "label": "0512/usgs_station/03345000 (IL)",
       "site_no": "03345000",
       "station_name": "EMBARRAS RIVER AT NEWTON, IL",
       "usgs_da_km2": 3600.08347336704,

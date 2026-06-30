@@ -1,0 +1,46 @@
+{
+  "pdf": "OR_296007_CROO",
+  "model": "gemini-2.5-flash",
+  "usage": {
+    "prompt_tokens": 491,
+    "output_tokens": 193,
+    "usd": 0.0006298,
+    "seconds": 6.3
+  },
+  "extracted": {
+    "lithology": [
+      {
+        "top_ft": 0,
+        "bottom_ft": 3,
+        "description": "Top Soil",
+        "normalized": "topsoil"
+      },
+      {
+        "top_ft": 3,
+        "bottom_ft": 21,
+        "description": "BROWN CIAY",
+        "normalized": "clay"
+      },
+      {
+        "top_ft": 21,
+        "bottom_ft": 28,
+        "description": "Med. FINE GRAVEL",
+        "normalized": "gravel"
+      },
+      {
+        "top_ft": 28,
+        "bottom_ft": 40,
+        "description": "Med. Fine SAND",
+        "normalized": "sand"
+      }
+    ],
+    "legibility": "clear",
+    "extraction_confidence": 0.9,
+    "static_water_level_ft": 15,
+    "total_depth_ft": 40,
+    "water_bearing_zones_ft": [
+      21,
+      28
+    ]
+  }
+}

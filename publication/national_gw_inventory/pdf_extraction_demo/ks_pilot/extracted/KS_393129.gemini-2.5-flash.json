@@ -1,0 +1,31 @@
+{
+  "pdf": "KS_393129",
+  "model": "gemini-2.5-flash",
+  "usage": {
+    "prompt_tokens": 491,
+    "output_tokens": 129,
+    "usd": 0.0004698,
+    "seconds": 5.1
+  },
+  "extracted": {
+    "lithology": [
+      {
+        "top_ft": 0,
+        "bottom_ft": 0.75,
+        "description": "Asphalt Millings",
+        "normalized": "other"
+      },
+      {
+        "top_ft": 0.75,
+        "bottom_ft": 94.5,
+        "description": "Bentonite Slurry",
+        "normalized": "other"
+      }
+    ],
+    "legibility": "clear",
+    "extraction_confidence": 0.9,
+    "static_water_level_ft": null,
+    "total_depth_ft": 94.5,
+    "water_bearing_zones_ft": []
+  }
+}

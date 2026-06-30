@@ -14,7 +14,7 @@ Same three SWATGenX packages as the public page [/swat-plus-runtime-benchmark](h
 
 **Tables:** Tab-ModelComplexity, Tab-ProductMetrics, Tab-Runtime (generation), Tab-RuntimeBenchmark (primary S/M/L rows).
 
-Workspace paths (`0308/huc12/030801020804`, etc.) are internal only; manuscript tables use **catalog Model ID**.
+Workspace paths (`0308/huc12_outlet/030801020804`, etc.) are internal only; manuscript tables use **catalog Model ID**.
 
 ## 2. Simulation scaling ladder (X20 / X40 / X60)
 
@@ -34,8 +34,8 @@ Compact HUC12 gage watersheds **separate** from the benchmark set; used only for
 
 | Site | Model ID | State |
 |------|----------|-------|
-| `02297600` | `0310/huc12/02297600` | Florida |
-| `05536265` | `0712/huc12/05536265` | Illinois |
+| `02297600` | `0310/usgs_station/02297600` | Florida |
+| `05536265` | `0712/usgs_station/05536265` | Illinois |
 
 **Tables:** Tab-Metrics, Tab-Sensitivity-Morris (Florida complete), cal/val figures.
 

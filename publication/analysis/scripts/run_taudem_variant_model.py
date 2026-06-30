@@ -9,7 +9,7 @@ TauDEM policy keys from web_application/app/utils.py:_apply_web_swatgenx_policy.
 MUST run as www-data so it can write the admin model tree:
   sudo -n -u www-data /data/SWATGenXApp/codes/.venv/bin/python \\
     publication/analysis/scripts/run_taudem_variant_model.py \\
-    --model-id 0308/huc12/030801020804 --model-name SWAT_MODEL_TauDEM_auto \\
+    --model-id 0308/huc12_outlet/030801020804 --model-name SWAT_MODEL_TauDEM_auto \\
     --stream 5000 --channel 1000 --snap 900 --ls-resolution 250 --dem-resolution 30
 """
 from __future__ import annotations
@@ -24,7 +24,7 @@ REPO_ROOT = Path(__file__).resolve().parents[3]
 
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
-    p.add_argument("--model-id", required=True, help="vpuid/level/site_no, e.g. 0308/huc12/030801020804")
+    p.add_argument("--model-id", required=True, help="vpuid/level/site_no, e.g. 0308/huc12_outlet/030801020804")
     p.add_argument("--model-name", required=True, help="project folder name (sibling under the site dir)")
     p.add_argument("--delineation", choices=("taudem", "nhd"), default="taudem",
                    help="taudem = DEM threshold-only; nhd = NHDPlus-HR predefined network (TauDEM fallback)")

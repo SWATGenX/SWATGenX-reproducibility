@@ -1,0 +1,76 @@
+\subsection{Two products, cleanly separated}
+The cumulative ladder (Table~\ref{tab:ladder}) deliberately separates two contributions that a
+single blended speedup would conflate. Group~A---I/O reduction and serial overhead
+removal---changes no model behavior and needs no threads, so it accelerates the engine
+\emph{everyone already runs} and ships to all users through the default binary. Group~B
+---the parallelization---benefits only those who put many cores on a single model. The
+distinction matters for adoption: a practitioner on a laptop gains from Group~A for free, while a
+practitioner calibrating a large basin on a many-core node additionally gains from Group~B. The
+single most important practical message of this paper is that a large fraction of the
+acceleration of the stock engine is achievable \emph{without parallelism at all}.
+
+A cumulative ladder carries one caveat: a rung's marginal contribution depends on the order rungs
+are added. We fix a logical order and report marginals \emph{given that order}; the cumulative
+stock$\rightarrow$final factor is order-independent and is the headline number.
+
+\subsection{A serial fix can raise the parallel ceiling}
+The ladder also exposes an interaction that single-axis studies miss. The \texttt{ch\_temp}
+reset is a Group~A (serial) fix, yet its largest visible effect was on \emph{parallel} scaling:
+because it sat on the serial main-stem critical path, removing it shrank the serial fraction and
+substantially lifted the multi-thread speedup ceiling. The lesson
+is that on an irregular DAG with a long serial tail, serial-overhead removal and parallelization
+are not independent---reducing critical-path work is often the most effective way to improve
+parallel efficiency, more so than adding threads. This is why we measure each serial fix at
+$N=1$ (its pure serial value) \emph{and} report its effect on the scaling curve.
+
+\subsection{Where SWAT+ is parallelizable, and where it is not}
+The scaling ceiling is not an implementation defect; it is the river network. The daily step
+decomposes into a very wide land-phase level ($\approx$58{,}000 independent HRUs) followed by
+a routing cascade that narrows monotonically to a width-1 main stem. By Amdahl's law
+\citep{Amdahl1967} the achievable speedup is bounded by the serial fraction, and after the
+\texttt{ch\_temp} fix that fraction is dominated by the \emph{length} of the converging
+main-stem path---the 104 successive width-1 levels of Figure~\ref{fig:levels}---rather than by
+per-level synchronization. This is visible in the cross-hardware
+data: machines stop scaling at their physical-core count because, once enough cores exist to
+saturate the wide levels, additional cores only wait at the narrow ones. The practical
+implication is that for SWAT+, single-run acceleration past the land-phase regime requires
+either (i) overlapping independent sub-trees of the routing DAG more aggressively across the
+narrow levels, or (ii) reducing the per-channel arithmetic on the main stem (the in-stream
+water-quality and sediment routines), not simply adding threads.
+
+\subsection{Memory bandwidth, clock, and the meaning of ``speedup''}
+SWAT+ at scale is memory-bound: the cross-hardware results show real cores beating
+cores-plus-SMT and 32-core Turin out-scaling 16-core parts. Two reporting hazards follow.
+First, hardware that turbo-boosts a single thread and down-clocks under load deflates the
+$1\rightarrow N$ ratio, so the reported speedup understates the delivered parallel work. Second,
+CPU-utilization monitors mislead---25\% of busy time at eight
+threads was barrier spin, not work. We therefore report wall time and best-of-$N$ alongside
+ratios, and we recommend the same discipline for comparable studies.
+
+\subsection{Correctness as a methodology}
+Treating thread-count invariance as the primary acceptance test, rather than spot-checking a
+hydrograph, converted an open-ended race hunt into a localized, repeatable procedure in which each
+failing output field named the unprotected state. It exposed two defects ordinary checks miss: an
+implicit-\texttt{SAVE} Fortran initializer, and---only once in-stream water quality was exercised
+over a multi-year run---a compiler-induced race in the particulate constituents
+(Section~\ref{sec:correctness}). The transferable lesson is twofold: an equivalence test must
+exercise the full process chain or it certifies only the subset it touches; and when a compiler will
+not stack-allocate large derived-type temporaries, the safe granularity of shared-memory parallelism
+is bounded by where those temporaries are shared.
+
+\subsection{Portability and reproducibility}
+The optimizations are standard OpenMP and portable Fortran; no machine-specific intrinsics are
+used. The dependence on \texttt{ifx} reflects only that \texttt{gfortran} fails to build the
+benchmark model at this size, not a hard requirement of the method. Every optimization is a
+single commit carrying its own validation evidence, and the benchmark harness regenerates the
+scaling tables, so the result chain is auditable end to end.
+
+\subsection{Limitations}
+The benchmark is a single (large) basin; while the bottleneck taxonomy should generalize to
+any SWAT+ model with a deep routing network, the exact level histogram and the land-vs-channel
+split are basin-specific, and small basins with shallow networks will see different ceilings.
+The parallel path is validated for the non-gwflow configuration; the coupled groundwater
+(\texttt{gwflow}) module is currently serial and disables the full-DAG wavefront, so
+groundwater-surface-water runs do not yet benefit (a clearly scoped extension). Finally, the
+cross-hardware study covers three microarchitectures but a single model size; a
+size-vs-scaling sweep would strengthen the generality claim.

@@ -1,0 +1,82 @@
+\subsection{Study area: the Rogue River and the Wolverine source}
+\label{sec:study}
+We demonstrate the integrated model on the Rogue River watershed (Michigan; USGS gauge~04118500),
+a $606$~km\textsuperscript{2} glacial-drift tributary of the Grand River gauged at Rockford. The
+watershed contains the Wolverine World Wide tannery legacy and the House Street disposal site, one
+of the most intensively investigated PFAS contaminated-site corridors in the United States, with a
+dense ambient surface-water network and --- decisively for this work --- a dense groundwater PFAS
+plume dataset. The same SWAT\textsuperscript{+} model used for the surface-water engine
+(Section~\ref{sec:engine}; $17{,}771$ HRUs, $590$ channels, generated from NHDPlus High Resolution
+hydrography) supplies the land surface, recharge, and channel network; the MODFLOW~6 model uses a
+uniform 250~m grid with three layers ($\approx 24{,}900$ active cells), summarized with the rest of
+the coupled-model configuration in Table~\ref{tab:studyarea}. The contribution is the
+\emph{automated, reproducible} construction of the coupled model and its contaminant extension on the
+SWATGenX platform \citep{Rafiei2026SWATGenX}, whose high-resolution SWAT\textsuperscript{+} models run
+on an accelerated, byte-reproducible engine \citep{rafiei2026engine}; the same code runs for any
+U.S.\ gauge.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.62\textwidth]{fig1_study_area.pdf}
+  \caption{The Rogue River watershed (USGS~04118500), Michigan. The SWATGenX-generated
+  \citep{Rafiei2026SWATGenX} SWAT\textsuperscript{+} network resolves $590$ channels from NHDPlus High
+  Resolution; the red star
+  marks the Wolverine World Wide / House Street legacy PFAS source in the lower river. The same
+  watershed carries the dense surface-water and groundwater PFAS observation networks used to
+  validate both compartments. Map lines delineate study areas and do not necessarily depict accepted
+  national boundaries.}
+  \label{fig:study}
+\end{figure}
+
+\subsection{On-the-fly MODFLOW~6 model generation}
+\label{sec:generation}
+
+The complete groundwater model --- land surface, layered aquifer geometry, hydraulic properties,
+recharge, and boundary conditions --- is generated from public data at model-build time. Building
+each component on the fly, rather than from pre-computed raster products, keeps every input auditable
+and guarantees consistency with the surface-water model. The land surface is the SWAT\textsuperscript{+}
+DEM; aquifer geometry and conductivity are kriged from a raw well database; and recharge is taken
+directly from the SWAT\textsuperscript{+} water balance. A uniform-thickness bedrock buffer beneath
+the drift and water table is required for steady-state Newton stability on dissected basins, where a
+sliver bedrock layer in deep-water-table uplands otherwise dewaters and oscillates.
+
+\paragraph{Land surface.} The model top is the SWAT\textsuperscript{+} DEM resampled onto the
+MODFLOW grid centres, the single source of truth for elevation with all other layers snapped beneath
+it. Sharing the surface-water model's own elevation eliminates a class of elevation errors that arise
+when a separate DEM product is clipped and cleaned independently and removes an external dependency.
+
+\paragraph{Aquifer geometry and hydraulic properties.} Layer bottoms and hydraulic properties are
+kriged on the fly from a raw groundwater-well database (in the demonstration region, the Michigan
+Wellogic database, $\approx 1.17$~million wells; a companion effort harmonizes such well records into a
+national inventory of subsurface lithology and hydraulics \citep{rafiei2026gwinventory}). Each record is cured (sentinel and quality flags
+stripped, physical consistency enforced, units converted), then a variogram is fit and ordinary
+kriging with $k$-fold cross-validation produces each surface: static water level, horizontal and
+vertical hydraulic conductivity, and aquifer thickness. The three-layer column is snapped to the DEM
+top --- an upper and lower drift layer whose combined thickness follows the kriged well-derived
+aquifer bottom, and a bedrock buffer beneath the kriged water table --- so the saturated zone is
+contained within the active domain everywhere. Storing the well database as a spatially indexed
+FlatGeobuf reduces a bounding-box query from minutes to under a second.
+
+\paragraph{Recharge.} Recharge is taken from the SWAT\textsuperscript{+} model itself --- the
+per-HRU percolation below the soil profile --- rather than from a static recharge raster, so it
+already integrates the weather, soils, land use, and evapotranspiration physics of the calibrated
+surface-water model. Percolation is mapped to MODFLOW cells with the area-weighted HRU-to-cell map
+described in Section~\ref{sec:coupling} and applied as a long-term annual mean (and, in the coupled
+mode, as a daily series). A multiplier on recharge is retained as a calibration parameter.
+
+\paragraph{Boundary conditions.} The watershed perimeter is a head-dependent general-head boundary
+(GHB) toward the kriged water table, with conductance scaled by hydraulic conductivity and saturated
+thickness. This is more defensible than a rigid constant head: it draws near-boundary heads toward
+the regional water table without prescribing them and without importing the full kriging error of
+the static-water-level surface. The perimeter is taken directly from the active-domain edge (every
+active cell with a non-active four-neighbour or on the grid edge, in every layer), which guarantees
+a complete, leak-free ring rather than the open perimeter cells and interior fixed heads that a
+buffered-boundary rasterization can leave behind. Lakes are represented as a surface-seepage drain
+at the land surface. The flow solver uses the Newton formulation with a backtracking,
+delta-bar-delta under-relaxation configuration tuned for robust convergence at 250~m resolution.
+
+\paragraph{Streams.} The stream network --- $1{,}506$ streamflow-routing (SFR) reaches built from
+the SWAT\textsuperscript{+} channel graph, detailed in Section~\ref{sec:coupling} --- represents
+only channels of stream order $\geq 2$. Order-1 flowlines are largely artificial headwater traces
+that sit high in the landscape, dry cells when incised, and do not sustain regional
+groundwater--stream exchange.

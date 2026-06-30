@@ -1,0 +1,10 @@
+{
+  "model": "04124500_calibrated_SFR",
+  "stream_package": "SFR",
+  "n_reaches": 382,
+  "n_channels": 95,
+  "basin_gw_to_stream_m3d": 90223.9,
+  "basin_stream_to_gw_m3d": 35878.9,
+  "net_baseflow_m3s": 0.629,
+  "gaining_channel_frac": 0.547
+}

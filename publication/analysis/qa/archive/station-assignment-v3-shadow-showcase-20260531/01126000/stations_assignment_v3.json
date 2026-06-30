@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "01126000",
-    "workspace_model_id": "0110/huc12/01126000",
-    "label": "0110/huc12/01126000 (CT)",
+    "workspace_model_id": "0110/usgs_station/01126000",
+    "label": "0110/usgs_station/01126000 (CT)",
     "vpuid": "0110",
     "n_stations": 1,
     "n_production_assigned": 1,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "01126000",
-      "workspace_model_id": "0110/huc12/01126000",
-      "label": "0110/huc12/01126000 (CT)",
+      "workspace_model_id": "0110/usgs_station/01126000",
+      "label": "0110/usgs_station/01126000 (CT)",
       "site_no": "01126000",
       "station_name": "FIVEMILE R AT KILLINGLY, CT.",
       "usgs_da_km2": 149.70131277742078,

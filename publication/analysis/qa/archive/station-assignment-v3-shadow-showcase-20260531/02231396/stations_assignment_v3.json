@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "02231396",
-    "workspace_model_id": "0308/huc12/02231396",
-    "label": "0308/huc12/02231396 (FL)",
+    "workspace_model_id": "0308/usgs_station/02231396",
+    "label": "0308/usgs_station/02231396 (FL)",
     "vpuid": "0308",
     "n_stations": 1,
     "n_production_assigned": 1,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "02231396",
-      "workspace_model_id": "0308/huc12/02231396",
-      "label": "0308/huc12/02231396 (FL)",
+      "workspace_model_id": "0308/usgs_station/02231396",
+      "label": "0308/usgs_station/02231396 (FL)",
       "site_no": "02231396",
       "station_name": "BLUE CYPRESS CREEK NEAR FELLSMERE, FL",
       "usgs_da_km2": 271.94875158528,

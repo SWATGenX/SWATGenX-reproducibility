@@ -1,0 +1,105 @@
+{
+  "pdf": "KS_533606",
+  "model": "gemini-2.5-flash",
+  "usage": {
+    "prompt_tokens": 1007,
+    "output_tokens": 845,
+    "usd": 0.0024146000000000003,
+    "seconds": 11.5
+  },
+  "extracted": {
+    "lithology": [
+      {
+        "top_ft": 0,
+        "bottom_ft": 53,
+        "description": "FINE SAND, TAN CLAY STREAKS",
+        "normalized": "sand"
+      },
+      {
+        "top_ft": 53,
+        "bottom_ft": 60,
+        "description": "FINE COARSE SAND WITH SMALL GRAVEL",
+        "normalized": "sand_and_gravel"
+      },
+      {
+        "top_ft": 60,
+        "bottom_ft": 70,
+        "description": "FINE MEDIUM SAND WITH TAN CLAY STREAKS & LAYERS",
+        "normalized": "sand"
+      },
+      {
+        "top_ft": 70,
+        "bottom_ft": 120,
+        "description": "TAN CLAY WITH FINE SAND STREAKS & TAN WHITE CALICHE & SOFT ROCK STREAKS",
+        "normalized": "clay"
+      },
+      {
+        "top_ft": 120,
+        "bottom_ft": 140,
+        "description": "FINE COARSE SAND WITH TAN CLAY STREAKS",
+        "normalized": "sand"
+      },
+      {
+        "top_ft": 140,
+        "bottom_ft": 200,
+        "description": "FINE SAND WITH TAN CLAY",
+        "normalized": "sand"
+      },
+      {
+        "top_ft": 200,
+        "bottom_ft": 220,
+        "description": "FINE COARSE SAND",
+        "normalized": "sand"
+      },
+      {
+        "top_ft": 220,
+        "bottom_ft": 240,
+        "description": "FINE SAND WITH TAN CLAY LAYERS",
+        "normalized": "sand"
+      },
+      {
+        "top_ft": 240,
+        "bottom_ft": 280,
+        "description": "TAN CLAY CALICHE FINE SAND",
+        "normalized": "clay"
+      },
+      {
+        "top_ft": 280,
+        "bottom_ft": 320,
+        "description": "TIGHT FINE SAND WITH TAN CLAY",
+        "normalized": "sand"
+      },
+      {
+        "top_ft": 320,
+        "bottom_ft": 350,
+        "description": "STICKY TAN CLAY WITH FINE SAND STREAK",
+        "normalized": "clay"
+      },
+      {
+        "top_ft": 350,
+        "bottom_ft": 400,
+        "description": "FINE MEDIUM SAND WITH TAN CLAY LAYERS",
+        "normalized": "sand"
+      },
+      {
+        "top_ft": 400,
+        "bottom_ft": 430,
+        "description": "FINE COARSE SAND WITH TAN",
+        "normalized": "sand"
+      },
+      {
+        "top_ft": 430,
+        "bottom_ft": 440,
+        "description": "CLAY LAYERS LOST CIRCULATION",
+        "normalized": "clay"
+      }
+    ],
+    "legibility": "clear",
+    "extraction_confidence": 0.95,
+    "static_water_level_ft": 246,
+    "total_depth_ft": 440,
+    "water_bearing_zones_ft": [
+      246
+    ]
+  }
+}

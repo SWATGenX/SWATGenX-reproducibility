@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "01443900",
-    "workspace_model_id": "0204/huc12/01443900",
-    "label": "0204/huc12/01443900 (NJ)",
+    "workspace_model_id": "0204/usgs_station/01443900",
+    "label": "0204/usgs_station/01443900 (NJ)",
     "vpuid": "0204",
     "n_stations": 4,
     "n_production_assigned": 4,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "01443900",
-      "workspace_model_id": "0204/huc12/01443900",
-      "label": "0204/huc12/01443900 (NJ)",
+      "workspace_model_id": "0204/usgs_station/01443900",
+      "label": "0204/usgs_station/01443900 (NJ)",
       "site_no": "01443250",
       "station_name": "Paulins Kill at Warbasse Jct Rd near Lafayette NJ",
       "usgs_da_km2": 29.5258644578304,
@@ -55,8 +55,8 @@
     },
     {
       "catalog_model_id": "01443900",
-      "workspace_model_id": "0204/huc12/01443900",
-      "label": "0204/huc12/01443900 (NJ)",
+      "workspace_model_id": "0204/usgs_station/01443900",
+      "label": "0204/usgs_station/01443900 (NJ)",
       "site_no": "01443280",
       "station_name": "East Branch Paulins Kill near Lafayette NJ",
       "usgs_da_km2": 33.669845434368,
@@ -84,8 +84,8 @@
     },
     {
       "catalog_model_id": "01443900",
-      "workspace_model_id": "0204/huc12/01443900",
-      "label": "0204/huc12/01443900 (NJ)",
+      "workspace_model_id": "0204/usgs_station/01443900",
+      "label": "0204/usgs_station/01443900 (NJ)",
       "site_no": "01443500",
       "station_name": "Paulins Kill at Blairstown NJ",
       "usgs_da_km2": 326.338501902336,
@@ -113,8 +113,8 @@
     },
     {
       "catalog_model_id": "01443900",
-      "workspace_model_id": "0204/huc12/01443900",
-      "label": "0204/huc12/01443900 (NJ)",
+      "workspace_model_id": "0204/usgs_station/01443900",
+      "label": "0204/usgs_station/01443900 (NJ)",
       "site_no": "01443900",
       "station_name": "Yards Creek near Blairstown NJ",
       "usgs_da_km2": 13.83053650919424,

@@ -1,6 +1,6 @@
 # Calibration proof basin — 01567500 (VPUID 0205)
 
-> **Superseded (2026-05-31):** Manuscript Objective~4 now uses **`0310/huc12/02297600`** for calibration, verification, and Morris sensitivity. This document and frozen artifacts for `01567500` are retained for audit only; do not cite in new manuscript text unless comparing withdrawn runs.
+> **Superseded (2026-05-31):** Manuscript Objective~4 now uses **`0310/usgs_station/02297600`** for calibration, verification, and Morris sensitivity. This document and frozen artifacts for `01567500` are retained for audit only; do not cite in new manuscript text unless comparing withdrawn runs.
 
 **Role in manuscript (historical):** Functional water-balance and routing sanity case — **no major lake/reservoir** immediately upstream of the calibration gage, unlike urban/lake-dominated pilots (e.g. 02294217). Demonstrates that SWATGenX assembly + weather + the platform `init_cal_val` workflow can produce **plausible streamflow timing and volume** when the network is not lake-controlled.
 
@@ -12,13 +12,13 @@
 
 | Field | Value |
 |-------|--------|
-| **model_id** | `0205/huc12/01567500` |
+| **model_id** | `0205/usgs_station/01567500` |
 | **USGS site** | `01567500` |
 | **VPUID** | `0205` |
 | **LEVEL** | `huc12` |
 | **NAME** | `01567500` |
 | **MODEL_NAME** | `SWAT_MODEL_Web_Application` |
-| **User tree** | `${SWATGENX_USER_PATH}/SWATplus_by_VPUID/0205/huc12/01567500/` |
+| **User tree** | `${SWATGENX_USER_PATH}/SWATplus_by_VPUID/0205/usgs_station/01567500/` |
 | **Calibration scenario** | `Default_initialized` |
 | **QSWAT+** | `use_lakes=False` (lakes shapefile present for GIS; **no** `hydrology.res` / reservoir objects in TxtInOut) |
 

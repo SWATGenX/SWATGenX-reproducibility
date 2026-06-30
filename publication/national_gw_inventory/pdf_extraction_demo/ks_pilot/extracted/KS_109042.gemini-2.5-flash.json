@@ -1,0 +1,57 @@
+{
+  "pdf": "KS_109042",
+  "model": "gemini-2.5-flash",
+  "usage": {
+    "prompt_tokens": 491,
+    "output_tokens": 358,
+    "usd": 0.0010423,
+    "seconds": 8.2
+  },
+  "extracted": {
+    "lithology": [
+      {
+        "top_ft": 0,
+        "bottom_ft": 21,
+        "description": "Top soil & Clay",
+        "normalized": "topsoil"
+      },
+      {
+        "top_ft": 21,
+        "bottom_ft": 40,
+        "description": "Red Bed.",
+        "normalized": "other"
+      },
+      {
+        "top_ft": 40,
+        "bottom_ft": 41,
+        "description": "Broken red bed.",
+        "normalized": "other"
+      },
+      {
+        "top_ft": 41,
+        "bottom_ft": 73,
+        "description": "Red Bed.",
+        "normalized": "other"
+      },
+      {
+        "top_ft": 73,
+        "bottom_ft": 74,
+        "description": "Broken red bed.",
+        "normalized": "other"
+      },
+      {
+        "top_ft": 74,
+        "bottom_ft": 125,
+        "description": "Red Bed.",
+        "normalized": "other"
+      }
+    ],
+    "legibility": "clear",
+    "extraction_confidence": 0.95,
+    "static_water_level_ft": 34,
+    "total_depth_ft": 125,
+    "water_bearing_zones_ft": [
+      40
+    ]
+  }
+}

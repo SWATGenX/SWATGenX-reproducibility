@@ -1,0 +1,918 @@
+{
+  "card": {
+    "state": "WI",
+    "model": "gemini-2.5-flash-lite",
+    "sampled": 100,
+    "has_pdf_pct": 98.0,
+    "extracted_ok": 98,
+    "text_layer_pct_LLM": 77.6,
+    "raster_pct_VLM": 22.4,
+    "avg_intervals": 3.2,
+    "legibility_mix": {
+      "clear": 84,
+      "poor": 10,
+      "partial": 4
+    },
+    "per_pdf_usd": 0.000201,
+    "proj_usd_per_1k": 0.2,
+    "note": "blended over text+raster sample; raster carries the cost, text-layer ~free-ish"
+  },
+  "rows": [
+    {
+      "well": "8GN565",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.0001599
+    },
+    {
+      "well": "8CP372",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.0001443
+    },
+    {
+      "well": "ET952",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "poor",
+      "usd": 0.0001271
+    },
+    {
+      "well": "UV215",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.0001965
+    },
+    {
+      "well": "DI368",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "clear",
+      "usd": 0.00015099999999999998
+    },
+    {
+      "well": "AAS029",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 5,
+      "legibility": "clear",
+      "usd": 0.0002774
+    },
+    {
+      "well": "AO025",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.00019319999999999998
+    },
+    {
+      "well": "AJ104",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.0002198
+    },
+    {
+      "well": "TP932",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.0002151
+    },
+    {
+      "well": "8FV626",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.0001231
+    },
+    {
+      "well": "8CA953",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.0001671
+    },
+    {
+      "well": "CV528",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 7,
+      "legibility": "clear",
+      "usd": 0.00032150000000000006
+    },
+    {
+      "well": "8FV382",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 5,
+      "legibility": "clear",
+      "usd": 0.0001799
+    },
+    {
+      "well": "8MZ771",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.0002133
+    },
+    {
+      "well": "8MZ483",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 6,
+      "legibility": "clear",
+      "usd": 0.00023850000000000002
+    },
+    {
+      "well": "JA369",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "poor",
+      "usd": 0.0001305
+    },
+    {
+      "well": "GM604",
+      "has_pdf": false,
+      "status": "no_pdf",
+      "route": "-",
+      "intervals": 0
+    },
+    {
+      "well": "DQ698",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "clear",
+      "usd": 0.0001441
+    },
+    {
+      "well": "CV237",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.00021779999999999998
+    },
+    {
+      "well": "ZW484",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 6,
+      "legibility": "clear",
+      "usd": 0.0003053
+    },
+    {
+      "well": "VB180",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.00025820000000000004
+    },
+    {
+      "well": "PT890",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "poor",
+      "usd": 0.0001248
+    },
+    {
+      "well": "8EZ744",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.0001211
+    },
+    {
+      "well": "AAG183",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.0002486
+    },
+    {
+      "well": "IW560",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "poor",
+      "usd": 0.00013470000000000002
+    },
+    {
+      "well": "AO142",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "poor",
+      "usd": 0.00015040000000000002
+    },
+    {
+      "well": "XW530",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.0002385
+    },
+    {
+      "well": "ZB776",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.0002567
+    },
+    {
+      "well": "GQ315",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "poor",
+      "usd": 0.00014810000000000002
+    },
+    {
+      "well": "ACG077",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.0002409
+    },
+    {
+      "well": "DT367",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.0002213
+    },
+    {
+      "well": "EX756",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.00023610000000000002
+    },
+    {
+      "well": "8MB136",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 5,
+      "legibility": "clear",
+      "usd": 0.0002085
+    },
+    {
+      "well": "AC427",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.00019549999999999998
+    },
+    {
+      "well": "BE508",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.0001631
+    },
+    {
+      "well": "GQ842",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "partial",
+      "usd": 0.00014780000000000001
+    },
+    {
+      "well": "8IU888",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.0001439
+    },
+    {
+      "well": "AG773",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.0002246
+    },
+    {
+      "well": "EX783",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "poor",
+      "usd": 0.0001361
+    },
+    {
+      "well": "GO375",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.0001648
+    },
+    {
+      "well": "8NC631",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.0002184
+    },
+    {
+      "well": "LF187",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.00019260000000000002
+    },
+    {
+      "well": "GS571",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "poor",
+      "usd": 0.00015160000000000003
+    },
+    {
+      "well": "BH543",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 7,
+      "legibility": "clear",
+      "usd": 0.00031420000000000005
+    },
+    {
+      "well": "AAI943",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 5,
+      "legibility": "clear",
+      "usd": 0.00027990000000000003
+    },
+    {
+      "well": "EF091",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "partial",
+      "usd": 0.0001493
+    },
+    {
+      "well": "8IK876",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.00014110000000000001
+    },
+    {
+      "well": "YL646",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 5,
+      "legibility": "clear",
+      "usd": 0.0002724
+    },
+    {
+      "well": "XX288",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.00023470000000000004
+    },
+    {
+      "well": "8DY322",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 10,
+      "legibility": "clear",
+      "usd": 0.0002879
+    },
+    {
+      "well": "8MX708",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 6,
+      "legibility": "clear",
+      "usd": 0.00022250000000000001
+    },
+    {
+      "well": "ZU117",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.0002298
+    },
+    {
+      "well": "8HI770",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.0001831
+    },
+    {
+      "well": "EF638",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.0001699
+    },
+    {
+      "well": "RB179",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.00021559999999999998
+    },
+    {
+      "well": "GJ662",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "clear",
+      "usd": 0.0001752
+    },
+    {
+      "well": "WI570",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 5,
+      "legibility": "clear",
+      "usd": 0.0002804
+    },
+    {
+      "well": "GP543",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "partial",
+      "usd": 0.00016600000000000002
+    },
+    {
+      "well": "PT870",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.0001713
+    },
+    {
+      "well": "8BA403",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.0001187
+    },
+    {
+      "well": "8HD251",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.00016150000000000002
+    },
+    {
+      "well": "EZ205",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "partial",
+      "usd": 0.0001695
+    },
+    {
+      "well": "EX895",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.0001671
+    },
+    {
+      "well": "JA570",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "clear",
+      "usd": 0.0001495
+    },
+    {
+      "well": "AN706",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.00016910000000000002
+    },
+    {
+      "well": "TK751",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 5,
+      "legibility": "clear",
+      "usd": 0.0002785
+    },
+    {
+      "well": "KB265",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.0002523
+    },
+    {
+      "well": "QZ719",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.0002087
+    },
+    {
+      "well": "8HH894",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.00019470000000000002
+    },
+    {
+      "well": "BG248",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.0001877
+    },
+    {
+      "well": "8KF454",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 6,
+      "legibility": "clear",
+      "usd": 0.0002011
+    },
+    {
+      "well": "EX789",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 6,
+      "legibility": "clear",
+      "usd": 0.00027990000000000003
+    },
+    {
+      "well": "HX252",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.0002295
+    },
+    {
+      "well": "8JR260",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 6,
+      "legibility": "clear",
+      "usd": 0.0001943
+    },
+    {
+      "well": "8GH009",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 6,
+      "legibility": "clear",
+      "usd": 0.0002079
+    },
+    {
+      "well": "XU911",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.0002561
+    },
+    {
+      "well": "IC688",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.00022370000000000002
+    },
+    {
+      "well": "GN626",
+      "has_pdf": false,
+      "status": "no_pdf",
+      "route": "-",
+      "intervals": 0
+    },
+    {
+      "well": "TM882",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.0002346
+    },
+    {
+      "well": "8DT465",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 8,
+      "legibility": "clear",
+      "usd": 0.00024870000000000003
+    },
+    {
+      "well": "ZU889",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.0002243
+    },
+    {
+      "well": "8GE237",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.0001379
+    },
+    {
+      "well": "AAK009",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.0002433
+    },
+    {
+      "well": "AAX942",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 5,
+      "legibility": "clear",
+      "usd": 0.00028859999999999997
+    },
+    {
+      "well": "AX009",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.0002027
+    },
+    {
+      "well": "AO093",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "poor",
+      "usd": 0.00013030000000000002
+    },
+    {
+      "well": "8NO163",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.0001449
+    },
+    {
+      "well": "BH074",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 7,
+      "legibility": "clear",
+      "usd": 0.0003064
+    },
+    {
+      "well": "BM224",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "poor",
+      "usd": 0.000135
+    },
+    {
+      "well": "LA037",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "clear",
+      "usd": 0.0001721
+    },
+    {
+      "well": "AAU393",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.0002027
+    },
+    {
+      "well": "UJ859",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 6,
+      "legibility": "clear",
+      "usd": 0.0002971
+    },
+    {
+      "well": "BH281",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.0001674
+    },
+    {
+      "well": "FX386",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.0001804
+    },
+    {
+      "well": "8KR674",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "raster",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.00012350000000000002
+    },
+    {
+      "well": "CA201",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.0001995
+    },
+    {
+      "well": "QM813",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.00022620000000000002
+    },
+    {
+      "well": "CA421",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.0002502
+    },
+    {
+      "well": "GR136",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.0001674
+    },
+    {
+      "well": "8MH238",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.00022590000000000002
+    }
+  ]
+}

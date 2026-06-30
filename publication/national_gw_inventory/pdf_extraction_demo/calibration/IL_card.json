@@ -1,0 +1,894 @@
+{
+  "card": {
+    "state": "IL",
+    "model": "gemini-2.5-flash-lite",
+    "sampled": 100,
+    "has_pdf_pct": 87.0,
+    "extracted_ok": 87,
+    "text_layer_pct_LLM": 100.0,
+    "raster_pct_VLM": 0.0,
+    "avg_intervals": 5.0,
+    "legibility_mix": {
+      "clear": 87
+    },
+    "per_pdf_usd": 0.000191,
+    "proj_usd_per_1k": 0.19,
+    "note": "blended over text+raster sample; raster carries the cost, text-layer ~free-ish"
+  },
+  "rows": [
+    {
+      "well": "120975031700",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 7,
+      "legibility": "clear",
+      "usd": 0.0002553
+    },
+    {
+      "well": "120152080800",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 5,
+      "legibility": "clear",
+      "usd": 0.0002009
+    },
+    {
+      "well": "120974229100",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "clear",
+      "usd": 8.420000000000001e-05
+    },
+    {
+      "well": "121114597000",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 9,
+      "legibility": "clear",
+      "usd": 0.00027410000000000005
+    },
+    {
+      "well": "120970295900",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 7,
+      "legibility": "clear",
+      "usd": 0.0002433
+    },
+    {
+      "well": "121652562600",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 7,
+      "legibility": "clear",
+      "usd": 0.000231
+    },
+    {
+      "well": "121272072700",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 13,
+      "legibility": "clear",
+      "usd": 0.0003991
+    },
+    {
+      "well": "121113419300",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.0001841
+    },
+    {
+      "well": "121113288300",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 5,
+      "legibility": "clear",
+      "usd": 0.000203
+    },
+    {
+      "well": "121952256800",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 5,
+      "legibility": "clear",
+      "usd": 0.0001697
+    },
+    {
+      "well": "120972487500",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.00016360000000000002
+    },
+    {
+      "well": "121930808800",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 8,
+      "legibility": "clear",
+      "usd": 0.0002453
+    },
+    {
+      "well": "121610029400",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "clear",
+      "usd": 7.57e-05
+    },
+    {
+      "well": "121633140300",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.00012820000000000003
+    },
+    {
+      "well": "120070015200",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "clear",
+      "usd": 8.09e-05
+    },
+    {
+      "well": "120192158800",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 7,
+      "legibility": "clear",
+      "usd": 0.0002456
+    },
+    {
+      "well": "120893473700",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 7,
+      "legibility": "clear",
+      "usd": 0.00025120000000000003
+    },
+    {
+      "well": "121372130400",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 7,
+      "legibility": "clear",
+      "usd": 0.00023040000000000002
+    },
+    {
+      "well": "121113340700",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.0001561
+    },
+    {
+      "well": "120310140500",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 6,
+      "legibility": "clear",
+      "usd": 0.00023320000000000003
+    },
+    {
+      "well": "121270019600",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.0001095
+    },
+    {
+      "well": "121792305600",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 8,
+      "legibility": "clear",
+      "usd": 0.0002457
+    },
+    {
+      "well": "121252116500",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 5,
+      "legibility": "clear",
+      "usd": 0.00017550000000000004
+    },
+    {
+      "well": "120052322400",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.0001526
+    },
+    {
+      "well": "120210204900",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.00012350000000000002
+    },
+    {
+      "well": "120230271100",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 5,
+      "legibility": "clear",
+      "usd": 0.0002016
+    },
+    {
+      "well": "121190046300",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.00010899999999999999
+    },
+    {
+      "well": "120392104800",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 9,
+      "legibility": "clear",
+      "usd": 0.0002884
+    },
+    {
+      "well": "120432472100",
+      "has_pdf": false,
+      "status": "no_pdf",
+      "route": "-",
+      "intervals": 0
+    },
+    {
+      "well": "121410156300",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 6,
+      "legibility": "clear",
+      "usd": 0.00020460000000000004
+    },
+    {
+      "well": "120975208200",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 6,
+      "legibility": "clear",
+      "usd": 0.00021610000000000002
+    },
+    {
+      "well": "121052318200",
+      "has_pdf": false,
+      "status": "no_pdf",
+      "route": "-",
+      "intervals": 0
+    },
+    {
+      "well": "121852788500",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 12,
+      "legibility": "clear",
+      "usd": 0.00032690000000000003
+    },
+    {
+      "well": "121872213800",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 6,
+      "legibility": "clear",
+      "usd": 0.0002177
+    },
+    {
+      "well": "120292362200",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.0001365
+    },
+    {
+      "well": "120890034500",
+      "has_pdf": false,
+      "status": "no_pdf",
+      "route": "-",
+      "intervals": 0
+    },
+    {
+      "well": "121973399800",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 5,
+      "legibility": "clear",
+      "usd": 0.000195
+    },
+    {
+      "well": "121112205900",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 6,
+      "legibility": "clear",
+      "usd": 0.0002014
+    },
+    {
+      "well": "121113047200",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 5,
+      "legibility": "clear",
+      "usd": 0.00018610000000000002
+    },
+    {
+      "well": "121973966900",
+      "has_pdf": false,
+      "status": "no_pdf",
+      "route": "-",
+      "intervals": 0
+    },
+    {
+      "well": "120314696000",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.0001475
+    },
+    {
+      "well": "120974663200",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.00015020000000000002
+    },
+    {
+      "well": "121933266200",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.000166
+    },
+    {
+      "well": "120974547700",
+      "has_pdf": false,
+      "status": "no_pdf",
+      "route": "-",
+      "intervals": 0
+    },
+    {
+      "well": "120974689900",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.0001673
+    },
+    {
+      "well": "120310102300",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 6,
+      "legibility": "clear",
+      "usd": 0.00020669999999999998
+    },
+    {
+      "well": "120313790900",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 7,
+      "legibility": "clear",
+      "usd": 0.00023610000000000002
+    },
+    {
+      "well": "120072341300",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 7,
+      "legibility": "clear",
+      "usd": 0.0002521
+    },
+    {
+      "well": "120975239800",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 6,
+      "legibility": "clear",
+      "usd": 0.0002253
+    },
+    {
+      "well": "120192576900",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 9,
+      "legibility": "clear",
+      "usd": 0.00024480000000000004
+    },
+    {
+      "well": "122013325900",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 8,
+      "legibility": "clear",
+      "usd": 0.0002704
+    },
+    {
+      "well": "122012818300",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.00014360000000000002
+    },
+    {
+      "well": "120690043500",
+      "has_pdf": false,
+      "status": "no_pdf",
+      "route": "-",
+      "intervals": 0
+    },
+    {
+      "well": "120412115700",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 6,
+      "legibility": "clear",
+      "usd": 0.00020920000000000002
+    },
+    {
+      "well": "121730135500",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 10,
+      "legibility": "clear",
+      "usd": 0.0003708
+    },
+    {
+      "well": "121172350500",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.0001508
+    },
+    {
+      "well": "121052172200",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.0001628
+    },
+    {
+      "well": "121432471700",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 6,
+      "legibility": "clear",
+      "usd": 0.0002302
+    },
+    {
+      "well": "121973438600",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.00017590000000000002
+    },
+    {
+      "well": "120172130200",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "clear",
+      "usd": 8.79e-05
+    },
+    {
+      "well": "120970115600",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 7,
+      "legibility": "clear",
+      "usd": 0.00022150000000000002
+    },
+    {
+      "well": "120313479700",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 6,
+      "legibility": "clear",
+      "usd": 0.0002233
+    },
+    {
+      "well": "121452345100",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.00015720000000000003
+    },
+    {
+      "well": "120852777100",
+      "has_pdf": false,
+      "status": "no_pdf",
+      "route": "-",
+      "intervals": 0
+    },
+    {
+      "well": "121432424300",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.00014439999999999999
+    },
+    {
+      "well": "120232644000",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 6,
+      "legibility": "clear",
+      "usd": 0.0002029
+    },
+    {
+      "well": "121190264500",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "clear",
+      "usd": 9.549999999999999e-05
+    },
+    {
+      "well": "120912605100",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.00016130000000000002
+    },
+    {
+      "well": "120450104200",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.0001518
+    },
+    {
+      "well": "120973102800",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.0001578
+    },
+    {
+      "well": "120315013500",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.000142
+    },
+    {
+      "well": "121552057000",
+      "has_pdf": false,
+      "status": "no_pdf",
+      "route": "-",
+      "intervals": 0
+    },
+    {
+      "well": "121412544400",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 7,
+      "legibility": "clear",
+      "usd": 0.00024510000000000005
+    },
+    {
+      "well": "121592380000",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 6,
+      "legibility": "clear",
+      "usd": 0.00019920000000000002
+    },
+    {
+      "well": "121452445100",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 5,
+      "legibility": "clear",
+      "usd": 0.000191
+    },
+    {
+      "well": "122013238500",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 1,
+      "legibility": "clear",
+      "usd": 7.32e-05
+    },
+    {
+      "well": "121114378200",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 6,
+      "legibility": "clear",
+      "usd": 0.00022890000000000003
+    },
+    {
+      "well": "120372372300",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.000107
+    },
+    {
+      "well": "121972549000",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.0001191
+    },
+    {
+      "well": "120732187000",
+      "has_pdf": false,
+      "status": "no_pdf",
+      "route": "-",
+      "intervals": 0
+    },
+    {
+      "well": "120270285100",
+      "has_pdf": false,
+      "status": "no_pdf",
+      "route": "-",
+      "intervals": 0
+    },
+    {
+      "well": "121013285600",
+      "has_pdf": false,
+      "status": "no_pdf",
+      "route": "-",
+      "intervals": 0
+    },
+    {
+      "well": "121372115700",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 5,
+      "legibility": "clear",
+      "usd": 0.0001851
+    },
+    {
+      "well": "120992772500",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 7,
+      "legibility": "clear",
+      "usd": 0.00023840000000000002
+    },
+    {
+      "well": "120893299100",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 7,
+      "legibility": "clear",
+      "usd": 0.0002266
+    },
+    {
+      "well": "121113987700",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 7,
+      "legibility": "clear",
+      "usd": 0.0002227
+    },
+    {
+      "well": "121792422300",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 17,
+      "legibility": "clear",
+      "usd": 0.00045080000000000006
+    },
+    {
+      "well": "121433415400",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.00017910000000000002
+    },
+    {
+      "well": "120152066100",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.0001564
+    },
+    {
+      "well": "121113344400",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.0001605
+    },
+    {
+      "well": "121672835500",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.00013220000000000001
+    },
+    {
+      "well": "120110085300",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 6,
+      "legibility": "clear",
+      "usd": 0.0002248
+    },
+    {
+      "well": "120852777200",
+      "has_pdf": false,
+      "status": "no_pdf",
+      "route": "-",
+      "intervals": 0
+    },
+    {
+      "well": "120292352300",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 5,
+      "legibility": "clear",
+      "usd": 0.0002005
+    },
+    {
+      "well": "121433489000",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 4,
+      "legibility": "clear",
+      "usd": 0.0001646
+    },
+    {
+      "well": "130832947900",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.000116
+    },
+    {
+      "well": "121732329200",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.00010899999999999999
+    },
+    {
+      "well": "121412654300",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 2,
+      "legibility": "clear",
+      "usd": 0.00011040000000000001
+    },
+    {
+      "well": "120852792100",
+      "has_pdf": false,
+      "status": "no_pdf",
+      "route": "-",
+      "intervals": 0
+    },
+    {
+      "well": "120452268100",
+      "has_pdf": true,
+      "status": "ok",
+      "route": "text",
+      "intervals": 3,
+      "legibility": "clear",
+      "usd": 0.00015000000000000001
+    }
+  ]
+}

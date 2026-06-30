@@ -119,28 +119,44 @@ def _read_gdb_layer(gdb: Path, layer: str) -> gpd.GeoDataFrame | pd.DataFrame:
 
 @contextmanager
 def _original_nhd_vpuid(vpuid: str, *, keep_unzip: bool = False):
-    """Unzip original HR GDB to a temp dir, load layers, then remove the tree."""
+    """Load NHDPlus HR layers for a VPU from the PROCESSED per-VPUID pickles.
+
+    The processed ``.pkl`` layers under ``NHDPlusHR/VPUID/<vpuid>/`` are the canonical kept
+    artifact; the raw HU4 GDB zip is *ephemeral* — the acquisition pipeline downloads it,
+    extracts the layers, preprocesses to the pkls, then deletes the zip. So extraction reads
+    the pkls. If any required pkl is missing we re-acquire ON DEMAND (download zip -> extract ->
+    preprocess -> pkls), matching the build's own behaviour. Geometry layers are returned in
+    EPSG:4326 to preserve the prior GDB-reading behaviour. ``keep_unzip`` is accepted for
+    signature compatibility (no temp tree is created in the pkl path).
+    """
     if vpuid in _vpu_original_cache:
         yield _vpu_original_cache[vpuid]
         return
 
-    zip_path = _find_zip(vpuid)
-    tmp_root = Path(tempfile.mkdtemp(prefix=f"nhd_qa_{vpuid}_"))
-    unzip_dir = tmp_root / "gdb"
-    unzip_dir.mkdir()
-    print(f"  unzip {zip_path.name} -> {tmp_root} (temporary)")
-    with zipfile.ZipFile(zip_path, "r") as zf:
-        zf.extractall(unzip_dir)
-    gdb = _find_gdb(unzip_dir)
-    layers = {name: _read_gdb_layer(gdb, name) for name in GDB_LAYERS}
-    layers["source_zip"] = str(zip_path)
+    vpu_dir = Path(SWATGenXPaths.NHDPlus_VPUID_path) / str(vpuid)
+    missing = [name for name in GDB_LAYERS if not (vpu_dir / f"{name}.pkl").exists()]
+    if missing:
+        # On-demand acquisition: zip must be downloaded if not available, but extraction
+        # works on the pkls produced from it.
+        print(f"  NHDPlus HR pkls missing for {vpuid} ({missing}); acquiring on demand…")
+        sys.path.insert(0, str(REPO / "SWATGenX"))
+        from NHDPlus_downloads import download_nhdplus_hr_by_VPUID
+        from NHDPlus_extract_by_VPUID import NHDPlus_extract_by_VPUID
+        from NHDPlus_preprocessing import NHDPlus_preprocessing
+        download_nhdplus_hr_by_VPUID([str(vpuid)])
+        NHDPlus_extract_by_VPUID(str(vpuid))
+        NHDPlus_preprocessing(str(vpuid))
+
+    layers: dict = {}
+    for name in GDB_LAYERS:
+        obj = pd.read_pickle(vpu_dir / f"{name}.pkl")
+        # Match the GDB path's geographic CRS so downstream sjoins/snaps are unchanged.
+        if isinstance(obj, gpd.GeoDataFrame) and obj.crs is not None:
+            obj = obj.to_crs("EPSG:4326")
+        layers[name] = obj
+    layers["source_zip"] = str(vpu_dir)  # processed pkls, not a raw zip
     _vpu_original_cache[vpuid] = layers
-    try:
-        yield layers
-    finally:
-        if not keep_unzip:
-            shutil.rmtree(tmp_root, ignore_errors=True)
-            print(f"  removed temp {tmp_root}")
+    yield layers
 
 
 def _normalize_nhdplus_id(df: pd.DataFrame) -> pd.DataFrame:

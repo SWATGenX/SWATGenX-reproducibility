@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "01073587",
-    "workspace_model_id": "0106/huc12/01073587",
-    "label": "0106/huc12/01073587 (NH)",
+    "workspace_model_id": "0106/usgs_station/01073587",
+    "label": "0106/usgs_station/01073587 (NH)",
     "vpuid": "0106",
     "n_stations": 2,
     "n_production_assigned": 2,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "01073587",
-      "workspace_model_id": "0106/huc12/01073587",
-      "label": "0106/huc12/01073587 (NH)",
+      "workspace_model_id": "0106/usgs_station/01073587",
+      "label": "0106/usgs_station/01073587 (NH)",
       "site_no": "010735562",
       "station_name": "EXETER RIVER AT ODELL ROAD, NEAR SANDOWN, NH",
       "usgs_da_km2": 41.6988085764096,
@@ -55,8 +55,8 @@
     },
     {
       "catalog_model_id": "01073587",
-      "workspace_model_id": "0106/huc12/01073587",
-      "label": "0106/huc12/01073587 (NH)",
+      "workspace_model_id": "0106/usgs_station/01073587",
+      "label": "0106/usgs_station/01073587 (NH)",
       "site_no": "01073587",
       "station_name": "EXETER RIVER AT HAIGH ROAD, NEAR BRENTWOOD, NH",
       "usgs_da_km2": 164.464245006336,

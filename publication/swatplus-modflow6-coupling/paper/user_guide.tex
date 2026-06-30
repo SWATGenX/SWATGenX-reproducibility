@@ -1,0 +1,361 @@
+% Standalone User Guide for the coupled SWAT+/MODFLOW 6 PFAS model.
+% Compiles to user_guide.pdf, alongside main.pdf and supplementary.pdf.
+\documentclass[12pt]{article}
+\input{preamble-common.tex}
+\renewcommand{\thefigure}{G\arabic{figure}}
+\renewcommand{\thetable}{G\arabic{table}}
+
+\title{User Guide\\
+\large Running the coupled SWAT\textsuperscript{+}/MODFLOW~6 PFAS fate-and-transport model}
+\author{Vahid Rafiei}
+\date{}
+
+\begin{document}
+\maketitle
+
+\noindent This guide explains, step by step and without assuming a programming
+background, \emph{how to run} the coupled surface-water/groundwater PFAS model
+described in the main paper. For the scientific basis, parameter sources, and
+validation, see the paper and its Supplementary Material; for how to obtain,
+configure, and run the model, everything is here.
+
+There are two ways to get a working model: \textbf{(A)} generate it on the
+SWATGenX website (no installation; best if you are in the United States), or
+\textbf{(B)} build and run it on your own Windows desktop (best to change the
+model, run scenarios, or work offline). Pick one.
+
+\tableofcontents
+\bigskip
+
+\begin{figure}[ht]\centering
+  \includegraphics[width=\textwidth]{conceptual_model.pdf}
+  \caption{Conceptual model. PFAS is partitioned in the soil profile across the
+  aqueous, solid, and air--water-interface phases, transported to streams with
+  runoff, lateral flow, and sediment (existing SWAT\textsuperscript{+} surface
+  leg), and --- new in this work --- carried to groundwater and back: the daily
+  two-way SWAT\textsuperscript{+}$\leftrightarrow$MODFLOW~6 water exchange
+  (recharge down, baseflow up), the (slow, retardation-lagged) vadose pathway,
+  the legacy groundwater plume, and the groundwater PFAS discharge to streams.}
+\end{figure}
+
+\begin{figure}[ht]\centering
+  \includegraphics[width=0.95\textwidth]{guide_workflow.png}
+  \caption{How data flows through a coupled run. The engine reads the
+  \texttt{TxtInOut} files, runs the SWAT\textsuperscript{+} land phase, sends
+  recharge and leached PFAS \emph{down} to MODFLOW~6, returns baseflow and
+  discharged PFAS \emph{up} into the streams, and writes the surface,
+  groundwater, and exchange outputs.}
+\end{figure}
+
+%======================================================================
+\section{The easy way: build it on swatgenx.com}\label{g:web}
+\begin{enumerate}
+  \item Go to \url{https://swatgenx.com} and create a free account (Figure~A1).
+  \item Find your watershed by its USGS streamgage number or by clicking the
+        stream network (Figure~A2).
+  \item Choose what to build (Figure~A3):
+    \begin{itemize}
+      \item \textbf{SWAT\textsuperscript{+} (surface water)} --- available for the
+            entire continental United States.
+      \item \textbf{SWAT\textsuperscript{+} + MODFLOW~6 (surface water +
+            groundwater)} --- currently available for the \textbf{Michigan Lower
+            Peninsula} only; \textbf{more states are coming soon}.
+      \item Turn on the \textbf{PFAS} option for PFAS fate and transport.
+    \end{itemize}
+  \item Click \textbf{Build}. When it finishes you get a download link and an
+        online results dashboard (Figure~A4).
+  \item Download the model folder. Inside it is a folder named \texttt{TxtInOut}
+        --- that \emph{is} the model. You can use the website results, or run it
+        yourself with the engine (Section~\ref{g:run}).
+\end{enumerate}
+If MODFLOW~6 is not yet available for your state, you can still build
+SWAT\textsuperscript{+} everywhere and add groundwater later.
+
+%======================================================================
+\section{The full way: run it on your Windows desktop}\label{g:local}
+
+\subsection{Get the code}
+Install \emph{Git for Windows} (\url{https://git-scm.com}; accept the defaults),
+open \emph{Git Bash}, and copy the code:
+\begin{verbatim}
+   git clone https://github.com/rafiei-vahid/swatplus.git
+   cd swatplus
+   git checkout feat/pfas-surface-water
+\end{verbatim}
+This gives you the SWAT\textsuperscript{+} engine with the PFAS and MODFLOW~6
+coupling built in.
+
+\subsection{Get an example model}
+Download the example Rogue River PFAS model from the paper's data page and unzip
+it. You will get a \texttt{TxtInOut} folder of text files --- that is the model.
+
+\subsection{Compile the engine}
+You need the \emph{Intel Fortran compiler} (\texttt{ifx}), free in the Intel
+oneAPI HPC Toolkit (\url{https://www.intel.com/oneapi}). Open the ``Intel oneAPI
+command prompt'' and build (Figure~B1):
+\begin{verbatim}
+   cd swatplus
+   cmake -B build -S . -DCMAKE_Fortran_COMPILER=ifx
+   cmake --build build
+\end{verbatim}
+You now have \texttt{swatplus.exe} in \texttt{build}. Copy it into your
+\texttt{TxtInOut} folder. (For surface-water SWAT\textsuperscript{+} only, that is
+all; the groundwater coupling switches on only when the control file below is
+present.)
+
+\subsection{Tell the engine to use MODFLOW~6}\label{g:mf6con}
+The engine runs MODFLOW~6 \emph{only} if it finds a small text file named
+\texttt{mf6.con} in \texttt{TxtInOut}. No file $=$ plain SWAT\textsuperscript{+}
+(nothing changes); with the file $=$ live daily two-way coupling.
+
+The MODFLOW~6 model lives in a \textbf{sub-folder of} \texttt{TxtInOut} --- by
+convention \texttt{TxtInOut/mf6/} --- containing the MODFLOW~6 files
+(\texttt{mfsim.nam}, \texttt{.dis}, \texttt{.npf}, \texttt{.sfr}, $\ldots$). The
+engine loads the MODFLOW~6 library (\texttt{libmf6}) and drives it from there.
+Copy this \texttt{mf6.con} template (text after \texttt{!} is ignored):
+\begin{verbatim}
+   ./mf6     ! 1: folder (inside TxtInOut) holding mfsim.nam
+   1         ! 2: groundwater FLOW step, in days (1 = daily)
+   30        ! 3: groundwater TRANSPORT step, in days (30 = monthly)
+   1.0       ! 4: (optional) recharge multiplier for calibration
+             ! 5: (optional) full path to libmf6 if not on the search path
+\end{verbatim}
+Three small map files also go in \texttt{TxtInOut} (already present in the website
+and example models; you build them only for a brand-new watershed):
+\begin{table}[ht]\centering\small
+\begin{tabularx}{\textwidth}{lX}
+\toprule
+File & What it does \\ \midrule
+\texttt{mf6\_recharge.map} & links each SWAT\textsuperscript{+} field (HRU) to the MODFLOW cells under it, so percolation becomes recharge \\
+\texttt{mf6\_baseflow.map} & links each MODFLOW stream reach to its SWAT\textsuperscript{+} channel, so groundwater discharge returns to the right stream \\
+\texttt{pfas\_leach.map} & (PFAS only) links fields to cells so soil-leached PFAS becomes a groundwater source \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Run it}\label{g:run}
+From the Intel oneAPI command prompt, inside \texttt{TxtInOut}, run
+\texttt{swatplus.exe}. You will see day-by-day progress, a line
+\texttt{MF6 COUPLER: active} if \texttt{mf6.con} is present, and a summary of the
+water and PFAS exchanged between surface water and groundwater (Section~\ref{g:out}).
+
+%======================================================================
+\section{Turning PFAS on}\label{g:pfason}
+PFAS is controlled by two files in \texttt{TxtInOut} (already present in the
+example and website models):
+\texttt{pfas.dat} (the compounds and their chemistry; no file $=$ no PFAS) and
+\texttt{pfas\_hru.ini} (the starting soil PFAS in each field, plus its sorption
+numbers).
+
+\noindent\textbf{\texttt{pfas.dat}} --- one row per compound:
+\begin{verbatim}
+    id  name      mw        sol      kl       lm       percop
+     1  PFOS    0.50013   680.0    0.137   2500.0    0.20
+     0  END     0.0       0.0      0.0      0.0       0.0
+\end{verbatim}
+\textbf{\texttt{pfas\_hru.ini}} --- starting soil PFAS and sorption, per field:
+\begin{verbatim}
+   hru 1 nly 4                                <- field 1 has 4 soil layers
+   1                                          <- number of PFAS in this field
+   0.0400 0.0600 0.0600 0.0500                <- grain size d50 (mm), per layer
+   1 1.536e+07 5.610e+06 6.591e+06 1.107e+07  <- id + starting soil PFAS per layer
+   1 450.2 227.8 227.8 365.7                  <- Freundlich kf per layer
+   1 0.4300 0.3800 0.3800 0.4500              <- Freundlich n per layer
+   1 1.0                                      <- sediment enrichment ratio
+\end{verbatim}
+
+%======================================================================
+\section{The PFAS parameters added to SWAT\textsuperscript{+}}\label{g:params}
+Table~\ref{g:partab} lists every input the PFAS module adds, in the spirit of the
+parameter list in Rafiei et al. (2023, \emph{Water Research}). The soil
+three-phase model (aqueous / solid / air--water interface) uses them all.
+\begin{table}[ht]\centering\small
+\caption{PFAS parameters added to SWAT\textsuperscript{+}.}\label{g:partab}
+\begin{tabularx}{\textwidth}{llll}
+\toprule
+Parameter & File & Units & Meaning \\ \midrule
+\texttt{mw}      & pfas.dat     & kg\,mol$^{-1}$ & molecular weight \\
+\texttt{sol}     & pfas.dat     & mg\,L$^{-1}$ & maximum aqueous solubility \\
+\texttt{kl}      & pfas.dat     & L\,nmol$^{-1}$ & Langmuir constant, air--water interface ($K_L$) \\
+\texttt{lm}      & pfas.dat     & nmol\,m$^{-2}$ & Langmuir maximum surface coverage ($\Gamma_{max}$) \\
+\texttt{percop}  & pfas.dat     & -- (0--1) & split of PFAS between percolation and runoff \\
+\texttt{sol\_pfas} & pfas\_hru.ini & kg\,ha$^{-1}$ & starting PFAS mass per soil layer \\
+\texttt{kf}      & pfas\_hru.ini & (nmol\,kg$^{-1}$)/(nM)$^n$ & Freundlich solid-phase sorption coefficient \\
+\texttt{nf} (\texttt{n}) & pfas\_hru.ini & -- & Freundlich exponent (sorption non-linearity) \\
+\texttt{d50}     & pfas\_hru.ini & mm & median grain diameter (sets air--water interfacial area) \\
+\texttt{enr}     & pfas\_hru.ini & -- & enrichment ratio for PFAS on eroded sediment \\
+\bottomrule
+\end{tabularx}
+\end{table}
+The air--water interfacial area is computed, not entered:
+$A_{aw}=6(1-\phi)(1-S_w)/d_{50}$, with $\phi$ porosity and $S_w$ saturation ---
+so \texttt{d50} and soil moisture matter (drier, finer soils hold more PFAS at
+air--water interfaces).
+
+%======================================================================
+\section{Reading the output}\label{g:out}
+After a run, these files appear in \texttt{TxtInOut} (surface) and
+\texttt{TxtInOut/mf6/} (groundwater).
+\begin{table}[ht]\centering\small
+\begin{tabularx}{\textwidth}{lX}
+\toprule
+File & What is in it \\ \midrule
+\texttt{pfas\_hru\_aa.txt} & per-field PFAS budget: soil PFAS start/end and where it went --- surface runoff, lateral flow, \emph{percolation toward groundwater}, sediment, and what remained \\
+\texttt{channel\_pfas\_day.txt} & daily in-stream PFAS concentration and load per channel --- the signal compared to monitoring data \\
+\texttt{pfas\_cha\_balance.out} & in-stream PFAS mass balance (in vs out vs stored) \\
+\texttt{mf6/pfas.ucn} & groundwater PFAS concentration in every aquifer cell, over time \\
+\texttt{mf6/pfas.lst} & groundwater transport mass budget, incl.\ the \texttt{PERCENT DISCREPANCY} (your mass-balance check; should be near zero) \\
+\texttt{mf6/MODFLOW\_sfr.lst} & groundwater flow budget, incl.\ the stream--aquifer exchange \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\noindent The engine also prints an end-of-run \textbf{coupling summary}: the
+recharge delivered to groundwater, the stream--aquifer exchange (\emph{gaining} $=$
+groundwater feeding streams, \emph{losing} $=$ streams leaking down), the PFAS
+loaded to the aquifer, and the PFAS discharged back to the streams. Those last two
+numbers \emph{are} the surface-water/groundwater PFAS exchange. A real run ends:
+\begin{verbatim}
+   MF6 COUPLER summary over 91 coupled days:
+     recharge (sum of daily basin depths) =   5.2015E+01 m
+     SFR exchange: gaining   2.9579E+07  losing  -2.6348E+07 m3
+     PFAS discharged to stream =   1.4780E+00 kg
+   Execution successfully completed
+\end{verbatim}
+and \texttt{pfas\_hru\_aa.txt} looks like:
+\begin{verbatim}
+  hru pfas  init_kgha   final_kgha  surq_kgha   ... perc_kgha   ...
+    1    1  4.24941E-03 4.24941E-03 1.53459E-09 ... 0.00000E+00 ...
+\end{verbatim}
+Here \texttt{perc\_kgha}$=0$ means this compound did not leach to groundwater over
+the run --- a real result for strongly-sorbing PFOS on a short run; mobile
+compounds such as PFHxA show non-zero leaching.
+
+%======================================================================
+\section{File schemas: everything we add to \texttt{TxtInOut}}\label{g:schema}
+Beyond the standard SWAT\textsuperscript{+} and MODFLOW~6 files, the PFAS and
+coupling modules add the files below. All are plain text, whitespace-delimited,
+free-format (column spacing is not significant). This section is the exact format
+of each, grouped as \emph{input}, \emph{coupler}, and \emph{output}.
+
+\subsection{Input files (you provide these)}
+\textbf{\texttt{pfas.dat}} --- compound database; one row per compound, ended by a
+row with \texttt{id}~$=0$ (\texttt{END}). First two lines are headers.
+\begin{table}[ht]\centering\small
+\begin{tabularx}{\textwidth}{lllX}
+\toprule
+Field & Type & Units & Meaning \\ \midrule
+\texttt{id} & int & -- & compound number ($1,2,\ldots$; $0$ ends the list) \\
+\texttt{name} & text(16) & -- & compound name (e.g.\ PFOS) \\
+\texttt{mw} & real & kg\,mol$^{-1}$ & molecular weight \\
+\texttt{sol} & real & mg\,L$^{-1}$ & maximum aqueous solubility \\
+\texttt{kl} & real & L\,nmol$^{-1}$ & Langmuir $K_L$ (air--water interface) \\
+\texttt{lm} & real & nmol\,m$^{-2}$ & Langmuir $\Gamma_{max}$ (air--water interface) \\
+\texttt{percop} & real & -- (0--1) & percolation/runoff split of mobile PFAS \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\textbf{\texttt{pfas\_hru.ini}} --- starting soil PFAS and sorption, one block per
+HRU (after two header lines), in HRU order:
+\begin{verbatim}
+   hru <id> nly <nlayers>            header for this HRU
+   <num_pconta>                      number of PFAS compounds in this HRU
+   <d50_L1> <d50_L2> ...             median grain diameter per layer (mm)
+   <pid> <solpfas_L1> <solpfas_L2>.. starting soil PFAS per layer (kg/ha) [1 line/PFAS]
+   <pid> <kf_L1> <kf_L2> ...         Freundlich kf per layer            [1 line/PFAS]
+   <pid> <nf_L1> <nf_L2> ...         Freundlich n  per layer            [1 line/PFAS]
+   <pid> <enr>                       sediment enrichment ratio          [1 line/PFAS]
+\end{verbatim}
+
+\textbf{\texttt{pfas\_calib.dat}} (optional) --- one line, two global multipliers;
+missing $\Rightarrow$ both $1.0$:
+\begin{verbatim}
+   <soil_scale> <koc_scale>   e.g.  0.11 1.0
+\end{verbatim}
+\texttt{soil\_scale} scales the initial soil PFAS pool; \texttt{koc\_scale} scales
+the in-stream sorption.
+
+\textbf{\texttt{pfas\_cha.dat}} (optional) --- per-compound in-stream transport
+parameters; missing $\Rightarrow$ built-in defaults. Columns: \texttt{id},
+\texttt{name}(16), \texttt{koc} (m$^3$\,g$^{-1}$), \texttt{settle} (m\,d$^{-1}$),
+\texttt{resus} (m\,d$^{-1}$), \texttt{bury} (m\,d$^{-1}$), \texttt{act\_dep} (m).
+
+\subsection{Coupler files (link SWAT\textsuperscript{+} and MODFLOW~6)}
+\textbf{\texttt{mf6.con}} --- the switch that turns on MODFLOW~6 (Section~\ref{g:mf6con}).
+One value per line; text after \texttt{!} ignored.
+\begin{table}[ht]\centering\small
+\begin{tabularx}{\textwidth}{llX}
+\toprule
+Line & Required & Meaning \\ \midrule
+1 & yes & MODFLOW~6 workspace folder, relative to \texttt{TxtInOut} (e.g.\ \texttt{./mf6}) \\
+2 & yes & groundwater FLOW step, days (1 $=$ daily) \\
+3 & yes & groundwater TRANSPORT step, days (30 $=$ monthly) \\
+4 & no  & recharge multiplier (default $1.0$) \\
+5 & no  & full path to \texttt{libmf6} (default: system search path) \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The three map files link the two grids. The first line is a header (counts); each
+following line is one link.
+\begin{table}[ht]\centering\small
+\begin{tabularx}{\textwidth}{lll}
+\toprule
+File & Header line & Each row \\ \midrule
+\texttt{mf6\_recharge.map} & \texttt{N\_ENTRIES N\_CELLS NCOL N\_HRU} & \texttt{cell\_index hru weight} \\
+\texttt{mf6\_baseflow.map} & \texttt{N\_LINKS N\_REACHES} & \texttt{reach\_index gis\_channel} \\
+\texttt{pfas\_leach.map} & \texttt{N\_ENTRIES N\_SRCCELLS} & \texttt{src\_index hru overlap\_ha} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+\begin{itemize}\itemsep1pt
+  \item \texttt{cell\_index} $=$ \texttt{row}$\times$\texttt{NCOL}$+$\texttt{col}
+        (0-based, row-major, into MODFLOW's recharge array); \texttt{weight} $=$
+        (HRU--cell overlap area) $/$ (cell area).
+  \item \texttt{reach\_index} is the 0-based MODFLOW SFR reach; \texttt{gis\_channel}
+        is the SWAT\textsuperscript{+} channel GIS id it discharges to.
+  \item \texttt{src\_index} is the 0-based entry in the groundwater PFAS source
+        list; \texttt{overlap\_ha} is the HRU--cell overlap area (ha).
+\end{itemize}
+
+\subsection{Output files (the model writes these)}
+\textbf{\texttt{pfas\_hru\_aa.txt}} --- run-average per-HRU soil-PFAS budget. Columns:
+\texttt{hru}, \texttt{pfas}, \texttt{init\_kgha}, \texttt{final\_kgha},
+\texttt{surq\_kgha} (surface runoff), \texttt{latq\_kgha} (lateral flow),
+\texttt{perc\_kgha} (leached toward groundwater), \texttt{sed\_kgha} (on sediment),
+\texttt{resid\_kgha} (left in soil); all kg\,ha$^{-1}$.
+
+\textbf{\texttt{pfas\_balance.out}} --- basin land-phase PFAS mass balance (kg over
+the run) per compound: \texttt{init\_kg}, \texttt{final\_kg}, \texttt{surq\_kg},
+\texttt{latq\_kg}, \texttt{perc\_kg}, \texttt{sed\_kg}, plus the maximum per-HRU
+closure residual (a numerical check).
+
+\textbf{\texttt{channel\_pfas\_day.txt}} --- daily in-stream PFAS per channel.
+Columns: \texttt{jday}, \texttt{mon}, \texttt{day}, \texttt{yr}, \texttt{unit},
+\texttt{gis\_id}, \texttt{name}, \texttt{pfas}, then the daily mass terms (kg)
+\texttt{tot\_in}, \texttt{sol\_out}, \texttt{sor\_out}, \texttt{settle},
+\texttt{resus}, \texttt{diffuse}, \texttt{bury}, \texttt{water}, \texttt{benthic},
+and the reach outflow concentration \texttt{conc\_ngL} (ng\,L$^{-1}$).
+
+\textbf{\texttt{pfas\_cha\_balance.out}} --- in-stream PFAS mass balance (run-
+cumulative, kg): reach-days with inflow, point-source input, cumulative reach
+inflow and outflow, and burial (the benthic sink).
+
+The MODFLOW~6 side (\texttt{mf6/pfas.ucn}, \texttt{mf6/pfas.lst},
+\texttt{mf6/MODFLOW\_sfr.lst}) uses \emph{standard} MODFLOW~6 file formats and is
+not re-documented here.
+
+\section{Troubleshooting}\label{g:trouble}
+\begin{itemize}
+  \item \textbf{No MODFLOW output?} \texttt{mf6.con} is missing/misspelled or not
+        in \texttt{TxtInOut}; the engine silently runs plain SWAT\textsuperscript{+}.
+  \item \textbf{No PFAS numbers?} \texttt{pfas.dat} is missing or has no compound
+        rows before \texttt{END}.
+  \item \textbf{Stops while reading a MODFLOW file?} A path in \texttt{mf6.con} is
+        wrong, or \texttt{mf6/} lacks a valid \texttt{mfsim.nam}.
+  \item \textbf{Large \texttt{PERCENT DISCREPANCY} in \texttt{pfas.lst}?} The
+        transport step (line~3 of \texttt{mf6.con}) is too long; reduce it.
+\end{itemize}
+
+\end{document}

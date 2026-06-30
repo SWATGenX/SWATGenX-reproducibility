@@ -1,0 +1,303 @@
+\section{Results}
+\label{sec:results}
+
+\subsection{Surface-water engine performance}
+Before the groundwater leg is added, the surface-water PFAS engine is validated on its own across
+the full Rogue network. The implementation passes its correctness and conservation checks: the soil
+three-phase equilibrium solver reproduces a 40-digit decimal reference to a worst-case relative error
+of $1.7\times10^{-7}$ over $29{,}160$ parameter combinations, the in-stream routine agrees with the
+established SWAT\textsuperscript{+} pesticide channel solver (reduced to its linear-partition subset)
+to a maximum absolute difference of $2.4\times10^{-7}$~kg, and the land- and channel-phase mass
+balances close to a relative residual of order $10^{-5}$. The uncalibrated model, initialized from
+land-use and soil-class background concentrations alone, reproduces the spatial \emph{pattern} of
+ambient PFOS --- including the mainstem downstream gradient --- but overpredicts the \emph{magnitude}
+by a nearly uniform factor of approximately nine. Because reach concentration is linear in soil
+loading, a single global soil-loading scale factor of $0.11$ corrects the magnitude in one step,
+reducing the log-space root-mean-square error across the $20$ gauged reaches ($29$ stations) from
+$1.33$ to $0.74$~dex and the percent bias from $+1516\%$ to $+78\%$. The improvement is concentrated
+where the model is physically anchored: along the seven source-bearing mainstem reaches the
+calibrated log-RMSE is $0.15$~dex (a factor of $1.4$) with a log-space Nash--Sutcliffe efficiency of
+$+0.61$ and a percent bias of $-7\%$, and the modeled concentration rises monotonically downstream
+from $6.2$~ng~L\textsuperscript{-1} in the headwaters toward the Wolverine corridor against an
+observed rise from $6.3$ to $27$~ng~L\textsuperscript{-1}. The calibrated in-stream PFOS field
+renders this gradient over the full $590$-reach network (Figure~\ref{fig:instream}), and the
+remaining misfit is structured rather than random: the two lowest mainstem reaches underpredict the
+observed peak ($14.7$--$15.4$ vs $19$--$27$~ng~L\textsuperscript{-1}), the signature of the
+concentrated House Street source that a uniform soil background cannot reproduce, while the
+bidirectional tributary scatter reflects per-land-use heterogeneity in soil PFAS. These per-HRU
+inputs --- the initial soil PFOS pool and the discrete, soil-class-controlled Freundlich sorption
+fields the engine reads (Figure~\ref{fig:soil}) --- are the national, automatable initialization
+that replaces the measured per-site soil inventory available only for data-rich legacy basins.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{fig2_instream_pfos.pdf}
+  \caption{Calibrated ($0.11$ soil-loading scale, no point source) flow-weighted in-stream PFOS over
+  the $590$-reach Rogue network on a logarithmic colour scale. Concentration rises along the mainstem
+  from green tributaries through the orange mid-river toward the Wolverine source (red star); open
+  rings are the EGLE ambient monitoring stations.}
+  \label{fig:instream}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{fig4_soil_params.pdf}
+  \caption{Per-HRU soil-PFAS initialization across the $17{,}771$ Rogue HRUs: (a) initial
+  surface-layer soil PFOS pool (continuous, NaturalBreaks classes); (b) Freundlich sorption
+  coefficient $k_f$ and (c) Freundlich exponent $n$, both discrete soil-class fields. Colour map:
+  batlow (perceptually uniform, colour-blind safe). The three panels share the same spatial extent;
+  the scale bar and north arrow on panel~(a) apply to all.}
+  \label{fig:soil}
+\end{figure}
+
+\subsection{Surface-water PFAS}
+The surface-water engine reproduces ambient PFOS on the Rogue from the single global soil-loading
+scale factor calibrated above: along the seven source-bearing mainstem reaches the calibrated
+log-space root-mean-square error is $0.15$~dex (a factor of $1.4$), and over all $20$ gauged reaches
+it is $0.74$~dex (Table~\ref{tab:validation}). The model captures the mainstem downstream gradient
+toward the Wolverine corridor (rising from $\sim$6 to $\sim$27~ng~L\textsuperscript{-1}); the
+all-network residuals are structured rather than random, localizing the concentrated point source and
+per-land-use soil heterogeneity. This land-derived in-stream PFAS load is this paper's
+surface-water-alone result and is the baseline to which the groundwater pathway is added below
+(Figure~\ref{fig:swpfas}).
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{fig3_calibration.pdf}
+  \caption{Surface-water PFAS on the Rogue. (a) Observed versus modeled in-stream PFOS, one point
+  per gauged reach; the source-bearing mainstem reaches lie within the $\times2$ envelope while
+  tributaries scatter (the structured residual that localizes source and soil heterogeneity).
+  (b) The ambient monitoring stations coloured by observed PFOS, showing the downstream rise toward
+  the Wolverine source.}
+  \label{fig:swpfas}
+\end{figure}
+
+\subsection{Groundwater model generation and flow calibration}
+The automated pipeline generates a complete, calibrated MODFLOW~6 groundwater flow model for the
+Rogue with no manual editing, yielding a simultaneously head- and flux-consistent field: the
+pilot-point inversion with a baseflow constraint reaches a head Nash--Sutcliffe efficiency of
+$\mathbf{0.91}$ (RMSE $5.6$~m over $5{,}383$ static water-table heads) while reproducing the observed
+gaining baseflow ($+5.46$ vs $5.56$~m\textsuperscript{3}~s\textsuperscript{-1};
+Table~\ref{tab:validation}). The model comprises $\approx 24{,}900$ active cells and a connected SFR
+network of $1{,}506$ reaches built directly from the SWAT\textsuperscript{+} channel graph.
+Reaching this on a second, heavily-developed and dissected watershed --- beyond the
+lightly-developed basin on which the generator was first built --- requires three reproducible
+ingredients: scaling raw well pump \emph{capacity} to actual withdrawal, a near-no-flow
+watershed-divide boundary, and a uniformly-thick bedrock layer for steady-state Newton stability.
+Two calibrated multipliers carry the weight of these adjustments and should be read as effective, not
+literal, values (Table~\ref{tab:calparams}): the well-pumping multiplier settles near $-1.26$ in
+$\log_{10}$ --- actual withdrawal $\sim$5\% of raw registered capacity, absorbing the gap between
+permitted capacity and long-term-average use --- and the drain conductance rails at its upper prior
+bound, standing in for unresolved near-surface drainage structure rather than a measured conductance.
+
+\subsection{Groundwater PFAS plume, validated against the Wolverine measurements}
+The Freundlich GWT model reproduces the House Street plume on the calibrated flow field, validated
+against $846$ measured groundwater PFOS observations. The measurements aggregate to $73$ grid cells
+(the per-cell median; ``$846$ observations'' is the data volume, not the independent degrees of
+freedom), of which $8$ source-zone cells are \emph{prescribed} and the remaining $65$ are
+\emph{predicted}. Over all $65$ predicted cells the log-space RMSE is $1.1$~dex with $71\%$ within a
+factor of ten, and among the $26$ predicted cells \emph{above} background (observed
+$>50$~ng~L\textsuperscript{-1}) it is $1.4$~dex with $46\%$ ($12$ of $26$) within a factor of ten
+(Table~\ref{tab:validation}; Figure~\ref{fig:gwpfas}; Supplementary Figure~S5). The source is
+\emph{prescribed} to the measured plume (constant-concentration cells set to observed values
+$>10^4$~ng~L\textsuperscript{-1}), so the skill assessment separates prescribed from predicted cells:
+the model captures the plume \emph{shape near the source} and predicts ambient background away from
+it. The all-cell figure is flattered by the many background-dominated cells where both model and
+observations sit near the ambient floor; the above-background figure is the more demanding test. The
+elevated observations distant from House Street indicate additional source areas the single
+prescribed source does not represent, not a transport error. At this resolution a grid P\'eclet
+number of $\sim$25 ($\Delta x/\alpha_L = 250/10$) means numerical dispersion dominates the prescribed
+physical dispersivity. The streamflow-transport package routes the groundwater-discharged PFAS
+downstream through the channel network.
+
+A more direct test validates the pathway at the discharge interface itself. Streambed pore water along
+the lower mainstem ($43$ sites, all within $100$~m of a channel) measures the groundwater
+concentration where it enters the stream, and its skill is sharply concentration-dependent: below
+$10$~ng~L\textsuperscript{-1} the model is essentially unbiased ($-0.19$~dex, $82\%$ within a factor of
+ten), whereas above $50$~ng~L\textsuperscript{-1} it under-predicts systematically ($-1.43$~dex). The
+deficit is therefore not random and not a near-detection-limit artefact: it is localized to the
+highest-concentration discharge reaches near the source, where the $250$~m cell smears the steep plume
+gradient --- the same numerical-dispersion limit identified above, now pinned to the reaches that carry
+the bulk of the discharged mass. Reporting a single pooled error ($1.2$~dex) would hide this structure
+and is avoided here.
+
+Because the comparison above is in concentration, it understates the mass implication. The conserved
+quantity is load (concentration times the gaining flux): the net groundwater-to-stream exchange
+integrates to $+5.46$~m\textsuperscript{3}~s\textsuperscript{-1}, matching the calibrated baseflow, and
+the transport-delivered groundwater PFOS load to the network is of order $45$~kg~yr\textsuperscript{-1}.
+Two reaches of equal concentration but differing gaining flux carry proportionally different mass, so
+the validation and the surface/groundwater apportionment are assessed in load space, not concentration
+alone.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{rogue_pfas_validation.png}
+  \caption{Groundwater PFAS on the Rogue. (a) Modeled groundwater PFOS plume with the $846$
+  measured observations overlaid (same colour scale) and the House Street source; (b) modeled
+  versus observed groundwater PFOS, one point per validation cell, with the $1{:}1$ line and
+  $\times10$ envelope (panel-title log-RMSE $\approx1.1$~dex over all predicted cells, rounded; the
+  honest above-background figure is $1.4$~dex, Section~\ref{sec:pfas} and Supplementary Figure~S5);
+  (c) the groundwater-discharged PFOS routed by SFT into $1{,}354$ of the $1{,}506$ stream reaches
+  (raw, before dilution by surface streamflow).}
+  \label{fig:gwpfas}
+\end{figure}
+
+\subsection{Detecting the groundwater contribution model-free: multi-analyte source fingerprinting}
+Before fitting any model to the in-stream data, we test whether the groundwater contribution is
+detectable in the observations themselves. PFAS compounds of different perfluorocarbon chain length
+partition differently between the surface and subsurface pathways --- short-chain compounds are weakly
+sorbed and mobile, long-chain compounds are strongly retained --- so the legacy groundwater plume and
+the diffuse surface signal carry distinct chemical fingerprints. Across the watershed the two
+end-members are sharply separated (Figure~\ref{fig:finger}a): the groundwater plume is PFOS-dominated
+(PFOS is $0.76$ of the five-analyte sum of PFOS, PFOA, PFHxS, PFBS and PFHxA), whereas the in-stream
+surface signal is short-chain-rich (PFBS and PFHxA together $0.42$, versus $0.05$ in the plume). Their
+composition distance is near-maximal ($L_1=0.98$ of a possible $2$), so an in-stream sample is an
+identifiable two-end-member mixture.
+
+Decomposing each mainstem in-stream sample into the surface and groundwater end-members by non-negative
+unmixing --- introducing no fitted transport parameter --- establishes a clear downstream gradient
+(Figure~\ref{fig:finger}b): the groundwater fraction rises from $\approx0$ in the headwaters to
+$0.55$--$0.63$ at the lower mainstem near the Wolverine source. This decomposition is model-free ---
+unlike a model fit it does not rest on the aquifer-side validation, and unlike a single-analyte
+comparison it cannot be reproduced by any co-located surface source with a different chemical signature.
+It is thus the primary evidence that the lower-mainstem PFOS is groundwater-borne; the joint calibration
+below then \emph{quantifies} that contribution and independently recovers the same spatial gradient
+(Pearson $r=0.58$).
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{fig_fingerprint_separation.png}\\[2pt]
+  \includegraphics[width=0.7\textwidth]{fig_reach_gw_fraction_vs_paper.png}
+  \caption{Multi-analyte source fingerprinting. (a) Mean five-analyte composition of the groundwater
+  plume, ambient groundwater, and in-stream surface water; the plume is PFOS-dominated and the surface
+  signal short-chain-rich. (b) Two-end-member mixing space (PFOS fraction versus short-chain fraction);
+  in-stream samples lie on the surface--plume mixing line. (c) Groundwater fraction of in-stream PFAS
+  along the Rogue mainstem from the parameter-free fingerprint decomposition (green) versus the
+  joint-calibration scalar $g$ (blue); the two agree without any shared parameter.}
+  \label{fig:finger}
+\end{figure}
+
+\subsection{Quantifying the groundwater contribution: joint calibration}
+Having detected the groundwater contribution model-free, we quantify it by jointly fitting the surface
+and groundwater legs against the same data. The fit credits a statistically
+significant groundwater term and closes the lower-mainstem residual: the fitted groundwater scalar is
+$g=0.061$ (95\% CI $[0.022,\,0.100]$, excluding zero), significant against the surface-only ($g=0$)
+model ($F_{1,5}=16.2$, $p=0.01$), and the mainstem log-RMSE falls from $0.15$ to $0.07$~dex
+(Figure~\ref{fig:joint}; Table~\ref{tab:jointreach}). The improvement survives leave-one-out
+cross-validation across the seven reaches (held-out RMSE $6.2\to4.5$~ng~L\textsuperscript{-1}), so it
+is not a free parameter fitting in-sample. The groundwater contribution rises from $\sim$13\% of the
+predicted concentration in the headwaters to $\sim$53\% at the lowest reach near the Wolverine
+corridor, closing the sharp rise to $19$--$27$~ng~L\textsuperscript{-1} the surface model alone
+under-predicts ($14.7$--$15.4$).
+
+The joint fit is also the correct accounting. A naive sum of the two separately-calibrated legs
+over-predicts the observed in-stream PFOS by about an order of magnitude because it double-counts: the
+surface soil-loading factor was fitted to grab samples that already integrate the groundwater
+contribution. Because in-stream concentration is linear in both the surface soil-loading and the
+groundwater source strength, the combined prediction at mainstem reach $i$ is
+$C_i = (L/L_0)\,C^{\mathrm{SW}}_i + g\,B_i$, where $C^{\mathrm{SW}}_i$ is the surface-water model's
+in-stream PFOS at the reference loading $L_0=0.11$, $B_i$ is the cumulative groundwater-discharged
+load routed to reach $i$ divided by its streamflow, and $(L,g)$ are fitted together by non-negative
+least squares against the observed mainstem gradient in linear concentration space (the dex figures
+quoted above are the derived diagnostic, not the fitted objective). (The linear superposition assumes in-stream
+channel processes --- settling, resuspension, burial --- act linearly and identically on surface- and
+groundwater-derived PFAS, a defensible first-order approximation given the low ambient sediment load.)
+Fitting jointly drops the surface soil-loading from $L_0=0.11$ to $L=0.077$ --- the signature of
+resolved double-counting, the groundwater leg now explaining part of the in-stream signal the
+surface-only calibration had absorbed. The gain is not free: the joint fit slightly under-predicts the
+headwaters and over-predicts the first lower-mainstem reach, consistent with a metric weighted toward
+the high-concentration reaches, and the inference rests on only $n=7$ source-bearing reaches with $p=2$
+free scalars. The reported significance ($p=0.01$) is moreover optimistic: consecutive mainstem reaches
+share cumulative upstream load, so the seven residuals are spatially autocorrelated and the effective
+sample size is below seven, inflating the nominal degrees of freedom and understating the true $p$. The
+groundwater term is in practice carried by the two lowest reaches --- the only ones where the
+groundwater fraction exceeds $50\%$ --- so the cross-validation ``survives'' largely because leaving one
+of them out still leaves the other as an anchor, and the effective $n$ for the $g$ inference is closer to
+two than to seven. (Because $g=0$ lies on the boundary of the non-negativity constraint, the standard
+$F$ null is also only approximate, an error that is conservative here.) The result remains the most
+defensible reading of these data, but it is observation-\emph{consistent} support, not a strong
+significance claim.
+
+Two cautions bound the interpretation. First, $g$ is a single lumped scalar rescaling the modeled
+groundwater load; it absorbs source-magnitude error, interception, discharge geometry, and the
+grid-controlled numerical dispersion (grid P\'eclet $\sim$25) together, and is not a clean physical
+interception fraction. Second, the joint fit establishes that \emph{something} concentrated at the
+lower mainstem is needed but on concentration alone cannot, by itself, distinguish groundwater
+discharge from any co-located unmodeled term (an additional surface point source, a tributary input,
+near-channel resuspension) loading the same reaches; the \emph{attribution} to groundwater is
+established by the model-free multi-analyte fingerprinting above --- which a co-located surface source
+with a different chemical signature cannot mimic --- and is corroborated by the aquifer-side validation. A correct
+georeferencing of the groundwater discharge to the channel network was essential to expose this
+signal: an earlier model-grid-local mapping mislocated the discharge to a headwater tributary and
+produced a spurious null ($g\approx0$) that the spatially-explicit joint test caught but the
+aquifer-only validation could not.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.85\textwidth]{joint_calibration.png}
+  \caption{Joint surface-water + groundwater calibration on the Rogue mainstem (upstream to
+  downstream). The joint fit (blue) tracks the observed rise (black) where the surface-water model
+  alone (orange) under-predicts; the fitted groundwater contribution (green bars) is small in the
+  headwaters and large at the lower mainstem near the Wolverine source, closing the lower-mainstem
+  residual ($g=0.061$; joint $0.07$ vs surface-only $0.15$~dex).}
+  \label{fig:joint}
+\end{figure}
+
+\paragraph{Predictive uncertainty.} Propagating the joint-calibration parameter uncertainty (the fitted
+$(L,g)$ and their covariance) through the linear in-stream model gives a $95\%$ prediction interval at
+each source-bearing mainstem reach (Figure~\ref{fig:uncertainty}). The observed PFOS lies within the
+predictive band at every reach (log-space $R=0.95$, log-RMSE $0.07$~dex, percent bias $-1\%$), and the
+band widens toward the lower mainstem where the groundwater contribution --- and its uncertainty --- is
+largest. This is the predictive uncertainty conditional on the calibrated model structure; the broader
+parametric uncertainty across the full coupled-model parameter set is screened by the global
+sensitivity analysis below.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{fig_uncertainty_obs_vs_sim.png}
+  \caption{Predictive uncertainty of the joint surface-water + groundwater in-stream PFOS model on the
+  seven source-bearing mainstem reaches. (a) Observed versus simulated PFOS (log axes) with the $1{:}1$
+  line, the one-order-of-magnitude envelope, and the $95\%$ prediction interval (horizontal bars)
+  propagated from the joint-calibration parameter uncertainty; $R=0.95$, log-RMSE $0.07$~dex, percent
+  bias $-1\%$. (b) The same reaches upstream to downstream, with the $95\%$ prediction band, the
+  simulated profile, and the observations; the band widens toward the groundwater-dominated lower
+  mainstem.}
+  \label{fig:uncertainty}
+\end{figure}
+
+\subsection{Global sensitivity: what controls the coupled prediction}
+A calibration tunes parameters but does not reveal which of the coupled model's many parameters
+actually govern its predictions, nor whether the surface and groundwater compartments interact. We
+therefore screened the full coupled parameter space with the Morris elementary-effects method: $18$
+parameters spanning the surface-water PFAS engine (soil loading, the in-stream organic-carbon
+partition, the Langmuir air--water terms, the percolation partition), the groundwater flow model
+(recharge and five conductance/conductivity multipliers), and the groundwater transport model
+(Freundlich $K_f$ and $n$, the dispersivities, source magnitude, and background), over $r=20$
+trajectories ($380$ coupled evaluations) on a $64$-core cloud instance. Each evaluation runs the
+entire chain --- SWAT\textsuperscript{+} for the land-derived in-stream load and MODFLOW~6 for the
+groundwater flow-and-transport discharge --- and we report the mean absolute elementary effect
+$\mu^*$ (importance) and its spread $\sigma$ (interaction and nonlinearity) for four quantities of
+interest (Table~\ref{tab:morris}; Supplementary Figure~S16). Thirteen percent of the samples ---
+groundwater parameter combinations with near-stalled flow that fail to converge or exceed the
+transport time budget --- did not complete; we compute the elementary effects step-by-step so that
+every other evaluation still informs the screening (a median of $17$ effects per parameter).
+
+The screening reproduces, from global variance rather than a single fit, the spatial finding the
+joint calibration reached. At the lower mainstem near the Wolverine source the in-stream PFOS is
+controlled by the \emph{groundwater} pathway --- the prescribed source magnitude (the largest
+$\mu^*$), the aquifer hydraulic conductivity, and the streambed conductance that meters the
+discharge --- with the surface soil-loading a secondary control; at the mid mainstem the ranking
+inverts and the surface soil-loading dominates, the groundwater terms falling to a few percent of
+its influence. The groundwater plume concentration is governed by the transport parameters (source,
+Freundlich $n$ and $K_f$) and the baseflow purely by the flow parameters (recharge, streambed and
+aquifer conductivity) --- exactly the separation the model structure implies, and a check that the
+coupling carries each signal to the right place. The interaction signal is itself diagnostic: for
+the surface soil-loading $\sigma/\mu^*\approx0.5$, a near-linear and additive control, whereas for
+the groundwater source and conductivity $\sigma/\mu^*\approx1$, the strong nonlinearity expected of
+Freundlich sorption and a threshold-like discharge. This supports the linear superposition the joint
+calibration assumed for the surface leg, and it flags the groundwater source and transport
+parameters as the ones that warrant variance-based decomposition. A Sobol analysis on a random-forest
+surrogate fit to the screening ensemble (Section~\ref{sec:disc}) confirms it: the lower-mainstem
+prediction variance is dominated by streambed conductance, aquifer conductivity and source magnitude
+(total-order $S_T=0.53$, $0.41$, $0.40$), while the mid-mainstem prediction is surface-controlled
+(soil loading, $S_T=0.93$) --- the same spatial attribution from global variance.

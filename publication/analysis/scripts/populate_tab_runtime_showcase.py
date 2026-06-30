@@ -23,7 +23,7 @@ CELERY_MEASURED = {
         "wall_min": 494.0373079776764 / 60.0,
         "run_datetime": "2026-05-14T06:38:28Z",
         "note": (
-            "Celery worker job duration for 0308/huc12/030801020804 on vmi2525606 "
+            "Celery worker job duration for 0308/huc12_outlet/030801020804 on vmi2525606 "
             "(10 vCPU; warm local caches)."
         ),
     },
@@ -32,7 +32,7 @@ CELERY_MEASURED = {
         "wall_min": 1367.5442879199982 / 60.0,
         "run_datetime": "2026-05-06T22:44:44Z",
         "note": (
-            "Celery worker job duration for 1505/huc12/09471300 on vmi2525606 "
+            "Celery worker job duration for 1505/usgs_station/09471300 on vmi2525606 "
             "(10 vCPU; warm local caches)."
         ),
     },

@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "02239501",
-    "workspace_model_id": "0308/huc12/02239501",
-    "label": "0308/huc12/02239501 (FL)",
+    "workspace_model_id": "0308/usgs_station/02239501",
+    "label": "0308/usgs_station/02239501 (FL)",
     "vpuid": "0308",
     "n_stations": 4,
     "n_production_assigned": 4,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "02239501",
-      "workspace_model_id": "0308/huc12/02239501",
-      "label": "0308/huc12/02239501 (FL)",
+      "workspace_model_id": "0308/usgs_station/02239501",
+      "label": "0308/usgs_station/02239501 (FL)",
       "site_no": "02239501",
       "station_name": "SILVER RIVER NEAR OCALA, FL",
       "usgs_da_km2": 53.37041654588924,
@@ -55,8 +55,8 @@
     },
     {
       "catalog_model_id": "02239501",
-      "workspace_model_id": "0308/huc12/02239501",
-      "label": "0308/huc12/02239501 (FL)",
+      "workspace_model_id": "0308/usgs_station/02239501",
+      "label": "0308/usgs_station/02239501 (FL)",
       "site_no": "02239510",
       "station_name": "SILVER RIVER NEAR CONNER, FL",
       "usgs_da_km2": 53.37041654588924,
@@ -84,8 +84,8 @@
     },
     {
       "catalog_model_id": "02239501",
-      "workspace_model_id": "0308/huc12/02239501",
-      "label": "0308/huc12/02239501 (FL)",
+      "workspace_model_id": "0308/usgs_station/02239501",
+      "label": "0308/usgs_station/02239501 (FL)",
       "site_no": "02239600",
       "station_name": "TRIBUTARY TO SILVER RIVER AT SH 40 NEAR OCALA FL",
       "usgs_da_km2": 53.37041654588924,
@@ -113,8 +113,8 @@
     },
     {
       "catalog_model_id": "02239501",
-      "workspace_model_id": "0308/huc12/02239501",
-      "label": "0308/huc12/02239501 (FL)",
+      "workspace_model_id": "0308/usgs_station/02239501",
+      "label": "0308/usgs_station/02239501 (FL)",
       "site_no": "02239601",
       "station_name": "TRIBUTARY TO SILVER RIVER BL SH 40 NR OCALA, FL",
       "usgs_da_km2": 53.37041654588924,

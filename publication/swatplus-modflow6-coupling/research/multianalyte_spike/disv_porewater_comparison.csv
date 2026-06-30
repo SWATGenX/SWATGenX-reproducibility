@@ -1,0 +1,7 @@
+grid,band,n,bias_dex,logRMSE,within10x_pct
+structured(250m),MDL-10,36,-0.3,0.87,89
+structured(250m),10-50,59,-0.64,1.01,39
+structured(250m),>50,13,-1.46,1.68,23
+DISV(31-62m corridor),MDL-10,36,-0.48,1.01,89
+DISV(31-62m corridor),10-50,59,-0.57,1.39,2
+DISV(31-62m corridor),>50,13,-1.86,1.86,0

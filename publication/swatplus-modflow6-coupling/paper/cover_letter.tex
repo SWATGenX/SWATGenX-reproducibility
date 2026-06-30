@@ -1,0 +1,54 @@
+\documentclass[11pt]{letter}
+\usepackage[margin=1in]{geometry}
+\usepackage{parskip}
+\signature{Vahid Rafiei}
+\address{}
+\begin{document}
+\begin{letter}{Editor-in-Chief\\ \emph{Water Research}}
+\opening{Dear Editor,}
+
+I am pleased to submit our manuscript, ``Watershed-scale PFAS fate and transport
+across surface water and groundwater: a two-way coupled SWAT\textsuperscript{+}/MODFLOW~6
+model quantifies the legacy groundwater contribution to in-stream loads,'' for
+consideration as a research paper in \emph{Water Research}.
+
+Per- and polyfluoroalkyl substances (PFAS) are now federally regulated in drinking
+water, and managing them turns on \emph{where} an observed in-stream concentration
+originates. Groundwater discharge is the most consequential yet least resolvable of
+those pathways: a grab sample cannot separate groundwater-borne from surface-derived
+PFAS, and watershed models have carried PFAS only from the surface into the subsurface,
+never returning the groundwater-borne fraction to the stream --- so the groundwater
+\emph{contribution} to the in-stream load, the very quantity source attribution depends
+on, has remained outside the model. Our work resolves this missing direction with a
+two-way coupling that carries PFAS through both compartments in one continuous mass
+balance, validated against an unusually rich public record (5{,}383 water-table heads,
+hundreds of groundwater PFAS observations, streambed porewater, and a multi-analyte
+in-stream network) on the Rogue River, Michigan, below the Wolverine World Wide legacy
+source.
+
+The central result is that two independent lines of evidence --- a model-free
+multi-analyte fingerprint decomposition and a double-counting-aware joint
+surface/groundwater calibration --- converge to show that legacy groundwater discharge
+is a first-order, spatially localized contributor to the lower-mainstem in-stream PFOS
+load, with a systematic global sensitivity and uncertainty analysis identifying the
+controls on the surface-versus-groundwater partition. Enabling this are a process-based
+three-phase PFAS soil model (with air--water-interface partitioning) in
+SWAT\textsuperscript{+} and PFAS groundwater transport in MODFLOW~6's native framework,
+rather than a frozen RT3D coupling.
+
+This manuscript is original, unpublished, and not under consideration elsewhere. For
+transparency: three \emph{methodological} components of the broader program are reported
+in separate companion manuscripts under review and cited herein --- the SWATGenX
+model-generation platform, the SWAT\textsuperscript{+} engine acceleration
+(\emph{Geoscientific Model Development}), and a national well-lithology inventory
+(\emph{Geodata and AI}) --- but the present manuscript is the only one developing and
+validating the coupled surface-water/groundwater PFAS model and its findings. There are
+no competing interests, and the work received no specific external funding. All code and
+data are archived openly (Zenodo and a public GitHub repository).
+
+Thank you for considering our submission; I would be glad to suggest reviewers or
+provide further information.
+
+\closing{Sincerely,}
+\end{letter}
+\end{document}

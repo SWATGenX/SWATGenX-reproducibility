@@ -1,0 +1,39 @@
+\subsection{Two-way coupling}
+\label{sec:coupling}
+
+The two models exchange state through the MODFLOW~6 BMI/XMI application programming interface, which
+exposes the solver's memory in place and runs the GWF6 flow and GWT6 transport models as a coupled
+exchange. Surface-water percolation drives groundwater recharge; the groundwater--stream exchange
+returns to the surface through the MODFLOW~6 streamflow-routing (SFR) package, whose reaches then
+carry the discharged PFAS in-stream via the streamflow-transport (SFT) package (Section~\ref{sec:pfas}).
+
+\paragraph{Surface to subsurface: recharge.} Because SWAT\textsuperscript{+} HRUs are
+geo-located polygons, each HRU is intersected with the MODFLOW grid to build an area-weighted
+HRU-to-cell map (no intermediate disaggregated-HRU step is required, unlike the embedded
+SWAT--MODFLOW code). Per-cell recharge is the area-weighted sum of the percolation of the HRUs
+overlapping that cell, divided by the cell area. The map is a sparse matrix, so a daily recharge
+field is a single matrix--vector product. In coupled mode, the converged steady model is
+rewritten as a sequence of daily stress periods (a steady spin-up period followed by transient
+periods with specific storage and specific yield), and recharge is set at the start of each step
+by writing in place to the MODFLOW recharge memory pointer through the BMI/XMI interface. On the
+demonstration watershed all 1{,}096 daily steps of a three-year run converged, with simulated heads
+tracking seasonal recharge within $\pm0.16$~m about the steady baseline.
+
+\paragraph{Subsurface to surface: the groundwater--stream exchange.} The groundwater--stream
+exchange is a native per-reach SFR budget term: the head-dependent leakage between each reach and the
+cell it occupies, positive when groundwater discharges to the stream (gaining/baseflow) and negative
+when the stream loses to the aquifer. SFR computes stage from routed flow and so enables in-stream
+transport, whereas the simpler river (RIV) package prescribes a fixed stage per cell and can route
+neither water nor solute. Because each reach is already a segment of a SWAT\textsuperscript{+}
+channel, the exchange aggregates directly to the channel network with no spatial join.
+
+The SFR reach network is built from the SWAT\textsuperscript{+} channel graph. Each channel
+(filtered to stream order $\geq 2$) is oriented upstream-to-downstream by the DEM elevation of its
+endpoints and intersected with the grid to give one reach per crossed active cell; reaches inherit
+the channel width, a slope computed from the channel's elevation drop over its length, a streambed
+top set below the land surface, and a streambed hydraulic conductivity. Connectivity follows a
+single-successor graph (each reach has one downstream reach: the next cell within a channel, or the
+first reach of the receiving channel at a confluence), with reaches numbered in topological order so
+that every reach's downstream neighbour has a higher index --- matching the solver's preferred
+ordering and avoiding a sign ambiguity in the zero-based connection list. On the demonstration
+watershed the network has $1{,}506$ reaches across $273$ channels with no connectivity violations.

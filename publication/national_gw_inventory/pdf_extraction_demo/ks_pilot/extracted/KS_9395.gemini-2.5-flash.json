@@ -1,0 +1,121 @@
+{
+  "pdf": "KS_9395",
+  "model": "gemini-2.5-flash",
+  "usage": {
+    "prompt_tokens": 491,
+    "output_tokens": 876,
+    "usd": 0.0023373,
+    "seconds": 15.6
+  },
+  "extracted": {
+    "lithology": [
+      {
+        "top_ft": 0,
+        "bottom_ft": 0.5,
+        "description": "Sandy Top Soil",
+        "normalized": "topsoil"
+      },
+      {
+        "top_ft": 0.5,
+        "bottom_ft": 3,
+        "description": "Clay",
+        "normalized": "clay"
+      },
+      {
+        "top_ft": 3,
+        "bottom_ft": 12,
+        "description": "Good Clean Gravel",
+        "normalized": "gravel"
+      },
+      {
+        "top_ft": 12,
+        "bottom_ft": 31,
+        "description": "Clay",
+        "normalized": "clay"
+      },
+      {
+        "top_ft": 31,
+        "bottom_ft": 36,
+        "description": "Sand & Gravel Clay Mixed",
+        "normalized": "sand_and_gravel"
+      },
+      {
+        "top_ft": 36,
+        "bottom_ft": 50,
+        "description": "Clay",
+        "normalized": "clay"
+      },
+      {
+        "top_ft": 50,
+        "bottom_ft": 57,
+        "description": "Good Sand & Gravel",
+        "normalized": "sand_and_gravel"
+      },
+      {
+        "top_ft": 57,
+        "bottom_ft": 63,
+        "description": "Clay",
+        "normalized": "clay"
+      },
+      {
+        "top_ft": 63,
+        "bottom_ft": 81,
+        "description": "Good Sand & Gravel",
+        "normalized": "sand_and_gravel"
+      },
+      {
+        "top_ft": 81,
+        "bottom_ft": 86,
+        "description": "Good clean & Gravel",
+        "normalized": "gravel"
+      },
+      {
+        "top_ft": 86,
+        "bottom_ft": 87,
+        "description": "Clay",
+        "normalized": "clay"
+      },
+      {
+        "top_ft": 87,
+        "bottom_ft": 99,
+        "description": "Good Sand",
+        "normalized": "sand"
+      },
+      {
+        "top_ft": 99,
+        "bottom_ft": 102,
+        "description": "Clay",
+        "normalized": "clay"
+      },
+      {
+        "top_ft": 102,
+        "bottom_ft": 117,
+        "description": "Sand",
+        "normalized": "sand"
+      },
+      {
+        "top_ft": 117,
+        "bottom_ft": 119,
+        "description": "Clay",
+        "normalized": "clay"
+      },
+      {
+        "top_ft": 119,
+        "bottom_ft": 124,
+        "description": "Good Sand",
+        "normalized": "sand"
+      },
+      {
+        "top_ft": 124,
+        "bottom_ft": 130,
+        "description": "Good Sand & Gravel",
+        "normalized": "sand_and_gravel"
+      }
+    ],
+    "legibility": "clear",
+    "extraction_confidence": 0.95,
+    "static_water_level_ft": 4,
+    "total_depth_ft": 129,
+    "water_bearing_zones_ft": []
+  }
+}

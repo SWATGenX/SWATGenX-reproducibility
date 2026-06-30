@@ -1,0 +1,45 @@
+Cover letter — Geodata and AI (Elsevier)
+
+Dear Editors,
+
+Please consider the enclosed manuscript, "A national inventory of well lithology and hydraulics for the
+conterminous United States, with a vision-language method for reading scanned driller's logs," for
+publication as a Research Article in Geodata and AI.
+
+The work sits squarely at the intersection of the journal's two core interests — AI methods for the
+geosciences and the compilation and sharing of open geo-databases. It contributes both:
+
+(1) A geo-database. We assemble and openly release a harmonized national inventory of more than 23.9
+million depth-resolved lithology intervals across 3.4 million water wells (17 states), plus structured
+hydraulics for about 2.8 million wells, drawn entirely from public state-agency endpoints with no privileged
+access. To our knowledge this is the first openly-licensed, depth-resolved subsurface-lithology layer
+assembled at national scale from primary driller's-log sources; it fills a gap that continental groundwater
+models currently approximate with coarse, surface, map-derived geology.
+
+(2) A GeoAI method. We introduce a reproducible, cost-bounded pipeline that uses vision-language models to
+recover structured lithology directly from scanned driller's-log images — no OCR stage, no per-form
+templates, no per-state training. It is validated against a state agency's own hand-transcriptions (96.0%
+coarse/fine accuracy, Cohen's kappa = 0.92) and metered in provider-independent token units (about 1,000 tokens
+per log), so the economics are reproducible by any group. We also report an honest, systematically-probed
+national availability census of what each state does and does not expose.
+
+We believe this is a strong fit for Geodata and AI specifically because the journal recognizes geo-databases
+as a first-class contribution and foregrounds AI for geoscientific discovery — the two halves of this paper.
+The frozen dataset and the essential method code are deposited in a public repository (Zenodo) with a citable
+DOI (activated on acceptance) and cited in the manuscript; a preprint policy-compliant arrangement.
+
+The work is original, not under consideration elsewhere, and has not been previously published. A
+declaration of competing interests (the author maintains the SWATGenX platform that hosts an optional
+interactive viewer), a funding statement (none), a CRediT statement, and a declaration of generative-AI use
+in manuscript preparation (distinct from the vision-language models used as the research method) are all
+included. We would be glad to suggest reviewers with expertise in groundwater data systems and AI-assisted
+document extraction upon request.
+
+This manuscript is submitted before 31 August 2026, and we respectfully note the journal's APC (article
+processing charge) waiver for submissions received by that date.
+
+Thank you for your consideration.
+
+Sincerely,
+Vahid Rafiei (ORCID 0009-0009-8309-1895)
+Independent Researcher — vahidr32@gmail.com

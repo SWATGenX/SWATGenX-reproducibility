@@ -19,7 +19,7 @@ import matplotlib.dates as mdates
 import pandas as pd
 
 REPO = Path("/data/SWATGenXApp/codes")
-SITE = Path("${SWATGENX_USER_PATH}/SWATplus_by_VPUID/0308/huc12/030801020804")
+SITE = Path("${SWATGENX_USER_PATH}/SWATplus_by_VPUID/0308/huc12_outlet/030801020804")
 SIM_DIR = Path("/tmp/taudem_init_sim")
 PUB = REPO / "publication/figures/final"
 WEB = REPO / "web_application/frontend/public/figures"

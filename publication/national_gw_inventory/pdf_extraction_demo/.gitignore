@@ -1,0 +1,4 @@
+# Scanned driller-log PDFs are large, re-downloadable demo inputs (see selected.csv + each state's
+# FILE_URL/well_log_url). Keep them out of git; the extracted JSON + results docs are the artifacts.
+pdfs/
+ks_pilot/pdfs/

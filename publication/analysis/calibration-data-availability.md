@@ -11,9 +11,9 @@ Rows are taken from `publication/tables/tab-model-complexity.csv` (`status=locke
 
 | model_id | tier | site_no | state | area (km²) |
 |----------|------|---------|-------|------------|
-| 0308/huc12/02239501 | Small | 02239501 | FL | 52.64 |
-| 0204/huc12/01451800 | Medium | 01451800 | PA | 213.39 |
-| 1107/huc12/07174000 | Large | 07174000 | KS | 1116.28 |
+| 0308/usgs_station/02239501 | Small | 02239501 | FL | 52.64 |
+| 0204/usgs_station/01451800 | Medium | 01451800 | PA | 213.39 |
+| 1107/usgs_station/07174000 | Large | 07174000 | KS | 1116.28 |
 
 ---
 
@@ -66,7 +66,7 @@ NWIS daily discharge for **`07174000`** in this audit **does not extend past 195
 **Planned actions (outside this branch):**
 
 1. Confirm NHDPlus / model outlet pairing (correct legacy vs active site, agency code, or relocated gage).
-2. If no modern NWIS daily site exists for that outlet, keep **1107/huc12/07174000** as a **package / scalability** tier only until hydrology data are resolved.
+2. If no modern NWIS daily site exists for that outlet, keep **1107/usgs_station/07174000** as a **package / scalability** tier only until hydrology data are resolved.
 3. Do **not** claim calibration or validation for KS under the default windows until observation availability is fixed.
 
 ---

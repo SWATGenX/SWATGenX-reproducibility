@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "01109090",
-    "workspace_model_id": "0109/huc12/01109090",
-    "label": "0109/huc12/01109090 (MA)",
+    "workspace_model_id": "0109/usgs_station/01109090",
+    "label": "0109/usgs_station/01109090 (MA)",
     "vpuid": "0109",
     "n_stations": 1,
     "n_production_assigned": 1,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "01109090",
-      "workspace_model_id": "0109/huc12/01109090",
-      "label": "0109/huc12/01109090 (MA)",
+      "workspace_model_id": "0109/usgs_station/01109090",
+      "label": "0109/usgs_station/01109090 (MA)",
       "site_no": "01109090",
       "station_name": "RATTLESNAKE BROOK NEAR ASSONET, MA",
       "usgs_da_km2": 10.95564970672128,

@@ -1,0 +1,24 @@
+\section*{Code and data availability}
+
+All models, code, and data required to reproduce the results reported here are archived in a public
+Zenodo repository (DOI~\href{https://doi.org/10.5281/zenodo.20838389}{10.5281/zenodo.20838389}): the
+SWAT\textsuperscript{+} PFAS surface-water model, the on-the-fly MODFLOW~6 groundwater
+flow-and-transport model, the GWF--GWT coupling and SFT in-stream routing, the PEST\texttt{++}
+pilot-point calibration with the baseflow constraint, the calibrated flow field for the Rogue River
+model (USGS~04118500), and the analysis and figure-generating scripts. The SWAT\textsuperscript{+}
+engine itself --- including its PFAS fate-and-transport implementation and the MODFLOW~6 coupling ---
+is developed openly at \path{https://github.com/rafiei-vahid/swatplus}; its acceleration and
+byte-reproducibility methodology are documented separately \citep{rafiei2026engine}.
+
+All inputs are public: USGS streamflow records \citep{data_usgs_nwis} and NHDPlus High Resolution
+\citep{data_nhdplus_hr} for delineation, the groundwater-well database used for the hydrogeologic
+layers (harmonized at national scale in a companion inventory, \citealp{rafiei2026gwinventory}), and the
+EPA ECHO \citep{data_epa_echo} and Michigan EGLE \citep{data_egle_pfas} PFAS source and
+observation inventories, alongside the MODFLOW~6 and PEST\texttt{++} executables.
+
+The SWAT\textsuperscript{+} and MODFLOW~6 models analysed here were generated and calibrated with
+SWATGenX \citep{Rafiei2026SWATGenX} (\path{https://swatgenx.com}), which automatically builds and
+calibrates such models from public data for any U.S.\ Geological Survey gauge in the conterminous
+United States. SWATGenX is the
+source of the models and the environment in which this study was carried out; the Zenodo archive is
+the self-contained package for reproducing the specific results presented here.

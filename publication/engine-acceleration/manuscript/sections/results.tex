@@ -1,0 +1,224 @@
+We report results as a \emph{cumulative optimization ladder}: starting from the unmodified
+stock engine, each optimization \emph{class} is added in a fixed order and its marginal
+contribution measured on the same model, box, and protocol (Section~\ref{sec:methods},
+Table~\ref{tab:ladder}). This isolates two qualitatively different products: Group~A
+optimizations remove serial overhead and so benefit \emph{every} user on a single core with no
+behavior change; Group~B (parallelization) benefits users who apply many cores to a
+single model. All rungs---including the I/O rungs whose techniques were introduced in prior work \citep[the NetCDF backend and channel print filter, benchmarked there;][]{Rafiei2026SWATGenX}---are
+re-measured here on the 57{,}998-HRU benchmark, because their prior figures were obtained on a
+different (94k-HRU) model and do not transfer; this keeps the stock$\rightarrow$final
+comparison internally consistent.
+
+\begin{table}[t]
+\centering
+\caption{Cumulative optimization ladder on the HUC-8 benchmark model (57{,}998 HRUs, one simulated
+year, \texttt{ifx -O3 -ipo}, dedicated c8a.8xlarge, best of two). Each rung adds one class;
+``marginal'' is the speedup from the preceding rung, ``cumulative'' is versus stock. All $N{=}1$
+except the final-engine parallel row (Group~B).}
+\label{tab:ladder}
+\begin{tabular}{llrrr}
+\toprule
+Rung & Class & Wall $N{=}1$ (s) & Marginal & Cumulative \\
+\midrule
+R0 \quad Stock engine                 & baseline          & 191.9 & 1.00$\times$ & 1.00$\times$ \\
+\quad + hru\_read O(1) index          & serial: startup   & 185.4 & 1.03$\times$ & 1.03$\times$ \\
+\quad + varinit per-row reset         & serial: per-step  & 171.0 & 1.08$\times$ & 1.12$\times$ \\
+\quad + drop inflow struct copy       & serial: channel   & 137.6 & 1.24$\times$ & 1.39$\times$ \\
+\quad + ch\_temp reset scope          & serial: channel   & 138.9 & 0.99$\times$ & 1.38$\times$ \\
+R6 \quad + final (narrow-fuse, $N{=}1$) & serial: final   & 115.2 & 1.21$\times$ & \textbf{1.67$\times$} \\
+\midrule
+\multicolumn{5}{l}{\emph{Group~B --- parallelization of the final engine (dedicated AWS instances, Table~\ref{tab:crosshw}):}} \\
+R6 \quad final engine, parallel        & parallel          & --- & \parHead$\times$ & \textbf{$\approx$\totHead$\times$} \\
+\bottomrule
+\end{tabular}\\[2pt]
+\footnotesize\emph{Wall times: dedicated c8a instance, one simulated year, daily \texttt{channel\_sd}
+output, best of 2. I/O (NetCDF backend, an extension from our fork \citep{Rafiei2026SWATGenX}, re-measured
+here): stock text output 222.8\,s $\rightarrow$ NetCDF 196.8\,s ($1.13\times$). The Group~B factor is
+the final engine's peak self-relative thread speedup (\parHead$\times$ at \parHeadN{} threads); the
+combined stock-to-parallel $\approx$\totHead$\times$ is measured end-to-end against the stock engine
+on the same machine (Table~\ref{tab:crosshw}, \S\ref{sec:configurator}).}
+\end{table}
+
+\subsection{Group~A: serial overhead removal (one core, every user)}\label{sec:groupA}
+The Group~A rungs change \emph{no} model behavior and require \emph{no} threads; they make the
+engine everyone already runs faster. The central empirical finding is that these gains are
+large because the stock engine spends much of its time on \emph{overhead, not hydrology}:
+\begin{itemize}
+  \item \textbf{I/O.} Re-encoding output from text to a NetCDF backend (a fork extension benchmarked in the companion paper \citep{Rafiei2026SWATGenX}, re-measured here) cuts disk traffic: stock text output
+        222.8~s $\rightarrow$ NetCDF 196.8~s, $1.13\times$ at $N{=}1$.
+  \item \textbf{Startup name-matching (hru\_read).} HRU input was matched by an $\mathcal{O}(N)$
+        linear name search, $\mathcal{O}(N^2)$ over the dataset; an $\mathcal{O}(1)$ index removes
+        it, output-identical ($1.03\times$, 191.9$\rightarrow$185.4~s).
+  \item \textbf{Per-step re-initialization (varinit).} A daily $\mathcal{O}(N_{\mathrm{hru}}^2)$
+        whole-array \texttt{memset} in variable initialization was scoped to the current HRU's
+        row ($1.08\times$, 185.4$\rightarrow$171.0~s).
+  \item \textbf{Channel per-step overhead.} Removing a redundant inflow-hydrograph struct copy was
+        the largest single serial step ($1.24\times$, 171.0$\rightarrow$137.6~s). The
+        \texttt{ch\_temp} reset---the single hottest line in the engine, re-zeroing the
+        \emph{whole} landscape-unit array once per channel per day---was scoped to the units each
+        channel uses; notably this barely moves the \emph{serial} time ($0.99\times$,
+        137.6$\rightarrow$138.9~s) because its real effect is on the \emph{parallel} critical path
+        (Section~\ref{sec:groupB}: removing it from the serial main stem markedly raised the
+        multi-thread ceiling by shrinking the Amdahl serial fraction). This split---a fix that is
+        nearly free serially but decisive in parallel---is itself a finding.
+\end{itemize}
+Group~A headline ($N{=}1$, no threads): a cumulative $1.67\times$ over the stock engine
+(191.9$\rightarrow$115.2~s) on the c8a reference node, a free acceleration for the entire existing
+user base independent of whether they ever enable threads. Because these gains attack
+memory-bound overhead, they are \emph{larger} on the more memory-starved parts---up to $2.47\times$
+on the Intel ``Granite Rapids'' node (Table~\ref{tab:crosshw})---so $1.67\times$ is a
+conservative floor.
+
+\subsection{Group~B: parallelization (scaling a single model)}\label{sec:groupB}
+On top of the serial-optimized engine, the routing-DAG level wavefront (Section~\ref{sec:wavefront})
+adds thread parallelism. Because Group~A removed the dominant serial channel hotspot, the parallel
+speedup is no longer suppressed by it: removing the \texttt{ch\_temp} reset on the critical path
+shrinks the Amdahl serial fraction and so lifts the achievable scaling, and narrow-level fusion (one
+barrier for the deep main stem instead of one-per-level) lifts it further. This interaction---a
+serial fix raising the \emph{parallel} ceiling---is itself a result (Section~\ref{sec:discussion}).
+All scaling is measured on quiet, dedicated AWS instances (one model per box, thread-pinned, best of
+two); we report no shared- or contended-host timings.
+
+\begin{table}[t]
+\centering
+\caption{Cross-hardware scaling of the final engine (each machine's own $1\rightarrow N$ ratio),
+identical engine, one-simulated-year benchmark workload, daily \texttt{channel\_sd} output,
+thread-pinned, best of two, on dedicated AWS instances. $t_1$ = one-thread wall on the parallel
+binary. Boldface marks each CPU's peak; beyond it, threads land on SMT siblings and contend.}
+\label{tab:crosshw}
+\begin{tabular}{lccc}
+\toprule
+ & c8a (AMD EPYC & c8i (Intel Xeon & c5a (AMD EPYC \\
+ & ``Turin'') & ``Granite Rapids'') & ``Rome'') \\
+\midrule
+physical cores (vCPU)           & 32 (32) & 16 (32) & 16 (32) \\
+SMT                             & off (1 thr/core) & on (2 thr/core) & on (2 thr/core) \\
+stock $R_0$ (s, $N{=}1$)        & 191.9 & 272.2 & 350.6 \\
+serial gain ($R_0{\to}R_6$)     & 1.67$\times$ & 2.47$\times$ & 2.16$\times$ \\
+$t_1$ (s, parallel binary)      & 143.1 & 130.1 & 202.5 \\
+\midrule
+2 threads     & 1.70$\times$ & 1.59$\times$ & 1.62$\times$ \\
+4 threads     & 2.79$\times$ & 2.41$\times$ & 2.47$\times$ \\
+8 threads     & 3.95$\times$ & 3.29$\times$ & 3.21$\times$ \\
+12 threads    & 4.54$\times$ & 3.75$\times$ & 3.60$\times$ \\
+16 threads    & 4.90$\times$ & \textbf{4.01$\times$} & \textbf{3.81$\times$} \\
+20 threads    & 5.18$\times$ & 3.73$\times$ & 3.51$\times$ \\
+24 threads    & \textbf{5.33$\times$} & 3.74$\times$ & 3.58$\times$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The scaling is bounded by \emph{physical cores and memory bandwidth}, not thread count: SWAT+ at
+this scale is memory-bound, so once enough cores saturate the wide land-phase level, additional
+cores only wait at the narrow routing levels, and parts regress onto SMT siblings past their
+physical-core count (Figure~\ref{fig:scaling-crosshw}; Section~\ref{sec:discussion}).
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.78\textwidth]{Figure_3.png}
+\caption{Cross-hardware scaling of the final engine on dedicated AWS instances. The workload is
+memory-bound: speedup tracks physical cores and memory bandwidth, and parts regress once they run
+onto SMT siblings.}
+\label{fig:scaling-crosshw}
+\end{figure}
+
+\subsection{The bottleneck migrates across the campaign (VTune)}\label{sec:taxonomy}
+Profiling at three points makes the campaign legible (Figure~\ref{fig:profile-triptych}). In the
+\emph{stock} engine, channel routing and the to-be-removed overhead dominate; after Group~A, the
+\texttt{ch\_temp} hotspot collapses (its hottest line falls from $\approx$731~s to
+$\approx$0.8~s) and no channel routine is dominant; in the \emph{parallel} final engine at eight
+threads, the bottleneck has migrated from computation to \emph{synchronization}---of the
+$\approx$1{,}267 CPU-seconds the threads consumed, only $\approx$73\% is effective work,
+$\approx$25\% is spin idling at level barriers while the serial main stem is walked, and
+$\approx$2\% is overhead. The effective work that remains is dominated by serial channel
+routing, which costs roughly $7\times$ the parallelizable land phase; the land phase is only
+$\approx$12\% of compute, so the channel main stem---not more threads---is the remaining lever.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.92\textwidth]{Figure_4.png}
+\caption{Intel VTune profile of the final engine at eight threads (180-day window).
+\emph{(a)} CPU-time composition: only $\approx$73\% of the $\approx$1{,}266 thread-seconds is
+effective work; $\approx$25\% is barrier spin idling against the serial main stem and $\approx$2\%
+is scheduling/\texttt{threadprivate} overhead---the limit has migrated from computation to
+synchronization. \emph{(b)} Effective work by routine: serial channel routing
+(\texttt{sd\_channel\_control3}, 698~s) dominates the parallelizable land phase
+(\texttt{hru\_control}, 90~s) by roughly $7.7\times$, so the main stem---not more threads---is the
+remaining lever. (The Group~A serial pass earlier collapsed the dominant \texttt{ch\_temp} hotspot
+from $\approx$731~s to $\approx$0.8~s; that hotspot is absent here.)}
+\label{fig:profile-triptych}
+\end{figure}
+
+\subsection{Correctness: bit-identity at one thread; a localized particulate race at higher counts}\label{sec:correctness}
+At one thread the parallel engine is byte-identical to the unmodified serial engine
+(verified bit-for-bit on a one-year run), so an exact reference run is always available. At higher
+thread counts, \emph{hydrology and
+dissolved constituents are model-equivalent}: flow, sediment, nitrate, and soluble-phosphorus
+basin loads agree to $<$2\% (mostly $<$0.5\%). The open item is the in-stream \emph{particulate}
+constituents.
+
+Reaching even this required treating \emph{thread-count invariance as a diagnostic} rather than a
+checkbox (Section~\ref{sec:validation}) and exercising the full constituent chemistry: a
+streamflow-only test passes while a latent race in the particulate constituents goes undetected.
+Only with in-stream water quality active over a multi-year run does thread-count invariance expose a
+$15$--$20\%$ divergence in three \emph{particulate/sediment-associated} species (organic-N, ammonia,
+sediment-P), with run-to-run variation confirming a data race rather than reassociation. The HRU
+land phase is byte-identical across thread counts and the dissolved species (NO$_3$, soluble-P) are
+spared, localizing the race to the channel in-stream constituent-transport path.
+
+\paragraph{Root cause (compiler, not algorithm).} ThreadSanitizer traces it not to a missing
+\texttt{threadprivate}---every per-object buffer is privatized---but to \texttt{ifx} allocating the
+\emph{temporaries} of the 152-byte \texttt{hyd\_output} derived type (operator results, function
+returns, argument copy-ins) in shared static module storage rather than on the per-thread
+stack, so concurrent channels clobber the same static temporary. The behavior is invariant to every
+compiler control we tried, and a field-by-field source rewrite is byte-identical at one thread but
+does not remove it (array-element arguments re-create static copy-in temporaries). The full forensic
+trail is in Supplementary Section~S3.
+
+\paragraph{Resolution: a byte-identical mode at a measured cost.} Because the race lives entirely in
+the routing phase, running the land phase in parallel and the routing phase serially
+(\texttt{SWATPLUS\_ROUTING\_SERIAL=1}) is race-free and byte-identical---thread-count-invariant to the
+floating-point-reassociation floor. The cost is the routing phase's parallelism: the byte-identical
+mode scales 2.04$\times$ at 4 threads / 2.50$\times$ at 8 versus the full wavefront's
+2.79$\times$ / 3.98$\times$, a $\approx$37\% forfeit at eight threads that grows with thread
+count (Supplementary Table~S3). The engine thus offers two modes: byte-identical for in-stream water
+quality, and the full wavefront (bit-exact for flow/sediment/dissolved species) otherwise. A
+non-\texttt{ipo} build is bit-identical to the serial source; the \texttt{-ipo} residual
+($\sim$0.008\%) is reassociation, not the race.
+
+\subsection{Putting it together: a speedup configurator}\label{sec:configurator}
+Every speedup in this paper is measured against one fixed reference---the stock engine, one
+thread, writing daily \texttt{channel\_sd} for all reaches---and the optimized and parallel runs
+write the \emph{identical} output; we deliberately do not compare a fast filtered run against a slow
+full-export run, which would fold an output-configuration choice into the engine number. The total
+acceleration a practitioner sees is the product of three \emph{independent} layers, and conflating
+them is the most common way these numbers are misread: (i)~output scope, an I/O effect
+\emph{outside} the engine---full daily export of every object is several-fold slower than the
+filtered calibration profile (of order $3$--$6\times$, growing with model size; companion study
+\citep{Rafiei2026SWATGenX}) and is excluded from every figure here; (ii)~the machine-portable
+serial gain ($1.67$--$2.47\times$, Group~A); and (iii)~the thread scaling above
+(Group~B). Because the fixed-output baseline is already compute-bound, (ii) and (iii) compose on top
+of (i). Figure~\ref{fig:configurator} shows the directly-measured stock$\rightarrow$parallel total on
+the three CPUs plus the byte-identical mode; an interactive version is published with the open
+engine, and the full layer composition is tabulated in Supplementary Section~S4.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.82\textwidth]{Figure_5.png}
+\caption{End-to-end engine speedup versus the stock single-core engine as a function of cores,
+directly measured on three dedicated AWS CPUs (full wavefront), plus the byte-identical
+routing-serial mode on the c8a node (dashed). The $1\times$ reference is the \emph{stock engine at
+one thread writing daily \texttt{channel\_sd} for all reaches}; every curve writes that same output,
+so the speedup is pure engine work, not reduced printing. Output-scope savings (layer~i; gauge
+filtering, NetCDF) multiply on top and are deliberately excluded here.}
+\label{fig:configurator}
+\end{figure}
+
+\subsection{Relevance to calibration}\label{sec:relevance}
+Single-run acceleration is the lever that population-based calibration cannot otherwise reach.
+Ensemble parallelism---running many independent evaluations concurrently---saturates at a few tens
+of concurrent members \citep{Rafiei2022Calibration}, beyond which additional cores cannot help a
+fixed population; accelerating the \emph{individual} simulation is then the only way to put more
+cores on one model. The two contributions land differently here: the Group~A serial gains accelerate
+every single evaluation with no threads and no behavior change, while the parallel engine lets a
+calibration apply cores past the ensemble ceiling to each member.

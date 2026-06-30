@@ -2,7 +2,7 @@
 """
 Pilot timing for one **inventory-locked** evaluation basin (see
 ``publication/tables/tab-model-complexity.csv``, ``status=locked_from_inventory``).
-Default ``--model-id`` is the Small basin; pass another locked ``vpuid/huc12/site_no``
+Default ``--model-id`` is the Small basin; pass another locked ``vpuid/<level>/site_no``
 for Medium or Large. Use ``--rm-site-output`` to delete that site’s existing
 ``SWATplus_by_VPUID/...`` tree before generation.
 
@@ -29,13 +29,13 @@ the runs directory.
 
 Usage (from repo root):
   python3 publication/analysis/scripts/time_locked_model_generation.py \\
-    --model-id 0308/huc12/02239501 --run-id 20260514-small-pilot-001
+    --model-id 0308/usgs_station/02239501 --run-id 20260514-small-pilot-001
 
 Service user (JSONL + CSV under ``/tmp``, optional fresh site tree):
 
   python3 publication/analysis/scripts/time_locked_model_generation.py \\
     --runtime-runs-dir /tmp/swx-runtime-runs \\
-    --model-id 0204/huc12/01451800 --run-id 20260514-medium-pilot-001 \\
+    --model-id 0204/usgs_station/01451800 --run-id 20260514-medium-pilot-001 \\
     --rm-site-output --force
 """
 from __future__ import annotations
@@ -59,7 +59,7 @@ RUNS_DIR = REPO_ROOT / "publication" / "analysis" / "runtime-runs"
 DEFAULT_USER_PATH = "${SWATGENX_USER_PATH}"
 DEFAULT_USERNAME = "admin"
 DEFAULT_MODEL_DIR = "SWAT_MODEL_Web_Application"
-DEFAULT_MODEL_ID = "0308/huc12/02239501"
+DEFAULT_MODEL_ID = "0308/usgs_station/02239501"
 DEFAULT_RUN_ID = "20260514-small-pilot-001"
 
 
@@ -369,7 +369,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument(
         "--rm-site-output",
         action="store_true",
-        help="Delete USER_PATH/username/SWATplus_by_VPUID/<vpuid>/huc12/<site> before model generation (fresh SWAT+ tree)",
+        help="Delete USER_PATH/username/SWATplus_by_VPUID/<vpuid>/<level>/<site> before model generation (fresh SWAT+ tree)",
     )
     p.add_argument(
         "--runtime-runs-dir",

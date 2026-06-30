@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "02297600",
-    "workspace_model_id": "0310/huc12/02297600",
-    "label": "0310/huc12/02297600 (FL)",
+    "workspace_model_id": "0310/usgs_station/02297600",
+    "label": "0310/usgs_station/02297600 (FL)",
     "vpuid": "0310",
     "n_stations": 1,
     "n_production_assigned": 1,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "02297600",
-      "workspace_model_id": "0310/huc12/02297600",
-      "label": "0310/huc12/02297600 (FL)",
+      "workspace_model_id": "0310/usgs_station/02297600",
+      "label": "0310/usgs_station/02297600 (FL)",
       "site_no": "02297600",
       "station_name": "SHELL CREEK AT CIRCLE K GROVES NEAR FT OGDEN FL",
       "usgs_da_km2": 198.1594209755774,

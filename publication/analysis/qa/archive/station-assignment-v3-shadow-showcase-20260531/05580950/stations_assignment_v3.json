@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "05580950",
-    "workspace_model_id": "0713/huc12/05580950",
-    "label": "0713/huc12/05580950 (IL)",
+    "workspace_model_id": "0713/usgs_station/05580950",
+    "label": "0713/usgs_station/05580950 (IL)",
     "vpuid": "0713",
     "n_stations": 1,
     "n_production_assigned": 1,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "05580950",
-      "workspace_model_id": "0713/huc12/05580950",
-      "label": "0713/huc12/05580950 (IL)",
+      "workspace_model_id": "0713/usgs_station/05580950",
+      "label": "0713/usgs_station/05580950 (IL)",
       "site_no": "05580950",
       "station_name": "SUGAR CREEK NEAR BLOOMINGTON, IL",
       "usgs_da_km2": 89.0955909955584,

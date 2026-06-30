@@ -1,0 +1,69 @@
+\section{Introduction}
+
+Per- and polyfluoroalkyl substances (PFAS) are persistent, mobile synthetic chemicals now regulated in
+drinking water at the nanogram-per-litre level \citep{buck2011, guelfo2021, epa2024mcl}. The PFAS
+measured in an in-stream grab sample is the sum of several transport pathways acting at once --- surface
+runoff, lateral and sediment-bound transport, biosolids and industrial inputs, and the discharge of
+contaminated groundwater \citep{prevedouros2006, sepulvado2011}. Because PFAS management now turns on
+\emph{where} the in-stream contamination originates --- a Clean Water Act load allocation, a CERCLA cost
+recovery, a source-control or remediation decision \citep{epa2024cercla, egle2022rule57} --- the
+governing scientific need is no longer to detect PFAS but to attribute an observed in-stream
+concentration to the pathways that produced it.
+
+Among those pathways, groundwater discharge is at once the most consequential and the least resolvable.
+Where a legacy source exists, PFAS that infiltrated decades ago migrates through the aquifer and
+re-enters the stream as baseflow, so that a substantial share of the in-stream load can arrive through
+the streambed rather than across the land surface \citep{rafiei2023pfas}. Yet this is exactly the
+pathway that observation cannot disaggregate: a grab sample cannot separate groundwater-borne from
+surface-derived PFAS, and the statistical occurrence models that dominate large-scale PFAS prediction
+return a probability of contamination, not a mass-conserving, pathway-resolved concentration
+\citep{tokranov2024groundwater}. Quantifying the groundwater contribution to in-stream PFAS therefore
+requires a process model that carries the contaminant continuously from the land surface, through the
+aquifer, and back to the channel.
+
+Watershed-scale PFAS modeling has been advancing toward this goal. PFAS was first simulated in receiving
+rivers on a hydrology supplied by a coupled surface-water/groundwater model \citep{raschke2022integrated},
+and a distributed watershed model subsequently represented PFAS fate and transport across the land
+surface and identified groundwater as a watershed-scale source \citep{rafiei2023pfas}. These advances
+established that process-based watershed PFAS modeling is tractable and that the subsurface is material.
+They share one structural limit: the contaminant is passed in a single direction, from the surface
+model into the subsurface, so the PFAS that a legacy plume discharges back to the stream is never
+returned to the surface-water mass balance. The groundwater \emph{contribution} to the in-stream load
+--- the very quantity that source attribution depends on --- thus remains outside the model.
+
+We advance watershed-scale PFAS fate and transport by resolving this missing direction: the two-way
+exchange of PFAS between surface water and groundwater. A process-based, three-phase soil model carries
+PFAS from the soil profile to the stream, partitioning among the aqueous phase, the Freundlich solid
+phase \citep{higgins_luthy2006}, and the air--water interface that governs retention in unsaturated
+media \citep{costanza2019, brusseau2018, guo2020}; a groundwater flow-and-transport model then carries
+the infiltrated PFAS through the aquifer and returns the groundwater-borne fraction to the channel,
+closing a single continuous PFAS mass balance across the two compartments. The subsurface leg is built
+on MODFLOW~6, whose native Freundlich groundwater transport and advanced streamflow transport
+\citep{langevin2017mf6, morway2021gwt} provide the contaminant physics that the embedded-solver
+couplings underlying earlier watershed models do not carry \citep{bailey2016swatmodflow,
+bailey2025swatplusmodflow}; fully integrated hydrologic simulators exist outside the watershed-modeling
+family but do not carry a watershed's surface PFAS budget \citep{markstrom2008gsflow, brunner2012hgs}.
+
+This capability lets us pose a question the one-directional models could not answer: at an impacted
+watershed, how much of the in-stream PFAS is groundwater-borne, and where along the river does it enter?
+We address it on the Rogue River, Michigan, downstream of the Wolverine World Wide / House Street legacy
+PFAS source --- a tannery-waste disposal area on a groundwater divide immediately upgradient of the
+river, where source-area groundwater has reached the order of $10^{5}$~ng~L\textsuperscript{-1} and
+where a groundwater interceptor was later engineered specifically to capture PFAS before it discharges
+to the channel \citep{epa_wolverine, egle_housestreet, egle_rrt5_2021}. The site offers an unusually
+rich public record --- thousands of water-table observations, hundreds of groundwater PFAS
+measurements, streambed pore water sampled at the discharge interface, and a multi-analyte in-stream
+network \citep{egle_grandriver2019, lemke2024} --- against which every compartment of the model can be
+tested (study-area configuration in Table~\ref{tab:studyarea}).
+
+Two independent lines of evidence then converge on the answer. A model-free, multi-analyte fingerprint
+decomposition of the in-stream signal shows that the rising PFOS gradient along the lower mainstem
+carries the chemical signature of the groundwater plume; and a joint surface/groundwater calibration ---
+constructed to avoid the double-counting that a naive sum of the two legs would incur --- attributes a
+first-order, spatially localized share of the lower-mainstem load to legacy groundwater discharge. We
+further report the first systematic global sensitivity and uncertainty analysis of coupled watershed
+PFAS fate and transport, isolating the parameters that govern how PFAS is partitioned between the
+surface and subsurface routes. The result is a pathway-resolved, mass-conserving account of PFAS fate
+and transport across the surface-water and groundwater compartments of a single watershed --- the basis
+for attributing in-stream PFAS to its sources and for evaluating the pathway-specific actions that PFAS
+management requires.

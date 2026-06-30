@@ -1,0 +1,27 @@
+% Shared preamble for main.tex and supplement.tex
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{rotating}   % sidewaysfigure for the wide full-page conceptual model
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{ragged2e}
+\usepackage{longtable}
+\usepackage{natbib}
+\usepackage{amsmath}
+\usepackage{amssymb}   % \lesssim and other relation symbols
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+
+\DeclareRobustCommand{\path}[1]{\nolinkurl{#1}}
+
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
+\newcolumntype{Z}{>{\RaggedRight\arraybackslash}p{0.09\textwidth}}
+
+\graphicspath{{figures/}{../figures/}}
+
+% Supplement-style numbering (used in supplement.tex only; harmless if loaded in main).
+\newcommand{\suppsec}[1]{Section~S#1}
+\newcommand{\supptab}[1]{Table~S#1}
+\newcommand{\suppfig}[1]{Figure~S#1}

@@ -1,0 +1,6 @@
+ensemble members = 120; central = deterministic soil_scale=0.11
+all          n=20  log-NSE=-3.70  log-RMSE=0.74 dex  PBIAS=+78%  P-factor=0.30  R-factor=2.00
+mainstem     n= 7  log-NSE=+0.61  log-RMSE=0.15 dex  PBIAS=-7%  P-factor=0.71  R-factor=1.52
+tributary    n=13  log-NSE=-7.30  log-RMSE=0.92 dex  PBIAS=+170%  P-factor=0.08  R-factor=2.64
+calibration  n=12  log-NSE=-4.86  log-RMSE=0.83 dex  PBIAS=+71%  P-factor=0.25  R-factor=1.82
+validation   n= 8  log-NSE=-2.27  log-RMSE=0.59 dex  PBIAS=+85%  P-factor=0.38  R-factor=2.32

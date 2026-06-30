@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "02135501",
-    "workspace_model_id": "0304/huc12/02135501",
-    "label": "0304/huc12/02135501 (SC)",
+    "workspace_model_id": "0304/usgs_station/02135501",
+    "label": "0304/usgs_station/02135501 (SC)",
     "vpuid": "0304",
     "n_stations": 4,
     "n_production_assigned": 4,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "02135501",
-      "workspace_model_id": "0304/huc12/02135501",
-      "label": "0304/huc12/02135501 (SC)",
+      "workspace_model_id": "0304/usgs_station/02135501",
+      "label": "0304/usgs_station/02135501 (SC)",
       "site_no": "02135300",
       "station_name": "SCAPE ORE SWAMP NEAR BISHOPVILLE, S. C.",
       "usgs_da_km2": 248.638858592256,
@@ -55,8 +55,8 @@
     },
     {
       "catalog_model_id": "02135501",
-      "workspace_model_id": "0304/huc12/02135501",
-      "label": "0304/huc12/02135501 (SC)",
+      "workspace_model_id": "0304/usgs_station/02135501",
+      "label": "0304/usgs_station/02135501 (SC)",
       "site_no": "02135500",
       "station_name": "BLACK RIVER NEAR GABLE, SC",
       "usgs_da_km2": 1004.915386810368,
@@ -84,8 +84,8 @@
     },
     {
       "catalog_model_id": "02135501",
-      "workspace_model_id": "0304/huc12/02135501",
-      "label": "0304/huc12/02135501 (SC)",
+      "workspace_model_id": "0304/usgs_station/02135501",
+      "label": "0304/usgs_station/02135501 (SC)",
       "site_no": "02135501",
       "station_name": "BLACK RIVER AT I-95 NEAR MANNING, SC",
       "usgs_da_km2": 1074.84506578944,
@@ -113,8 +113,8 @@
     },
     {
       "catalog_model_id": "02135501",
-      "workspace_model_id": "0304/huc12/02135501",
-      "label": "0304/huc12/02135501 (SC)",
+      "workspace_model_id": "0304/usgs_station/02135501",
+      "label": "0304/usgs_station/02135501 (SC)",
       "site_no": "021355015",
       "station_name": "TEARCOAT BRANCH AT I-95 NEAR MANNING, SC",
       "usgs_da_km2": 70.1886777901056,

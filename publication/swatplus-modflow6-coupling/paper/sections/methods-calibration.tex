@@ -1,0 +1,35 @@
+\subsection{Groundwater flow calibration with a baseflow constraint}
+\label{sec:calibration}
+
+The calibrated flow field is simultaneously head- and flux-consistent: the deployed posterior
+realization reproduces $5{,}383$ static water-table heads at a Nash--Sutcliffe efficiency of $0.91$
+(RMSE $5.6$~m) while also reproducing the basin's gaining baseflow, a joint property a head-only fit
+cannot guarantee. This is achieved by calibrating the groundwater flow model to both water-table
+elevations and net baseflow with the PEST\texttt{++} iterative ensemble smoother
+\citep{white2020pestpp}.
+
+The adjustable parameters (Table~\ref{tab:calparams}) are a smooth hydraulic-conductivity field of
+$243$ pilot-point log-multipliers interpolated to the grid, supplemented by global multipliers on
+vertical anisotropy, recharge, drain conductance, the watershed-divide boundary conductance, well
+pumping, and streambed conductance (the SFR analogue of river conductance). Observations are
+$5{,}383$ static water-table heads --- the per-cell median of the \emph{raw} measured static water
+levels in the well database ($\text{head} = \text{top} - \text{SWL}$), not values drawn from the
+kriged water-table surface --- plus a single net-baseflow observation. The targets are therefore
+independent measurements rather than a smooth product, with one noted partial non-independence: the
+general-head boundary is set from the kriged surface derived from the same database. We emphasise the
+RMSE ($5.6$~m) over the Nash--Sutcliffe efficiency ($0.91$), since the latter is partly carried by
+the large topographic range of heads.
+
+The baseflow constraint is essential. A head-only inversion is non-unique and can fit heads while
+producing an unphysical (net-losing) stream network, so the basin groundwater-to-stream exchange
+(from the SFR budget) is added as a strongly weighted target equal to the observed gaining baseflow
+($5.56$~m\textsuperscript{3}~s\textsuperscript{-1}; USGS~04118500 mean flow
+$7.51$~m\textsuperscript{3}~s\textsuperscript{-1}, baseflow index $0.74$). Two domain controls keep
+the constrained problem well posed: raw well \emph{pump capacity} overstates long-term withdrawal in
+this heavily developed basin and is scaled by a calibrated multiplier, and the watershed perimeter is
+treated as a near-no-flow divide (a topographic divide is a groundwater flow divide; a leaky boundary
+exports baseflow out the sides). The ensemble converges in ten minutes on a single workstation; the
+posterior realization closest to the observed baseflow gives the head Nash--Sutcliffe efficiency of
+$0.91$ (RMSE $5.6$~m over $5{,}383$ heads) and a gaining baseflow of
+$+5.46$~m\textsuperscript{3}~s\textsuperscript{-1}. This flow field is the basis for the groundwater
+transport.

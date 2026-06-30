@@ -13,8 +13,8 @@ RUNS = REPO / "publication/analysis/runtime-runs"
 TAB = REPO / "publication/tables/tab-runtime.csv"
 
 MODELS = [
-    ("Small", "0308/huc12/030801020804"),
-    ("Medium", "1505/huc12/09471300"),
+    ("Small", "0308/huc12_outlet/030801020804"),
+    ("Medium", "1505/usgs_station/09471300"),
     ("Large", "0310/huc8/03100101"),
 ]
 

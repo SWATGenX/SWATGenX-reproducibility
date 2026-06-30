@@ -1,7 +1,7 @@
 {
   "summary": {
     "catalog_model_id": "09471300",
-    "workspace_model_id": "1505/huc12/09471300",
+    "workspace_model_id": "1505/usgs_station/09471300",
     "label": "Upper San Pedro (AZ)",
     "vpuid": "1505",
     "n_stations": 3,
@@ -26,7 +26,7 @@
   "stations": [
     {
       "catalog_model_id": "09471300",
-      "workspace_model_id": "1505/huc12/09471300",
+      "workspace_model_id": "1505/usgs_station/09471300",
       "label": "Upper San Pedro (AZ)",
       "site_no": "09471300",
       "station_name": "HUACHUCA CAN NR FT HUACHUCA ARIZ",
@@ -55,7 +55,7 @@
     },
     {
       "catalog_model_id": "09471300",
-      "workspace_model_id": "1505/huc12/09471300",
+      "workspace_model_id": "1505/usgs_station/09471300",
       "label": "Upper San Pedro (AZ)",
       "site_no": "09471310",
       "station_name": "HUACHUCA CANYON NEAR FORT HUACHUCA, AZ",
@@ -84,7 +84,7 @@
     },
     {
       "catalog_model_id": "09471300",
-      "workspace_model_id": "1505/huc12/09471300",
+      "workspace_model_id": "1505/usgs_station/09471300",
       "label": "Upper San Pedro (AZ)",
       "site_no": "09471380",
       "station_name": "UPPER BABOCOMARI RIVER NEAR HUACHUCA CITY, AZ",

@@ -1,0 +1,63 @@
+{
+  "pdf": "OR_62579_DESC",
+  "model": "gemini-2.5-flash-lite",
+  "usage": {
+    "prompt_tokens": 491,
+    "output_tokens": 427,
+    "usd": 0.00021990000000000003,
+    "seconds": 2.6
+  },
+  "extracted": {
+    "lithology": [
+      {
+        "top_ft": 0.0,
+        "bottom_ft": 2.0,
+        "description": "Top Soil",
+        "normalized": "topsoil"
+      },
+      {
+        "top_ft": 2.0,
+        "bottom_ft": 4.0,
+        "description": "plumice",
+        "normalized": "other"
+      },
+      {
+        "top_ft": 4.0,
+        "bottom_ft": 7.0,
+        "description": "Shave!",
+        "normalized": "other"
+      },
+      {
+        "top_ft": 7.0,
+        "bottom_ft": 11.0,
+        "description": "Clay loam.",
+        "normalized": "clay"
+      },
+      {
+        "top_ft": 11.0,
+        "bottom_ft": 26.0,
+        "description": "Clay & G",
+        "normalized": "clay"
+      },
+      {
+        "top_ft": 26.0,
+        "bottom_ft": 31.0,
+        "description": "Five Black Sand",
+        "normalized": "sand"
+      },
+      {
+        "top_ft": 31.0,
+        "bottom_ft": 40.0,
+        "description": "Soft Gray Clay",
+        "normalized": "clay"
+      }
+    ],
+    "legibility": "clear",
+    "extraction_confidence": 0.9,
+    "static_water_level_ft": 20.0,
+    "total_depth_ft": 40.0,
+    "water_bearing_zones_ft": [
+      20.0
+    ]
+  }
+}

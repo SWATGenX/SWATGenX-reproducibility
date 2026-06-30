@@ -1,8 +1,8 @@
 {
   "summary": {
     "catalog_model_id": "06439430",
-    "workspace_model_id": "1012/huc12/06439430",
-    "label": "1012/huc12/06439430 (SD)",
+    "workspace_model_id": "1012/usgs_station/06439430",
+    "label": "1012/usgs_station/06439430 (SD)",
     "vpuid": "1012",
     "n_stations": 1,
     "n_production_assigned": 1,
@@ -26,8 +26,8 @@
   "stations": [
     {
       "catalog_model_id": "06439430",
-      "workspace_model_id": "1012/huc12/06439430",
-      "label": "1012/huc12/06439430 (SD)",
+      "workspace_model_id": "1012/usgs_station/06439430",
+      "label": "1012/usgs_station/06439430 (SD)",
       "site_no": "06439430",
       "station_name": "COTTONWOOD CR NR CHERRY CR SD",
       "usgs_da_km2": 310.79857324032,

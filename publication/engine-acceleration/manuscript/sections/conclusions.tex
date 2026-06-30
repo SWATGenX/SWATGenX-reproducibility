@@ -1,0 +1,22 @@
+We accelerated the SWAT+ engine on a regional, hyper-resolution HUC-8 benchmark (57{,}998
+HRUs / 8{,}181 channels) without changing model results, reaching a measured \parHead$\times$
+speedup at \parHeadN{} threads on a dedicated AMD ``Turin'' cloud node (about 3~min~$\rightarrow$
+$\sim$\totMinutes{} per simulated year) and a combined $\approx$\totHead$\times$ over the stock
+single-core engine. The central empirical result is that the dominant cost at scale is
+\emph{overhead, not hydrology}: the single largest improvement came from removing one redundant
+per-channel array reset on the serial critical path, not from adding cores. The parallelization is a
+routing-DAG-aware shared-memory level wavefront over the engine command order, made safe by
+privatizing current-object state, and its correctness is established by byte-identity to the serial
+engine at one thread and by thread-count invariance---an automatable race detector---at higher
+thread counts.
+
+Methodologically, the contribution is a transferable loop for accelerating large process-based
+scientific codes (profile $\rightarrow$ classify $\rightarrow$ fix-by-class $\rightarrow$
+validate $\rightarrow$ re-measure) together with a bottleneck taxonomy and a correctness
+framework that distinguishes genuine races from benign compiler floating-point reassociation.
+Scientifically, the contribution is a precise characterization of where SWAT+'s daily step is
+parallelizable (the wide land phase) and where it is architecturally serial (the converging
+main-stem routing path), validated across multiple CPU microarchitectures. Because ensemble
+calibration saturates at a few tens of concurrent members \citep{Rafiei2022Calibration},
+accelerating the individual simulation is the only way to apply more cores to a single model. All
+code, per-optimization commits, and benchmarks are released for reproduction and extension.
